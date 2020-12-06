@@ -1,6 +1,6 @@
-# JaylyMC
-This is a changelogs between Aliom's collabaration project
-## Manhunt - v2.5
+# Minecraft Manhunt (Bedrock)
+**https://mcpedl.com/minecraft-manhunt/ - v2.4**
+## Beta - v2.5
 - Create 4 gamemodes: Manhunt, Hitmen, Juggernaut, Trackhunt. Status: Development
 - Seperate large amount of codes into 2+ files. Status: Development
 - Change strength to weakness. Status: Development
