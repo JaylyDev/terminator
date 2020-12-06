@@ -1,0 +1,43 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.walk": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"walking": "(1.0)"
+						}
+					],
+					"on_entry": [
+                        "/function system/loop"
+					]
+				},
+				"walking": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+                        "/function system/roles"
+					]
+				}
+			}
+		},
+		"controller.animation.enderdragon.death":{
+			"states":{
+			   "runtimes":{
+				  "transitions":[{ "detect_dragon":"query.is_alive" }]
+			   },            
+			   "detect_dragon":{
+				  "transitions":[{ "on_challenge_complete":"!query.is_alive" }]
+			   },
+			   "on_challenge_complete":{
+				  "transitions":[{"runtimes":"(1.0)"}],
+				  "on_entry":[ "/function system/enderdragondeath" ]
+			   }
+			}
+		 }
+	}
+}

@@ -1,0 +1,54 @@
+Changelog of Minecraft Manhunt
+
+Version: 2.4.0
+
+Changes: 
+
+Addon infomation - Pack icon is changed
+
+Both - Instead of using /tag [player] add speedrunner to track the speedrunner at the game, we replaced it with /tag [player] add track
+
+Both - Added Ender Dragon death event
+
+Both - Tellraw messages are changed. Featuring when timer goes to 0, after you beat the ender dragon etc
+
+Both - Better setup instruction ingame
+
+Both - Shows debug message on actionbar when you did not turn on EDU edition to play this addon
+
+Competitive - The resolution is playable now.
+
+Competitive - Hunter respawn cooldown: Fixed.
+
+Competitive - If speedrunner goes to the nether, the hunter will respawn in the same dimension as the speedrunner + 30 seconds cooldown.
+
+Competitive - Improved the spectating system, throwing the block "allow" from spectator's inventory will result a teleportation to the speedrunner.
+
+Normal - Removed guide option in order to improve the performance
+
+Normal - The 2 speedrunners glitch is fixed (meaning the game won't start executing if you do /function start)
+
+Note:
+
+You must run this addon in Education edition.
+
+You cannot track more than one person in this version, if you track multiple players, the game will select from one of them.
+
+You MUST run /function setup and /function start in order to make the addon work when playing.
+
+Copyright:
+
+Addon created by: Aliom and skybird2333
+
+Aliom: Fix bugs, suggestions from mcpedl platform and glitches in all versions.
+
+skybird2333: Creating guides for competitive and co-dev of the addon.
+
+Special thanks to 
+
+- r4isen1920 the ender dragon death event
+- ItsMeJacob21 for the font design
+
+Texture pack on the pack icon: Bare bones made by RobotPantaloons
+
+Please no not reupload this addon on other sources, the only legitimate one is from MCPEDL [ https://mcpedl.com/minecraft-manhunt/ ]. When you are uploading a video about the addon, consider leaving the addon link and do not use the thumbnail on the addon forum as your video thumbnail.

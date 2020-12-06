@@ -1,0 +1,35 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Addon By §eAliom§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 2.4.1",
+        "name": "Minecraft Manhunt (Beta)",
+        "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
+        "version": [ 2, 4, 1 ],
+        "min_engine_version": [ 1, 16, 100 ]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "data",
+            "uuid": "a5684d11-d349-4d74-9343-36194e8e75cb",
+            "version": [0, 0, 1]
+        }
+    ],
+    "subpacks": [
+        {
+          "folder_name": "minecraft_timelimit",
+          "name":"§6Minecraft Hitmen",
+          "memory_tier": 3
+        }
+        {
+          "folder_name": "speedrunner_vs_juggernaut",
+          "name": "§6Minecraft Juggernaut",
+          "memory_tier": 2
+        },
+        {
+          "folder_name": "normal_manhunt_pack",
+          "name": "§6Minecraft Manhunt",
+          "memory_tier": 1
+        }
+      ]
+}
