@@ -1,2 +1,2 @@
 # JaylyMC
-Last Manhunt Repository 
+This is a changelogs between Aliom's collabaration project
