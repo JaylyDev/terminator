@@ -17,6 +17,11 @@
     ],
     "subpacks": [
         {
+          "folder_name": "mcspeedrunner_et",
+          "name":"§6Minecraft Trackhunt",
+          "memory_tier": 4
+        }
+        {
           "folder_name": "minecraft_timelimit",
           "name":"§6Minecraft Hitmen",
           "memory_tier": 3

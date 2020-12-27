@@ -1,32 +1,18 @@
 Changelog of Minecraft Manhunt
 
-Version: 2.4.0
+Version: 2.5 [Beta]
 
 Changes: 
 
-Addon infomation - Pack icon is changed
+- Create 4 gamemodes: Manhunt, Hitmen, Juggernaut, Trackhunt. Status: Development
 
-Both - Instead of using /tag [player] add speedrunner to track the speedrunner at the game, we replaced it with /tag [player] add track
+- Seperate large amount of codes into 2+ files. Status: Development
 
-Both - Added Ender Dragon death event
+- Change strength to weakness. Status: Development
 
-Both - Tellraw messages are changed. Featuring when timer goes to 0, after you beat the ender dragon etc
+- Remove /function setup and place all commands in /function start. Status: Development // So its only one command to run all?
 
-Both - Better setup instruction ingame
-
-Both - Shows debug message on actionbar when you did not turn on EDU edition to play this addon
-
-Competitive - The resolution is playable now.
-
-Competitive - Hunter respawn cooldown: Fixed.
-
-Competitive - If speedrunner goes to the nether, the hunter will respawn in the same dimension as the speedrunner + 30 seconds cooldown.
-
-Competitive - Improved the spectating system, throwing the block "allow" from spectator's inventory will result a teleportation to the speedrunner.
-
-Normal - Removed guide option in order to improve the performance
-
-Normal - The 2 speedrunners glitch is fixed (meaning the game won't start executing if you do /function start)
+- Change 30m time limit to 60m and 60m to 2h in Minecraft Hitmen. Status: Development
 
 Note:
 
