@@ -23,8 +23,6 @@ execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a instant_health 1 25
 execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=speedrunner] slot.hotbar 0 cooked_beef 8
 execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=hunter] slot.hotbar 0 compass
 execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=hunter] slot.hotbar 1 cooked_beef 8
-execute @s[tag=host,scores={settings_state=2,timer_enabled=1,settings_time=0}] ~~~ scoreboard players set @a timer 18000
-execute @s[tag=host,scores={settings_state=2,timer_enabled=1,settings_time=1}] ~~~ scoreboard players set @a timer 36000
 execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a instant_health 1 255
 execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a saturation 1 255
 tellraw @s[tag=host,scores={settings_state=1}] {"rawtext":[{"text":"§c§lERROR§r Unable to start the game."}]}
