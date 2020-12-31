@@ -12,3 +12,4 @@ Dev Qna:
 1. So its only one command to run all? // I wanted to automatily setup when you first join the world, run /function start whenever you're ready.
 2. How beta versions work? // Once we have added features to normal mode and juggernaut mode, release to beta testers and all files will replace 2.5 to 2.6
 3. Do we keep beta v2.5 files? // Yes.
+4. What does "Other Resources" folder do? // Resources for future dev
