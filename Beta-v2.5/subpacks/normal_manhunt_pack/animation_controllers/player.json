@@ -20,7 +20,7 @@
 						}
 					],
 					"on_entry": [
-                        "/function system/roles"
+                        "/function launcher/runloop"
 					]
 				}
 			}

@@ -7,13 +7,6 @@ execute @a[tag=host,scores={settings_state=1,players=2..}] ~~~ title @a actionba
 execute @a[tag=host,scores={settings_state=1}] ~~~ effect @a weakness 1 255 true
 execute @a[tag=host,scores={settings_state=1}] ~~~ effect @a saturation 1 255 true
 
-execute @a[tag=host,scores={settings_state=2}] ~~~ execute @a[l=0,lm=0,tag=hunter] ~~~ spreadplayers ~ ~ 1 2 @s
-execute @a[tag=host,scores={settings_state=2}] ~~~ execute @a[l=0,lm=0,tag=hunter] ~~~ title @s title You died!
-execute @a[tag=host,scores={settings_state=2}] ~~~ execute @a[l=0,lm=0,tag=hunter] ~~~ tellraw @s {"rawtext":[{"text":"§b§lYou died! §r>> §cGo hunt the speedrunner(s) down in a limited time!"}]} 
-execute @a[tag=host,scores={settings_state=2}] ~~~ give @a[l=0,lm=0,tag=hunter] compass
-execute @a[tag=host,scores={settings_state=2}] ~~~ give @a[l=0,lm=0,tag=hunter] cooked_beef 8
-execute @a[tag=host,scores={settings_state=2}] ~~~ xp 1l @a[l=0,lm=0,tag=hunter]
-execute @a[tag=host,scores={settings_state=2}] ~~~ execute @a[tag=speedrunner] ~ ~ ~ setworldspawn
 #spectating
 execute @a[tag=spec] ~ ~ ~ function spec
 execute @a[tag=host,scores={settings_state=2}] ~~~ execute @a[tag=!speedrunner,tag=!hunter,tag=!spec] ~ ~ ~ tellraw @s {"rawtext":[{"text":"§b§lGame §r>> §aYou are spectating the match, please do not leave until the match ends."}]}
