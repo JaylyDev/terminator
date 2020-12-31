@@ -10,7 +10,7 @@
 						}
 					],
 					"on_entry": [
-                        "/function system/loop"
+                        "/function launcher/setup"
 					]
 				},
 				"walking": {
@@ -38,6 +38,6 @@
 				  "on_entry":[ "/function system/enderdragondeath" ]
 			   }
 			}
-		 }
+		}
 	}
 }

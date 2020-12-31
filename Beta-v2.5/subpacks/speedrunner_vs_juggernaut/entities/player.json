@@ -1,5 +1,5 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.13.0",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "minecraft:player",
@@ -55,7 +55,7 @@
             "minecraft:spell_effects": {
               "remove_effects": "bad_omen"
             }
-        },
+		},
         // ---- NOT Standard player's caracteristics ----    	
         "minecraft:standard_player": {
             "minecraft:health": {
@@ -92,23 +92,6 @@
 			"minecraft:movement": {
 				"value": 0.1
 			},
-			"minecraft:environment_sensor": [
-                // ---- Reset player ----
-				{
-					"on_environment": {
-						"filters": {
-							"any_of": [
-								{
-									"test": "is_family",
-									"subject": "self",
-									"value": "player"
-								}
-							]
-						},
-						"event": "minecraft:reset_player"
-                    }
-				}
-			],
 			"minecraft:player.saturation": {
 				"value": 20
 			},
@@ -221,7 +204,7 @@
 						"minecraft:standard_player"
 					]
 				}
-			}            
+			}
 		}
 	}
 }
