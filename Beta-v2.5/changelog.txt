@@ -22,19 +22,4 @@ You cannot track more than one person in this version, if you track multiple pla
 
 You MUST run /function setup and /function start in order to make the addon work when playing.
 
-Copyright:
 
-Addon created by: Aliom and skybird2333
-
-Aliom: Fix bugs, suggestions from mcpedl platform and glitches in all versions.
-
-skybird2333: Creating guides for competitive and co-dev of the addon.
-
-Special thanks to 
-
-- r4isen1920 the ender dragon death event
-- ItsMeJacob21 for the font design
-
-Texture pack on the pack icon: Bare bones made by RobotPantaloons
-
-Please no not reupload this addon on other sources, the only legitimate one is from MCPEDL [ https://mcpedl.com/minecraft-manhunt/ ]. When you are uploading a video about the addon, consider leaving the addon link and do not use the thumbnail on the addon forum as your video thumbnail.
