@@ -1,5 +1,5 @@
 # Minecraft Manhunt (Bedrock)
-**https://mcpedl.com/minecraft-manhunt/ - v2.4**
+**https://mcpedl.com/minecraft-manhunt/ - Add-On link**
 ## Beta - v2.5
 - Create 4 game settings: Manhunt, Hitmen, Juggernaut, Trackhunt. Status: Done
 - Seperate large amount of codes into 2+ files. Status: Development
@@ -7,6 +7,7 @@
 - Remove /function setup and place all commands in /function start. Status: Cancelled
 - Change 30m time limit to 60m and 60m to 2h in Minecraft Hitmen. Status: Development
 - Added a launcher folder to replace /function setup. Status: Done for Normal mode and juggernaut mode ; Development for hitman and trackhunt
+- Update manifest.json
 
 Dev Qna:
 1. So its only one command to run all? // I wanted to automatily setup when you first join the world, run /function start whenever you're ready.
