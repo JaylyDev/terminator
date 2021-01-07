@@ -1,10 +1,10 @@
 {
     "format_version": 2,
     "header": {
-        "description": "Addon By §eJayly§r\n§c@JaylyMC §r§l/ §r§b@PlaysDominic\n§rVersion: 2.5 (Beta)",
-        "name": "Minecraft Manhunt",
+        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 2.5",
+        "name": "Minecraft Manhunt [Beta]",
         "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
-        "version": [ 2, 5, 0],
+        "version": [ 2, 5, 0 ],
         "min_engine_version": [ 1, 16, 100 ]
     },
     "modules": [
@@ -36,5 +36,12 @@
           "name": "§6Minecraft Manhunt",
           "memory_tier": 1
         }
-      ]
+      ],
+    "metadata": {
+        "authors": [
+            "JaylyMC"
+        ],
+	"full_credits": "credits.txt",
+        "url": "https://mcpedl.com/user/itsdominicplays"
+    }
 }
