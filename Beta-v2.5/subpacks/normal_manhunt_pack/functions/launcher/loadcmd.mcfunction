@@ -16,7 +16,7 @@ scoreboard objectives add trackcount dummy
 scoreboard objectives add track_count dummy
 
 #default settings
-execute scoreboard players set @s settings_healing 1
+scoreboard players set @s settings_healing 1
 scoreboard players set @s settings_warmup 0
 scoreboard players set @a[tag=host] settings_state 1
 
