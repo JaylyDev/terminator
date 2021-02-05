@@ -21,7 +21,7 @@ execute @s[tag=host,scores={settings_state=2}] ~~~ title @a subtitle §c§lSpeed
 execute @s[tag=host,scores={settings_state=2}] ~~~ gamemode s @a
 execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a instant_health 1 255 true
 execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=speedrunner] slot.hotbar 0 cooked_beef 8
-execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=hunter] slot.hotbar 0 compass 1 0 {"item_lock": {"mode": "lock_in_inventory", "keep_on_death": {}}
+execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=hunter] slot.hotbar 0 compass 1 0 {"item_lock": {"mode": "lock_in_inventory", "keep_on_death": {}}}
 execute @s[tag=host,scores={settings_state=2}] ~~~ replaceitem entity @a[tag=hunter] slot.hotbar 1 cooked_beef 8
 execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a instant_health 1 255
 execute @s[tag=host,scores={settings_state=2}] ~~~ effect @a saturation 1 255
