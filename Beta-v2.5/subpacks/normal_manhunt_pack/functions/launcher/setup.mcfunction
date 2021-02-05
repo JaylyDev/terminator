@@ -1,4 +1,4 @@
-tag @r[tag=!launch,c=0] add launch
+tag @a[tag=!launch,c=1] add launch
 scoreboard objectives add launch dummy
 execute @a[tag=launch] ~ ~ ~ scoreboard players set @s launch 0
 execute @a[tag=launch,scores={launch=0}] ~ ~ ~ tag @s add host
