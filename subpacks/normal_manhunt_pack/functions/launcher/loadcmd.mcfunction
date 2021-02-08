@@ -49,4 +49,4 @@ execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§ePle
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt"}]}
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§aSupport Discord Server: §bhttps://discord.gg/EFB7aru"}]}
-execute @s[scores={settings_state=2] ~~~ scoreboard players set @s settings_state 0
+execute @s[scores={settings_state=2}] ~~~ scoreboard players set @s settings_state 0
