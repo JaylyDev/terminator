@@ -1,5 +1,6 @@
 # Minecraft Manhunt (Bedrock)
 **https://mcpedl.com/minecraft-manhunt/ - Add-On link**
+
 **Version: Beta v2.5**
 ## Changelog
 - Create 4 game settings: Manhunt, Hitmen, Juggernaut, Trackhunt. Status: Done
