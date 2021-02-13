@@ -1,18 +1,18 @@
 #automaticily select the host
-scoreboard objectives add settings_state dummy
-scoreboard players set @s settings_state 2
+scoreboard objectives add setup_state dummy
+scoreboard players add @s setup_state 1
 
 #scoreboard setup
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add display dummy "§l§cManhunt"
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add counter dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add speed_alive dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add hunt_alive dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add speedcount dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add huntcount dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add players dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add settings_healing dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add settings_warmup dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add trackcount dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add display dummy "§l§cManhunt"
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add counter dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add speed_alive dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add hunt_alive dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add speedcount dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add huntcount dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add players dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add settings_healing dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add settings_warmup dummy
+execute @s[scores={setup_state}] ~~~ scoreboard objectives add trackcount dummy
 execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add track_count dummy
 
 #default settings
