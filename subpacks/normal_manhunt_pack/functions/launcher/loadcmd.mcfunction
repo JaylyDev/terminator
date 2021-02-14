@@ -34,15 +34,15 @@ time set noon
 
 tellraw @s {"rawtext":[{"text":"§aSetup complete."}]}
 tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Default settings:"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Healing: §bEnabled"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Grace Period: §bDisabled"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§dIf you dislike the default settings, you may go to §e/function settings§d to change them."}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§bIf you want to track a player, type §3/tag [player] add track"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§bIf you track zero or more than one player, the game will select one for them."}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§ePlease make sure that you do NOT leave until the game ends, or the game will corrupt."}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt"}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§aSupport Discord Server: §bhttps://discord.gg/EFB7aru"}]}
-execute @s[scores={settings_state=2}] ~~~ scoreboard players set @s settings_state 0
+tellraw @s {"rawtext":[{"text":"Default settings:"}]}
+tellraw @s {"rawtext":[{"text":"Healing: §bEnabled"}]}
+tellraw @s {"rawtext":[{"text":"Grace Period: §bDisabled"}]}
+tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
+tellraw @s {"rawtext":[{"text":"§dIf you dislike the default settings, you may go to §e/function settings§d to change them."}]}
+tellraw @s {"rawtext":[{"text":"§bIf you want to track a player, type §3/tag [player] add track"}]}
+tellraw @s {"rawtext":[{"text":"§bIf you track zero or more than one player, the game will select one for them."}]}
+tellraw @s {"rawtext":[{"text":"§ePlease make sure that you do NOT leave until the game ends, or the game will corrupt."}]}
+tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
+tellraw @s {"rawtext":[{"text":"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt"}]}
+tellraw @s {"rawtext":[{"text":"§aSupport Discord Server: §bhttps://discord.gg/EFB7aru"}]}
+scoreboard players set @s settings_state 0
