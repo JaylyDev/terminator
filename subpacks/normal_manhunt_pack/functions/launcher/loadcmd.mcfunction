@@ -1,43 +1,39 @@
-#automaticily select the host
-scoreboard objectives add setup_state dummy
-scoreboard players add @s setup_state 1
-
 #scoreboard setup
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add display dummy "§l§cManhunt"
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add counter dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add speed_alive dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add hunt_alive dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add speedcount dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add huntcount dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add players dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add settings_healing dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add settings_warmup dummy
-execute @s[scores={setup_state}] ~~~ scoreboard objectives add trackcount dummy
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives add track_count dummy
+scoreboard objectives add display dummy "§l§cManhunt"
+scoreboard objectives add counter dummy
+scoreboard objectives add speed_alive dummy
+scoreboard objectives add hunt_alive dummy
+scoreboard objectives add speedcount dummy
+scoreboard objectives add huntcount dummy
+scoreboard objectives add players dummy
+scoreboard objectives add settings_healing dummy
+scoreboard objectives add settings_warmup dummy
+scoreboard objectives add trackcount dummy
+scoreboard objectives add track_count dummy
 
 #default settings
-execute @s[scores={settings_state=2}] ~~~ scoreboard players set @s settings_healing 0
-execute @s[scores={settings_state=2}] ~~~ scoreboard players set @s settings_warmup 0
+scoreboard players set @s settings_healing 0
+scoreboard players set @s settings_warmup 0
 
 #teleport everyone to the host
-execute @s[scores={settings_state=2}] ~~~ scoreboard objectives setdisplay sidebar display
-execute @s[scores={settings_state=2}] ~~~ spreadplayers ~ ~ 1 2 @a
-execute @s[scores={settings_state=2}] ~~~ spawnpoint @a ~ 100 ~
-execute @s[scores={settings_state=2}] ~~~ setworldspawn ~ 100 ~
+scoreboard objectives setdisplay sidebar display
+spreadplayers ~ ~ 1 2 @a
+spawnpoint @a ~ 100 ~
+setworldspawn ~ 100 ~
 
 #Change every gamerules
-execute @s[scores={settings_state=2}] ~~~ gamerule naturalRegeneration true
-execute @s[scores={settings_state=2}] ~~~ gamerule doDaylightCycle false
-execute @s[scores={settings_state=2}] ~~~ gamerule doimmediateRespawn false
-execute @s[scores={settings_state=2}] ~~~ gamerule showcoordinates true
-execute @s[scores={settings_state=2}] ~~~ gamerule spawnRadius 1
-execute @s[scores={settings_state=2}] ~~~ gamerule sendCommandFeedback false
-execute @s[scores={settings_state=2}] ~~~ gamerule pvp false
-execute @s[scores={settings_state=2}] ~~~ gamerule falldamage false
-execute @s[scores={settings_state=2}] ~~~ time set noon
+gamerule naturalRegeneration true
+gamerule doDaylightCycle false
+gamerule doimmediateRespawn false
+gamerule showcoordinates true
+gamerule spawnRadius 1
+gamerule sendCommandFeedback false
+gamerule pvp false
+gamerule falldamage false 
+time set noon
 
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"§aSetup complete."}]}
-execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
+tellraw @s {"rawtext":[{"text":"§aSetup complete."}]}
+tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Default settings:"}]}
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Healing: §bEnabled"}]}
 execute @s[scores={settings_state=2}] ~~~ tellraw @s {"rawtext":[{"text":"Grace Period: §bDisabled"}]}
