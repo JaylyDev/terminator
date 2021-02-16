@@ -8,13 +8,15 @@
 			"is_experimental": false,
 			"scripts": {
             // ---- Added ----
-				"animate": [
-					"walk"
-				]
+			  "animate": [
+			    "setup", "runloop", "enderdragon.death"
+			  ]
 			},
             // ---- Added ----
 			"animations": {
-				"walk": "controller.animation.walk"
+			  "setup": "controller.animation.setup",
+			  "runloop": "controller.animation.runloop",
+			  "enderdragon.death": "controller.animation.enderdragon.death"
 			}
 		},
         
@@ -158,7 +160,7 @@
         
         
 		"events": {
-            "minecraft:gain_bad_omen": {
+q            "minecraft:gain_bad_omen": {
                 "add": {
                     "component_groups": [
                     "minecraft:add_bad_omen"
