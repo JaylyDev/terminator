@@ -1,0 +1,22 @@
+
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.test": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "on_entry": [
+            "/say this"
+          ],
+          "transitions": [
+            {
+              "stop": "q.is_alive"
+            }
+          ]
+        },
+        "stop": {}
+      }
+    }
+  }
+}
