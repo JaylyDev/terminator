@@ -12,19 +12,8 @@
 					"on_entry": [
                         "/function launcher/setup"
 					]
-				},
-				"walking": {
-					"transitions": [
-						{
-							"default": "(1.0)"
-						}
-					],
-					"on_entry": [
-                        "/function launcher/runloop"
-					]
 				}
 			}
-		},
 		"controller.animation.enderdragon.death":{
 			"states":{
 			   "runtimes":{
