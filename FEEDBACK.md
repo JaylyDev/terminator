@@ -11,6 +11,7 @@ Issue reports go [here](https://github.com/JaylyDev/manhunt/issues/new) or [Supp
 |Version|Issue|Response|Status|
 |--|--|--|--|
 |1.2.5|Test|Test|Closed|
+|1.2.5|For some stupid reason, whenever i play the map with education edition turned on and applied this addon, the education edition somehow turned off by itself.|It's a bug from Minecraft, we cannot fix this.|Closed|
 
 ## Suggestions
 |Suggestion|Response|Status|
