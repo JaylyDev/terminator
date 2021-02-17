@@ -24,7 +24,7 @@ Special thanks to
 ## Forums
 Want to report a bug or suggest new features for the addon? Create an issue on GitHub or give us feedback by joining the Support Discord Server.
 
-Collected reports and feedback will be shown in forums file in GitHub.
+Collected reports and feedback including responds will be shown in [Feedback](https://github.com/JaylyDev/manhunt/blob/beta-v2.5/FEEDBACK.md) page on GitHub.
 
 ## License
 
