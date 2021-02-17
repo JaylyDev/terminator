@@ -10,4 +10,17 @@
 - Addon will automaticily setup once you join a world.
 - Update manifest.json
 
-## Known Issue
+## Issue Reports
+|We have not received any reports yet, please check back later.|
+-
+
+## Credits
+Developers: 
+- Jayly (https://mcpedl.com/user/itsdominicplays/)
+- JacobReal (https://mcpedl.com/user/dreamcraft-studios/)
+
+Special thanks to 
+- r4isen1920 (https://mcpedl.com/user/r4isen1920/)
+- skybird23333 (https://mcpedl.com/user/skybird23333/)
+- justAsh (https://mcpedl.com/user/pixelpolydigital/)
+- RobotPantaloons (https://mcpedl.com/user/RobotPantaloons/)
