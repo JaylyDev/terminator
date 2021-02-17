@@ -24,3 +24,9 @@ Special thanks to
 - skybird23333 (https://mcpedl.com/user/skybird23333/)
 - justAsh (https://mcpedl.com/user/pixelpolydigital/)
 - RobotPantaloons (https://mcpedl.com/user/RobotPantaloons/)
+
+## License
+
+Copyright (c) JaylyDev. All rights reserved.
+
+Licensed under the MIT license.
