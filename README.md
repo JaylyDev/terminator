@@ -12,14 +12,14 @@
 
 ## Credits
 Developers: 
-- Jayly (https://mcpedl.com/user/itsdominicplays/)
-- JacobReal (https://mcpedl.com/user/dreamcraft-studios/)
+- [Jayly](https://mcpedl.com/user/itsdominicplays/)
+- [JacobReal](https://mcpedl.com/user/dreamcraft-studios/)
 
 Special thanks to 
-- r4isen1920 (https://mcpedl.com/user/r4isen1920/)
-- skybird23333 (https://mcpedl.com/user/skybird23333/)
-- justAsh (https://mcpedl.com/user/pixelpolydigital/)
-- RobotPantaloons (https://mcpedl.com/user/RobotPantaloons/)
+- [r4isen1920](https://mcpedl.com/user/r4isen1920/)
+- [skybird23333](https://mcpedl.com/user/skybird23333/)
+- [justAsh](https://mcpedl.com/user/pixelpolydigital/)
+- [RobotPantaloons](https://mcpedl.com/user/RobotPantaloons/)
 
 ## Forums
 Want to report a bug or suggest new features for the addon? Create an issue on GitHub or give us feedback by joining the Support Discord Server.
@@ -30,4 +30,4 @@ Collected reports and feedback will be shown in forums file in GitHub.
 
 Copyright (c) JaylyDev. All rights reserved.
 
-Licensed under the MIT license.
+Licensed under the [MIT](https://github.com/JaylyDev/manhunt/blob/beta-v2.5/LICENSE) license.
