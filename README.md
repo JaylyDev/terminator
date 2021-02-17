@@ -7,12 +7,12 @@
 - Reduce lag while playing the addon.
 - Change strength to weakness effect to prevent instant kill while waiting. **(NORMAL MODE ONLY)**
 - Remove /function setup command.
-- Addon will automaticily setup once you join a world.
+- Addon will automaticily setup once you join a worl
 - Update manifest.json
 
 ## Issue Reports
 |We have not received any reports yet, please check back later.|
--
+|--|
 
 ## Credits
 Developers: 
