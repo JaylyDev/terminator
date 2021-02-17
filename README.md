@@ -11,8 +11,8 @@
 - Update manifest.json
 
 ## Issue Reports
-|We have not received any reports yet, please check back later.|
-|--|
+|Case|User|Version|Issue|Response|Status|
+|--|--|--|--|--|--|
 
 ## Credits
 Developers: 
