@@ -17,7 +17,7 @@
 
   "jayly_watermark": {
     "type": "label",
-    "text": "ActualGuns 3D §ev1.2.6§r\nMade by §b@PixelPolyMC",
+    "text": "Minecraft Manhunt §ev3§r\nMade by §b@JaylyMC",
     "color": [ 1.0, 1.0, 1.0 ],
     "shadow": true,
     "font_size": "small",
@@ -28,7 +28,7 @@
 
   "jayly_watermark_image": {
     "type": "image",
-    "texture": "textures/logo/pl",
+    "texture": "textures/logo/jayly",
     "layer": 3,
     "offset": [-55, -2.5],
     "anchor_from": "top_right",
