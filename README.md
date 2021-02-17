@@ -21,8 +21,8 @@ Special thanks to
 - [justAsh](https://mcpedl.com/user/pixelpolydigital/)
 - [RobotPantaloons](https://mcpedl.com/user/RobotPantaloons/)
 
-## Forums
-Want to report a bug or suggest new features for the addon? Create an issue on GitHub or give us feedback by joining the Support Discord Server.
+## Feedback
+Want to report a bug or suggest new features for the addon? [Create an issue on GitHub](https://github.com/JaylyDev/manhunt/issues/new) or give us feedback by joining the [Support Discord Server](https://discord.gg/Xn8TCJWA).
 
 Collected reports and feedback including responds will be shown in [Feedback](https://github.com/JaylyDev/manhunt/blob/beta-v2.5/FEEDBACK.md) page on GitHub.
 
