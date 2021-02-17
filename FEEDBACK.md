@@ -9,7 +9,7 @@ Issue reports go [here](https://github.com/JaylyDev/manhunt/issues/new) or [Supp
 
 ## Issue Reports
 |Version|Issue|Response|Status|
-|--|--|--|--|--|--|
+|--|--|--|--|
 |1.2.5|Test|Test|Closed|
 
 ## Suggestions
