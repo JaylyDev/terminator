@@ -10,10 +10,6 @@
 - Addon will automaticily setup once you join a worl
 - Update manifest.json
 
-## Issue Reports
-|Case|User|Version|Issue|Response|Status|
-|--|--|--|--|--|--|
-
 ## Credits
 Developers: 
 - Jayly (https://mcpedl.com/user/itsdominicplays/)
@@ -24,6 +20,11 @@ Special thanks to
 - skybird23333 (https://mcpedl.com/user/skybird23333/)
 - justAsh (https://mcpedl.com/user/pixelpolydigital/)
 - RobotPantaloons (https://mcpedl.com/user/RobotPantaloons/)
+
+## Forums
+Want to report a bug or suggest new features for the addon? Create an issue on GitHub or give us feedback by joining the Support Discord Server.
+
+Collected reports and feedback will be shown in forums file in GitHub.
 
 ## License
 
