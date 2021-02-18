@@ -22,9 +22,7 @@
       "states": {
         "runloop": {
           "on_entry": [
-            "/function system/game",
-            "/function system/loop",
-            "/function system/roles"
+            "/function launcher/runloop"
           ],
           "transitions": [
             {
