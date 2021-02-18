@@ -197,7 +197,21 @@
         "remove": {
           "component_groups": [ "minecraft:raid_trigger" ]
         }
-      }
+      },
+            // ---- Added ----
+			"minecraft:reset_player": {
+				"add": {
+					"component_groups": [ "minecraft:standard_player" ]
+				}
+			},
+            // ---- Added ----
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"minecraft:standard_player"
+					]
+				}
+			}
     }
   }
 }
