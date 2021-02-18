@@ -5,7 +5,16 @@
       "identifier": "minecraft:player",
       "is_spawnable": false,
       "is_summonable": false,
-      "is_experimental": false
+      "is_experimental": false,
+      "scripts": {
+        "animate": [
+          "setup", "runloop", "enderdragon.death"
+        ]
+      },
+      "animations": {
+        "setup": "controller.animation.setup",
+        "runloop": "controller.animation.runloop",
+        "enderdragon.death": "controller.animation.enderdragon.death"
     },
 
     "component_groups": {
