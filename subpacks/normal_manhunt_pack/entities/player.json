@@ -15,6 +15,7 @@
         "setup": "controller.animation.setup",
         "runloop": "controller.animation.runloop",
         "enderdragon.death": "controller.animation.enderdragon.death"
+      }
     },
 
     "component_groups": {
@@ -136,6 +137,7 @@
           },
           {
             "position": [ -0.4, -0.2, -0.1 ],
+
             "min_rider_count": 1,
             "max_rider_count": 2,
             "lock_rider_rotation": 0
@@ -199,3 +201,5 @@
     }
   }
 }
+
+
