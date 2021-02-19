@@ -17,21 +17,6 @@
         "stop": {}
       }
     },
-    "controller.animation.runloop": {
-      "initial_state": "default",
-      "states": {
-        "default": {
-          "on_entry": [
-            "/function launcher/runloop"
-          ],
-          "transitions": [
-            {
-              "default": "(1.0)"
-            }
-          ]
-        } 
-      }
-    },
     "controller.animation.enderdragon.death":{ 
       "states":{ 
         "runtimes":{ 
