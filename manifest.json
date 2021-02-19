@@ -41,7 +41,7 @@
         "authors": [
             "JaylyMC"
         ],
-	"full_credits": "credits.txt",
-        "url": "https://mcpedl.com/user/itsdominicplays"
+	"license": "LICENSE",
+        "url": "https://mcpedl.com/minecraft-manhunt/"
     }
 }
