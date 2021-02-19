@@ -2,7 +2,6 @@
   "format_version": "1.10.0",
   "animation_controllers": {
     "controller.animation.setup": {
-      "initial_state": "default",
       "states": {
         "default": {
           "on_entry": [
