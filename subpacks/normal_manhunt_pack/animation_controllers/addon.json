@@ -18,15 +18,15 @@
       }
     },
     "controller.animation.runloop": {
-      "initial_state": "runloop",
+      "initial_state": "default",
       "states": {
-        "runloop": {
+        "default": {
           "on_entry": [
             "/function launcher/runloop"
           ],
           "transitions": [
             {
-              "runloop": "1.0"
+              "default": "(1.0)"
             }
           ]
         } 
