@@ -1,1 +1,7 @@
 {
+  "values": [
+    "system/game",
+    "system/loop",
+    "system/roles"
+  ]
+}
