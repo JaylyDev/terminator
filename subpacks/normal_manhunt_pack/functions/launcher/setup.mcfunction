@@ -35,13 +35,7 @@ time set noon
 #tellraw
 tellraw @s {"rawtext":[{"text":"§aSetup complete."}]}
 tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
-tellraw @s {"rawtext":[{"text":"Default settings:"}]}
-tellraw @s {"rawtext":[{"text":"Healing: §bEnabled"}]}
-tellraw @s {"rawtext":[{"text":"Grace Period: §bDisabled"}]}
-tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
-tellraw @s {"rawtext":[{"text":"§dIf you dislike the default settings, you may go to §e/function settings§d to change them."}]}
-tellraw @s {"rawtext":[{"text":"§bIf you want to track a player, type §3/tag [player] add track"}]}
-tellraw @s {"rawtext":[{"text":"§bIf you track zero or more than one player, the game will select one for them."}]}
+tellraw @s {"rawtext":[{"text":"Whoever execute command /function start becomes a speedrunner, and the rest are hunters."}]}
 tellraw @s {"rawtext":[{"text":"§ePlease make sure that you do NOT leave until the game ends, or the game will corrupt."}]}
 tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
 tellraw @s {"rawtext":[{"text":"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt"}]}
