@@ -4,14 +4,8 @@
     "controller.animation.setup": {
       "states": {
         "default": {
-          "on_entry": [
-            "/function launcher/setup"
-          ],
-          "transitions": [
-            {
-              "stop": "q.is_alive"
-            }
-          ]
+          "on_entry": [ "/function launcher/setup" ],
+          "transitions": [{"stop": "q.is_alive"}]
         },
         "stop": {}
       }
