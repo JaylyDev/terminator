@@ -17,21 +17,6 @@
     ],
     "subpacks": [
         {
-          "folder_name": "Minecraft_Trackhunt",
-          "name":"§6Minecraft Trackhunt",
-          "memory_tier": 4
-        },
-        {
-          "folder_name": "Minecraft_Hitman",
-          "name":"§6Minecraft Hitmen",
-          "memory_tier": 3
-        },
-        {
-          "folder_name": "speedrunner_vs_juggernaut",
-          "name": "§6Minecraft Juggernaut",
-          "memory_tier": 2
-        },
-        {
           "folder_name": "normal_manhunt_pack",
           "name": "§6Minecraft Manhunt",
           "memory_tier": 1
@@ -39,9 +24,10 @@
       ],
     "metadata": {
         "authors": [
-            "JaylyMC"
-        ],
-	"license": "LICENSE",
-        "url": "https://mcpedl.com/minecraft-manhunt/"
-    }
+            "Jayly", "jacobboiboi"
+        ]
+      },
+  "license": {
+    "url": "https://github.com/JaylyDev/manhunt/blob/beta-v2.5/LICENSE"
+  }
 }

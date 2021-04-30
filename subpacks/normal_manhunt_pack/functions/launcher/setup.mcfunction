@@ -15,11 +15,11 @@ scoreboard objectives add track_count dummy
 scoreboard players set @s settings_healing 0
 scoreboard players set @s settings_warmup 0
 
-#teleport everyone to the host
+#teleport everyone to 0,0
 scoreboard objectives setdisplay sidebar display
-spreadplayers ~ ~ 1 2 @a
-spawnpoint @a ~ 100 ~
-setworldspawn ~ 100 ~
+spreadplayers 0 0 1 5 @a
+clearspawnpoint @a
+setworldspawn ~ ~ ~
 
 #Change every gamerules
 gamerule naturalRegeneration true
@@ -32,6 +32,7 @@ gamerule pvp false
 gamerule falldamage false 
 time set noon
 
+#tellraw
 tellraw @s {"rawtext":[{"text":"§aSetup complete."}]}
 tellraw @s {"rawtext":[{"text":"―――――――――――――――――"}]}
 tellraw @s {"rawtext":[{"text":"Default settings:"}]}
