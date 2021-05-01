@@ -6,8 +6,11 @@
       "is_spawnable": false,
       "is_summonable": false,
       "is_experimental": false,
-      "scripts": { "animate": [ "setup" ]},
-      "animations": { "setup": "controller.animation.setup" }
+      "scripts": {"animate": ["setup", "speedrunner_death"]},
+      "animations": {
+        "setup": "controller.animation.setup",
+        "speedrunner_death": "controller.animation.speedrunner.death"
+      }
     },
 
     "component_groups": {

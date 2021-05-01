@@ -6,16 +6,9 @@
       "is_spawnable": false,
       "is_summonable": true,
       "is_experimental": false,
-    "scripts": {
-      "animate": [
-        "dead"
-      ]
+      "scripts": {"animate": ["death"]},
+      "animation": {"death": "controller.animation.enderdragon.death"}
     },
-    "animations": {
-      "dead": "controller.animation.enderdragon.death"
-    }
-  },
-
     "component_groups": {
       "dragon_sitting": {
         "minecraft:behavior.dragonlanding": {

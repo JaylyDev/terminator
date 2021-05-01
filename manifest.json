@@ -24,10 +24,21 @@
       ],
     "metadata": {
         "authors": [
-            "Jayly", "jacobboiboi"
+          "Jayly": {
+            "youtube": "https://youtube.com/jaylymc",
+            "twitter": "https://twitter.com/jaylyplays"
+          }
+        ],
+        "links": [
+          "github": {
+            "repository": "https://github.com/JaylyDev/manhunt",
+            "license": "https://github.com/JaylyDev/manhunt/blob/beta/LICENSE"
+          },
+          "mcpedl": {
+            "url": "https://mcpedl.com/minecraft-manhunt"
+          }
         ]
-      },
-  "license": {
-    "url": "https://github.com/JaylyDev/manhunt/blob/beta-v2.5/LICENSE"
+      }
+    }
   }
 }
