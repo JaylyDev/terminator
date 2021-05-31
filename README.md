@@ -5,9 +5,9 @@
 ## Changelog
 - Create 4 game settings: Manhunt, Hitmen, Juggernaut, Trackhunt. (Normal Manhunt is the only gamemode we have working on so far)
 - Reduce lag while playing the addon.
-- Change strength to weakness effect to prevent instant kill while waiting. **(NORMAL MODE ONLY)**
-- Remove /function setup command.
-- Addon will automaticily setup once you join a worl
+- Players are not able to fight before game starts
+- Hunters are not able to fight when playing
+- Addon will automaticily setup once you join the world (Preferably brand new worlds.)
 - Update manifest.json
 
 ## Credits
@@ -21,13 +21,11 @@ Special thanks to
 - [justAsh](https://mcpedl.com/user/pixelpolydigital/)
 - [RobotPantaloons](https://mcpedl.com/user/RobotPantaloons/)
 
-## Feedback
+## Bugs and Feedbacks
 Want to report a bug or suggest new features for the addon? [Create an issue on GitHub](https://github.com/JaylyDev/manhunt/issues/new) or give us feedback by joining the [Support Discord Server](https://discord.gg/Xn8TCJWA).
-
-Collected reports and feedback including responds will be shown in [Feedback](https://github.com/JaylyDev/manhunt/blob/beta-v2.5/FEEDBACK.md) page on GitHub.
 
 ## License
 
 Copyright (c) JaylyDev. All rights reserved.
 
-Licensed under the [MIT](https://github.com/JaylyDev/manhunt/blob/beta-v2.5/LICENSE) license.
+Licensed under the [MIT](https://github.com/JaylyDev/manhunt/blob/beta/LICENSE) license.

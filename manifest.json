@@ -5,7 +5,7 @@
         "name": "Minecraft Manhunt [Beta]",
         "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
         "version": [ 2, 5, 0 ],
-        "min_engine_version": [ 1, 16, 100 ]
+        "min_engine_version": [ 1, 16, 220 ]
     },
     "modules": [
         {
@@ -15,29 +15,16 @@
             "version": [0, 0, 1]
         }
     ],
-    "subpacks": [
-        {
-          "folder_name": "normal_manhunt_pack",
-          "name": "§6Minecraft Manhunt",
-          "memory_tier": 1
-        }
-      ],
+//    "subpacks": [
+//        {
+//          "folder_name": "normal_manhunt_pack",
+//          "name": "§6Minecraft Manhunt",
+//          "memory_tier": 1
+//        }
+//      ],
     "metadata": {
-        "authors": [
-          "Jayly": {
-            "youtube": "https://youtube.com/jaylymc",
-            "twitter": "https://twitter.com/jaylyplays"
-          }
-        ],
-        "links": [
-          "github": {
-            "repository": "https://github.com/JaylyDev/manhunt",
-            "license": "https://github.com/JaylyDev/manhunt/blob/beta/LICENSE"
-          },
-          "mcpedl": {
-            "url": "https://mcpedl.com/minecraft-manhunt"
-          }
-        ]
+        "authors": ["Jayly"],
+        "links": ["https://mcpedl.com/minecraft-manhunt", "https://github.com/jaylydev/manhunt"]
       }
     }
   }
