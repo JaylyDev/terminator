@@ -1,7 +1,7 @@
 # Minecraft Manhunt (Bedrock)
 **https://mcpedl.com/minecraft-manhunt/ - Add-On link**
 
-**Version: Beta v2.5**
+**Version: 1.0.6**
 ## Changelog
 - Create 4 game settings: Manhunt, Hitmen, Juggernaut, Trackhunt. (Normal Manhunt is the only gamemode we have working on so far)
 - Reduce lag while playing the addon.
@@ -13,13 +13,13 @@
 ## Credits
 Developers: 
 - [Jayly](https://mcpedl.com/user/itsdominicplays/)
-- [JacobReal](https://mcpedl.com/user/dreamcraft-studios/)
 
 Special thanks to 
 - [r4isen1920](https://mcpedl.com/user/r4isen1920/)
 - [skybird23333](https://mcpedl.com/user/skybird23333/)
 - [justAsh](https://mcpedl.com/user/pixelpolydigital/)
 - [RobotPantaloons](https://mcpedl.com/user/RobotPantaloons/)
+- [JacobReal](https://mcpedl.com/user/dreamcraft-studios/)
 
 ## Bugs and Feedbacks
 Want to report a bug or suggest new features for the addon? [Create an issue on GitHub](https://github.com/JaylyDev/manhunt/issues/new) or give us feedback by joining the [Support Discord Server](https://discord.gg/Xn8TCJWA).
@@ -28,4 +28,4 @@ Want to report a bug or suggest new features for the addon? [Create an issue on 
 
 Copyright (c) JaylyDev. All rights reserved.
 
-Licensed under the [MIT](https://github.com/JaylyDev/manhunt/blob/beta/LICENSE) license.
+Licensed under the [MIT](https://github.com/JaylyDev/manhunt/blob/main/LICENSE) license.

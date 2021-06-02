@@ -26,4 +26,3 @@ current_path = inspect.getfile(inspect.currentframe()) #Current directory
 current_filename = os.path.basename(__file__)
 current_path = str(current_path).replace("\\" + str(current_filename), "")
 jt_zipdir_execution("manhunt.mcpack", current_path)
-# Deletes all .mcpack files from .zip because python zipfile module zips itself in for no reason

@@ -4,7 +4,7 @@
         "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 2.5",
         "name": "Minecraft Manhunt [Beta]",
         "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
-        "version": [ 2, 5, 0 ],
+        "version": [ 1, 5, 1 ],
         "min_engine_version": [ 1, 16, 220 ]
     },
     "modules": [
@@ -12,20 +12,11 @@
             "description": "",
             "type": "data",
             "uuid": "a5684d11-d349-4d74-9343-36194e8e75cb",
-            "version": [0, 0, 1]
+            "version": [1, 0, 6]
         }
     ],
-//    "subpacks": [
-//        {
-//          "folder_name": "normal_manhunt_pack",
-//          "name": "§6Minecraft Manhunt",
-//          "memory_tier": 1
-//        }
-//      ],
     "metadata": {
         "authors": ["Jayly"],
-        "links": ["https://mcpedl.com/minecraft-manhunt", "https://github.com/jaylydev/manhunt"]
-      }
+        "url": "https://mcpedl.com/minecraft-manhunt"
     }
-  }
 }

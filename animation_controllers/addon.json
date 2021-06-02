@@ -5,8 +5,7 @@
       "initial_state": "default_state",
       "states":{         
         "default_state":{
-          "transitions":[{"manhunt_setup": "(1.0)"}],
-          "on_entry":["/tellraw @s {\"rawtext\":[{\"text\":\"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt\"}]}"]
+          "transitions":[{"manhunt_setup": "q.is_moving"}]
         },
         "manhunt_setup": {
           "on_entry": [
