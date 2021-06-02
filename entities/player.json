@@ -75,7 +75,7 @@
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true }, 
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -150,17 +150,22 @@
                  "filters":{
                     "any_of":[
                        {
-                          "all_of":[
-                             { "test":"has_tag", "value":"hunter" }, //Does the player have this tag?
-                             { "test":"has_tag", "subject":"other", "value":"hunter" } //If so, does the entity they're trying to hurt have this tag?
-                          ]
+                         "all_of":[
+                           {"test":"has_tag", "value":"hunter" }, //Does the player have this tag?
+                           {"test":"has_tag", "subject":"other", "value":"hunter" } //If so, does the entity they're trying to hurt have this tag?
+                         ]
                        },
                        {
-                          "all_of":[
-                             { "test":"has_tag", "value":"speedrunner" }, //repeats for every team;
-                             { "test":"has_tag", "subject":"other", "value":"speedrunner" }
-                          ]
-                       } //please do not ask me why do i add speedrunners deals damage false to speedrunners when there can be only 1 lmao
+                         "all_of":[
+                          {"test":"has_tag", "value":"speedrunner" }, //repeats for every team;
+                          {"test":"has_tag", "subject":"other", "value":"speedrunner" }
+                         ]
+                       }, //please do not ask me why do i add speedrunners deals damage false to speedrunners when there can be only 1 lmao
+                       {
+                         "all_of":[
+                           {"test":"has_tag", "operator": "!=", "value":"game_is_running"}
+                         ]
+                       } // this filter is used for lobby stage
                     ]
                  }
               },
@@ -273,12 +278,12 @@
       },
       "manhunt:speedrunner_death": {
         "run_command": {
-          "command": [ "function system/speedrunnerdeath" ]
+          "command": [ "function system/ingame/speedrunnerdeath" ]
         }
       },
       "manhunt:hunter_death": {
         "run_command": {
-          "command": [ "function system/hunterdeath" ]
+          "command": [ "function system/ingame/hunterdeath" ]
         }
       }
     }
