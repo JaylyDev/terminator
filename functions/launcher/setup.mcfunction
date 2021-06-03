@@ -1,7 +1,5 @@
-# This file is a copy of manhunt_setup component in animation controller.
 # change players settings
 scoreboard objectives add players dummy
-scoreboard players set @s[tag=host] players 0
 clear @a
 clearspawnpoint @a
 spawnpoint @a ~ ~ ~
@@ -30,3 +28,5 @@ tellraw @s {"rawtext":[{"text":"――――――――――――――――
 tellraw @s {"rawtext":[{"text":"§aMore info at: §bhttps://mcpedl.com/minecraft-manhunt"}]}
 tellraw @s {"rawtext":[{"text":"§aSupport Discord Server: §bhttps://discord.gg/EFB7aru"}]}
 tag @s add host
+tag @s add verified
+tag @s remove user

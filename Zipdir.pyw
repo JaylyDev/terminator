@@ -2,7 +2,7 @@
 # Copyrights licensed under the MIT License.
 # See the accompanying LICENSE (https://github.com/JaylyDev/JaylyTerminal/blob/master/LICENSE) file for terms.
 
-# THIS FILE IS USED FOR THE DEVELOPER IN SCHOOL WHEN SCHOOL DISABLES DATA COMPRESSION.
+# THIS FILE IS USED FOR ADDON DEVELOPMENT
 
 #functions import
 import os
