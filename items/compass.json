@@ -1,0 +1,14 @@
+// I don't think this file helps the gameplay lol
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "minecraft:compass"
+    },
+    "components": {
+      "minecraft:cooldown": {
+        "duration": 10.0
+      }
+    }
+  }
+}

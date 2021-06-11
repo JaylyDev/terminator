@@ -1,5 +1,6 @@
 {
   "values": [
-    "system/lobby/execute"
+    "system/lobby/execute", // Command that executes every tick for lobby system
+    "system/ingame/execute" // Command that executes every tick for ingame system
   ]
 }

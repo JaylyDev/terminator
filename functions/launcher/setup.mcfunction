@@ -1,5 +1,6 @@
 # change players settings
 scoreboard objectives add players dummy
+scoreboard objectives add compass_cd dummy
 clear @a
 clearspawnpoint @a
 spawnpoint @a ~ ~ ~
