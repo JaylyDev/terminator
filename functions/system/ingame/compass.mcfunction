@@ -4,4 +4,4 @@ execute @s[tag=!hunter,tag=game_is_running,scores={compass_cd=0}] ~~~ tellraw @s
 execute @s[tag=!hunter,tag=game_is_running,scores={compass_cd=0}] ~~~ clear @s compass
 execute @s[tag=speedrunner,tag=hunter,tag=game_is_running,scores={compass_cd=0}] ~~~ tellraw @s { "rawtext": [ { "text": "§cError: §rYou are not allowed to have compass in your inventory.\n§cCode: §rhas_muitiple_identity" } ] }
 execute @s[tag=speedrunner,tag=hunter,tag=game_is_running,scores={compass_cd=0}] ~~~ clear @s compass
-execute @s[tag=game_is_running,scores={compass_cd=0}] ~~~ scoreboard players set @s compass_cd 100
+execute @s[tag=game_is_running,scores={compass_cd=0}] ~~~ scoreboard players set @s compass_cd 20

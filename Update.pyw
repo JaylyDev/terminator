@@ -28,7 +28,7 @@ def jt_dircopy_exe(fromDirectory, toDirectory, logEnabled):
         else:
             root = tkinter.Tk()
             root.withdraw()
-            messagebox.showerror("Manhunt Update", "Error: " + Error)
+            messagebox.showerror("Manhunt Update", "Error: " + str(Error))
 
 def restart_minecraft():
     root = tkinter.Tk()
@@ -53,10 +53,10 @@ def restart_minecraft():
         
 username = getpass.getuser()
 fromDirectory = "C:\\Users\\" + username + "\\Documents\\GitHub\\manhunt"
-toDirectory = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\MinecraftM"
+toDirectory = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\MinecraftM (1)"
 logEnabled = False
 
 cmd("rd " + toDirectory + " /s /q")
-cmd("md " + toDirectory)
+cmd("md \"" + toDirectory + "\"")
 jt_dircopy_exe(fromDirectory, toDirectory, logEnabled)
 restart_minecraft()

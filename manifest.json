@@ -1,10 +1,10 @@
 {
     "format_version": 2,
     "header": {
-        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 1.5.2",
+        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 1.5.4",
         "name": "Minecraft Manhunt [Beta]",
         "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
-        "version": [ 1, 5, 3 ], // this variable represents addon version
+        "version": [ 1, 5, 4 ], // this variable represents addon version
         "min_engine_version": [ 1, 16, 220 ]
     },
     "modules": [
