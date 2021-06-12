@@ -1,7 +1,7 @@
 # Minecraft Manhunt (Bedrock)
 **https://mcpedl.com/minecraft-manhunt/ - Add-On link**
 
-**Version: 1.0.6**
+Addon Version: **1.5.4**
 ## Changelog
 - Create 4 game settings: Manhunt, Hitmen, Juggernaut, Trackhunt. (Normal Manhunt is the only gamemode we have working on so far)
 - Reduce lag while playing the addon.
