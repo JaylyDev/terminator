@@ -1,0 +1,29 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 1.6.0",
+        "name": "Minecraft Manhunt [RP]",
+        "uuid": "fc469f4b-29f9-4b13-9e8f-5130e3b9cd90",
+        "version": [ 1, 6, 0 ], // this variable represents addon version
+        "min_engine_version": [ 1, 16, 220 ]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "resources",
+            "uuid": "4e6658e0-a844-4521-96a2-8c9abff30895",
+            "version": [1, 0, 6] // this variable represents version of the MCPEDL forum
+        }
+    ],
+    "dependencies": [
+      {
+        "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
+        "version": [ 1, 6, 0 ]
+      }
+    ],
+    "metadata": {
+        "authors": ["Jayly"],
+        "url": "https://mcpedl.com/minecraft-manhunt",
+        "license": "https://github.com/JaylyDev/manhunt/blob/main/LICENSE"
+    }
+}

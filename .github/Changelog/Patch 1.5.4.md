@@ -1,6 +1,9 @@
 # Patch 1.5.4
+## Download
+[Manhunt v1.5.4](https://cdn.discordapp.com/attachments/734424410668138576/853232013343457320/Beta_1.5.4.mcpack)
+
 ## Changelog
-> Release Date: Pending
+> Release Date: 12/6/2021
 
 4th Patch release for Manhunt version 1.5 [BETA]
 

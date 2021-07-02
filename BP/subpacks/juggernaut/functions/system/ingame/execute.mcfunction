@@ -1,0 +1,2 @@
+gamemode survival @a[tag=game_is_running,m=!survival,tag=!dev]
+scoreboard players add @a[scores={compass_cd=1..}] compass_cd -1
