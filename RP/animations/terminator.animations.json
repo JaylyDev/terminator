@@ -1,0 +1,30 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.terminator.look_at_target": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "relative_to": {
+            "rotation": "entity"
+          },
+          "rotation": [ "q.target_x_rotation - this", "q.target_y_rotation - this", 0.0 ]
+        },
+        "hat": {
+          "relative_to": {
+            "rotation": "entity"
+          },
+          "rotation": [ "q.target_x_rotation - this", "q.target_y_rotation - this", 0.0 ]
+        }
+      }
+    },
+    "animation.terminator.sitting": {
+      "loop": true,
+      "bones": {
+        "root": {
+          "position": [ 0.0, -4.0, 0.0 ]
+        }
+      }
+    }
+  }
+}

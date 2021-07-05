@@ -1,0 +1,5 @@
+pack.name=Terminator [Behaviour Pack]
+pack.version=0, 0, 77
+
+entity.entity:terminator.name=Terminator
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator

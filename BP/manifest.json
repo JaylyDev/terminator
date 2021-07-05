@@ -1,56 +1,29 @@
 {
-    "format_version": 2,
-    "header": {
-        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 1.6.0",
-        "name": "Minecraft Manhunt [BP]",
-        "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
-        "version": [ 1, 6, 0 ], // this variable represents addon version
-        "min_engine_version": [ 1, 16, 220 ]
-    },
-    "modules": [
-        {
-            "description": "",
-            "type": "data",
-            "uuid": "a5684d11-d349-4d74-9343-36194e8e75cb",
-            "version": [1, 0, 6] // this variable represents version of the MCPEDL forum
-        }
-    ],
-    "subpacks": [
-        {
-            "folder_name": "default",
-            "name": "§6Minecraft Manhunt",
-            "memory_tier": 5
-        },
-        {
-            "folder_name": "hitmen",
-            "name": "§6Minecraft Hitmen",
-            "memory_tier": 4
-        },
-        {
-            "folder_name": "juggernaut",
-            "name": "§6Minecraft Juggernaut",
-            "memory_tier": 3
-        },
-        {
-            "folder_name": "terminator",
-            "name": "§6Minecraft Terminator §r[§cBeta§r]",
-            "memory_tier": 2
-        },
-        {
-            "folder_name": "randomitem",
-            "name": "§6Minecraft Item Randomizer",
-            "memory_tier": 1
-        }
-    ],
-    "dependencies": [
-      {
-        "uuid": "fc469f4b-29f9-4b13-9e8f-5130e3b9cd90",
-        "version": [ 1, 6, 0 ]
-      }
-    ],
-    "metadata": {
-        "authors": ["Jayly"],
-        "url": "https://mcpedl.com/minecraft-manhunt",
-        "license": "https://github.com/JaylyDev/manhunt/blob/main/LICENSE"
+  "format_version": 2,
+  "header": {
+    "name": "pack.name",
+    "description": "By Jayly\nPack Version: 1.0.0",
+    "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 220]
+  },
+  "modules": [
+    {
+      "description": "By Jayly\nPack Version: 1, 0, 0",
+      "type": "data",
+      "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
+      "version": [1, 0, 0]
     }
+  ],
+  "dependencies": [
+    {
+      "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
+      "version": [1, 0, 0]
+    }
+  ],
+  "metadata": {
+    "authors": [ "JaylyMC" ],
+    "license": "LICENSE",
+    "url": "https://github.com/jaylydev/manhunt"
+  }
 }

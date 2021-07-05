@@ -1,29 +1,29 @@
 {
-    "format_version": 2,
-    "header": {
-        "description": "Addon By §eJayly§r\nhttps://mcpedl.com/minecraft-manhunt\nVersion: 1.6.0",
-        "name": "Minecraft Manhunt [RP]",
-        "uuid": "fc469f4b-29f9-4b13-9e8f-5130e3b9cd90",
-        "version": [ 1, 6, 0 ], // this variable represents addon version
-        "min_engine_version": [ 1, 16, 220 ]
-    },
-    "modules": [
-        {
-            "description": "",
-            "type": "resources",
-            "uuid": "4e6658e0-a844-4521-96a2-8c9abff30895",
-            "version": [1, 0, 6] // this variable represents version of the MCPEDL forum
-        }
-    ],
-    "dependencies": [
-      {
-        "uuid": "1340e32a-ccf2-4f2f-b84d-c6bf3a6795b6",
-        "version": [ 1, 6, 0 ]
-      }
-    ],
-    "metadata": {
-        "authors": ["Jayly"],
-        "url": "https://mcpedl.com/minecraft-manhunt",
-        "license": "https://github.com/JaylyDev/manhunt/blob/main/LICENSE"
+  "format_version": 2,
+  "header": {
+    "name": "Terminator [Resource Pack]",
+    "description": "By Jayly\nPack Version: 1.0.0",
+    "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 220]
+  },
+  "modules": [
+    {
+      "description": "By Jayly\nPack Version: 1.0.0",
+      "type": "resources",
+      "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
+      "version": [1, 0, 0]
     }
+  ],
+  "dependencies": [
+    {
+      "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
+      "version": [1, 0, 0]
+    }
+  ],
+  "metadata": {
+    "authors": [ "JaylyMC" ],
+    "license": "LICENSE",
+    "url": "https://github.com/jaylydev/manhunt"
+  }
 }
