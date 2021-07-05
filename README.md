@@ -1,5 +1,5 @@
 # Minecraft Terminator (Bedrock)
-**https://mcpedl.com/unknown - Add-on link**
+**https://mcpedl.com/mineraft-terminator - Add-on link**
 
 Latest Add-On Version: **1.0.0**
 
