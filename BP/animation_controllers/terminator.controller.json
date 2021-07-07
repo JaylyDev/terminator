@@ -1,19 +1,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.terminator.kit": { // this animation controller is disabled by default.
-      "initial_state": "default_state",
-      "states":{         
-        "default_state": {"on_entry": [
-          "/effect @s resistance 1000000 255 true",
-          "/replaceitem entity @s slot.armor.head 0 leather_helmet",
-          "/replaceitem entity @s slot.armor.chest 0 leather_chestplate",
-          "/replaceitem entity @s slot.armor.legs 0 leather_leggings",
-          "/replaceitem entity @s slot.armor.feet 0 leather_boots",
-          "/replaceitem entity @s slot.weapon.mainhand 0 wooden_sword"
-        ]}
-      }
-    },
     "controller.animation.terminator.death": {
       "initial_state": "death_detect",
       "states":{
@@ -23,16 +10,6 @@
         "death_effect": {
           "transitions": [{"death_effect": "(1.0)"}],
           "on_entry": ["/summon minecraft:lightning_bolt ~ -40 ~", "/tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\":\" died\"}]}"]
-        }
-      }
-    },
-    "controller.animation.terminator.range_tp":{	// this animation controller is disabled by default.
-      "initial_state": "range_detect",
-      "states":{
-        "range_detect":{"transitions": [{"runtimes": "(1.0)"}]},
-        "runtimes":{
-          "transitions": [{"range_detect": "(1.0)"}], 
-          "on_entry": ["/execute @p[rm=48] ~~~ spreadplayers ~~ 24 36 @e[tag=range,type=entity:terminator]"]
         }
       }
     },

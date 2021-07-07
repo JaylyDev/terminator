@@ -16,13 +16,11 @@
         ]
       },
       "animations": {
-        "terminator.kit": "controller.animation.terminator.kit", // archived
         "terminator.death": "controller.animation.terminator.death",
-        "terminator.range_tp": "controller.animation.terminator.range_tp", // archived, replaced with event "terminator:tp_to_nearest_player"
         "terminator.destroyblock": "controller.animation.terminator.destroyblock",
         "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
         "terminator.suffocation_y": "controller.animation.terminator.suffocation_y",
-        "terminator.sitting": "controller.animation.terminator.sitting" // archived
+        "terminator.sitting": "controller.animation.terminator.sitting"
       }
     },
     "component_groups": {
@@ -647,10 +645,10 @@
         "private": false
       },
       "minecraft:movement": {
-        "value": 0.55
+        "value": 0.25
       },
       "minecraft:underwater_movement": {
-        "value": 0.1275
+        "value": 0.08
       },
       "minecraft:health": {
         "value": 100,
@@ -724,12 +722,7 @@
                   "subject": "self",
                   "operator": "equals",
                   "value": "suffocation"
-                }/*,
-                {
-                  "test": "has_target",
-                  "subject": "player",
-                  "value": true
-                }*/
+                }
               ],
               "event": "terminator:suffocation"
             }
@@ -742,12 +735,7 @@
                   "subject": "self",
                   "operator": "not",
                   "value": "suffocation"
-                }/*,
-                {
-                  "test": "has_target",
-                  "subject": "player",
-                  "value": true
-                }*/
+                }
               ],
               "event": "terminator:remove_suffocation"
             }
@@ -864,15 +852,7 @@
               "any_of": [
                 { "test": "is_family", "subject": "other", "value": "snowgolem" },
                 { "test": "is_family", "subject": "other", "value": "irongolem" },
-                { "test": "is_family", "subject": "other", "value": "mule"},
-                { "test": "is_family", "subject": "other", "value": "parrot"},
-                { "test": "is_family", "subject": "other", "value": "cat"},
-                { "test": "is_family", "subject": "other", "value": "ocelot"},
-                { "test": "is_family", "subject": "other", "value": "fox"},
-                { "test": "is_family", "subject": "other", "value": "horse"},
-                { "test": "is_family", "subject": "other", "value": "skeleton_horse"},
-                { "test": "is_family", "subject": "other", "value": "llama"},
-                { "test": "is_family", "subject": "other", "value": "donkey"},
+                { "test": "is_family", "subject": "other", "value": "parrot_tame"},
                 { "test": "is_family", "subject": "other", "value": "wolf"},
                 { "test": "is_family", "subject": "other", "value": "axolotl"},
                 { "test": "is_family", "subject": "other", "value": "piglin"}
@@ -883,7 +863,6 @@
           }
         ]
       },
-//      "minecraft:behavior.ranged_attack": {"priority": 1,"attack_radius": 2},         // DOES NOT WORK
       "minecraft:behavior.melee_attack": {
         "priority": 1
       },
@@ -1476,16 +1455,6 @@
             },
             "event": "terminator:break_blocks"
           }
-/*      
-          {
-            "filters": {
-              "all_of": [
-                {"test": "in_block" }
-              ]
-            },
-            "event": "terminator:suffocation"
-          }
-*/
         ]
       }
     },

@@ -1,16 +1,22 @@
 # Minecraft Terminator (Bedrock)
 **https://mcpedl.com/mineraft-terminator - Add-on link**
 
-Latest Add-On Version: **1.0.0**
+Latest Add-On Version: **1.0.1 [Beta]**
 
 ## Downloads
 Version | Changelog
 ----|----|
 [Release 1.0](https://bit.ly/mcrobot100) ||
 
+## Description
+Introducing Terminator to your Minecraft world! This is a powerful mob that has the capability to follow you, destroy blocks when there are blocks stopping the terminator from reaching the target, build blocks when the terminator thinks it's necessary, pick up weapons such as swords to kill you or armors such as chestplates to protect itself from being damaged, and attack you using their hand or weapons.
+
 ## Credits
 Developer: 
 - [Jayly](https://mcpedl.com/user/itsdominicplays/)
+
+Special thanks to:
+- May5Flames (Terminator's crafting recipe)
 
 ## Questions, Bugs and Feedbacks
 Want to report a bug or suggest new features for the addon? [Click Here](https://github.com/JaylyDev/manhunt/issues/new/choose)

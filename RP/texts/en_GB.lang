@@ -1,4 +1,2 @@
-pack.version=0, 0, 86
-
 entity.entity:terminator.name=Terminator
 item.spawn_egg.entity.entity:terminator.name=Spawn Terminator

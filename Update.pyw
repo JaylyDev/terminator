@@ -57,9 +57,9 @@ def restart_minecraft():
 
 username = getpass.getuser()
 fromDirectory_rp = "C:\\Users\\" + username + "\\Documents\\GitHub\\manhunt\\RP"
-toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\MinecraftM"
+toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\pack.name"
 fromDirectory_bp = "C:\\Users\\" + username + "\\Documents\\GitHub\\manhunt\\BP"
-toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\MinecraftM"
+toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\pack.name"
 logEnabled = False
 
 run("rd " + toDirectory_rp + " /s /q")
