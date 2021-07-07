@@ -23,4 +23,4 @@ This Add-On is released for Minecraft version 1.17, but there is a chance of it 
 
 When you're installing this Add-On in Minecraft 1.17, these are the experimentals options required to be activated.
 
-![image](https://media.discordapp.net/attachments/583617915203354633/860461710761918484/unknown.png)
+![image](https://user-images.githubusercontent.com/65847850/124693551-3e25c480-df12-11eb-8380-4d8a0a46ec7b.png)
