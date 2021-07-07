@@ -5,9 +5,9 @@ Latest Add-On Version: **1.0.1 [Beta]**
 
 ## Downloads
 Version | Link | Changelog
-----|----|
+----|----|----|
 Beta 1.0.1 | [Download](https://github.com/JaylyDev/manhunt/blob/b9aa301070b29835625f4f4e735a023fba7b837a/terminator-v1.0.1.mcaddon?raw=true) | [Beta 1.0.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.1.md)
-Release 1.0.0 [Download](https://bit.ly/mcrobot100) |
+Release 1.0.0 | [Download](https://bit.ly/mcrobot100)
 
 ## Description
 Introducing Terminator to your Minecraft world! This is a powerful mob that has the capability to follow you, destroy blocks when there are blocks stopping the terminator from reaching the target, build blocks when the terminator thinks it's necessary, pick up weapons such as swords to kill you or armors such as chestplates to protect itself from being damaged, and attack you using their hand or weapons.
