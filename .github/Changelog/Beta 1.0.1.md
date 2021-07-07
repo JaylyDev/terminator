@@ -8,6 +8,7 @@ The 1st **BETA** release for Minecraft Terminator 1.0
 
 ## Changelog
 - Added Terminator crafting recipe by May5Flames
+
 ![image](https://media.discordapp.net/attachments/571487722934370314/862134653645225995/unknown.png)
 - Changed the movement speed of the terminator from 0.55 to 0.25
 - Changed the underwater movement speed of the terminator from 0.1275 to 0.08
