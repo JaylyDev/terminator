@@ -1,10 +1,10 @@
-# Release 1.0.1
+# Beta 1.0.1
 > Release Date: 7/7/2021
 
 The 1st **BETA** release for Minecraft Terminator 1.0
 
 ## Download:
-[Terminator v1.0.1](https://bit.ly/mcrobot100)
+[Terminator v1.0.1](https://github.com/JaylyDev/manhunt/blob/b9aa301070b29835625f4f4e735a023fba7b837a/terminator-v1.0.1.mcaddon?raw=true)
 
 ## Changelog
 - Added Terminator crafting recipe by May5Flames
