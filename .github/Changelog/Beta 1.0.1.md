@@ -14,11 +14,11 @@ The 1st **BETA** release for Minecraft Terminator 1.0
 - Removed Mules, Parrots, Wolfs, Axolotls and Piglins from being attacked by the terminator
 - Terminator now attacks tamed parrots instead of untamed parrots
 - Removed unused animation controllers
-- This add-on now requires **Holiday Creator Features** and **Additional Modding Capabilities** to activate only
+- This add-on now requires **Holiday Creator Features** to activate only
 - The add-on's mininum engine version has decreased from 1.16.220 to 1.16.100 to test compatibility
 
 ## Installations:
-This Add-On is released for Minecraft version 1.17, but there is a chance of it being compatible for Minecraft version 1.16.100+
+This Add-On is released for Minecraft version 1.17, but there is a chance of it being compatible for Minecraft version 1.16.0+
 
 When you're installing this Add-On in Minecraft 1.17, these are the experimentals options required to be activated.
 

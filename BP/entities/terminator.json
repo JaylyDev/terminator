@@ -8,6 +8,7 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
+          "terminator.start",
           "terminator.death",
           "terminator.destroyblock",
           "terminator.suffocation_x",
@@ -16,6 +17,7 @@
         ]
       },
       "animations": {
+        "terminator.start": "controller.animation.terminator.start",
         "terminator.death": "controller.animation.terminator.death",
         "terminator.destroyblock": "controller.animation.terminator.destroyblock",
         "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
@@ -588,6 +590,11 @@
             "yellow_glazed_terracotta"
           ]
         }
+      },
+      "terminator:reset_health": {
+        "minecraft:health": {
+          "value": 100
+        }
       }
     },
     "components": { // Terminator Components
@@ -733,7 +740,7 @@
                 {
                   "test": "has_damage",
                   "subject": "self",
-                  "operator": "not",
+                  "operator":"not",
                   "value": "suffocation"
                 }
               ],
@@ -1562,6 +1569,16 @@
             }
           }
         ]
+      },
+      "terminator:respawn": {
+        "add": {
+          "component_groups": ["terminator:reset_health"]
+        },
+        "run_command": {
+          "command": [
+            "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but they respawned!\"}]}"
+          ]
+        }
       }
     }
   }

@@ -1,16 +1,26 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.terminator.death": {
-      "initial_state": "death_detect",
-      "states":{
-        "death_detect": {
-          "transitions": [{"death_effect": "!q.is_alive"}]
-        },
-        "death_effect": {
-          "transitions": [{"death_effect": "(1.0)"}],
-          "on_entry": ["/summon minecraft:lightning_bolt ~ -40 ~", "/tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\":\" died\"}]}"]
+    "controller.animation.terminator.start": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "on_entry": ["/scoreboard objectives add TerminatorDeaths dummy", "/scoreboard players set @s TerminatorDeaths 3"]
         }
+      }
+    },
+    "controller.animation.terminator.death": {
+      "initial_state": "default_state",
+      "states":{
+        "default_state": {
+          "transitions": [{"respawn_terminator": "!q.is_alive && q.scoreboard('TerminatorDeaths') > 0"}, {"despawn_terminator": "!q.is_alive && q.scoreboard('TerminatorDeaths') <= 0"}],
+          "on_exit": [
+            "/summon minecraft:lightning_bolt ~ -40 ~",
+            "/scoreboard players remove @s TerminatorDeaths 1"
+          ]
+        },
+        "respawn_terminator": {"on_entry": [ "/summon entity:terminator", "/tellraw @a {\"rawtext\":[{\"selector\":\"@s\"},{\"text\": \" died, but they respawned!\"}]}" ]},
+        "despawn_terminator": {"on_entry": [ "/tellraw @a {\"rawtext\":[{\"selector\":\"@s\"},{\"text\": \" died\"}]}" ]}
       }
     },
     "controller.animation.terminator.destroyblock": {
@@ -20,7 +30,7 @@
         "rng":{
           "transitions": [{"execute": "v.random_terminator_destroyblock == 54"}, {"runtimes": "(1.0)"}],
           "on_entry": [
-              "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/rng\"}]}", // logging
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/rng\"}]}", // logging
             "v.random_terminator_destroyblock = math.random_integer(0, 54);"
           ]
         },
