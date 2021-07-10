@@ -8,8 +8,6 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          "terminator.start",
-          "terminator.death",
           "terminator.destroyblock",
           "terminator.suffocation_x",
           "terminator.suffocation_y",
@@ -591,9 +589,14 @@
           ]
         }
       },
-      "terminator:reset_health": {
-        "minecraft:health": {
-          "value": 100
+      "terminator:force_respawn": {
+        "minecraft:spawn_entity": {
+          "entities": {
+            "min_wait_time": 0,
+            "max_wait_time": 0,
+            "spawn_entity": "entity:terminator",
+            "single_use": true
+          }
         }
       }
     },
@@ -616,7 +619,7 @@
         "allow_name_tag_renaming": true
       },
       "minecraft:type_family": {
-        "family": [ "terminator" ]
+        "family": [ "terminator", "monster" ]
       },
       "minecraft:equip_item": {
       },
@@ -666,7 +669,7 @@
           {
             "filters": {"all_of": [{ "test": "in_lava", "subject": "self", "operator": "==", "value": true }]},
             "cause": "lava",
-            "damage_per_tick": 4
+            "damage_per_tick": 0
           }
         ]
       },
@@ -732,7 +735,8 @@
                 }
               ],
               "event": "terminator:suffocation"
-            }
+            },
+            "deals_damage": false
           },
           {
             "on_damage": {
@@ -836,6 +840,9 @@
 
       // Terminator priorities
 
+      "minecraft:on_death":{
+        "event": "terminator:respawn"
+      },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 0,
         "must_see": false,
@@ -1572,7 +1579,7 @@
       },
       "terminator:respawn": {
         "add": {
-          "component_groups": ["terminator:reset_health"]
+          "component_groups": ["terminator:force_respawn"]
         },
         "run_command": {
           "command": [

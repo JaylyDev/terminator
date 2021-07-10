@@ -1,10 +1,10 @@
 # Beta 1.0.2
-> Release Date: 8/7/2021
+> Release Date: 10/7/2021
 
 The 2nd **BETA** release for Minecraft Terminator 1.0
 
 ## Download:
-[Terminator v1.0.2](https://github.com/404)
+[Terminator v1.0.2](https://cdn.discordapp.com/attachments/734424410668138576/863362821080743946/terminator-v1.0.2.mcaddon)
 
 ## Changelog
 - The terminator can now respawn when dies
@@ -16,5 +16,4 @@ The 2nd **BETA** release for Minecraft Terminator 1.0
 This Add-On is released for Minecraft version 1.17, but there is a chance of it being compatible for Minecraft version 1.16.0+
 
 When you're installing this Add-On in Minecraft 1.17, these are the experimentals options required to be activated.
-
-![image](https://media.discordapp.net/attachments/583617915203354633/860461710761918484/unknown.png)
+- Holiday Creator Features
