@@ -4,7 +4,7 @@
 The 2nd **BETA** release for Minecraft Terminator 1.0
 
 ## Download:
-[Terminator v1.0.2](https://cdn.discordapp.com/attachments/734424410668138576/863362821080743946/terminator-v1.0.2.mcaddon)
+[Terminator v1.0.2](https://cdn.discordapp.com/attachments/571863283657867294/863371811050618880/terminator-v1.0.2.mcaddon)
 
 ## Changelog
 - The terminator can now respawn when dies
