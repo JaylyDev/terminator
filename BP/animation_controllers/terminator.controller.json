@@ -1,28 +1,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.terminator.start": {
-      "initial_state": "default_state",
-      "states": {
-        "default_state": {
-          "on_entry": ["/scoreboard objectives add TerminatorDeaths dummy", "/scoreboard players set @s TerminatorDeaths 3"]
-        }
-      }
-    },
-    "controller.animation.terminator.death": {
-      "initial_state": "default_state",
-      "states":{
-        "default_state": {
-          "transitions": [{"respawn_terminator": "!q.is_alive && q.scoreboard('TerminatorDeaths') > 0"}, {"despawn_terminator": "!q.is_alive && q.scoreboard('TerminatorDeaths') <= 0"}],
-          "on_exit": [
-            "/summon minecraft:lightning_bolt ~ -40 ~",
-            "/scoreboard players remove @s TerminatorDeaths 1"
-          ]
-        },
-        "respawn_terminator": {"on_entry": [ "/summon entity:terminator", "/tellraw @a {\"rawtext\":[{\"selector\":\"@s\"},{\"text\": \" died, but they respawned!\"}]}" ]},
-        "despawn_terminator": {"on_entry": [ "/tellraw @a {\"rawtext\":[{\"selector\":\"@s\"},{\"text\": \" died\"}]}" ]}
-      }
-    },
     "controller.animation.terminator.destroyblock": {
       "initial_state": "runtimes",
       "states":{
@@ -233,8 +211,6 @@
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace enchanting_table",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_brick_stairs",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_bricks",
-            "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_portal",
-            "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_portal_frame",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_rod",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace end_stone",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace ender_chest",
@@ -283,7 +259,6 @@
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace infested_deepslate",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace info_update",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace info_update2",
-            "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace invisibleBedrock",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace iron_bars",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace iron_block",
             "/execute @s[tag=terminator_suffocation_x] ~ ~ ~ fill ~ ~1 ~ ~ ~2 ~ air 0 replace iron_door",
@@ -797,8 +772,6 @@
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace enchanting_table",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_brick_stairs",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_bricks",
-            "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_portal",
-            "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_portal_frame",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_rod",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace end_stone",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace ender_chest",
@@ -847,7 +820,6 @@
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace infested_deepslate",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace info_update",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace info_update2",
-            "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace invisibleBedrock",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace iron_bars",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace iron_block",
             "/execute @s ~ ~ ~ fill ~ ~ ~1 ~ ~1 ~1 air 0 replace iron_door",
@@ -1327,8 +1299,6 @@
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace enchanting_table",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_brick_stairs",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_bricks",
-            "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_portal",
-            "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_portal_frame",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_rod",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace end_stone",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace ender_chest",
@@ -1377,7 +1347,6 @@
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace infested_deepslate",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace info_update",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace info_update2",
-            "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace invisibleBedrock",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace iron_bars",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace iron_block",
             "/execute @s ~ ~ ~ fill ~-1 ~ ~ ~-1 ~1 ~ air 0 replace iron_door",
@@ -1857,8 +1826,6 @@
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace enchanting_table",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_brick_stairs",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_bricks",
-            "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_portal",
-            "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_portal_frame",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_rod",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace end_stone",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace ender_chest",
@@ -1907,7 +1874,6 @@
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace infested_deepslate",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace info_update",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace info_update2",
-            "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace invisibleBedrock",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace iron_bars",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace iron_block",
             "/execute @s ~ ~ ~ fill ~ ~ ~-1 ~ ~1 ~-1 air 0 replace iron_door",
@@ -2387,8 +2353,6 @@
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace enchanting_table",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_brick_stairs",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_bricks",
-            "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_portal",
-            "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_portal_frame",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_rod",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace end_stone",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace ender_chest",
@@ -2437,7 +2401,6 @@
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace infested_deepslate",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace info_update",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace info_update2",
-            "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace invisibleBedrock",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace iron_bars",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace iron_block",
             "/execute @s ~ ~ ~ fill ~1 ~ ~ ~1 ~1 ~ air 0 replace iron_door",
@@ -2750,11 +2713,7 @@
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_entry\"}]}", // logging
             "v.random = math.random_integer(60,100); v.time_stamp = q.time_stamp;"
           ],
-          "transitions": [
-            {
-              "default": "(q.time_stamp - v.time_stamp) >= v.random"
-            }
-          ],
+          "transitions": [{"default": "(q.time_stamp - v.time_stamp) >= v.random"}],
           "on_exit": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_exit\"}]}", // logging
             "/kill @e[type=boat,r=1,c=1]",

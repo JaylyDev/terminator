@@ -90,7 +90,6 @@
             "basalt",
             "beacon",
             "bed",
-            "bedrock",
             "bee_nest",
             "beehive",
             "beetroot",
@@ -598,6 +597,13 @@
             "single_use": true
           }
         }
+      },
+      "terminator:enable_bossbar": {
+        "minecraft:boss": {
+          "should_darken_sky": true,
+          "name": "Terminator",
+          "hud_range": 64
+        }
       }
     },
     "components": { // Terminator Components
@@ -608,11 +614,6 @@
       },
       "minecraft:loot": {
         "table": "loot_tables/empty.json"
-      },
-      "minecraft:boss": {
-        "should_darken_sky": true,
-        "name": "Terminator",
-        "hud_range": 64
       },
       "minecraft:nameable": {
         "always_show": true,
@@ -661,8 +662,8 @@
         "value": 0.08
       },
       "minecraft:health": {
-        "value": 100,
-        "max": 100
+        "value": 20,
+        "max": 20
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -749,7 +750,8 @@
                 }
               ],
               "event": "terminator:remove_suffocation"
-            }
+            },
+            "deals_damage": true
           }
         ]
       },
@@ -1468,6 +1470,22 @@
               ]
             },
             "event": "terminator:break_blocks"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordisablebossbar"}
+              ]
+            },
+            "event": "terminator:bossbar_remove"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordisablebossbar"}
+              ]
+            },
+            "event": "terminator:bossbar_add"
           }
         ]
       }
@@ -1578,13 +1596,48 @@
         ]
       },
       "terminator:respawn": {
+        "sequence": [
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"}
+              ]
+            },
+            "add": {
+              "component_groups": ["terminator:force_respawn"]
+            },
+            "run_command": {
+              "command": [
+                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but they respawned!\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest"}
+              ]
+            },
+            "remove": {
+              "component_groups": ["terminator:force_respawn"]
+            },
+            "run_command": {
+              "command": [
+                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died\"}]}",
+                "summon lightning_bolt ~ -40 ~"
+              ]
+            }
+          }
+        ]
+      },
+      "terminator:bossbar_add": {
         "add": {
-          "component_groups": ["terminator:force_respawn"]
-        },
-        "run_command": {
-          "command": [
-            "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but they respawned!\"}]}"
-          ]
+          "component_groups": ["terminator:enable_bossbar"]
+        }
+      },
+      "terminator:bossbar_remove": {
+        "remove": {
+          "component_groups": ["terminator:enable_bossbar"]
         }
       }
     }
