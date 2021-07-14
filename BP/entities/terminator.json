@@ -8,19 +8,21 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
+          "terminator.spawns",
           "terminator.destroyblock",
           "terminator.suffocation_x",
           "terminator.suffocation_y",
-          "terminator.sitting"
+          "terminator.sitting",
+          "terminator.bridging"
         ]
       },
       "animations": {
-        "terminator.start": "controller.animation.terminator.start",
-        "terminator.death": "controller.animation.terminator.death",
+        "terminator.spawns": "controller.animation.terminator.spawns",
         "terminator.destroyblock": "controller.animation.terminator.destroyblock",
         "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
         "terminator.suffocation_y": "controller.animation.terminator.suffocation_y",
-        "terminator.sitting": "controller.animation.terminator.sitting"
+        "terminator.sitting": "controller.animation.terminator.sitting",
+        "terminator.bridging": "controller.animation.terminator.bridging"
       }
     },
     "component_groups": {
@@ -597,18 +599,16 @@
             "single_use": true
           }
         }
-      },
-      "terminator:enable_bossbar": {
-        "minecraft:boss": {
-          "should_darken_sky": true,
-          "name": "Terminator",
-          "hud_range": 64
-        }
       }
     },
     "components": { // Terminator Components
       "minecraft:experience_reward": {
         "on_death": "10"
+      },
+      "minecraft:boss": {
+        "should_darken_sky": true,
+        "name": "Terminator",
+        "hud_range": 64
       },
       "minecraft:is_hidden_when_invisible": {
       },
@@ -656,14 +656,14 @@
         "private": false
       },
       "minecraft:movement": {
-        "value": 0.25
+        "value": 0.3 // default is 0.23
       },
       "minecraft:underwater_movement": {
-        "value": 0.08
+        "value": 0.104 // default is 0.08
       },
       "minecraft:health": {
-        "value": 20,
-        "max": 20
+        "value": 100,
+        "max": 100
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -845,43 +845,6 @@
       "minecraft:on_death":{
         "event": "terminator:respawn"
       },
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 0,
-        "must_see": false,
-        "reselect_targets": true,
-        "within_radius": 1024,
-        "must_see_forget_duration": 32767.0,
-        "target_search_height": -1,
-        "entity_types": [
-          { 
-            "filters": {
-              "any_of": [
-                { "test": "is_family", "subject": "other", "value": "player" },
-                { "test": "has_mob_effect", "subject": "player", "operator": "!=", "value": "invisibility"}
-              ]
-            },
-            "max_dist": 1024,
-            "must_see": false
-          },
-          {
-            "filters": {
-              "any_of": [
-                { "test": "is_family", "subject": "other", "value": "snowgolem" },
-                { "test": "is_family", "subject": "other", "value": "irongolem" },
-                { "test": "is_family", "subject": "other", "value": "parrot_tame"},
-                { "test": "is_family", "subject": "other", "value": "wolf"},
-                { "test": "is_family", "subject": "other", "value": "axolotl"},
-                { "test": "is_family", "subject": "other", "value": "piglin"}
-              ]
-            },
-            "max_dist": 16,
-            "must_see": true
-          }
-        ]
-      },
-      "minecraft:behavior.melee_attack": {
-        "priority": 1
-      },
       "minecraft:behavior.eat_block": { // Allows terminator to place and destroy blocks
         "priority": 2,
         "success_chance": 1, 
@@ -970,7 +933,6 @@
           { "eat_block": "cobbled_deepslate_slab", "replace_block": "air"},
           { "eat_block": "cobbled_deepslate_stairs", "replace_block": "air"},
           { "eat_block": "cobbled_deepslate_wall", "replace_block": "air"},
-//          { "eat_block": "cobblestone", "replace_block": "air"},
           { "eat_block": "cobblestone_wall", "replace_block": "air"},
           { "eat_block": "cocoa", "replace_block": "air"},
           { "eat_block": "composter", "replace_block": "air"},
@@ -1406,6 +1368,43 @@
           "target": "self"
         }
       },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 0,
+        "must_see": false,
+        "reselect_targets": true,
+        "within_radius": 1024,
+        "must_see_forget_duration": 32767.0,
+        "target_search_height": -1,
+        "entity_types": [
+          { 
+            "filters": {
+              "all_of": [
+                { "test": "is_family", "subject": "other", "value": "player" },
+                { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+              ]
+            },
+            "max_dist": 1024,
+            "must_see": false
+          },
+          {
+            "filters": {
+              "any_of": [
+                { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                { "test": "is_family", "subject": "other", "value": "irongolem" },
+                { "test": "is_family", "subject": "other", "value": "parrot_tame"},
+                { "test": "is_family", "subject": "other", "value": "wolf"},
+                { "test": "is_family", "subject": "other", "value": "axolotl"},
+                { "test": "is_family", "subject": "other", "value": "piglin"}
+              ]
+            },
+            "max_dist": 16,
+            "must_see": true
+          }
+        ]
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 1
+      },
       "minecraft:behavior.pickup_items": {
         "priority": 3,
         "max_dist": 3,
@@ -1417,13 +1416,8 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 4
       },
-      "minecraft:behavior.look_at_player": {
-        "priority": 5,
-        "look_distance": 128,
-        "probability": 0.1
-      },
       "minecraft:behavior.stomp_turtle_egg": {
-        "priority": 6,
+        "priority": 5,
         "speed_multiplier": 1,
         "search_range": 10,
         "search_height": 2,
@@ -1470,22 +1464,6 @@
               ]
             },
             "event": "terminator:break_blocks"
-          },
-          {
-            "filters": {
-              "all_of": [
-                {"test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordisablebossbar"}
-              ]
-            },
-            "event": "terminator:bossbar_remove"
-          },
-          {
-            "filters": {
-              "all_of": [
-                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordisablebossbar"}
-              ]
-            },
-            "event": "terminator:bossbar_add"
           }
         ]
       }
@@ -1629,16 +1607,6 @@
             }
           }
         ]
-      },
-      "terminator:bossbar_add": {
-        "add": {
-          "component_groups": ["terminator:enable_bossbar"]
-        }
-      },
-      "terminator:bossbar_remove": {
-        "remove": {
-          "component_groups": ["terminator:enable_bossbar"]
-        }
       }
     }
   }

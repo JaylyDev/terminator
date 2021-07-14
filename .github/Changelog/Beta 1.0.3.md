@@ -1,5 +1,5 @@
 # Beta 1.0.3
-> Release Date: 10/7/2021
+> Release Date: 12/7/2021
 
 The 3rd **BETA** release for Minecraft Terminator 1.0
 
@@ -18,7 +18,7 @@ The 3rd **BETA** release for Minecraft Terminator 1.0
 
 `/function terminator/disablebossbar/false`
 > This enables every boss bar from existing terminators in the world
-- The terminator will not burn when they're in lava (excludes lava and magma)
+- The terminator will not burn when they're in lava (excludes fire and magma)
 - Reduced health from 100 to 20 for beta versions
 
 ## Installations:

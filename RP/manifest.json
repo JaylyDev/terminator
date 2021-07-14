@@ -2,23 +2,23 @@
   "format_version": 2,
   "header": {
     "name": "Terminator [Resource Pack]",
-    "description": "By Jayly\nPack Version: 1.0.3 [Beta]",
+    "description": "By Jayly\nPack Version: 1.1.0 [Beta]",
     "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-    "version": [1, 0, 3],
+    "version": [1, 1, 0],
     "min_engine_version": [1, 16, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.0.3 [Beta]",
+      "description": "By Jayly\nPack Version: 1.1.0 [Beta]",
       "type": "resources",
       "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
-      "version": [1, 0, 3]
+      "version": [1, 1, 0]
     }
   ],
   "dependencies": [
     {
       "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-      "version": [1, 0, 3]
+      "version": [1, 1, 0]
     }
   ],
   "metadata": {

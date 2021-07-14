@@ -1,11 +1,28 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
+    "controller.animation.terminator.spawns": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "on_entry": [
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a",
+            "/playsound block.end_portal.spawn @a"
+          ] // sound effect
+        }
+      }
+    },
     "controller.animation.terminator.destroyblock": {
       "initial_state": "runtimes",
       "states":{
-        "runtimes":{"transitions":[{"rng":"(1.0)"}]},
-        "rng":{
+        "runtimes":{
           "transitions": [{"execute": "v.random_terminator_destroyblock == 54"}, {"runtimes": "(1.0)"}],
           "on_entry": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/rng\"}]}", // logging
@@ -15,7 +32,7 @@
         "execute":{
           "transitions": [{"runtimes": "(1.0)"}],
           "on_entry": [
-              "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/execute\"}]}", // logging
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/execute\"}]}", // logging
             "/fill ~ ~1 ~ ~ ~2 ~ air 0 destroy"
           ]
         }
@@ -24,7 +41,12 @@
     "controller.animation.terminator.suffocation_x": {
       "initial_state": "default",
       "states": {
-        "default": {"transitions": [{"placeblock.up": "q.target_x_rotation < -6.875"}, {"placeblock.down": "q.target_x_rotation > 6.875"}]},
+        "default": {
+          "transitions": [
+            {"placeblock.up": "q.target_x_rotation < -6.875"}, 
+            {"placeblock.down": "q.target_x_rotation > 6.875"}
+          ]
+        },
         "placeblock.up": {"transitions": [{"default": "(1.0)"}],
           "on_entry": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.suffocation_x/placeblock.up\"}]}", // logging
@@ -2719,6 +2741,47 @@
             "/kill @e[type=boat,r=1,c=1]",
             "/kill @e[type=minecart,r=1,c=1]"
           ] // force the mob to leave the boat
+        }
+      }
+    },
+    "controller.animation.terminator.bridging": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            { "bridge.east": "q.has_target ? ((q.target -> q.owner_identifier) == 'minecraft:player') && q.target_y_rotation <= 45 && q.target_y_rotation > -45" },
+            { "bridge.south": "q.has_target ? ((q.target -> q.owner_identifier) == 'minecraft:player') && q.target_y_rotation <= 135 && q.target_y_rotation > 45" },
+            { "bridge.west": "q.has_target ? ((q.target -> q.owner_identifier) == 'minecraft:player') && q.target_y_rotation <= 225 && q.target_y_rotation > 135"},
+            { "bridge.north": "q.has_target ? ((q.target -> q.owner_identifier) == 'minecraft:player') && q.target_y_rotation <= 315 && q.target_y_rotation > 225"}
+          ]
+        },
+        "bridge.east": {
+          "transitions": [{"default_state": "(1.0)"}],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.east\"}]}", // logging
+            "/execute @s ~ ~ ~ fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace air"
+          ] 
+        },
+        "bridge.south": {
+          "transitions": [{"default_state": "(1.0)"}],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.south\"}]}", // logging
+            "/execute @s ~ ~ ~ fill ~-1 ~-1 ~ ~-1 ~-1 ~ cobblestone 0 replace air"
+          ] 
+        },
+        "bridge.west": {
+          "transitions": [{"default_state": "(1.0)"}],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.west\"}]}", // logging
+            "/execute @s ~ ~ ~ fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace air"
+          ]
+        },
+        "bridge.north": {
+          "transitions": [{"default_state": "(1.0)"}],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.north\"}]}", // logging
+            "/execute @s ~ ~ ~ fill ~1 ~-1 ~ ~-1 ~1 ~ cobblestone 0 replace air"
+          ]
         }
       }
     }
