@@ -5,24 +5,24 @@
       "initial_state": "default_state",
       "states": {
         "default_state": {
+          "transitions": [{"regeneration": "q.is_alive && q.health < 10"}],
+          "on_entry": ["/playsound block.end_portal.spawn @a"] // sound effect
+        },
+        "regeneration":{
+          "transitions": [{"regeneration": "q.is_alive && q.health < 10"}],
           "on_entry": [
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a",
-            "/playsound block.end_portal.spawn @a"
-          ] // sound effect
+            "/effect @s regeneration 4 4 false",
+            "/effect @s absorption 120 3 false",
+            "/effect @s resistance 300 0 false"
+          ]
         }
       }
     },
     "controller.animation.terminator.destroyblock": {
       "initial_state": "runtimes",
       "states":{
-        "runtimes":{
+        "runtimes":{"transitions":[{"rng":"(1.0)"}]},
+        "rng":{
           "transitions": [{"execute": "v.random_terminator_destroyblock == 54"}, {"runtimes": "(1.0)"}],
           "on_entry": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.destroyblock/rng\"}]}", // logging

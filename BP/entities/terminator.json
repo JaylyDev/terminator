@@ -646,6 +646,8 @@
         "max": 1024
       },
       "minecraft:annotation.break_door": {
+        "min_difficulty": "peaceful",
+        "break_time": 12
       },
       "minecraft:jump.static": {
       },
@@ -656,7 +658,7 @@
         "private": false
       },
       "minecraft:movement": {
-        "value": 0.3 // default is 0.23
+        "value": 0.4 // v1.0.0 is 0.55
       },
       "minecraft:underwater_movement": {
         "value": 0.104 // default is 0.08
@@ -670,6 +672,11 @@
           {
             "filters": {"all_of": [{ "test": "in_lava", "subject": "self", "operator": "==", "value": true }]},
             "cause": "lava",
+            "damage_per_tick": 0
+          },
+          {
+            "filters": {"all_of": [{ "test": "has_damage", "subject": "self"}]},
+            "cause": "suffocation",
             "damage_per_tick": 0
           }
         ]
@@ -737,7 +744,7 @@
               ],
               "event": "terminator:suffocation"
             },
-            "deals_damage": false
+            "damage_multiplier": 0
           },
           {
             "on_damage": {
@@ -751,7 +758,7 @@
               ],
               "event": "terminator:remove_suffocation"
             },
-            "deals_damage": true
+            "damage_multiplier": 1
           }
         ]
       },
