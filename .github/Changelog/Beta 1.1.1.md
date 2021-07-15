@@ -4,7 +4,7 @@
 2nd pre-release for Minecraft Terminator v1.1
 
 ## Download:
-[Terminator v1.1.1]()
+[Terminator v1.1.1](https://cdn.discordapp.com/attachments/571487722934370314/865053686391767060/terminator-v1.1.1.mcaddon)
 
 ## Changelog
 - Changed movement speed from 0.3 to 0.4

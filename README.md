@@ -6,6 +6,7 @@ Latest Add-On Version: **1.0.1 [Beta]**
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
+Beta 1.1.1 | [Download](https://cdn.discordapp.com/attachments/571487722934370314/865053686391767060/terminator-v1.1.1.mcaddon) | [Beta 1.1.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.1.md)
 Beta 1.1.0 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/864757955656024114/terminator-v1.1.0.mcaddon) | [Beta 1.1.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.0.md)
 Beta 1.0.3 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/864072147777093662/terminator-v1.0.3.mcaddon) | [Beta 1.0.3](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.3.md)
 Beta 1.0.2 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/863371811050618880/terminator-v1.0.2.mcaddon) | [Beta 1.0.2](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.2.md)
