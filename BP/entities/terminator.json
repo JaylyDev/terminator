@@ -655,7 +655,7 @@
       },
       "minecraft:inventory": {
         "inventory_size": 36,
-        "private": false
+        "private": true
       },
       "minecraft:movement": {
         "value": 0.4 // v1.0.0 is 0.55
@@ -672,11 +672,6 @@
           {
             "filters": {"all_of": [{ "test": "in_lava", "subject": "self", "operator": "==", "value": true }]},
             "cause": "lava",
-            "damage_per_tick": 0
-          },
-          {
-            "filters": {"all_of": [{ "test": "has_damage", "subject": "self"}]},
-            "cause": "suffocation",
             "damage_per_tick": 0
           }
         ]
@@ -743,8 +738,7 @@
                 }
               ],
               "event": "terminator:suffocation"
-            },
-            "damage_multiplier": 0
+            }
           },
           {
             "on_damage": {
@@ -757,8 +751,7 @@
                 }
               ],
               "event": "terminator:remove_suffocation"
-            },
-            "damage_multiplier": 1
+            }
           }
         ]
       },
@@ -851,6 +844,43 @@
 
       "minecraft:on_death":{
         "event": "terminator:respawn"
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 0,
+        "must_see": false,
+        "reselect_targets": true,
+        "within_radius": 1024,
+        "must_see_forget_duration": 32767.0,
+        "target_search_height": -1,
+        "entity_types": [
+          { 
+            "filters": {
+              "all_of": [
+                { "test": "is_family", "subject": "other", "value": "player" },
+                { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+              ]
+            },
+            "max_dist": 1024,
+            "must_see": false
+          },
+          {
+            "filters": {
+              "any_of": [
+                { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                { "test": "is_family", "subject": "other", "value": "irongolem" },
+                { "test": "is_family", "subject": "other", "value": "parrot_tame"},
+                { "test": "is_family", "subject": "other", "value": "wolf"},
+                { "test": "is_family", "subject": "other", "value": "axolotl"},
+                { "test": "is_family", "subject": "other", "value": "piglin"}
+              ]
+            },
+            "max_dist": 16,
+            "must_see": true
+          }
+        ]
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 1
       },
       "minecraft:behavior.eat_block": { // Allows terminator to place and destroy blocks
         "priority": 2,
@@ -1375,43 +1405,6 @@
           "target": "self"
         }
       },
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 0,
-        "must_see": false,
-        "reselect_targets": true,
-        "within_radius": 1024,
-        "must_see_forget_duration": 32767.0,
-        "target_search_height": -1,
-        "entity_types": [
-          { 
-            "filters": {
-              "all_of": [
-                { "test": "is_family", "subject": "other", "value": "player" },
-                { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
-              ]
-            },
-            "max_dist": 1024,
-            "must_see": false
-          },
-          {
-            "filters": {
-              "any_of": [
-                { "test": "is_family", "subject": "other", "value": "snowgolem" },
-                { "test": "is_family", "subject": "other", "value": "irongolem" },
-                { "test": "is_family", "subject": "other", "value": "parrot_tame"},
-                { "test": "is_family", "subject": "other", "value": "wolf"},
-                { "test": "is_family", "subject": "other", "value": "axolotl"},
-                { "test": "is_family", "subject": "other", "value": "piglin"}
-              ]
-            },
-            "max_dist": 16,
-            "must_see": true
-          }
-        ]
-      },
-      "minecraft:behavior.melee_attack": {
-        "priority": 1
-      },
       "minecraft:behavior.pickup_items": {
         "priority": 3,
         "max_dist": 3,
@@ -1443,6 +1436,160 @@
         "is_pushable_by_piston": true
       },
       "minecraft:conditional_bandwidth_optimization": {
+      },
+      "minecraft:healable": {
+        "force_use": true,
+        "items": [
+          { "item": "apple", "heal_amount": 4 },
+          { "item": "baked_potato", "heal_amount": 5 },
+          { "item": "beetroot", "heal_amount": 1 },
+          { "item": "beetroot_soup", "heal_amount": 6 },
+          { "item": "bread", "heal_amount": 5 },
+          { "item": "cake", "heal_amount": 14 },
+          { "item": "carrot", "heal_amount": 3 },
+          { "item": "cooked_chicken", "heal_amount": 6 },
+          { "item": "cooked_cod", "heal_amount": 5 },
+          { "item": "cooked_mutton", "heal_amount": 6 },
+          { "item": "cooked_porkchop", "heal_amount": 8 },
+          { "item": "cooked_rabbit", "heal_amount": 5 },
+          { "item": "cooked_salmon", "heal_amount": 6 },
+          { "item": "cookie", "heal_amount": 2 },
+          { "item": "dried_kelp", "heal_amount": 1 },
+          {
+            "item": "appleenchanted",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "regeneration",
+                "chance": 1.0,
+                "duration": 30,
+                "amplifier": 4
+              },
+              {
+                "name": "absorption",
+                "chance": 1.0,
+                "duration": 120, // 2 * 60
+                "amplifier": 3
+              },
+              {
+                "name": "resistance", // damage resistance
+                "chance": 1.0,
+                "duration": 300,
+                "amplifier": 0
+              },
+              {
+                "name": "fire_resistance",
+                "chance": 1.0,
+                "duration": 300,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "golden_apple",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "regeneration",
+                "chance": 1.0,
+                "duration": 5,
+                "amplifier": 1
+              },
+              {
+                "name": "absorption",
+                "chance": 1.0,
+                "duration": 120, // 2 * 60
+                "amplifier": 0
+              }
+            ]
+          },
+          { "item": "glow_berries", "heal_amount": 2 },
+          { "item": "golden_carrot", "heal_amount": 6 },
+          { "item": "honey_bottle", "heal_amount": 6 },
+          { "item": "melon_slice", "heal_amount": 2 },
+          { "item": "mushroom_stew", "heal_amount": 6 },
+          {
+            "item": "poisonous_potato",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "poison",
+                "chance": 0.6,
+                "duration": 5,
+                "amplifier": 0
+              }
+            ]
+          },
+          { "item": "potato", "heal_amount": 1 },
+          {
+            "item": "pufferfish",
+            "heal_amount": 1,
+            "effects": [
+              {
+                "name": "poison",
+                "duration": 60,
+                "amplifier": 3
+              },
+              {
+                "name": "nausea", // confusion
+                "duration": 15,
+                "amplifier": 1
+              },
+              {
+                "name": "hunger",
+                "duration": 15,
+                "amplifier": 2
+              }
+            ]
+          },
+          { "item": "pumpkin_pie", "heal_amount": 8 },
+          { "item": "rabbit_stew", "heal_amount": 10 },
+          { "item": "beef", "heal_amount": 3 },
+          {
+            "item": "chicken",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "hunger",
+                "chance": 0.3,
+                "duration": 30,
+                "amplifier": 0
+              }
+            ]
+          },
+          { "item": "cod", "heal_amount": 2 },
+          { "item": "mutton", "heal_amount": 2 },
+          { "item": "porkchop", "heal_amount": 3 },
+          { "item": "rabbit", "heal_amount": 3 },
+          { "item": "salmon", "heal_amount": 2 },
+          {
+            "item": "rotten_flesh",
+            "heal_amount": 4,
+            "effects": [
+              {
+                "name": "hunger",
+                "chance": 0.8,
+                "duration": 30,
+                "amplifier": 0
+              }
+            ]
+          },
+          {
+            "item": "spider_eye",
+            "heal_amount": 2,
+            "effects": [
+              {
+                "name": "poison",
+                "chance": 1.0,
+                "duration": 5,
+                "amplifier": 0
+              }
+            ]
+          },
+          { "item": "cooked_beef", "heal_amount": 8 },
+          { "item": "sweet_berries", "heal_amount": 2 },
+          { "item": "tropical_fish", "heal_amount": 1 }
+        ] // credit: https://minecraft.fandom.com/wiki/Food#Foods
       },
       "minecraft:scaffolding_climber": {},
       "minecraft:environment_sensor": {
