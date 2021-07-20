@@ -6,6 +6,7 @@ Latest Add-On Version: **Release 1.1.2**
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
+Beta 1.1.3 (Experimental) | | Removed minecraft:behavior.eat_block
 Release 1.1.2 | [Download](https://file-link.net/329333/mcrobot) | [Release 1.1.2](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.1.2.md)
 Beta 1.1.1 | [Download](https://cdn.discordapp.com/attachments/571487722934370314/865053686391767060/terminator-v1.1.1.mcaddon) | [Beta 1.1.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.1.md)
 Beta 1.1.0 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/864757955656024114/terminator-v1.1.0.mcaddon) | [Beta 1.1.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.0.md)
