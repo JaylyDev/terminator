@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.dummy": {
+			"geometry": "Geometry.default",
+			"textures": ["Texture.default"],
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			]
+		}
+	}
+}

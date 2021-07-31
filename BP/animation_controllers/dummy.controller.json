@@ -1,0 +1,25 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.dummy.activate": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state":{
+          "on_entry": [ "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.dummy.activate\"}]}"] // logging
+        }
+      }
+    },
+    "controller.animation.dummy.spawn_terminator": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [{"execute": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "on_entry": ["v.dummytime = q.time_stamp; v.dummycd = 120;"] // 120 ticks = 6 seconds
+        },
+        "execute": {
+          "on_entry": ["/say test", "@s dummy:spawn_terminator"]
+        }
+      }
+    }
+  }
+}

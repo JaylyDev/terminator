@@ -1,2 +1,3 @@
 entity.entity:terminator.name=Terminator
+entity.entity:dummy.name=Dummy
 item.spawn_egg.entity.entity:terminator.name=Spawn Terminator

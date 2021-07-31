@@ -1,0 +1,64 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "entity:dummy",
+			"is_summonable": true,
+			"is_spawnable": false,
+			"is_experimental": false,
+			"scripts": {
+				"animate": [
+					"dummy.activate",
+					"dummy.spawn_terminator"
+				]
+			},
+			"animations": {
+				"dummy.activate": "controller.animation.dummy.activate",
+				"dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
+			}
+		},
+    "component_groups": {
+      "dummy:force_spawn_entity": {
+        "minecraft:spawn_entity": {
+          "entities": {
+            "min_wait_time": 0,
+            "max_wait_time": 0,
+            "spawn_entity": "entity:terminator",
+            "single_use": true
+          }
+        }
+      }
+    },
+		"components": {
+			"minecraft:custom_hit_test": {
+				"hitboxes": [
+					{
+						"pivot": [0, 100, 0],
+						"width": 0,
+						"height": 0
+					}
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"deals_damage": false
+				}
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:collision_box": {
+				"width": 0.0001,
+				"height": 0.0001
+			}
+		},
+		"events": {
+			"dummy:spawn_terminator":{
+				"add": {
+					"component_groups": ["dummy:force_spawn_entity"]
+				}
+			}
+		}
+	}
+}

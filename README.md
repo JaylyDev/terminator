@@ -6,8 +6,11 @@ Latest Add-On Version: **Release 1.1.2**
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
-Beta 1.1.3 (Experimental) | | Removed minecraft:behavior.eat_block
-Release 1.1.2 | [Download](https://file-link.net/329333/mcrobot) | [Release 1.1.2](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.1.2.md)
+Beta 1.1.6 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/870910373937696778/terminator_v1.1.6.15.mcaddon) | [Beta 1.1.6](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.6.md)
+Beta 1.1.5 | [Download](https://cdn.discordapp.com/attachments/734424410668138576/869581610188673154/terminator_v1.1.5.8.mcaddon)
+Patch 1.1.4 | [Download](https://file-link.net/329333/mcrobot) | Bug fixes
+Beta 1.1.3 | | Bug fixes
+Release 1.1.2 | [Download](https://www.mediafire.com/file/nb1terul8k6ne1p/terminator-v1.1.2.mcaddon/file) | [Release 1.1.2](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.1.2.md)
 Beta 1.1.1 | [Download](https://cdn.discordapp.com/attachments/571487722934370314/865053686391767060/terminator-v1.1.1.mcaddon) | [Beta 1.1.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.1.md)
 Beta 1.1.0 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/864757955656024114/terminator-v1.1.0.mcaddon) | [Beta 1.1.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.0.md)
 Beta 1.0.3 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/864072147777093662/terminator-v1.0.3.mcaddon) | [Beta 1.0.3](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.3.md)
