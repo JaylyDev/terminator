@@ -1,5 +1,5 @@
 # Beta 1.1.6.15 (Pre-Release)
-> Release Date: 14/7/2021
+> Release Date: 31/7/2021
 
 1st pre-release for Minecraft Terminator v1.2
 
@@ -11,6 +11,7 @@
 > If the respawn cooldown does not work, check if entity dummy exist using the developer mode
 - Released Developer mode officially.
 > To activate developer mode, type `/tag @s add dev`
+> 
 > This shows every movement terminator and the add-on are doing behind the scene.
 
 ## Installations:
