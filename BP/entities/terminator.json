@@ -9,12 +9,10 @@
       "scripts": {
         "animate": [
           "terminator.spawns",
-          "terminator.destroyblock",
           "terminator.suffocation_x",
           "terminator.suffocation_y",
           "terminator.sitting",
-          "terminator.bridging",
-          "terminator.death"
+          "terminator.bridging"
         ]
       },
       "animations": {
@@ -23,8 +21,7 @@
         "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
         "terminator.suffocation_y": "controller.animation.terminator.suffocation_y",
         "terminator.sitting": "controller.animation.terminator.sitting",
-        "terminator.bridging": "controller.animation.terminator.bridging",
-        "terminator.death": "controller.animation.terminator.death"
+        "terminator.bridging": "controller.animation.terminator.bridging"
       }
     },
     "component_groups": {
@@ -740,11 +737,6 @@
             },
             "add": {
               "component_groups": ["terminator:force_respawn"]
-            },
-            "run_command": {
-              "command": [
-                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but they respawned!\"}]}"
-              ]
             }
           },
           {
@@ -758,7 +750,7 @@
             },
             "run_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died\"}]}",
+                "tellraw @a {\"rawtext\":[{\"text\": \"§6§l\"}, {\"selector\": \"@s\"}, {\"text\": \" died\"}]}",
                 "summon lightning_bolt ~ -40 ~"
               ]
             }

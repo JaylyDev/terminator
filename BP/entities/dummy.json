@@ -18,6 +18,26 @@
 			}
 		},
     "component_groups": {
+			"dummy:roar": {
+				"minecraft:behavior.knockback_roar": {
+          "duration": 0.1,
+          "attack_time": 0.1,
+          "cooldown_time": 0.0,
+          "knockback_strength": 2,
+          "knockback_damage": 0,
+          "knockback_range": 6,
+          "knockback_filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "!=",
+                "value": "entity:dummy"
+              }
+            ]
+          }
+        }
+			},
       "dummy:force_spawn_entity": {
         "minecraft:spawn_entity": {
           "entities": {
@@ -26,6 +46,19 @@
             "spawn_entity": "entity:terminator",
             "single_use": true
           }
+        },
+				"minecraft:instant_despawn": {
+					"remove_child_entities": true
+				},
+				"minecraft:explode": {
+          "fuse_length": -1,
+          "fuse_lit": true,
+          "power": 64,
+          "causes_fire": true,
+          "destroy_affected_by_griefing": false,
+					"breaks_blocks": true,
+					"fire_affected_by_griefing": false,
+					"max_resistance": 3.40282e+38
         }
       }
     },
@@ -54,6 +87,16 @@
 			}
 		},
 		"events": {
+			"dummy:force_roar": {
+			  "add": {
+					"component_groups": ["dummy:roar"]
+				}
+			},
+			"dummy:finish_setup": {
+			  "remove": {
+					"component_groups": ["dummy:roar"]
+				}
+			},
 			"dummy:spawn_terminator":{
 				"add": {
 					"component_groups": ["dummy:force_spawn_entity"]
