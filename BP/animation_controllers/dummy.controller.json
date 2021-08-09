@@ -1,11 +1,14 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.dummy.activate": {
+    "controller.animation.dummy.escape_pathfind": {
       "initial_state": "default_state",
       "states": {
         "default_state":{
-          "on_entry": [ "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.dummy.activate\"}]}"] // logging
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.dummy.escape_pathfind\"}]}",
+            "@s dummy:create_terminator_target"
+          ]
         }
       }
     },

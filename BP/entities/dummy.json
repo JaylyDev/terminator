@@ -8,12 +8,12 @@
 			"is_experimental": false,
 			"scripts": {
 				"animate": [
-					"dummy.activate",
-					"dummy.spawn_terminator"
+					{"dummy.escape_pathfind": "q.mark_variant == 2"},
+					{"dummy.spawn_terminator": "q.mark_variant == 1"}
 				]
 			},
 			"animations": {
-				"dummy.activate": "controller.animation.dummy.activate",
+				"dummy.escape_pathfind": "controller.animation.dummy.escape_pathfind",
 				"dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
 			}
 		},
@@ -53,14 +53,44 @@
 				"minecraft:explode": {
           "fuse_length": -1,
           "fuse_lit": true,
-          "power": 64,
+          "power": 512,
           "causes_fire": true,
           "destroy_affected_by_griefing": false,
 					"breaks_blocks": true,
 					"fire_affected_by_griefing": false,
 					"max_resistance": 3.40282e+38
         }
-      }
+      },
+			"dummy:spawning_variant": {
+				"minecraft:mark_variant": {
+					"value": 1
+				}
+			},
+			"dummy:pathfinding_variant": {
+				"minecraft:mark_variant": {
+					"value": 2
+				}
+			},
+			"dummy:detect_terminator": {
+				"minecraft:entity_sensor": {
+					"event_filters":{
+						"all_of": [
+							{"test": "is_family", "subject": "other", "value": "terminator"}
+						]
+					},
+					"minimum_count": 0,
+					"maximum_count": 1,
+					"relative_range": true,
+					"require_all": true,
+					"sensor_range": 5,
+					"event": "dummy:request_despawn"
+				}
+			},
+			"dummy:despawn": {
+				"minecraft:instant_despawn": {
+					"remove_child_entities": true
+				}
+			}
     },
 		"components": {
 			"minecraft:custom_hit_test": {
@@ -71,6 +101,9 @@
 						"height": 0
 					}
 				]
+			},
+			"minecraft:type_family": {
+				"family": [	"dummy"	]
 			},
 			"minecraft:damage_sensor": {
 				"triggers": {
@@ -84,6 +117,28 @@
 			"minecraft:collision_box": {
 				"width": 0.0001,
 				"height": 0.0001
+			},
+			"minecraft:environment_sensor": {
+				"triggers":[
+					{
+						"filters":{
+							"all_of": [
+								{"test": "is_mark_variant", "subject": "self", "operator": "==", "value": 0},
+								{"test": "has_tag", "subject": "self", "operator": "==", "value": "varient1"}
+							]
+						},
+						"event": "dummy:request_spawning"
+					},
+					{
+						"filters":{
+							"all_of": [
+								{"test": "is_mark_variant", "subject": "self", "operator": "==", "value": 0},
+								{"test": "has_tag", "subject": "self", "operator": "==", "value": "varient2"}
+							]
+						},
+						"event": "dummy:request_pathfind"
+					}
+				]
 			}
 		},
 		"events": {
@@ -100,6 +155,34 @@
 			"dummy:spawn_terminator":{
 				"add": {
 					"component_groups": ["dummy:force_spawn_entity"]
+				}
+			},
+			"dummy:request_spawning": {
+				"add": {
+					"component_groups": ["dummy:spawning_variant"]
+				}
+			},
+			"dummy:request_pathfind": {
+				"add": {
+					"component_groups": ["dummy:pathfinding_variant"]
+				}
+			},
+			"dummy:create_terminator_target": {
+				"add": {
+					"component_groups": [	"dummy:detect_terminator"	]
+				},
+				"run_command": {
+					"command": ["spreadplayers ~ ~ 32 48 @s"]
+				}
+			},
+			"dummy:request_despawn": {
+				"add": {
+					"component_groups": ["dummy:despawn"]
+				},
+				"run_command": {
+					"command": [
+						"say dummy:request_despawn"
+					]
 				}
 			}
 		}

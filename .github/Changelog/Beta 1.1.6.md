@@ -4,7 +4,7 @@
 1st pre-release for Minecraft Terminator v1.2
 
 ## Download:
-[Terminator v1.1.6]
+[Terminator v1.1.6](https://cdn.discordapp.com/attachments/571863283657867294/870910373937696778/terminator_v1.1.6.15.mcaddon)
 
 ## Changelog
 - Added a 6 seconds respawn cooldown as many people requested it.

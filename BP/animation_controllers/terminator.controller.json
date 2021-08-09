@@ -5,15 +5,16 @@
       "initial_state": "default_state",
       "states": {
         "default_state": {
-          "transitions": [{"regeneration": "q.is_alive && q.health < 10"}],
+          "transitions": [{"regeneration": "q.is_alive && q.health < 20"}],
           "on_entry": ["/playsound block.end_portal.spawn @a"] // sound effect
         },
         "regeneration":{
-          "transitions": [{"regeneration": "q.is_alive && q.health < 10"}],
           "on_entry": [
-            "/effect @s regeneration 4 4 false",
-            "/effect @s absorption 120 3 false",
-            "/effect @s resistance 300 0 false"
+            "/effect @s regeneration 6 4 false",
+            "/effect @s absorption 24 3 false",
+            "/effect @s resistance 60 0 false",
+            "/effect @s fire_resistance 60 0 false",
+            "@s terminator:escape"
           ]
         }
       }
