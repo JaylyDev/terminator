@@ -1,5 +1,7 @@
-# Beta 1.1.8.39 (Pre-Release)
+# Beta 1.1.8.40 (Pre-Release)
 > Release Date: 9/8/2021
+> 
+> Updated to v1.1.8.40 in 11/8/2021
 
 **3rd pre-release for Minecraft Terminator v1.2**
 
@@ -8,7 +10,7 @@ Thanks for 6.9k shares and all the support by the way. This will likely to be th
 ![image](https://media.discordapp.net/attachments/571487722934370314/874120907910692884/unknown.png)
 
 ## Download:
-[Terminator v1.1.8](https://cdn.discordapp.com/attachments/571863283657867294/874136416865648660/terminator_v1.1.8.39.mcaddon)
+[Terminator v1.1.8](https://cdn.discordapp.com/attachments/571863283657867294/874860541007519774/terminator_v1.1.8.40.mcaddon)
 
 ## Changelog
 - Terminator now runs away from players when their health is less than 20 (only happens once every life)
