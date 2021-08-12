@@ -1,5 +1,5 @@
 # Release 1.1.2
-> Release Date: pending
+> Release Date: 19/7/2021
 
 Official release for Minecraft Terminator v1.1
 

@@ -103,6 +103,74 @@
 					"sensor_range": 5,
           "event": "terminator:remove_escape"
         }
+      },
+      "terminator:fix_attack_target":{ // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 0,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 1024,
+          "must_see_forget_duration": 32767.0,
+          "target_search_height": -1,
+          "entity_types": [
+            { 
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "player" },
+                  { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+                ]
+              },
+              "max_dist": 1024,
+              "must_see": false
+            },
+            {
+              "filters": {
+                "all_of":[
+                  {
+                    "any_of": [
+                      { "test": "is_family", "subject": "other", "value": "snowgolem" },
+                      { "test": "is_family", "subject": "other", "value": "parrot_tame"},
+                      { "test": "is_family", "subject": "other", "value": "wolf"},
+                      { "test": "is_family", "subject": "other", "value": "axolotl"},
+                      { "test": "is_family", "subject": "other", "value": "piglin"}
+                    ]
+                  },
+                  {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+                ]
+              },
+              "max_dist": 16,
+              "must_see": true
+            },
+            {
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "irongolem" },
+                  {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"},
+                  { "test": "has_equipment", "domain": "head", "operator": "==", "value": "netherite_helmet"},
+                  { "test": "has_equipment", "domain": "feet", "operator": "==", "value": "netherite_boots"},
+                  {
+                    "any_of": [
+                      { "test": "has_equipment", "domain": "armor", "operator": "==", "value": "netherite_chestplate"},
+                      { "test": "has_equipment", "domain": "leg", "operator": "==", "value": "netherite_leggings"}
+                    ]
+                  },
+                  {
+                    "any_of": [
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "netherite_sword"},
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "diamond_sword"},
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "golden_sword"},
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "iron_sword"},
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "stone_sword"},
+                      { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "wooden_sword"}
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 24,
+              "must_see": true
+            }
+          ]
+        }
       }
     },
     "components": { // Terminator Components
@@ -151,7 +219,7 @@
       },
       "minecraft:annotation.break_door": {
         "min_difficulty": "peaceful",
-        "break_time": 12
+        "break_time": 4
       },
       "minecraft:jump.static": {
       },
@@ -661,6 +729,15 @@
               ]
             },
             "event": "terminator:suffocation"
+          },
+          {
+            "filters":{
+              "test": "has_component",
+              "subject": "self",
+              "operator": "not",
+              "value": "minecraft:behavior.nearest_attackable_target"
+            },
+            "event": "terminator:remove_escape"
           }
         ]
       }
@@ -782,7 +859,8 @@
               "command": [
                 "summon entity:dummy",
                 "tag @e[type=entity:dummy,tag=!varient2] add varient1",
-                "say terminator:respawn"
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
             }
           },
@@ -829,6 +907,9 @@
       "terminator:remove_escape": {
         "remove": {
           "component_groups": ["terminator:find_path"]
+        },
+        "add": {
+          "component_groups": ["terminator:fix_attack_target"]
         }
       }
     }

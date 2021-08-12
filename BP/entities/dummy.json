@@ -75,11 +75,11 @@
 				"minecraft:entity_sensor": {
 					"event_filters":{
 						"all_of": [
-							{"test": "is_family", "subject": "other", "value": "terminator"}
+							{"test": "is_family", "subject": "other", "operator":"equals", "value": "terminator"}
 						]
 					},
 					"minimum_count": 0,
-					"maximum_count": 1,
+					"maximum_count": 32767,
 					"relative_range": true,
 					"require_all": true,
 					"sensor_range": 5,
@@ -137,6 +137,14 @@
 							]
 						},
 						"event": "dummy:request_pathfind"
+					},
+					{
+						"filters":{
+							"test": "has_component",
+							"subject": "self",
+							"value": "minecraft:entity_sensor"
+						},
+						"event": "dummy:sensor_activated"
 					}
 				]
 			}
@@ -181,7 +189,14 @@
 				},
 				"run_command": {
 					"command": [
-						"say dummy:request_despawn"
+						"tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
+					]
+				}
+			},
+			"dummy:sensor_activated": {
+				"run_command": {
+					"command": [
+						"tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}"
 					]
 				}
 			}

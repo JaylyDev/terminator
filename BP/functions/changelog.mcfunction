@@ -1,1 +1,0 @@
-tellraw @s {"rawtext":[{"text":"Patch Notes 1.1.8.39 [Beta]\nCheck https://github.com/JaylyDev/manhunt/blob/terminator/README.md for the latest add-on changelog.\nWe'll update the add-on when it's neccessary."}]}
