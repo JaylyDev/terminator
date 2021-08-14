@@ -4,6 +4,7 @@
 1st official release for Minecraft Terminator v1.2
 
 ## Download:
+[Terminator v1.2.0 (linkvertise)](https://file-link.net/329333/mcrobot)
 
 ## Changelog
 - Redesigned the terminator death event

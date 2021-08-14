@@ -6,7 +6,8 @@ Latest Add-On Version: **Beta 1.1.8**
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
-Beta 1.1.8 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/874136416865648660/terminator_v1.1.8.39.mcaddon) | [Beta 1.1.7](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.8.md)
+Release 1.2.0 | [Download](https://file-link.net/329333/mcrobot) | [Release 1.2.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.0.md)
+Beta 1.1.8 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/874136416865648660/terminator_v1.1.8.39.mcaddon) | [Beta 1.1.8](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.8.md)
 Beta 1.1.7 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/872814082015768616/terminator_v1.1.7.25.mcaddon) | [Beta 1.1.7](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.7.md)
 Beta 1.1.6 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/870910373937696778/terminator_v1.1.6.15.mcaddon) | [Beta 1.1.6](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.6.md)
 Beta 1.1.5 | [Download](https://cdn.discordapp.com/attachments/734424410668138576/869581610188673154/terminator_v1.1.5.8.mcaddon)
