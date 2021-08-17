@@ -1,0 +1,157 @@
+{/*
+  "namespace": "npc_interact",
+
+  //---------------------------------------------------------------------------
+  // Common
+  //---------------------------------------------------------------------------
+  "multiline_text_edit_control@common.multiline_text_edit_box": {"ignored": true},
+
+  "text_edit_control@common.text_edit_box": {"ignored": true},
+
+  "label_padding@common.empty_panel": {"ignored": true},
+
+  // Stack panel under title bar that fills the frame
+  "main_stack_panel": {"ignored": true},
+
+  //---------------------------------------------------------------------------
+  // Skin picker
+  //---------------------------------------------------------------------------
+  "skin_button": {"ignored": true},
+
+  "skin_model": {"ignored": true},
+
+  "skins_grid_item": {"ignored": true},
+
+  "skins_grid": {"ignored": true},
+
+  "cycle_pack_button@common_buttons.light_glyph_button": {"ignored": true},
+
+  "cycle_pack_left_button@npc_interact.cycle_pack_button": {"ignored": true},
+
+  "cycle_pack_right_button@npc_interact.cycle_pack_button": {"ignored": true},
+
+  "banner_fill": {"ignored": true},
+
+  "skin_picker@npc_interact.banner_fill": {"ignored": true},
+
+  //---------------------------------------------------------------------------
+  // Basic Panel
+  //---------------------------------------------------------------------------
+  "name_edit@npc_interact.text_edit_control": {"ignored": true},
+
+  "advanced_button": {"ignored": true},
+
+  "dialog_button": {"ignored": true},
+
+  "basic_stack_panel@npc_interact.main_stack_panel": {"ignored": true},
+
+  "basic_content": {"ignored": true},
+
+  //---------------------------------------------------------------------------
+  // Advanced Panel
+  //---------------------------------------------------------------------------
+  "advanced_stack_panel@npc_interact.main_stack_panel": {"ignored": true},
+
+  "action_title@edu_common.dark_label": {"ignored": true},
+
+  "plus_icon": {"ignored": true},
+
+  "plus_button@common_buttons.light_glyph_button": {"ignored": true},
+
+  "action_text_edit@npc_interact.multiline_text_edit_control": {"ignored": true},
+
+  "maximized_action_edit@npc_interact.multiline_text_edit_control": {"ignored": true},
+
+  "action_edit": {"ignored": true},
+
+  "button_name_edit@npc_interact.text_edit_control": {"ignored": true},
+
+  "button_mode_toggle@edu_common.slider_toggle": {"ignored": true},
+
+  "button_mode": {"ignored": true},
+
+  "button_name_label@edu_common.dark_label": {"ignored": true},
+
+  "action_template@npc_interact.main_stack_panel": {"ignored": true},
+
+  "action_command@npc_interact.action_template": {"ignored": true},
+
+  "action_url@npc_interact.action_template": {"ignored": true},
+
+  "padded_action": {"ignored": true},
+
+  "action": {"ignored": true},
+
+  // Collection of "actions", meaning url or command buttons
+  "action_panel": {"ignored": true},
+
+  "add_button@common_buttons.light_text_button": {"ignored": true},
+
+  "help_label@edu_common.light_label": {"ignored": true},
+
+  // Help text that is visible when no actions have been added
+  "add_help_section": {"ignored": true},
+
+  "add_help_p1@npc_interact.add_help_section": {"ignored": true},
+
+  "add_help_p2@npc_interact.add_help_section": {"ignored": true},
+
+  "add_buttons": {"ignored": true},
+
+  "advanced_scrolling_panel@common.scrolling_panel": {"ignored": true},
+
+  "advanced_scrolling_content": {"ignored": true},
+
+  //---------------------------------------------------------------------------
+  // Student Panel
+  //---------------------------------------------------------------------------
+  "message_model" : {"ignored": true},
+
+  "clipped_message_model@npc_interact.skin_model_clipper": {"ignored": true},
+
+  "message_model_window@npc_interact.banner_fill": {"ignored": true},
+
+  "edit_box_background@common.empty_panel": {"ignored": true},
+
+  "npc_message@npc_interact.multiline_text_edit_control": {"ignored": true},
+
+  "student_message_bubble": {"ignored": true},
+
+  // Point on the speach bubble, positioned right at the edge of the bubble pointing into the paper doll window
+  "bubble_point": {"ignored": true},
+
+  "student_message_section@common.empty_panel": {"ignored": true},
+
+  // Wrap in panel so we can make the buttons a bit smaller for padding
+  "student_button@common.empty_panel": {"ignored": true},
+
+  "student_buttons@common.empty_panel": {"ignored": true},
+
+  "student_stack_panel@npc_interact.main_stack_panel": {"ignored": true},
+
+  "student_view_content": {"ignored": true},
+
+  // -----------------------------------------------
+  // Base window
+  // -----------------------------------------------
+  "close_button_base": {"ignored": true},
+
+  "x_close_button@common.close_button": {"ignored": true},
+
+  // Visibility binding overtakes ignore condition, so wrap in parent that can ignore, then child can bind visibility
+  "ignorable_x_close_button": {"ignored": true},
+
+  "close_button_holder": {"ignored": true},
+
+  "main_content@common.empty_panel": {"ignored": true},
+
+  "root_panel@common_dialogs.main_panel_no_buttons": {"ignored": true},
+
+  "gamepad_helper_exit_text": {"ignored": true},
+
+  "close_text@common.gamepad_helper_b": {"ignored": true},
+
+  "npc_screen_contents": {"ignored": true},
+
+  "npc_screen@common.base_screen": {"ignored": true}*/
+}

@@ -179,7 +179,7 @@
       },
       "minecraft:boss": {
         "should_darken_sky": true,
-        "name": "Terminator",
+        "name": "npcscreen.npc",
         "hud_range": 64
       },
       "minecraft:is_hidden_when_invisible": {
@@ -519,6 +519,11 @@
       },
       "minecraft:conditional_bandwidth_optimization": {
       },
+      "minecraft:tick_world": {
+        "never_despawn": true,
+        "radius": 2
+      },
+      "minecraft:npc": {},
       "minecraft:healable": {
         "force_use": true,
         "filters":{
@@ -691,10 +696,6 @@
             "event": "minecraft:trigger_raid"
           },
           {
-            "filters": {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 60 },
-            "event": "terminator:tp_to_nearest_player"
-          },
-          {
             "filters": {
               "all_of": [
                 {"test": "has_target", "subject": "self", "operator": "==", "value": true},
@@ -784,16 +785,6 @@
       "minecraft:remove_raid_trigger": {
         "remove": {
           "component_groups": [ "minecraft:raid_trigger" ]
-        }
-      },
-      "terminator:tp_to_nearest_player": {
-        "run_command": {
-          "command": [
-            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"}, {\"selector\": \"@s\"}, {\"text\": \"] terminator:tp_to_nearest_player\"}]}", // logging
-            "tag @s add robot_tp",
-            "execute @p ~~~ spreadplayers ~~ 48 50 @e[type=entity:terminator,tag=robot_tp]",
-            "tag @s remove robot_tp"
-          ]
         }
       },
       "terminator:suffocation": {

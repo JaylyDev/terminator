@@ -42,7 +42,7 @@
           "transitions": [{"execute1": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
           "on_entry": [
             "v.dummytime = q.time_stamp; v.dummycd = 120;",
-            "/fog @a push \"minecraft:fog_hell\" \"respawn_lore\"",
+            "/fog @a push minecraft:fog_hell respawn_lore",
             "/weather thunder",
             "/gamerule dodaylightcycle false",
             "/gamerule doweathercycle false"
@@ -106,7 +106,11 @@
             "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
             "@s dummy:spawn_terminator"
           ],
-          "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
+          "on_exit": [
+            "/summon minecraft:lightning_bolt",
+            "@s dummy:force_roar",
+            "/fog @a remove respawn_lore"
+          ]
         }
       }
     }

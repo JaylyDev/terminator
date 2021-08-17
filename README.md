@@ -1,11 +1,12 @@
 # Minecraft Terminator (Bedrock)
-**https://mcpedl.com/mineraft-terminator - Add-on link**
+**https://mcpedl.com/mc-terminator-addon-1/ - Add-on link**
 
-Latest Add-On Version: **Beta 1.1.8**
+Latest Add-On Version: **Release 1.2.0**
 
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
+Beta 1.2.1 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/877028828105551922/terminator_v1.2.1.mcaddon) | [Beta 1.2.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.1.md)
 Release 1.2.0 | [Download](https://file-link.net/329333/mcrobot) | [Release 1.2.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.0.md)
 Beta 1.1.8 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/874136416865648660/terminator_v1.1.8.39.mcaddon) | [Beta 1.1.8](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.8.md)
 Beta 1.1.7 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/872814082015768616/terminator_v1.1.7.25.mcaddon) | [Beta 1.1.7](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.7.md)

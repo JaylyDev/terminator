@@ -3,7 +3,7 @@
 	"minecraft:entity": {
 		"description": {
 			"identifier": "entity:dummy",
-			"is_summonable": true,
+			"is_summonable": false,
 			"is_spawnable": false,
 			"is_experimental": false,
 			"scripts": {
