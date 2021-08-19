@@ -1,4 +1,4 @@
-summon entity:terminator
+summon entity:terminator "Terminator" ~~~
 replaceitem entity @e[type=entity:terminator,r=5] slot.armor.head 0 chainmail_helmet
 replaceitem entity @e[type=entity:terminator,r=5] slot.armor.chest 0 chainmail_chestplate
 replaceitem entity @e[type=entity:terminator,r=5] slot.armor.legs 0 chainmail_leggings

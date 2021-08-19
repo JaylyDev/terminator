@@ -1,3 +1,7 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
   "format_version": "1.10.0",
   "animation_controllers": {
@@ -104,13 +108,10 @@
             "v.dummytime = q.time_stamp; v.dummycd = 100;",
             "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
             "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "@s dummy:spawn_terminator"
-          ],
-          "on_exit": [
-            "/summon minecraft:lightning_bolt",
-            "@s dummy:force_roar",
+            "@s dummy:spawn_terminator",
             "/fog @a remove respawn_lore"
-          ]
+          ],
+          "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         }
       }
     }

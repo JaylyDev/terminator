@@ -1,9 +1,13 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
 	"format_version": "1.16.0",
 	"minecraft:entity": {
 		"description": {
 			"identifier": "entity:dummy",
-			"is_summonable": false,
+			"is_summonable": true,
 			"is_spawnable": false,
 			"is_experimental": false,
 			"scripts": {
@@ -44,7 +48,8 @@
             "min_wait_time": 0,
             "max_wait_time": 0,
             "spawn_entity": "entity:terminator",
-            "single_use": true
+						"spawn_event": "terminator:disable_respawn_event",
+						"single_use": true
           }
         },
 				"minecraft:instant_despawn": {
@@ -53,7 +58,7 @@
 				"minecraft:explode": {
           "fuse_length": -1,
           "fuse_lit": true,
-          "power": 512,
+          "power": 160,
           "causes_fire": true,
           "destroy_affected_by_griefing": false,
 					"breaks_blocks": true,
@@ -147,7 +152,11 @@
 						"event": "dummy:sensor_activated"
 					}
 				]
-			}
+			},
+			"minecraft:tick_world": {
+        "never_despawn": true,
+        "radius": 4
+      }
 		},
 		"events": {
 			"dummy:force_roar": {

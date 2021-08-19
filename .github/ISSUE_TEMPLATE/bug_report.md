@@ -19,11 +19,11 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Addon Metadata (please complete the following information):**
- - Version [e.g. 1.5.1]
+ - Version [e.g. 1.0.0]
 
 **Platform (please complete the following information):**
- - Device: [e.g. iPhone6]
- - Website: [e.g. MCPEDL, MCPE Addons]
+ - Device: [e.g. iPhone]
+ - Website: [e.g. MCPEDL]
  - Minecraft Version: [e.g. 1.16.220]
 
 **Additional context**

@@ -1,3 +1,7 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
   "format_version": "1.16.0",
   "minecraft:entity": {
@@ -12,7 +16,8 @@
           "terminator.suffocation_x",
           "terminator.suffocation_y",
           "terminator.sitting",
-          "terminator.bridging"
+          "terminator.bridging",
+          "terminator.shield"
         ]
       },
       "animations": {
@@ -21,7 +26,8 @@
         "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
         "terminator.suffocation_y": "controller.animation.terminator.suffocation_y",
         "terminator.sitting": "controller.animation.terminator.sitting",
-        "terminator.bridging": "controller.animation.terminator.bridging"
+        "terminator.bridging": "controller.animation.terminator.bridging",
+        "terminator.shield": "controller.animation.terminator.shield"
       }
     },
     "component_groups": {
@@ -81,7 +87,8 @@
             { 
               "filters": {
                 "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "dummy" }
+                  { "test": "is_family", "subject": "other", "value": "dummy" },
+                  { "test": "is_mark_variant", "subject": "other", "value": 2 }
                 ]
               },
               "max_dist": 1024,
@@ -92,8 +99,7 @@
         "minecraft:entity_sensor": {
           "event_filters": {
             "all_of": [
-              { "test": "is_family", "subject": "other", "value": "dummy" },
-              { "test": "is_mark_variant", "subject": "other", "value": 2 }
+              { "test": "is_family", "subject": "other", "value": "dummy" }
             ]
           },
 					"minimum_count": 0,
@@ -171,6 +177,174 @@
             }
           ]
         }
+      },
+      "terminator:spawn_terminator": {
+        "minecraft:spawn_entity": {
+          "entities":{
+            "min_wait_time": 0,
+            "max_wait_time": 1,
+            "num_to_spawn": 1,
+            "single_use": true,
+            "spawn_entity": "entity:terminator",
+            "spawn_event": "terminator:disable_respawn_event"
+          }
+        }
+      },
+      "terminator:shield": {
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "anvil",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "event": "terminator:respond_shield_sensor"
+              },
+              "cause": "block_explosion",
+              "deals_damage": false
+            },
+            {
+              "cause": "charging",
+              "deals_damage": true
+            },
+            {
+              "cause": "contact",
+              "deals_damage": true
+            },
+            {
+              "cause": "drowning",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "event": "terminator:respond_shield_sensor"
+              },
+              "cause": "entity_attack",
+              "deals_damage": false
+            },
+            {
+              "on_damage": {
+                "event": "terminator:respond_shield_sensor"
+              },
+              "cause": "entity_explosion",
+              "deals_damage": false
+            },
+            {
+              "cause": "fall",
+              "deals_damage": true
+            },
+            {
+              "cause": "falling_block",
+              "deals_damage": true
+            },
+            {
+              "cause": "fire",
+              "deals_damage": true
+            },
+            {
+              "cause": "fire_tick",
+              "deals_damage": true
+            },
+            {
+              "cause": "fireworks",
+              "deals_damage": true
+            },
+            {
+              "cause": "fly_into_wall",
+              "deals_damage": true
+            },
+            {
+              "cause": "freezing",
+              "deals_damage": true
+            },
+            {
+              "cause": "lava",
+              "deals_damage": true
+            },
+            {
+              "cause": "lightning",
+              "deals_damage": true
+            },
+            {
+              "cause": "magic",
+              "deals_damage": true
+            },
+            {
+              "cause": "magma",
+              "deals_damage": true
+            },
+            {
+              "cause": "override",
+              "deals_damage": true
+            },
+            {
+              "cause": "piston",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "event": "terminator:respond_shield_sensor"
+              },
+              "cause": "projectile",
+              "deals_damage": false
+            },
+            {
+              "cause": "stalactite",
+              "deals_damage": true
+            },
+            {
+              "cause": "stalagmite",
+              "deals_damage": true
+            },
+            {
+              "cause": "starve",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "event": "terminator:suffocation"
+              },
+              "cause": "suffocation",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "filters": [
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "operator":"not",
+                    "value": "suffocation"
+                  }
+                ],
+                "event": "terminator:remove_suffocation"
+              },
+              "cause": "all",
+              "deals_damage": true
+            },
+            {
+              "cause": "suicide",
+              "deals_damage": true
+            },
+            {
+              "cause": "temperature",
+              "deals_damage": true
+            },
+            {
+              "cause": "thorns",
+              "deals_damage": true
+            },
+            {
+              "cause": "void",
+              "deals_damage": true
+            },
+            {
+              "cause": "wither",
+              "deals_damage": true
+            }
+          ]
+        }
       }
     },
     "components": { // Terminator Components
@@ -179,8 +353,8 @@
       },
       "minecraft:boss": {
         "should_darken_sky": true,
-        "name": "npcscreen.npc",
-        "hud_range": 64
+        "name": "Terminator",
+        "hud_range": 1024
       },
       "minecraft:is_hidden_when_invisible": {
       },
@@ -244,7 +418,7 @@
           {
             "filters": {"all_of": [{ "test": "in_lava", "subject": "self", "operator": "==", "value": true }]},
             "cause": "lava",
-            "damage_per_tick": 0
+            "damage_per_tick": 4
           }
         ]
       },
@@ -259,42 +433,44 @@
       },
       "minecraft:shareables": {
         "items": [
-          { "item": "minecraft:netherite_sword", "want_amount": 64, "surplus_amount": 64, "priority": 0 }, // Weapons
-          { "item": "minecraft:diamond_sword", "want_amount": 64, "surplus_amount": 64, "priority": 1 },
-          { "item": "minecraft:iron_sword", "want_amount": 64, "surplus_amount": 64, "priority": 2 },
-          { "item": "minecraft:stone_sword", "want_amount": 64, "surplus_amount": 64, "priority": 3 },
-          { "item": "minecraft:golden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 4 },
-          { "item": "minecraft:wooden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 5 },
-          { "item": "minecraft:netherite_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 0 }, // Helmets
-          { "item": "minecraft:diamond_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 1 },
-          { "item": "minecraft:iron_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 2 },
-          { "item": "minecraft:chainmail_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 3 },
-          { "item": "minecraft:golden_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 4 },
-          { "item": "minecraft:leather_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 5 },
-          { "item": "minecraft:netherite_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 0 }, // Chestplates
-          { "item": "minecraft:diamond_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 1 },
-          { "item": "minecraft:iron_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 2 },
-          { "item": "minecraft:chainmail_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 3 },
-          { "item": "minecraft:golden_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 4 },
-          { "item": "minecraft:leather_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 5 },
-          { "item": "minecraft:netherite_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 0 }, // Leggings
-          { "item": "minecraft:diamond_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 1 },
-          { "item": "minecraft:iron_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 2 },
-          { "item": "minecraft:chainmail_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 3 },
-          { "item": "minecraft:golden_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 4 },
-          { "item": "minecraft:leather_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 5 },
-          { "item": "minecraft:netherite_boots", "want_amount": 64, "surplus_amount": 64, "priority": 0 }, // Boots
-          { "item": "minecraft:diamond_boots", "want_amount": 64, "surplus_amount": 64, "priority": 1 },
-          { "item": "minecraft:iron_boots", "want_amount": 64, "surplus_amount": 64, "priority": 2 }, 
-          { "item": "minecraft:chainmail_boots", "want_amount": 64, "surplus_amount": 64, "priority": 3 },
-          { "item": "minecraft:golden_boots", "want_amount": 64, "surplus_amount": 64, "priority": 4 },
-          { "item": "minecraft:leather_boots", "want_amount": 64, "surplus_amount": 64, "priority": 5  },
-          { "item": "minecraft:cobblestone", "want_amount": 64, "surplus_amount": 64, "priority": 6  }, // blocks
-          { "item": "minecraft:dirt", "want_amount": 64, "surplus_amount": 64, "priority": 7  },
-          { "item": "minecraft:grass", "want_amount": 64, "surplus_amount": 64, "priority": 8  },
-          { "item": "minecraft:planks", "want_amount": 64, "surplus_amount": 64, "priority": 9  },
-          { "item": "minecraft:log", "want_amount": 64, "surplus_amount": 64, "priority": 10  },
-          { "item": "minecraft:log2", "want_amount": 64, "surplus_amount": 64, "priority": 11  }
+          { "item": "minecraft:netherite_sword", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Weapons
+          { "item": "minecraft:diamond_sword", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:iron_sword", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
+          { "item": "minecraft:stone_sword", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:golden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:wooden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:netherite_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Helmets
+          { "item": "minecraft:diamond_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:iron_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
+          { "item": "minecraft:chainmail_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:golden_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:leather_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:netherite_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Chestplates
+          { "item": "minecraft:diamond_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:iron_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
+          { "item": "minecraft:chainmail_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:golden_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:leather_chestplate", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:netherite_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Leggings
+          { "item": "minecraft:diamond_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:iron_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
+          { "item": "minecraft:chainmail_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:golden_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:leather_leggings", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:netherite_boots", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Boots
+          { "item": "minecraft:diamond_boots", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:iron_boots", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true }, 
+          { "item": "minecraft:chainmail_boots", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:golden_boots", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:leather_boots", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:cobblestone", "want_amount": 64, "surplus_amount": 64, "priority": 6, "stored_in_inventory": true }, // blocks
+          { "item": "minecraft:dirt", "want_amount": 64, "surplus_amount": 64, "priority": 7, "stored_in_inventory": true },
+          { "item": "minecraft:grass", "want_amount": 64, "surplus_amount": 64, "priority": 8, "stored_in_inventory": true },
+          { "item": "minecraft:planks", "want_amount": 64, "surplus_amount": 64, "priority": 9, "stored_in_inventory": true },
+          { "item": "minecraft:log", "want_amount": 64, "surplus_amount": 64, "priority": 10, "stored_in_inventory": true },
+          { "item": "minecraft:log2", "want_amount": 64, "surplus_amount": 64, "priority": 11 , "stored_in_inventory": true },
+          { "item": "minecraft:totem_of_undying", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // miscs
+          { "item": "minecraft:shield", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true }
         ]
       },
       "minecraft:damage_sensor": {
@@ -310,7 +486,8 @@
                 }
               ],
               "event": "terminator:suffocation"
-            }
+            },
+            "deals_damage": true
           },
           {
             "on_damage": {
@@ -323,7 +500,8 @@
                 }
               ],
               "event": "terminator:remove_suffocation"
-            }
+            },
+            "deals_damage": true
           }
         ]
       },
@@ -416,7 +594,6 @@
 
       "minecraft:on_death":{
         "event": "terminator:respawn"
-        
       },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 0,
@@ -521,9 +698,8 @@
       },
       "minecraft:tick_world": {
         "never_despawn": true,
-        "radius": 2
+        "radius": 4
       },
-      "minecraft:npc": {},
       "minecraft:healable": {
         "force_use": true,
         "filters":{
@@ -843,7 +1019,8 @@
           {
             "filters":{
               "all_of": [
-                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"}
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"}
               ]
             },
             "run_command": {
@@ -853,6 +1030,23 @@
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but he respawned!\"}]}",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            },
+            "add": {
+              "component_groups": [ "terminator:spawn_terminator" ]
             }
           },
           {
@@ -901,6 +1095,26 @@
         },
         "add": {
           "component_groups": ["terminator:fix_attack_target"]
+        }
+      },
+			"terminator:disable_respawn_event": {
+				"run_command": {
+          "command": [ "tag @s add disablerespawnevent" ]
+        }
+			},
+      "terminator:activate_shield": {
+        "add": {
+          "component_groups": [ "terminator:shield" ]
+        }
+      },
+      "terminator:deactivate_shield": {
+        "remove": {
+          "component_groups": [ "terminator:shield" ]
+        }
+      },
+      "terminator:respond_shield_sensor": {
+        "run_command": {
+          "command": [ "say Detected hit" ]
         }
       }
     }

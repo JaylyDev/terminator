@@ -1,3 +1,7 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
   "format_version": "1.10.0",
   "animation_controllers": {
@@ -625,6 +629,34 @@
           "on_entry": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.north\"}]}", // logging
             "/execute @s ~ ~ ~ fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace air"
+          ]
+        }
+      }
+    },
+    "controller.animation.terminator.shield": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state":{ "transitions": [{"detect_state": "(1.0)"}]},
+        "detect_state":{
+          "transitions": [
+            {"running_state": "q.get_equipped_item_name('off_hand') == 'shield'"},
+            {"default_state": "(1.0)"}
+          ],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.shield/detect_state\"}]}" // logging
+          ]
+        },
+        "running_state": {
+          "transitions": [
+            {"default_state": "q.get_equipped_item_name('off_hand') != 'shield'"}
+          ],
+          "on_entry": [
+            "/say activated shield",
+            "@s terminator:activate_shield"
+          ],
+          "on_exit": [
+            "/say deactivated shield",
+            "@s terminator:deactivate_shield"
           ]
         }
       }

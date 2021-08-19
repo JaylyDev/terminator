@@ -1,3 +1,7 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
   "namespace": "npc_interact",
 
@@ -1428,7 +1432,7 @@
   },
 
   "npc_screen@common.base_screen": {
-    "ignored": true,
+    "ignored": false,
     "type": "screen",
     "$screen_content": "npc_interact.npc_screen_contents",
     "button_mappings": [
