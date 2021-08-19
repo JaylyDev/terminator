@@ -9,22 +9,25 @@ The first beta version for the 1.3 combat update.
 ## Changelog
 - Terminator is now able to use the shield
 
- The shield only disables damage from various causes for now
+   The shield only disables damage from various causes for now
 
- To see if the shield is working:
+   To see if the shield is working:
  
- - Equipping and unequipping will display a message in the chat. 
+   - Equipping and unequipping will display a message in the chat. 
  
-   Eg: `[Terminator]  activated shield` and `[Terminator]  deactivated shield`
+     Eg: `[Terminator]  activated shield` and `[Terminator]  deactivated shield`
  
- - A text message will appear in chat if the shield reduces damage from the terminator
+   - A text message will appear in chat if the shield reduces damage from the terminator
  
-   Eg: `[Terminator]  Detected hit`
+     Eg: `[Terminator]  Detected hit`
    
 - Decreased respawn explode power by 320%
 - Fixed terminator's pathfind when its' health is low
 - Terminator now ticks 4 chunks around them from 2 chunks
 - Modified terminator's respawn event
+
+  Terminator respawn event only appears once, after that terminator will instant respawn
+
 - Modified `/function terminator` and sub command of `/function terminator/kit/`
   
   Spawning a terminator via those commands will also spawn with a nametag
