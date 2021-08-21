@@ -345,6 +345,39 @@
             }
           ]
         }
+      },
+      "terminator:shield_roar": {
+        "minecraft:behavior.knockback_roar": {
+          "duration": 0.1,
+          "attack_time": 0.1,
+          "cooldown_time": 0.0,
+          "knockback_strength": 1,
+          "knockback_damage": 0,
+          "knockback_range": 6,
+          "knockback_filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "!=",
+                "value": "entity:terminator"
+              }
+            ]
+          },
+          "damage_filters":{},
+          "on_roar_end": {
+            "event": "terminator:remove_shield_roar",
+            "target": "self"
+          }
+        },
+        "minecraft:mark_variant": {
+          "value": 1
+        }
+      },
+      "terminator:set_default_varient":{
+        "minecraft:mark_variant": {
+          "value": 0
+        }
       }
     },
     "components": { // Terminator Components
@@ -932,7 +965,10 @@
               ]
             }
           }
-        ]
+        ],
+        "add": {
+          "component_groups": ["terminator:set_default_varient"]
+        }
       },
       "minecraft:gain_bad_omen": {
         "add": {
@@ -1114,7 +1150,21 @@
       },
       "terminator:respond_shield_sensor": {
         "run_command": {
-          "command": [ "say Detected hit" ]
+          "command": [
+            "say Enabled shield",
+            "playsound item.shield.block @a ~~~"
+          ]
+        },
+        "add": {
+          "component_groups": ["terminator:shield_roar"]
+        }
+      },
+      "terminator:remove_shield_roar": {
+        "add": {
+          "component_groups": ["terminator:set_default_varient"]
+        },
+        "remove": {
+          "component_groups": ["terminator:shield_roar"]
         }
       }
     }

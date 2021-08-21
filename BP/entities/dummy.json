@@ -39,7 +39,8 @@
                 "value": "entity:dummy"
               }
             ]
-          }
+          },
+					"damage_filters":{}
         }
 			},
       "dummy:force_spawn_entity": {
@@ -58,7 +59,7 @@
 				"minecraft:explode": {
           "fuse_length": -1,
           "fuse_lit": true,
-          "power": 160,
+          "power": 160, // default is 160
           "causes_fire": true,
           "destroy_affected_by_griefing": false,
 					"breaks_blocks": true,

@@ -40,12 +40,6 @@ def restart_minecraft():
         except: pass
         while duration <= 5:
             duration = default_timer() - start
-    #        if 2.1 > duration >= 2:
-    #            try: run("explorer.exe shell:appsFolder\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App")
-    #            except Exception as Error: print(Error)
-    #        elif 3.7 > duration >= 3.5:
-    #            try: run("taskkill /f /IM Minecraft.Windows.exe")
-     #           except Exception as Error: print(Error)
             if duration >= 4.9:
                 try: run("explorer.exe shell:appsFolder\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App")
                 except Exception as Error: print(Error)

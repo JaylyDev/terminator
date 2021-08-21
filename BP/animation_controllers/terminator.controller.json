@@ -636,26 +636,31 @@
     "controller.animation.terminator.shield": {
       "initial_state": "default_state",
       "states": {
-        "default_state":{ "transitions": [{"detect_state": "(1.0)"}]},
-        "detect_state":{
+        "default_state":{
           "transitions": [
             {"running_state": "q.get_equipped_item_name('off_hand') == 'shield'"},
             {"default_state": "(1.0)"}
           ],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.shield/detect_state\"}]}" // logging
-          ]
+          "on_entry": [ "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.shield/detect_state\"}]}" ],
+          "on_exit": [ "v.shield_cooldown = 5; v.shield_time = q.time_stamp;" ]
         },
         "running_state": {
           "transitions": [
-            {"default_state": "q.get_equipped_item_name('off_hand') != 'shield'"}
+            {"default_state": "q.get_equipped_item_name('off_hand') != 'shield'"},
+            {"activate_shield": "q.get_equipped_item_name('off_hand') == 'shield' && variable.attack_time == 0.0"}
+          ]
+        },
+        "activate_shield": {
+          "transitions": [
+            {"default_state": "q.get_equipped_item_name('off_hand') != 'shield'"},
+            {"deactivate_shield": "(q.get_equipped_item_name('off_hand') == 'shield' && variable.attack_time > 0.0) || (q.mark_variant == 1 && q.get_equipped_item_name('off_hand') == 'shield')"}
           ],
+          "on_entry": ["@s terminator:activate_shield"]
+        },
+        "deactivate_shield": {
+          "transitions": [{"default_state": "(q.time_stamp - v.shield_time) > v.shield_cooldown"}],
           "on_entry": [
-            "/say activated shield",
-            "@s terminator:activate_shield"
-          ],
-          "on_exit": [
-            "/say deactivated shield",
+            "v.shield_cooldown = 5; v.shield_time = q.time_stamp;",
             "@s terminator:deactivate_shield"
           ]
         }
