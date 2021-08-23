@@ -6,6 +6,7 @@ Latest Add-On Version: **Beta 1.2.5**
 ## Downloads
 Version | Link | Changelog
 ----|----|----|
+Patch 1.2.10 | [Download](https://file-link.net/329333/mcrobot) | [Patch 1.2.10](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.10.md)
 Beta 1.2.5 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/878604848990388284/terminator_v1.2.5.30.mcaddon) | Shield modification
 Beta 1.2.4 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/877869489218260992/terminator_v1.2.4.mcaddon) | [Beta 1.2.4](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.4.md)
 Beta 1.2.3 | <!--[Download](https://cdn.discordapp.com/attachments/734424410668138576/877363521472577556/terminator_v1.2.3.mcaddon)--> | Critical bug fixes
