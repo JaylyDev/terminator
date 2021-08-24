@@ -40,7 +40,16 @@
               }
             ]
           },
-					"damage_filters":{}
+					"damage_filters":{
+						"all_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"operator": "==",
+								"value": "unset"
+							}
+						]
+					}
         }
 			},
       "dummy:force_spawn_entity": {
@@ -84,10 +93,10 @@
 							{"test": "is_family", "subject": "other", "operator":"equals", "value": "terminator"}
 						]
 					},
-					"minimum_count": 0,
+					"minimum_count": 1,
 					"maximum_count": 32767,
 					"relative_range": true,
-					"require_all": true,
+					"require_all": false,
 					"sensor_range": 5,
 					"event": "dummy:request_despawn"
 				}
