@@ -13,10 +13,7 @@
       "scripts": {
         "animate": [
           "terminator.spawns",
-          "terminator.suffocation_x",
-          "terminator.suffocation_y",
           "terminator.sitting",
-          "terminator.bridging",
           "terminator.shield"
         ]
       },
@@ -31,6 +28,65 @@
       }
     },
     "component_groups": {
+      "in_powder_snow": {
+        "minecraft:is_shaking": {},
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "test": "in_block",
+                "subject": "self",
+                "operator": "!=",
+                "value": "minecraft:powder_snow"
+              },
+              "event": "got_out_of_powder_snow"
+            }
+          ]
+        }
+      },
+      "got_out_of_powder_snow_environment_sensor": {
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "test": "is_underwater",
+                "subject": "self",
+                "operator": "==",
+                "value": true
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "test": "has_ranged_weapon",
+                "subject": "self",
+                "operator": "==",
+                "value": false
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  }
+                ]
+              },
+              "event": "minecraft:ranged_mode"
+            }
+          ]
+        }
+      },
       "minecraft:add_bad_omen": {
         "minecraft:spell_effects": {
           "add_effects": [
@@ -363,6 +419,90 @@
         "minecraft:mark_variant": {
           "value": 0
         }
+      },
+      "minecraft:ranged_attack": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 1,
+          "attack_interval_min": 1.0,
+          "attack_interval_max": 3.0,
+          "attack_radius": 15.0
+        },
+        "minecraft:shooter": {
+          "def": "minecraft:arrow"
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "test": "is_underwater",
+                "subject": "self",
+                "operator": "==",
+                "value": true
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "test": "has_ranged_weapon",
+                "subject": "self",
+                "operator": "==",
+                "value": false
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "test": "in_block",
+                "subject": "self",
+                "operator": "==",
+                "value": "minecraft:powder_snow"
+              },
+              "event": "got_in_powder_snow"
+            }
+          ]
+        }
+      },
+      "minecraft:melee_attack": {
+        "minecraft:behavior.melee_attack": {
+          "priority": 1,
+          "track_target": true,
+          "speed_multiplier": 1.25
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  }
+                ]
+              },
+              "event": "minecraft:ranged_mode"
+            },
+            {
+              "filters": {
+                "test": "in_block",
+                "subject": "self",
+                "operator": "==",
+                "value": "minecraft:powder_snow"
+              },
+              "event": "got_in_powder_snow"
+            }
+          ]
+        }
       }
     },
     "components": { // Terminator Components
@@ -403,7 +543,22 @@
         "can_open_doors": true,
         "can_open_iron_doors": true,
         "can_swim": true,
-        "can_path_over_water": true
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "can_path_over_lava": true,
+        "avoid_portals": false,
+        "avoid_sun": false,
+        "avoid_water": false,
+        "can_walk_in_lava": false,
+        "can_breach": false,
+        "can_jump": true,
+        "can_path_from_air": false,
+        "can_sink": true,
+        "blocks_to_avoid": [
+          "minecraft:powder_snow",
+          "minecraft:web",
+          "minecraft:magma"
+        ]
       },
       "minecraft:follow_range": {
         "value": 1024,
@@ -445,9 +600,6 @@
         "suffocate_time": 0,
         "breathes_air": true,
         "breathes_water": true
-      },
-      "minecraft:attack": {
-        "damage": 3
       },
       "minecraft:shareables": {
         "items": [
@@ -634,11 +786,21 @@
           {
             "filters": {
               "all_of":[
+                { "test": "is_family", "subject": "other", "value": "wolf"},
+                { "test": "has_component", "subject": "other", "operator": "==", "value": "minecraft:is_tamed"},
+                {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+              ]
+            },
+            "max_dist": 16,
+            "must_see": true
+          },
+          {
+            "filters": {
+              "all_of":[
                 {
                   "any_of": [
                     { "test": "is_family", "subject": "other", "value": "snowgolem" },
                     { "test": "is_family", "subject": "other", "value": "parrot_tame"},
-                    { "test": "is_family", "subject": "other", "value": "wolf"},
                     { "test": "is_family", "subject": "other", "value": "axolotl"},
                     { "test": "is_family", "subject": "other", "value": "piglin"}
                   ]
@@ -679,9 +841,6 @@
           }
         ]
       },
-      "minecraft:behavior.melee_attack": {
-        "priority": 1
-      },
       "minecraft:behavior.pickup_items": {
         "priority": 2,
         "max_dist": 16,
@@ -700,6 +859,22 @@
         "search_height": 2,
         "goal_radius": 1.14,
         "interval": 20
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "priority": 5,
+        "entity_types": [
+          {
+            "filters":{
+              "any_of": [
+                {"test": "is_family", "subject": "other", "operator": "==", "value": "tnt"},
+                {"test": "is_family", "subject": "other", "operator": "==", "value": "creeper"}
+              ]
+            },
+            "max_dist": 8,
+            "walk_speed_multiplier": 1.0,
+            "sprint_speed_multiplier": 1.25
+          }
+        ]
       },
 
       // End of terminator's priorities
@@ -933,6 +1108,33 @@
               "value": "minecraft:behavior.nearest_attackable_target"
             },
             "event": "terminator:remove_escape"
+          },
+          {
+            "filters": {
+              "test": "is_underwater",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "event": "minecraft:melee_mode"
+          },
+          {
+            "filters": {
+              "test": "has_ranged_weapon",
+              "subject": "self",
+              "operator": "==",
+              "value": false
+            },
+            "event": "minecraft:melee_mode"
+          },
+          {
+            "filters": {
+              "test": "in_block",
+              "subject": "self",
+              "operator": "==",
+              "value": "minecraft:powder_snow"
+            },
+            "event": "got_in_powder_snow"
           }
         ]
       }
@@ -952,7 +1154,10 @@
           }
         ],
         "add": {
-          "component_groups": ["terminator:set_default_varient"]
+          "component_groups": [
+            "terminator:set_default_varient",
+            "minecraft:melee_attack"
+          ]
         }
       },
       "minecraft:gain_bad_omen": {
@@ -1136,7 +1341,6 @@
       "terminator:respond_shield_sensor": {
         "run_command": {
           "command": [
-            "say Enabled shield",
             "playsound item.shield.block @a ~~~"
           ]
         },
@@ -1150,6 +1354,51 @@
         },
         "remove": {
           "component_groups": ["shield:on_use"]
+        }
+      },
+      "got_in_powder_snow": {
+        "add": {
+          "component_groups": [
+            "in_powder_snow"
+          ]
+        }
+      },
+      "got_out_of_powder_snow": {
+        "remove": {
+          "component_groups": [
+            "in_powder_snow"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "got_out_of_powder_snow_environment_sensor"
+          ]
+        }
+      },
+      "minecraft:melee_mode": {
+        "remove": {
+          "component_groups": [
+            "minecraft:ranged_attack",
+            "got_out_of_powder_snow_environment_sensor"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:melee_attack"
+          ]
+        }
+      },
+      "minecraft:ranged_mode": {
+        "remove": {
+          "component_groups": [
+            "minecraft:melee_attack",
+            "got_out_of_powder_snow_environment_sensor"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:ranged_attack"
+          ]
         }
       }
     }
