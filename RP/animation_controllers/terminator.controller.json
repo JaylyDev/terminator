@@ -1,0 +1,44 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+/*
+    "controller.animation.terminator.bow_pulling": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            { "bow_pulling_0": "(q.time_stamp - v.bow_pulling_time) > v.bow_pulling_cooldown" }
+          ],
+          "on_entry": [ "v.bow_pulling_time = q.time_stamp; v.bow_pulling_cooldown = 0.25;" ],
+          "on_exit": [ "array.bow_geo_frames = 0; array.bow_texture_frames = 0;" ]
+        },
+        "bow_pulling_0": {
+          "transitions": [
+            { "bow_pulling_1": "(q.time_stamp - v.bow_pulling_time) > v.bow_pulling_cooldown" }
+          ],
+          "on_entry": [ "v.bow_pulling_time = q.time_stamp; v.bow_pulling_cooldown = 0.25;" ],
+          "on_exit": [ "array.bow_geo_frames = 1; array.bow_texture_frames = 1;" ]
+        },
+        "bow_pulling_1": {
+          "transitions": [
+            { "bow_pulling_2": "(q.time_stamp - v.bow_pulling_time) > v.bow_pulling_cooldown" }
+          ],
+          "on_entry": [ "v.bow_pulling_time = q.time_stamp; v.bow_pulling_cooldown = 0.25;" ],
+          "on_exit": [ "array.bow_geo_frames = 2; array.bow_texture_frames = 2;" ]
+        },
+        "bow_pulling_2": {
+          "transitions": [
+            { "default_state": "(1.0)" }
+          ],
+          "on_entry": [ "v.bow_pulling_time = q.time_stamp; v.bow_pulling_cooldown = 0.25;" ],
+          "on_exit": [ "array.bow_geo_frames = 0; array.bow_texture_frames = 0;" ]
+        }
+      }
+    }
+*/
+  }
+}

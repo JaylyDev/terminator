@@ -26,12 +26,12 @@
         "scalez": "variable.entity_scale",
         "initialize": ["variable.hand_bob = 0.0;"],
         "pre_animation": [
-         "variable.entity_scale = 0.975;",
-         "variable.terminator_variant = q.variant;",
-         "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
-         "variable.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / variable.gliding_speed_value) * 57.3;",
-         "variable.hand_bob = q.life_time < 0.01 ? 0.0 : variable.hand_bob + ((q.is_on_ground && q.is_alive ? math.clamp(math.sqrt(math.pow(q.position_delta(0), 2.0) + math.pow(q.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;"
-       ],
+          "variable.entity_scale = 0.975;",
+          "variable.terminator_variant = q.variant;",
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+          "variable.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.hand_bob = q.life_time < 0.01 ? 0.0 : variable.hand_bob + ((q.is_on_ground && q.is_alive ? math.clamp(math.sqrt(math.pow(q.position_delta(0), 2.0) + math.pow(q.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;"
+        ],
         "animate": [
           "look_at_target",
           "holding",
@@ -50,26 +50,30 @@
           { "sneaking": "q.is_sneaking > 0.0" },
           { "sleeping": "q.is_sleeping > 0.0" },
           { "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )" },
-          { "swimming": "variable.swim_amount > 0.0 && q.is_in_water" }
+          { "swimming": "variable.swim_amount > 0.0 && q.is_in_water" },
+          { "third_person_bow_equipped" : "query.get_equipped_item_name == 'bow' && q.has_target" },
+          { "bow_and_arrow" : "query.get_equipped_item_name == 'bow' && q.has_target" }
         ]
       },
       "animations": {
-         "look_at_target": "animation.terminator.look_at_target",
-         "holding": "animation.humanoid.holding",
-         "bob": "animation.player.bob",
-         "move.arms": "animation.player.move.arms",
-         "move.legs": "animation.player.move.legs",
-         "riding.arms": "animation.player.riding.arms",
-         "riding.legs": "animation.player.riding.legs",
-         "sitting": "animation.terminator.sitting",
-         "attack.positions": "animation.player.attack.positions",
-         "attack.rotations": "animation.player.attack.rotations",
-         "sneaking": "animation.player.sneaking",
-         "sleeping": "animation.player.sleeping",
-         "use_item_progress": "animation.humanoid.use_item_progress",
-         "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
-         "swimming": "animation.player.swim", // "animation.zombie.swimming"
-         "swimming.legs": "animation.player.swim.legs"
+        "look_at_target": "animation.terminator.look_at_target",
+        "holding": "animation.humanoid.holding",
+        "bob": "animation.player.bob",
+        "move.arms": "animation.player.move.arms",
+        "move.legs": "animation.player.move.legs",
+        "riding.arms": "animation.player.riding.arms",
+        "riding.legs": "animation.player.riding.legs",
+        "sitting": "animation.terminator.sitting",
+        "attack.positions": "animation.player.attack.positions",
+        "attack.rotations": "animation.player.attack.rotations",
+        "sneaking": "animation.player.sneaking",
+        "sleeping": "animation.player.sleeping",
+        "use_item_progress": "animation.humanoid.use_item_progress",
+        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+        "swimming": "animation.player.swim", // "animation.zombie.swimming"
+        "swimming.legs": "animation.player.swim.legs",
+        "third_person_bow_equipped": "animation.player.bow_equipped",
+        "bow_and_arrow": "animation.humanoid.bow_and_arrow"
       },
       "render_controllers": [ "controller.render.terminator" ],
       "enable_attachables": true

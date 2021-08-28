@@ -152,14 +152,23 @@
             }
           ]
         },
+        "minecraft:behavior.melee_attack": {
+          "priority": 1,
+          "track_target": true,
+          "speed_multiplier": 1.25
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
         "minecraft:entity_sensor": {
           "event_filters": {
             "all_of": [
-              { "test": "is_family", "subject": "other", "value": "dummy" }
+              { "test": "is_family", "subject": "other", "value": "dummy" },
+              { "test": "is_mark_variant", "subject": "other", "value": 2 }
             ]
           },
 					"minimum_count": 1,
-					"maximum_count": 1,
+					"maximum_count": 32767,
 					"relative_range": true,
 					"require_all": false,
 					"sensor_range": 5,
@@ -423,8 +432,8 @@
       "minecraft:ranged_attack": {
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
-          "attack_interval_min": 1.0,
-          "attack_interval_max": 3.0,
+          "attack_interval_min": 1.0, // default is 1.0
+          "attack_interval_max": 3.0, // default is 3.0
           "attack_radius": 15.0
         },
         "minecraft:shooter": {
@@ -1308,6 +1317,12 @@
         "add": {
           "component_groups": ["terminator:find_path"]
         },
+        "remove": {
+          "component_groups": [
+            "minecraft:ranged_attack",
+            "minecraft:melee_attack"
+          ]
+        },
         "run_command": {
           "command": [
             "summon entity:dummy ~ ~ ~",
@@ -1320,7 +1335,10 @@
           "component_groups": ["terminator:find_path"]
         },
         "add": {
-          "component_groups": ["terminator:fix_attack_target"]
+          "component_groups": [
+            "terminator:fix_attack_target",
+            "minecraft:melee_attack"
+          ]
         }
       },
 			"terminator:disable_respawn_event": {
@@ -1358,21 +1376,15 @@
       },
       "got_in_powder_snow": {
         "add": {
-          "component_groups": [
-            "in_powder_snow"
-          ]
+          "component_groups": [ "in_powder_snow" ]
         }
       },
       "got_out_of_powder_snow": {
         "remove": {
-          "component_groups": [
-            "in_powder_snow"
-          ]
+          "component_groups": [ "in_powder_snow" ]
         },
         "add": {
-          "component_groups": [
-            "got_out_of_powder_snow_environment_sensor"
-          ]
+          "component_groups": [ "got_out_of_powder_snow_environment_sensor" ]
         }
       },
       "minecraft:melee_mode": {
@@ -1383,9 +1395,7 @@
           ]
         },
         "add": {
-          "component_groups": [
-            "minecraft:melee_attack"
-          ]
+          "component_groups": [ "minecraft:melee_attack" ]
         }
       },
       "minecraft:ranged_mode": {
@@ -1396,9 +1406,7 @@
           ]
         },
         "add": {
-          "component_groups": [
-            "minecraft:ranged_attack"
-          ]
+          "component_groups": [ "minecraft:ranged_attack" ]
         }
       }
     }

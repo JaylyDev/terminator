@@ -80,8 +80,8 @@ while requested == False:
             appname = "Minecraft.Windows.exe"
             requested = True
         elif location == "server":
-            toDirectory_rp = "D:\\bedrock-server-1.17.11.01\\worlds\\Terminator\\resource_packs\\Terminator"
-            toDirectory_bp = "D:\\bedrock-server-1.17.11.01\\worlds\\Terminator\\behavior_packs\\Terminator"
+            toDirectory_rp = "D:\\Bedrock Servers\\Bedrock Testing\\worlds\\Terminator\\resource_packs\\Terminator"
+            toDirectory_bp = "D:\\Bedrock Servers\\Bedrock Testing\\worlds\\Terminator\\behavior_packs\\Terminator"
             appid = ""
             appname = ""
             requested = True
