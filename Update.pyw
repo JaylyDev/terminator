@@ -87,10 +87,9 @@ while requested == False:
             requested = True
     except: pass
 
-run("rd " + toDirectory_rp + " /s /q")
-run("rd " + toDirectory_bp + " /s /q")
+run("rd \"" + toDirectory_rp + "\" /s /q")
+run("rd \"" + toDirectory_bp + "\" /s /q")
 run("md \"" + toDirectory_rp + "\"")
 run("md \"" + toDirectory_bp + "\"")
 jt_dircopy_exe(fromDirectory_rp, toDirectory_rp, logEnabled)
 jt_dircopy_exe(fromDirectory_bp, toDirectory_bp, logEnabled)
-restart_minecraft(appid, appname)

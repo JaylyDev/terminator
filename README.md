@@ -7,6 +7,8 @@
 
 **Beta**: Beta 1.2.15.37
 
+**Development**: Beta 1.2.16.121
+
 -----
 ## Description
 Introducing Terminator to your Minecraft world! This is a powerful mob that has the capability to follow you, destroy blocks when there are blocks stopping the terminator from reaching the target, build blocks when the terminator thinks it's necessary, pick up weapons such as swords to kill you or armors such as chestplates to protect itself from being damaged, and attack you using their hand or weapons.

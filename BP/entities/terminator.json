@@ -82,7 +82,7 @@
                   }
                 ]
               },
-              "event": "minecraft:ranged_mode"
+              "event": "minecraft:bow_ranged_mode"
             }
           ]
         }
@@ -175,7 +175,7 @@
           "event": "terminator:remove_escape"
         }
       },
-      "terminator:fix_attack_target":{ // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
+      "terminator:default_attack_target":{ // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 0,
           "must_see": false,
@@ -429,7 +429,7 @@
           "value": 0
         }
       },
-      "minecraft:ranged_attack": {
+      "minecraft:bow.ranged_attack": {
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
           "attack_interval_min": 1.0, // default is 1.0
@@ -458,6 +458,14 @@
                 "value": false
               },
               "event": "minecraft:melee_mode"
+            },
+            {
+              "filters":{
+                "test": "has_equipment",
+                "subject": "self",
+                "value": "minecraft:trident"
+              },
+              "event": "minecraft:add_trident_mode_switcher"
             },
             {
               "filters": {
@@ -499,7 +507,7 @@
                   }
                 ]
               },
-              "event": "minecraft:ranged_mode"
+              "event": "minecraft:bow_ranged_mode"
             },
             {
               "filters": {
@@ -509,8 +517,94 @@
                 "value": "minecraft:powder_snow"
               },
               "event": "got_in_powder_snow"
+            },
+            {
+              "filters":{
+                "test": "has_equipment",
+                "subject": "self",
+                "operator": "==",
+                "value": "minecraft:trident"
+              },
+              "event": "minecraft:add_trident_mode_switcher"
             }
           ]
+        }
+      },
+      "minecraft:trident.mode_switcher": {
+        "minecraft:target_nearby_sensor": {
+          "inside_range": 3.0,
+          "outside_range": 5.0,
+          "on_inside_range": {
+            "event": "minecraft:melee_mode",
+            "target": "self"
+          },
+          "on_outside_range": {
+            "event": "minecraft:trident_ranged_mode",
+            "target": "self"
+          }
+        },
+        "minecraft:equipment": {
+          "table": "loot_tables/entities/drowned_ranged_equipment.json",
+          "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.offhand",
+              "drop_chance": 1.0
+            }
+          ]
+        },
+        "minecraft:environment_sensor": {
+          "triggers":[
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:trident"
+                  }
+                ]
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:trident"
+                  }
+                ]
+              },
+              "event": "minecraft:bow_ranged_mode"
+            }
+          ]
+        }
+      },
+
+      "minecraft:trident.ranged_attack": {
+        "minecraft:shooter": {
+          "def": "minecraft:thrown_trident"
+        },
+        "minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "attack_interval_min": 1.0,
+          "attack_interval_max": 3.0,
+          "attack_radius": 10.0
         }
       }
     },
@@ -618,6 +712,8 @@
           { "item": "minecraft:stone_sword", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
           { "item": "minecraft:golden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
           { "item": "minecraft:wooden_sword", "want_amount": 64, "surplus_amount": 64, "priority": 5, "stored_in_inventory": true },
+          { "item": "minecraft:trident", "want_amount": 64, "surplus_amount": 64, "priority": 6, "stored_in_inventory": true },
+          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 7, "stored_in_inventory": true },
           { "item": "minecraft:netherite_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // Helmets
           { "item": "minecraft:diamond_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
           { "item": "minecraft:iron_helmet", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
@@ -692,9 +788,7 @@
         "preferred_path_blocks" : [
           { 
             "cost" : 0,
-            "blocks" : [ 
-              "grass_path"
-            ]
+            "blocks" : [ "grass_path" ]
           },
           { 
             "cost" : 1,
@@ -1120,19 +1214,29 @@
           },
           {
             "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:trident"
+                },
+                {
+                  "test": "has_component",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value": "minecraft:target_nearby_sensor"
+                }
+              ]
+            },
+            "event": "minecraft:trident_ranged_mode"
+          },
+          {
+            "filters": {
               "test": "is_underwater",
               "subject": "self",
               "operator": "==",
               "value": true
-            },
-            "event": "minecraft:melee_mode"
-          },
-          {
-            "filters": {
-              "test": "has_ranged_weapon",
-              "subject": "self",
-              "operator": "==",
-              "value": false
             },
             "event": "minecraft:melee_mode"
           },
@@ -1156,36 +1260,32 @@
             "weight": 380,
             "remove": {},
             "add": {
-              "component_groups": [
-                "minecraft:can_have_equipment"
-              ]
+              "component_groups": [ "minecraft:can_have_equipment" ]
             }
           }
         ],
         "add": {
           "component_groups": [
             "terminator:set_default_varient",
+            "terminator:default_attack_target",
             "minecraft:melee_attack"
           ]
+        },
+        "remove": {
+          "component_groups": [ "terminator:find_path" ]
         }
       },
       "minecraft:gain_bad_omen": {
         "add": {
-          "component_groups": [
-            "minecraft:add_bad_omen"
-          ]
+          "component_groups": [ "minecraft:add_bad_omen" ]
         }
       },
       "minecraft:clear_add_bad_omen": {
         "remove": {
-          "component_groups": [
-            "minecraft:add_bad_omen"
-          ]
+          "component_groups": [ "minecraft:add_bad_omen" ]
         },
         "add": {
-          "component_groups": [
-            "minecraft:clear_bad_omen_spell_effect"
-          ]
+          "component_groups": [ "minecraft:clear_bad_omen_spell_effect" ]
         }
       },
       "minecraft:trigger_raid": {
@@ -1315,11 +1415,11 @@
       },
       "terminator:escape": {
         "add": {
-          "component_groups": ["terminator:find_path"]
+          "component_groups": [ "terminator:find_path" ]
         },
         "remove": {
           "component_groups": [
-            "minecraft:ranged_attack",
+            "minecraft:bow.ranged_attack",
             "minecraft:melee_attack"
           ]
         },
@@ -1332,11 +1432,11 @@
       },
       "terminator:remove_escape": {
         "remove": {
-          "component_groups": ["terminator:find_path"]
+          "component_groups": [ "terminator:find_path" ]
         },
         "add": {
           "component_groups": [
-            "terminator:fix_attack_target",
+            "terminator:default_attack_target",
             "minecraft:melee_attack"
           ]
         }
@@ -1358,20 +1458,18 @@
       },
       "terminator:respond_shield_sensor": {
         "run_command": {
-          "command": [
-            "playsound item.shield.block @a ~~~"
-          ]
+          "command": [ "playsound item.shield.block @a ~~~" ]
         },
         "add": {
-          "component_groups": ["shield:on_use"]
+          "component_groups": [ "shield:on_use" ]
         }
       },
       "terminator:remove_shield_roar": {
         "add": {
-          "component_groups": ["terminator:set_default_varient"]
+          "component_groups": [ "terminator:set_default_varient" ]
         },
         "remove": {
-          "component_groups": ["shield:on_use"]
+          "component_groups": [ "shield:on_use" ]
         }
       },
       "got_in_powder_snow": {
@@ -1390,7 +1488,9 @@
       "minecraft:melee_mode": {
         "remove": {
           "component_groups": [
-            "minecraft:ranged_attack",
+            "minecraft:bow.ranged_attack",
+            "minecraft:trident.ranged_attack",
+            "minecraft:trident.mode_switcher",
             "got_out_of_powder_snow_environment_sensor"
           ]
         },
@@ -1398,15 +1498,37 @@
           "component_groups": [ "minecraft:melee_attack" ]
         }
       },
-      "minecraft:ranged_mode": {
+      "minecraft:bow_ranged_mode": {
         "remove": {
           "component_groups": [
             "minecraft:melee_attack",
+            "minecraft:trident.ranged_attack",
+            "minecraft:trident.mode_switcher",
             "got_out_of_powder_snow_environment_sensor"
           ]
         },
         "add": {
-          "component_groups": [ "minecraft:ranged_attack" ]
+          "component_groups": [ "minecraft:bow.ranged_attack" ]
+        }
+      },
+      "minecraft:trident_ranged_mode": {
+        "remove": {
+          "component_groups": [
+            "minecraft:melee_attack",
+            "minecraft:bow.ranged_attack",
+            "got_out_of_powder_snow_environment_sensor"
+          ]
+        },
+        "add": {
+          "component_groups": [ 
+            "minecraft:trident.ranged_attack",
+            "minecraft:trident.mode_switcher" 
+          ]
+        }
+      },
+      "minecraft:add_trident_mode_switcher": {
+        "add": {
+          "component_groups": [ "minecraft:trident.mode_switcher" ]
         }
       }
     }
