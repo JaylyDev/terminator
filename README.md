@@ -5,9 +5,9 @@
 ### Latest Version
 **Release**: Patch 1.2.10
 
-**Beta**: Beta 1.2.15.37
+**Beta**: Beta 1.2.16.135
 
-**Development**: Beta 1.2.16.121
+**Development**: Beta 1.2.17.0
 
 -----
 ## Description
@@ -33,11 +33,12 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/manhunt/blob/terminator
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
-Beta 1.2.15 | <!-- Unavailable --> | Bow modification
+Beta 1.2.16 | <!-- Unavailable --> | Trident Combat v1
+Beta 1.2.15 | <!-- Unavailable --> | Bow modification (v2)
 Beta 1.2.12 | <!-- Unavailable --> | [AI improvement](https://discord.com/channels/570758760373420033/734424410668138576/880333140005105694)
-Beta 1.2.11 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/879602612373180416/terminator_v1.2.11.28.mcaddon)
+Beta 1.2.11 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/879602612373180416/terminator_v1.2.11.28.mcaddon) | Shield Combat v3
 Patch 1.2.10 | <!-- Unavailable --> | [Patch 1.2.10](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.10.md)
-Beta 1.2.5 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/878604848990388284/terminator_v1.2.5.30.mcaddon) | Shield modification
+Beta 1.2.5 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/878604848990388284/terminator_v1.2.5.30.mcaddon) | Shield modification (v2)
 Beta 1.2.4 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/877869489218260992/terminator_v1.2.4.mcaddon) | [Beta 1.2.4](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.4.md)
 Beta 1.2.3 | <!-- Unavailable --> | Critical bug fixes
 Beta 1.2.2 | <!-- Unavailable --> | Critical bug fixes
