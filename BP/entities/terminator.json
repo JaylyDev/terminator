@@ -13,21 +13,18 @@
       "scripts": {
         "animate": [
           "terminator.spawns",
-          "terminator.destroyblock",
-          "terminator.suffocation_x",
-          "terminator.suffocation_y",
           "terminator.sitting",
-          "terminator.shield"
+          "terminator.shield",
+          "terminator.build.forward",
+          "terminator.build.vertical"
         ]
       },
       "animations": {
         "terminator.spawns": "controller.animation.terminator.spawns",
-        "terminator.destroyblock": "controller.animation.terminator.destroyblock",
-        "terminator.suffocation_x": "controller.animation.terminator.suffocation_x",
-        "terminator.suffocation_y": "controller.animation.terminator.suffocation_y",
         "terminator.sitting": "controller.animation.terminator.sitting",
-        "terminator.bridging": "controller.animation.terminator.bridging",
-        "terminator.shield": "controller.animation.terminator.shield"
+        "terminator.shield": "controller.animation.terminator.shield",
+        "terminator.build.forward": "controller.animation.terminator.build.forward",
+        "terminator.build.vertical": "controller.animation.terminator.build.vertical"
       }
     },
     "component_groups": {
@@ -202,7 +199,9 @@
           "event": "terminator:remove_escape"
         }
       },
-      "terminator:fix_attack_target":{ // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
+      "terminator:default_attack_target":{ 
+        // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
+        // starting from v1.2.17.4, spawning entity will include this component group to fix critical issues
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 0,
           "must_see": false,
@@ -224,11 +223,21 @@
             {
               "filters": {
                 "all_of":[
+                  { "test": "is_family", "subject": "other", "value": "wolf"},
+                  { "test": "has_component", "subject": "other", "operator": "==", "value": "minecraft:is_tamed"},
+                  {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
+                ]
+              },
+              "max_dist": 16,
+              "must_see": true
+            },
+            {
+              "filters": {
+                "all_of":[
                   {
                     "any_of": [
                       { "test": "is_family", "subject": "other", "value": "snowgolem" },
                       { "test": "is_family", "subject": "other", "value": "parrot_tame"},
-                      { "test": "is_family", "subject": "other", "value": "wolf"},
                       { "test": "is_family", "subject": "other", "value": "axolotl"},
                       { "test": "is_family", "subject": "other", "value": "piglin"}
                     ]
@@ -395,7 +404,7 @@
             },
             {
               "on_damage": {
-                "event": "terminator:suffocation"
+                "event": ""
               },
               "cause": "suffocation",
               "deals_damage": true
@@ -410,7 +419,7 @@
                     "value": "suffocation"
                   }
                 ],
-                "event": "terminator:remove_suffocation"
+                "event": ""
               },
               "cause": "all",
               "deals_damage": true
@@ -847,7 +856,7 @@
                   "value": "suffocation"
                 }
               ],
-              "event": "terminator:suffocation"
+              "event": ""
             },
             "deals_damage": true
           },
@@ -861,7 +870,7 @@
                   "value": "suffocation"
                 }
               ],
-              "event": "terminator:remove_suffocation"
+              "event": ""
             },
             "deals_damage": true
           }
@@ -955,82 +964,6 @@
 
       // Terminator priorities
 
-      "minecraft:behavior.nearest_attackable_target": {
-        "priority": 0,
-        "must_see": false,
-        "reselect_targets": true,
-        "within_radius": 1024,
-        "must_see_forget_duration": 32767.0,
-        "target_search_height": -1,
-        "entity_types": [
-          { 
-            "filters": {
-              "all_of": [
-                { "test": "is_family", "subject": "other", "value": "player" },
-                { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
-              ]
-            },
-            "max_dist": 1024,
-            "must_see": false
-          },
-          {
-            "filters": {
-              "all_of":[
-                { "test": "is_family", "subject": "other", "value": "wolf"},
-                { "test": "has_component", "subject": "other", "operator": "==", "value": "minecraft:is_tamed"},
-                {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
-              ]
-            },
-            "max_dist": 16,
-            "must_see": true
-          },
-          {
-            "filters": {
-              "all_of":[
-                {
-                  "any_of": [
-                    { "test": "is_family", "subject": "other", "value": "snowgolem" },
-                    { "test": "is_family", "subject": "other", "value": "parrot_tame"},
-                    { "test": "is_family", "subject": "other", "value": "axolotl"},
-                    { "test": "is_family", "subject": "other", "value": "piglin"}
-                  ]
-                },
-                {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
-              ]
-            },
-            "max_dist": 16,
-            "must_see": true
-          },
-          {
-            "filters": {
-              "all_of": [
-                { "test": "is_family", "subject": "other", "value": "irongolem" },
-                {"test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"},
-                { "test": "has_equipment", "domain": "head", "operator": "==", "value": "netherite_helmet"},
-                { "test": "has_equipment", "domain": "feet", "operator": "==", "value": "netherite_boots"},
-                {
-                  "any_of": [
-                    { "test": "has_equipment", "domain": "armor", "operator": "==", "value": "netherite_chestplate"},
-                    { "test": "has_equipment", "domain": "leg", "operator": "==", "value": "netherite_leggings"}
-                  ]
-                },
-                {
-                  "any_of": [
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "netherite_sword"},
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "diamond_sword"},
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "golden_sword"},
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "iron_sword"},
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "stone_sword"},
-                    { "test": "has_equipment", "domain": "hand", "operator": "==", "value": "wooden_sword"}
-                  ]
-                }
-              ]
-            },
-            "max_dist": 24,
-            "must_see": true
-          }
-        ]
-      },
       "minecraft:behavior.pickup_items": {
         "priority": 2,
         "max_dist": 16,
@@ -1261,7 +1194,7 @@
                 {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
               ]
             },
-            "event": "terminator:remove_bridging_ability"
+            "event": "terminator:remove_buildup_ability"
           },
           {
             "filters": {
@@ -1270,7 +1203,7 @@
                 {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
               ]
             },
-            "event": "terminator:add_bridging_ability"
+            "event": "terminator:add_buildup_ability"
           },
           {
             "filters": { 
@@ -1280,15 +1213,6 @@
               ]
             },
             "event": "terminator:break_blocks"
-          },
-          {
-            "filters": {
-              "any_of": [
-                {"test": "has_target", "subject": "self", "value": true},
-                {"test": "has_target", "subject": "player", "operator": "equals", "value": true }
-              ]
-            },
-            "event": "terminator:suffocation"
           },
           {
             "filters":{
@@ -1366,6 +1290,7 @@
         "add": {
           "component_groups": [
             "terminator:set_default_varient",
+            "terminator:default_attack_target",
             "minecraft:melee_attack"
           ]
         }
@@ -1418,29 +1343,17 @@
                 { "test": "is_moving", "subject": "self", "operator": "equals", "value": false }
               ]
             },
-            "add": {"component_groups": [ "terminator:break_blocks" ]},
-            "run_command": {
-              "command": [
-                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"}, {\"selector\": \"@s\"}, {\"text\": \"] terminator:break_blocks/add\"}]}", // logging
-                "tag @s add terminator_suffocation_y"
-              ]
-            }
+            "add": {"component_groups": [ "terminator:break_blocks" ]}
           },
           {
             "filters": {
               "all_of": [
                 { "test": "has_target", "subject": "player", "operator": "equals", "value": true },
-                { "test": "distance_to_nearest_player", "operator": "<=", "value": 1},
+                { "test": "distance_to_nearest_player", "operator": "<=", "value": 3 },
                 { "test": "has_damage", "subject": "player", "operator": "equals", "value": "attack" }
               ]
             },
-            "remove": {"component_groups": [ "terminator:break_blocks" ]},
-            "run_command": {
-              "command": [
-                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"}, {\"selector\": \"@s\"}, {\"text\": \"] terminator:break_blocks/remove\"}]}", // logging
-                "tag @s remove terminator_suffocation_y"
-              ]
-            }
+            "remove": {"component_groups": [ "terminator:break_blocks" ]}
           }
         ]
       },
@@ -1494,14 +1407,14 @@
           }
         ]
       },
-      "terminator:remove_bridging_ability": {
+      "terminator:remove_buildup_ability": {
         "run_command": {
-          "command": [ "tag @s remove terminator_suffocation_x" ]
+          "command": [ "tag @s remove terminatorbuildup" ]
         }
       },
-      "terminator:add_bridging_ability": {
+      "terminator:add_buildup_ability": {
         "run_command": {
-          "command": [ "tag @s add terminator_suffocation_x" ]
+          "command": [ "tag @s add terminatorbuildup" ]
         }
       },
       "terminator:escape": {
@@ -1527,7 +1440,7 @@
         },
         "add": {
           "component_groups": [
-            "terminator:fix_attack_target",
+            "terminator:default_attack_target",
             "minecraft:melee_attack"
           ]
         }

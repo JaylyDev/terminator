@@ -3,7 +3,7 @@
 +*********************************************************/
 
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"geometry.terminator": {
 		"texturewidth": 64,
 		"textureheight": 64,
@@ -26,6 +26,14 @@
 			{
 				"name": "head",
 				"parent": "root",
+				"pivot": [0, 24, 0],
+				"cubes": [
+					{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [0, 0]}
+				]
+			},
+			{
+				"name": "eye",
+				"parent": "head",
 				"pivot": [0, 24, 0],
 				"cubes": [
 					{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [0, 0]}

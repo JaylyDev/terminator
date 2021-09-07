@@ -2,23 +2,23 @@
   "format_version": 2,
   "header": {
     "name": "pack.name",
-    "description": "By Jayly\nPack Version: 1.2.16.135 [Beta]",
+    "description": "By Jayly\nPack Version: 1.2.17.72 [Beta]",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-    "version": [1, 2, 16],
-    "min_engine_version": [1, 16, 100]
+    "version": [1, 2, 17],
+    "min_engine_version": [1, 17, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.2.16.135 [Beta]",
+      "description": "By Jayly\nPack Version: 1.2.17.72 [Beta]",
       "type": "data",
       "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
-      "version": [1, 2, 16]
+      "version": [1, 2, 17]
     }
   ],
   "dependencies": [
     {
       "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-      "version": [1, 2, 16]
+      "version": [1, 2, 17]
     }
   ],
   "metadata": {
