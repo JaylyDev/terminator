@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Patch 1.2.10
 
-**Beta**: Beta 1.2.16.135
+**Beta**: Beta 1.2.18.19
 
 -----
 ## Description
@@ -31,6 +31,8 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/manhunt/blob/terminator
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.2.18 | <!-- Unavailable --> | [8th combat beta](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.18.md)
+Beta 1.2.17 | <!-- Unavailable --> | [Various modification](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.17.md)
 Beta 1.2.16 | <!-- Unavailable --> | Trident Combat v1
 Beta 1.2.15 | <!-- Unavailable --> | Bow modification (v2)
 Beta 1.2.12 | <!-- Unavailable --> | [AI improvement](https://discord.com/channels/570758760373420033/734424410668138576/880333140005105694)

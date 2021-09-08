@@ -33,6 +33,7 @@
           "variable.hand_bob = q.life_time < 0.01 ? 0.0 : variable.hand_bob + ((q.is_on_ground && q.is_alive ? math.clamp(math.sqrt(math.pow(q.position_delta(0), 2.0) + math.pow(q.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;"
         ],
         "animate": [
+          "cape",
           "look_at_target",
           "holding",
           "bob",
@@ -52,7 +53,11 @@
           { "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )" },
           { "swimming": "variable.swim_amount > 0.0 && q.is_in_water" },
           { "third_person_bow_equipped" : "query.get_equipped_item_name == 'bow' && q.has_target" },
-          { "bow_and_arrow" : "query.get_equipped_item_name == 'bow' && q.has_target" }
+          { "bow_and_arrow" : "query.get_equipped_item_name == 'bow' && q.has_target" },
+          { "charging": "query.is_charging" },
+          { "brandish_spear": "variable.is_brandishing_spear" },
+          { "shield_block_main_hand": "query.get_equipped_item_name('main_hand') == 'shield'"},
+          { "shield_block_off_hand": "query.get_equipped_item_name('off_hand') == 'shield'"}
         ]
       },
       "animations": {
@@ -69,11 +74,18 @@
         "sneaking": "animation.player.sneaking",
         "sleeping": "animation.player.sleeping",
         "use_item_progress": "animation.humanoid.use_item_progress",
-        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
         "swimming": "animation.player.swim", // "animation.zombie.swimming"
         "swimming.legs": "animation.player.swim.legs",
         "third_person_bow_equipped": "animation.player.bow_equipped",
-        "bow_and_arrow": "animation.humanoid.bow_and_arrow"
+        "bow_and_arrow": "animation.humanoid.bow_and_arrow",
+        "charging": "animation.humanoid.charging.v1.0",
+        "brandish_spear": "animation.humanoid.brandish_spear",
+        "cape": "animation.player.cape",
+        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+        "crossbow_hold": "animation.player.crossbow_hold",
+        "crossbow_controller": "controller.animation.player.crossbow",
+        "shield_block_main_hand": "animation.player.shield_block_main_hand",
+        "shield_block_off_hand": "animation.player.shield_block_off_hand"
       },
       "render_controllers": [ "controller.render.terminator" ],
       "enable_attachables": true

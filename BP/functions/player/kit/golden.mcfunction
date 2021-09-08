@@ -1,3 +1,8 @@
+# This gives you golden armour
+# *********************************************************
+# *   (c) JaylyMC. All rights reserved.                   *
+# *********************************************************
+
 replaceitem entity @s slot.armor.head 0 golden_helmet
 replaceitem entity @s slot.armor.chest 0 golden_chestplate
 replaceitem entity @s slot.armor.legs 0 golden_leggings

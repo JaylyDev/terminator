@@ -1,3 +1,8 @@
+# This gives you iron armour
+# *********************************************************
+# *   (c) JaylyMC. All rights reserved.                   *
+# *********************************************************
+
 replaceitem entity @s slot.armor.head 0 iron_helmet
 replaceitem entity @s slot.armor.chest 0 iron_chestplate
 replaceitem entity @s slot.armor.legs 0 iron_leggings

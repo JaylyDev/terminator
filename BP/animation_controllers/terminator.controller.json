@@ -24,24 +24,23 @@
       }
     },
     "controller.animation.terminator.sitting": {
-      "initial_state": "default",
+      "initial_state": "default_state",
       "states": {
-        "default": {
+        "default_state": {
           "on_entry": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/default\"}]}" // logging
           ],
           "transitions": [
-            {
-               "cooldown": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0) && q.has_target ? (q.target -> q.has_any_family('player')) : 0.0"
-            }
+            // q.has_target ? (q.target -> q.has_any_family('player')) : 0.0
+            { "cooldown_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0) && ((q.has_target ? (q.target -> q.has_any_family('player')) : 0.0) || (q.has_target ? (q.target -> q.has_any_family('irongolem')) : 0.0))" }
           ]
         },
-        "cooldown": {
+        "cooldown_state": {
           "on_entry":[
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_entry\"}]}", // logging
             "v.random = math.random_integer(60,100); v.tstime_stamp = q.time_stamp;"
           ],
-          "transitions": [{"default": "(q.time_stamp - v.tstime_stamp) >= v.random"}],
+          "transitions": [{"default_state": "(q.time_stamp - v.tstime_stamp) >= v.random"}],
           "on_exit": [
             "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_exit\"}]}", // logging
             "/kill @e[type=boat,r=1,c=1]",

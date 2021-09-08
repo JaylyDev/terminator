@@ -8,11 +8,7 @@
 		"controller.render.dummy": {
 			"geometry": "Geometry.default",
 			"textures": ["Texture.default"],
-			"materials": [
-				{
-					"*": "Material.default"
-				}
-			]
+			"materials": [ { "*": "Material.default"	}	]
 		}
 	}
 }
