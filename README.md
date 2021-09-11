@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Patch 1.2.10
 
-**Beta**: Beta 1.2.18.19
+**Beta**: Beta 1.2.20.12
 
 -----
 ## Description
@@ -31,19 +31,20 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/manhunt/blob/terminator
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.2.20 | <!-- Unavailable --> | Building modification (v2.0.103)
 Beta 1.2.18 | <!-- Unavailable --> | [8th combat beta](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.18.md)
 Beta 1.2.17 | <!-- Unavailable --> | [Various modification](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.17.md)
 Beta 1.2.16 | <!-- Unavailable --> | Trident Combat v1
 Beta 1.2.15 | <!-- Unavailable --> | Bow modification (v2)
 Beta 1.2.12 | <!-- Unavailable --> | [AI improvement](https://discord.com/channels/570758760373420033/734424410668138576/880333140005105694)
 Beta 1.2.11 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/879602612373180416/terminator_v1.2.11.28.mcaddon) | Shield Combat v3
-Patch 1.2.10 | <!-- Unavailable --> | [Patch 1.2.10](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.10.md)
+Patch 1.2.10 | [Linkvertise](https://linkvertise.com/329333/mcrobot?o=sharing) | [Patch 1.2.10](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.10.md)
 Beta 1.2.5 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/878604848990388284/terminator_v1.2.5.30.mcaddon) | Shield modification (v2)
 Beta 1.2.4 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/877869489218260992/terminator_v1.2.4.mcaddon) | [Beta 1.2.4](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.4.md)
 Beta 1.2.3 | <!-- Unavailable --> | Critical bug fixes
 Beta 1.2.2 | <!-- Unavailable --> | Critical bug fixes
 Beta 1.2.1 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/877028828105551922/terminator_v1.2.1.mcaddon) | [Beta 1.2.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.1.md)
-Release 1.2.0 | <!--Linkvertise--> | [Release 1.2.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.0.md)
+Release 1.2.0 | [Linkvertise](https://linkvertise.com/329333/mcrobot?o=sharing) | [Release 1.2.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.2.0.md)
 Beta 1.1.8 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/874136416865648660/terminator_v1.1.8.39.mcaddon) | [Beta 1.1.8](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.8.md)
 Beta 1.1.7 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/872814082015768616/terminator_v1.1.7.25.mcaddon) | [Beta 1.1.7](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.7.md)
 Beta 1.1.6 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/870910373937696778/terminator_v1.1.6.15.mcaddon) | [Beta 1.1.6](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.1.6.md)
@@ -57,3 +58,5 @@ Beta 1.0.3 | [Download](https://cdn.discordapp.com/attachments/57186328365786729
 Beta 1.0.2 | [Download](https://cdn.discordapp.com/attachments/571863283657867294/863371811050618880/terminator-v1.0.2.mcaddon) | [Beta 1.0.2](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.2.md)
 Beta 1.0.1 | [Download](https://github.com/JaylyDev/manhunt/blob/b9aa301070b29835625f4f4e735a023fba7b837a/terminator-v1.0.1.mcaddon?raw=true) | [Beta 1.0.1](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.0.1.md)
 Release 1.0.0 | [Download](https://bit.ly/mcrobot100)
+Alpha 0.0.84 | [Download](https://cdn.discordapp.com/attachments/734424410668138576/858238393108004864/terminator-v0.0.84.mcaddon)
+Alpha 0.0.62 | [Download](https://cdn.discordapp.com/attachments/571487722934370314/885131223700221952/0.0.62-beta-manhunt-terminator.mcaddon)

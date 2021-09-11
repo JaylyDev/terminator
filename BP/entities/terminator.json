@@ -16,7 +16,8 @@
           "terminator.sitting",
           "terminator.shield",
           "terminator.build.forward",
-          "terminator.build.vertical"
+          "terminator.build.vertical",
+          "terminator.build.suffocation"
         ]
       },
       "animations": {
@@ -24,7 +25,8 @@
         "terminator.sitting": "controller.animation.terminator.sitting",
         "terminator.shield": "controller.animation.terminator.shield",
         "terminator.build.forward": "controller.animation.terminator.build.forward",
-        "terminator.build.vertical": "controller.animation.terminator.build.vertical"
+        "terminator.build.vertical": "controller.animation.terminator.build.vertical",
+        "terminator.build.suffocation": "controller.animation.terminator.build.suffocation"
       }
     },
     "component_groups": {
@@ -53,7 +55,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
                 ]
               },
               "event": "terminator:remove_buildx"
@@ -62,7 +64,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
                 ]
               },
               "event": "terminator:add_buildx"
@@ -156,7 +158,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
                 ]
               },
               "event": "terminator:remove_buildx"
@@ -165,7 +167,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
                 ]
               },
               "event": "terminator:add_buildx"
@@ -410,7 +412,7 @@
             { "cause": "starve", "deals_damage": true },
             {
               "on_damage": {
-                "event": ""
+                "event": "terminator:add_suffocate_alert"
               },
               "cause": "suffocation",
               "deals_damage": true
@@ -425,7 +427,7 @@
                     "value": "suffocation"
                   }
                 ],
-                "event": "" 
+                "event": "terminator:remove_suffocate_alert" 
               },
               "cause": "all",
               "deals_damage": true 
@@ -636,7 +638,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
                 ]
               },
               "event": "terminator:remove_buildx"
@@ -645,7 +647,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
                 ]
               },
               "event": "terminator:add_buildx"
@@ -756,7 +758,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
                 ]
               },
               "event": "terminator:remove_buildx"
@@ -765,7 +767,7 @@
               "filters": {
                 "all_of": [
                   {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
+                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
                 ]
               },
               "event": "terminator:add_buildx"
@@ -871,15 +873,16 @@
         "break_time": 4
       },
       "minecraft:jump.static": {
+        "jump_power": 0.42
       },
-      "minecraft:can_climb": {
-      },
+      "minecraft:can_climb": {},
       "minecraft:inventory": {
         "inventory_size": 36,
         "private": true
       },
       "minecraft:movement": {
-        "value": 0.4 // v1.0.0 is 0.55
+        "value": 0.4, // v1.0.0 is 0.55
+        "max": 0.5
       },
       "minecraft:underwater_movement": {
         "value": 0.104 // default is 0.08
@@ -946,7 +949,9 @@
           { "item": "minecraft:log", "want_amount": 64, "surplus_amount": 64, "priority": 10, "stored_in_inventory": true },
           { "item": "minecraft:log2", "want_amount": 64, "surplus_amount": 64, "priority": 11 , "stored_in_inventory": true },
           { "item": "minecraft:totem_of_undying", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // miscs
-          { "item": "minecraft:shield", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true }
+          { "item": "minecraft:shield", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
+          { "item": "minecraft:trident", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
+          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true }
         ]
       },
       // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
@@ -1014,7 +1019,6 @@
           "fire",
           "flower_pot",
           "flowering_azalea",
-          "flowing_water",
           "frame",
           "glass",
           "glass_pane",
@@ -1117,7 +1121,7 @@
                   "value": "suffocation"
                 }
               ],
-              "event": ""
+              "event": "terminator:add_suffocate_alert"
             },
             "deals_damage": true
           },
@@ -1131,7 +1135,7 @@
                   "value": "suffocation"
                 }
               ],
-              "event": ""
+              "event": "terminator:remove_suffocate_alert"
             },
             "deals_damage": true
           }
@@ -1256,6 +1260,10 @@
             "sprint_speed_multiplier": 1.25
           }
         ]
+      },
+      "minecraft:behavior.eat_carried_item": {
+        "priority": 0,
+        "delay_before_eating": 0
       },
 
       // End of terminator's priorities
@@ -1449,7 +1457,7 @@
             "filters": {
               "all_of": [
                 {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 10 }
+                {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
               ]
             },
             "event": "terminator:remove_buildx"
@@ -1458,7 +1466,7 @@
             "filters": {
               "all_of": [
                 {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 10 }
+                {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
               ]
             },
             "event": "terminator:add_buildx"
@@ -1760,6 +1768,16 @@
       "terminator:fix_default_target": {
         "add": {
           "component_groups": [ "terminator:default_attack_target" ]
+        }
+      },
+      "terminator:add_suffocate_alert": {
+        "run_command": {
+          "command": [ "tag @s add terminatorsuffocate" ]
+        }
+      },
+      "terminator:remove_suffocate_alert": {
+        "run_command": {
+          "command": [ "tag @s remove terminatorsuffocate" ]
         }
       }
     }

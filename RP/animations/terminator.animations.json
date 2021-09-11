@@ -1,3 +1,7 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
 {
   "format_version": "1.8.0",
   "animations": {
@@ -25,6 +29,14 @@
           "position": [ 0.0, -4.0, 0.0 ]
         }
       }
-    }
+    },
+    "animation.humanoid.charging.v1.0" : {
+			"loop" : true,
+			"bones" : {
+				"rightarm" : {
+					"rotation" : [ "22.5 * variable.charge_amount - this", "-this", 0.0 ]
+				}
+			}
+		}
   }
 }

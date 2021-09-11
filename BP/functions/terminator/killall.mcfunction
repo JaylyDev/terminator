@@ -1,4 +1,4 @@
-# This kills every terminator in existence
+# This kills every terminator and dummies in existence
 # *********************************************************
 # *   (c) JaylyMC. All rights reserved.                   *
 # *********************************************************

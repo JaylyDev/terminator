@@ -1,0 +1,42 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.player.crossbow" : {
+			"initial_state" : "default",
+			"states" : {
+				"charge" : {
+					"animations" : [ "third_person_crossbow_equipped" ],
+					"transitions" : [
+						{
+							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+						},
+						{
+							"hold" : "query.item_is_charged"
+						}
+					]
+				},
+				"default" : {
+					"transitions" : [
+						{
+							"hold" : "query.item_is_charged"
+						},
+						{
+							"charge" : "query.item_remaining_use_duration > 0.0"
+						}
+					]
+				},
+				"hold" : {
+					"animations" : [ "crossbow_hold" ],
+					"transitions" : [
+						{
+							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+						},
+						{
+							"charge" : "query.item_remaining_use_duration > 0.0"
+						}
+					]
+				}
+			}
+		}
+	}
+}
