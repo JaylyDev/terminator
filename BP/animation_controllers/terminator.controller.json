@@ -112,7 +112,7 @@
             {"default_state": "q.get_equipped_item_name('off_hand') != 'shield'"},
             {"deactivate_shield": "(q.get_equipped_item_name('off_hand') == 'shield' && variable.attack_time > 0.0) || (q.mark_variant == 1 && q.get_equipped_item_name('off_hand') == 'shield')"}
           ],
-          "on_entry": ["@s terminator:activate_shield"]
+          "on_entry": [ "@s terminator:activate_shield" ]
         },
         "deactivate_shield": {
           "transitions": [{"default_state": "(q.time_stamp - v.shield_time) > v.shield_cooldown"}],

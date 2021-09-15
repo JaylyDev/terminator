@@ -37,6 +37,30 @@
 					"rotation" : [ "22.5 * variable.charge_amount - this", "-this", 0.0 ]
 				}
 			}
+		},
+    "animation.terminator.shield_block_main_hand" : {
+			"loop" : true,
+			"bones" : {
+				"rightarm" : {
+					"rotation" : [ -20.0, -30.0, -25.0 ]
+				},
+				"rightitem" : {
+					"position" : [ -1.0, -3.0, 0.0 ],
+					"rotation" : [ 0.0, -60.0, -45.0 ]
+				}
+			}
+		},
+		"animation.terminator.shield_block_off_hand" : {
+			"loop" : true,
+			"bones" : {
+				"leftarm" : {
+					"rotation" : [ -20.0, 20.0, 20.0 ]
+				},
+				"leftitem" : {
+					"position" : [ 1.0, -3.0, 0.0 ],
+					"rotation" : [ 0.0, 70.0, 65.0 ]
+				}
+			}
 		}
   }
 }

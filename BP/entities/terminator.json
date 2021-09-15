@@ -52,24 +52,6 @@
               "event": "minecraft:trigger_raid"
             },
             {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
-                ]
-              },
-              "event": "terminator:remove_buildx"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
-                ]
-              },
-              "event": "terminator:add_buildx"
-            },
-            {
               "filters":{
                 "test": "has_component",
                 "subject": "self",
@@ -155,24 +137,6 @@
               "event": "minecraft:trigger_raid"
             },
             {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
-                ]
-              },
-              "event": "terminator:remove_buildx"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
-                ]
-              },
-              "event": "terminator:add_buildx"
-            },
-            {
               "filters":{
                 "test": "has_component",
                 "subject": "self",
@@ -229,7 +193,6 @@
           "must_see": false,
           "reselect_targets": true,
           "within_radius": 1024,
-          "must_see_forget_duration": 32767.0,
           "target_search_height": -1,
           "entity_types": [
             { 
@@ -239,7 +202,7 @@
                   { "test": "is_mark_variant", "subject": "other", "value": 2 }
                 ]
               },
-              "max_dist": 1024,
+              "max_dist": 2048,
               "must_see": false
             }
           ]
@@ -250,7 +213,7 @@
           "speed_multiplier": 1.25
         },
         "minecraft:attack": {
-          "damage": 3
+          "damage": 1
         },
         "minecraft:entity_sensor": {
           "event_filters": {
@@ -285,7 +248,7 @@
                   { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
                 ]
               },
-              "max_dist": 1024,
+              "max_dist": 2048,
               "must_see": false
             },
             {
@@ -365,7 +328,7 @@
             { "cause": "anvil", "deals_damage": true },
             {
               "on_damage": {
-                "event": "terminator:respond_shield_sensor"
+                "event": "terminator:respond_shield"
               },
               "cause": "block_explosion",
               "deals_damage": false
@@ -375,14 +338,14 @@
             { "cause": "drowning", "deals_damage": true },
             {
               "on_damage": {
-                "event": "terminator:respond_shield_sensor"
+                "event": "terminator:respond_shield"
               },
               "cause": "entity_attack",
               "deals_damage": false
             },
             {
               "on_damage": {
-                "event": "terminator:respond_shield_sensor"
+                "event": "terminator:respond_shield"
               },
               "cause": "entity_explosion",
               "deals_damage": false
@@ -402,7 +365,7 @@
             { "cause": "piston", "deals_damage": true },
             {
               "on_damage": {
-                "event": "terminator:respond_shield_sensor"
+                "event": "terminator:respond_shield"
               },
               "cause": "projectile",
               "deals_damage": false
@@ -445,7 +408,7 @@
           "time": 0.125,
           "looping": false,
           "time_down_event": {
-            "event": "terminator:remove_shield_roar",
+            "event": "terminator:disable_shield",
             "target": "self"
           }
         },
@@ -543,24 +506,6 @@
               "event": "minecraft:trigger_raid"
             },
             {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">", "value": 16 }
-                ]
-              },
-              "event": "terminator:remove_buildx"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<=", "value": 16 }
-                ]
-              },
-              "event": "terminator:add_buildx"
-            },
-            {
               "filters":{
                 "test": "has_component",
                 "subject": "self",
@@ -633,24 +578,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
-                ]
-              },
-              "event": "terminator:remove_buildx"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
-                ]
-              },
-              "event": "terminator:add_buildx"
             },
             {
               "filters":{
@@ -755,24 +682,6 @@
               "event": "minecraft:trigger_raid"
             },
             {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
-                ]
-              },
-              "event": "terminator:remove_buildx"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                  {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
-                ]
-              },
-              "event": "terminator:add_buildx"
-            },
-            {
               "filters":{
                 "test": "has_component",
                 "subject": "self",
@@ -853,15 +762,17 @@
         "avoid_portals": false,
         "avoid_sun": false,
         "avoid_water": false,
-        "can_walk_in_lava": false,
+        "can_walk_in_lava": true,
         "can_breach": false,
         "can_jump": true,
-        "can_path_from_air": false,
+        "can_path_from_air": true,
         "can_sink": true,
         "blocks_to_avoid": [
           "minecraft:powder_snow",
           "minecraft:web",
-          "minecraft:magma"
+          "minecraft:magma",
+          "minecraft:lava",
+          "minecraft:flowing_lava"
         ]
       },
       "minecraft:follow_range": {
@@ -1106,7 +1017,15 @@
           "wither_rose",
           "wooden_button",
           "wooden_door",
-          "yellow_flower"
+          "yellow_flower",
+          // Following blocks are added since beta 1.2.22
+          "dirt",
+          "stone",
+          "grass",
+          "sand",
+          "tuff",
+          "netherrack",
+          "end_stone"
         ]
       },
       "minecraft:damage_sensor": {
@@ -1283,7 +1202,7 @@
         "radius": 4
       },
       "minecraft:healable": {
-        "force_use": true,
+        "force_use": false,
         "filters":{
           "test": "has_target",
           "subject": "self",
@@ -1441,9 +1360,70 @@
           { "item": "tropical_fish", "heal_amount": 1 }
         ] // credit: https://minecraft.fandom.com/wiki/Food#Foods
       },
-      "minecraft:scaffolding_climber": {},
+      "minecraft:scaffolding_climber": {
+      },
       "minecraft:environment_sensor": {
         "triggers": [
+          {
+            "filters":{
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value": "minecraft:trident"
+                },
+                {
+                  "test": "has_ranged_weapon",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": false
+                }
+              ]
+            },
+            "event": "minecraft:melee_mode"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": false
+                },
+                {
+                  "test": "has_ranged_weapon",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": true
+                }
+              ]
+            },
+            "event": "minecraft:bow_ranged_mode"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:trident"
+                }
+              ]
+            },
+            "event": "minecraft:trident_ranged_mode"
+          },
+          {
+            "filters": {
+              "test": "in_block",
+              "subject": "self",
+              "operator": "==",
+              "value": "minecraft:powder_snow"
+            },
+            "event": "got_in_powder_snow"
+          },
           {
             "filters": {
               "all_of": [
@@ -1454,70 +1434,21 @@
             "event": "minecraft:trigger_raid"
           },
           {
-            "filters": {
-              "all_of": [
-                {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                {"test": "distance_to_nearest_player", "subject": "self", "operator": "<", "value": 4 }
-              ]
-            },
-            "event": "terminator:remove_buildx"
-          },
-          {
-            "filters": {
-              "all_of": [
-                {"test": "has_target", "subject": "self", "operator": "==", "value": true},
-                {"test": "distance_to_nearest_player", "subject": "self", "operator": ">=", "value": 4 }
-              ]
-            },
-            "event": "terminator:add_buildx"
-          },
-          {
-            "filters": {
-              "all_of":[
-                {
-                  "test": "is_underwater",
-                  "subject": "self",
-                  "operator": "==",
-                  "value": true
-                },
-                {
-                  "test": "has_equipment",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "minecraft:trident"
-                }
-              ]
-              
-            },
-            "event": "minecraft:melee_mode"
-          },
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "has_ranged_weapon",
-                  "subject": "self",
-                  "operator": "==",
-                  "value": false
-                },
-                {
-                  "test": "has_equipment",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "minecraft:trident"
-                }
-              ]
-            },
-            "event": "minecraft:melee_mode"
-          },
-          {
-            "filters": {
-              "test": "in_block",
+            "filters":{
+              "test": "has_component",
               "subject": "self",
-              "operator": "==",
-              "value": "minecraft:powder_snow"
+              "operator": "!=",
+              "value": "minecraft:behavior.nearest_attackable_target" 
             },
-            "event": "got_in_powder_snow"
+            "event": "terminator:fix_default_target"
+          },
+          {
+            "filters":{
+              "test": "is_biome",
+              "subject": "player",
+              "value": "the_nether"
+            },
+            "event": "terminator:make_nether_portal"
           }
         ]
       }
@@ -1631,16 +1562,6 @@
           }
         ]
       },
-      "terminator:remove_buildx": {
-        "run_command": {
-          "command": [ "tag @s remove terminatorbuildx" ]
-        }
-      },
-      "terminator:add_buildx": {
-        "run_command": {
-          "command": [ "tag @s add terminatorbuildx" ]
-        }
-      },
       "terminator:escape": {
         "add": {
           "component_groups": [ "terminator:find_path" ]
@@ -1670,9 +1591,10 @@
         }
       },
 			"terminator:disable_respawn_event": {
-				"run_command": {
+        "run_command": {
           "command": [ "tag @s add disablerespawnevent" ]
-        }
+        },
+        "trigger": "minecraft:entity_spawned"
 			},
       "terminator:activate_shield": {
         "add": {
@@ -1684,7 +1606,7 @@
           "component_groups": [ "terminator:shield" ]
         }
       },
-      "terminator:respond_shield_sensor": {
+      "terminator:respond_shield": {
         "run_command": {
           "command": [ "playsound item.shield.block @a ~~~" ]
         },
@@ -1692,7 +1614,7 @@
           "component_groups": [ "shield:on_use" ]
         }
       },
-      "terminator:remove_shield_roar": {
+      "terminator:disable_shield": {
         "add": {
           "component_groups": ["terminator:set_default_varient"]
         },
@@ -1778,6 +1700,41 @@
       "terminator:remove_suffocate_alert": {
         "run_command": {
           "command": [ "tag @s remove terminatorsuffocate" ]
+        }
+      },
+      "terminator:make_nether_portal": {
+        "filters":{
+          "all_of": [
+            { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
+          ]
+        },
+        "run_command": {
+          "command": [ 
+            "setblock ~ ~-1 ~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-1~-1~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~1~~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-2~~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~1~1~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-2~1~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~1~2~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-2~2~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~ ~3 ~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-1~3~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~-1~3~ obsidian",
+            "playsound use.stone @a ~ ~ ~",
+            "setblock ~ ~ ~ fire",
+            "playsound fire.ignite @a ~ ~ ~"
+          ]
         }
       }
     }
