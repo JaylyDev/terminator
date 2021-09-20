@@ -109,10 +109,41 @@
                     "subject": "self",
                     "operator": "==",
                     "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:bow"
                   }
                 ]
               },
               "event": "minecraft:bow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:crossbow"
+                  }
+                ]
+              },
+              "event": "minecraft:crossbow_ranged_mode"
             },
             {
               "filters": {
@@ -210,7 +241,7 @@
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.25
+          "speed_multiplier": 1.3
         },
         "minecraft:attack": {
           "damage": 1
@@ -421,14 +452,132 @@
           "value": 0
         }
       },
+      "minecraft:crossbow_ranged_unit": {
+        "minecraft:behavior.ranged_attack": {
+          "priority": 8,
+          "attack_interval_min": 1,
+          "attack_interval_max": 1,
+          "attack_radius": 15,
+          "attack_radius_min": 4,
+          "speed_multiplier": 1.0,
+          "target_in_sight_time": 0.1
+        },
+        "minecraft:shooter": {
+          "def": "minecraft:arrow"
+        },
+        "minecraft:attack_damage": {
+          "value": 5
+        },
+        "minecraft:behavior.charge_held_item": {
+          "priority": 3,
+          "items": [ "minecraft:arrow" ]
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters":{
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:trident"
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  }
+                ]
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:bow"
+                  }
+                ]
+              },
+              "event": "minecraft:bow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:trident"
+                  }
+                ]
+              },
+              "event": "minecraft:trident_ranged_mode"
+            },
+            {
+              "filters": {
+                "test": "in_block",
+                "subject": "self",
+                "operator": "==",
+                "value": "minecraft:powder_snow"
+              },
+              "event": "got_in_powder_snow"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {"test": "has_mob_effect","subject": "self","value": "bad_omen"},
+                  {"test": "is_in_village","subject": "self","value": true}
+                ]
+              },
+              "event": "minecraft:trigger_raid"
+            },
+            {
+              "filters":{
+                "test": "has_component",
+                "subject": "self",
+                "operator": "!=",
+                "value": "minecraft:behavior.nearest_attackable_target" 
+              },
+              "event": "terminator:fix_default_target"
+            },
+            {
+              "filters":{
+                "test": "in_nether",
+                "subject": "player",
+                "value": true
+              },
+              "event": "terminator:make_nether_portal"
+            }
+          ]
+        }
+      },
       "minecraft:bow_ranged_attack": {
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
           "attack_interval_min": 1.0, // default is 1.0
           "attack_interval_max": 3.0, // default is 3.0
-          "attack_radius": 15.0,
-          "speed_multiplier": 0.1,
-          "ranged_fov": 90
+          "attack_radius": 15.0
+        },
+        "minecraft:attack": {
+          "damage": 3
         },
         "minecraft:shooter": {
           "def": "minecraft:arrow"
@@ -513,6 +662,31 @@
                 "value": "minecraft:behavior.nearest_attackable_target" 
               },
               "event": "terminator:fix_default_target"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:crossbow"
+                  }
+                ]
+              },
+              "event": "minecraft:crossbow_ranged_mode"
             }
           ]
         }
@@ -521,11 +695,11 @@
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.25,
+          "speed_multiplier": 1.3,
           "melee_fov": 90
         },
         "minecraft:attack": {
-          "damage": 3
+          "damage": 1
         },
         "minecraft:environment_sensor": {
           "triggers": [
@@ -543,10 +717,41 @@
                     "subject": "self",
                     "operator": "==",
                     "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:bow"
                   }
                 ]
               },
               "event": "minecraft:bow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:crossbow"
+                  }
+                ]
+              },
+              "event": "minecraft:crossbow_ranged_mode"
             },
             {
               "filters": {
@@ -635,23 +840,54 @@
               "event": "got_in_powder_snow"
             },
             {
-              "filters":{
+              "filters": {
                 "all_of": [
                   {
-                    "test": "has_equipment",
+                    "test": "in_water",
                     "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
+                    "operator": "==",
+                    "value": false
                   },
                   {
                     "test": "has_ranged_weapon",
                     "subject": "self",
                     "operator": "==",
                     "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:bow"
                   }
                 ]
               },
               "event": "minecraft:bow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:crossbow"
+                  }
+                ]
+              },
+              "event": "minecraft:crossbow_ranged_mode"
             },
             {
               "filters":{
@@ -701,20 +937,18 @@
           "priority": 1,
           "attack_interval_min": 1.0,
           "attack_interval_max": 3.0,
-          "attack_radius": 15.0,
-          "speed_multiplier": 0.1,
-          "ranged_fov": 90
+          "attack_radius": 15.0
         }
       },
       "minecraft:trident_melee_attack": {
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.25,
+          "speed_multiplier": 1.3,
           "melee_fov": 90
         },
         "minecraft:attack": {
-          "damage": 3
+          "damage": 1
         }
       }
     },
@@ -792,15 +1026,14 @@
         "private": true
       },
       "minecraft:movement": {
-        "value": 0.4, // v1.0.0 is 0.55
-        "max": 0.5
+        "value": 0.4317 // walking speed is approximately 4.317 m/s
       },
       "minecraft:underwater_movement": {
         "value": 0.104 // default is 0.08
       },
       "minecraft:health": {
-        "value": 100,
-        "max": 100
+        "value": 40,
+        "max": 40
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -862,7 +1095,8 @@
           { "item": "minecraft:totem_of_undying", "want_amount": 64, "surplus_amount": 64, "priority": 0, "stored_in_inventory": true }, // miscs
           { "item": "minecraft:shield", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
           { "item": "minecraft:trident", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
-          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true }
+          { "item": "minecraft:crossbow", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
+          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true }
         ]
       },
       // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
@@ -870,9 +1104,7 @@
       "minecraft:break_blocks": {
         "breakable_blocks": [
           "acacia_button",
-          "acacia_door",
           "acacia_standing_sign",
-          "acacia_trapdoor",
           "acacia_wall_sign",
           "activator_rail",
           "amethyst_cluster",
@@ -889,9 +1121,7 @@
           "beetroot",
           "big_dripleaf",
           "birch_button",
-          "birch_door",
           "birch_standing_sign",
-          "birch_trapdoor",
           "birch_wall_sign",
           "blackstone",
           "blackstone_wall",
@@ -913,15 +1143,11 @@
           "chorus_plant",
           "cocoa",
           "crimson_button",
-          "crimson_door",
           "crimson_fungus",
           "crimson_roots",
           "crimson_standing_sign",
-          "crimson_trapdoor",
           "crimson_wall_sign",
           "dark_oak_button",
-          "dark_oak_door",
-          "dark_oak_trapdoor",
           "darkoak_standing_sign",
           "darkoak_wall_sign",
           "deadbush",
@@ -940,9 +1166,7 @@
           "gravel",
           "hanging_roots",
           "jungle_button",
-          "jungle_door",
           "jungle_standing_sign",
-          "jungle_trapdoor",
           "jungle_wall_sign",
           "kelp",
           "large_amethyst_bud",
@@ -975,9 +1199,7 @@
           "soul_fire",
           "soul_torch",
           "spruce_button",
-          "spruce_door",
           "spruce_standing_sign",
-          "spruce_trapdoor",
           "spruce_wall_sign",
           "stained_glass",
           "stained_glass_pane",
@@ -990,7 +1212,6 @@
           "tinted_glass",
           "tnt",
           "torch",
-          "trapdoor",
           "trapped_chest",
           "tripWire",
           "tripwire_hook",
@@ -1004,11 +1225,9 @@
           "wall_banner",
           "wall_sign",
           "warped_button",
-          "warped_door",
           "warped_fungus",
           "warped_roots",
           "warped_standing_sign",
-          "warped_trapdoor",
           "warped_wall_sign",
           "waterlily",
           "web",
@@ -1016,7 +1235,6 @@
           "wheat",
           "wither_rose",
           "wooden_button",
-          "wooden_door",
           "yellow_flower",
           // Following blocks are added since beta 1.2.22
           "dirt",
@@ -1176,7 +1394,7 @@
             },
             "max_dist": 8,
             "walk_speed_multiplier": 1.0,
-            "sprint_speed_multiplier": 1.25
+            "sprint_speed_multiplier": 1.3
           }
         ]
       },
@@ -1397,10 +1615,41 @@
                   "subject": "self",
                   "operator": "==",
                   "value": true
+                },
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:bow"
                 }
               ]
             },
             "event": "minecraft:bow_ranged_mode"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_water",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": false
+                },
+                {
+                  "test": "has_ranged_weapon",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": true
+                },
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:crossbow"
+                }
+              ]
+            },
+            "event": "minecraft:crossbow_ranged_mode"
           },
           {
             "filters": {
@@ -1444,9 +1693,9 @@
           },
           {
             "filters":{
-              "test": "is_biome",
+              "test": "in_nether",
               "subject": "player",
-              "value": "the_nether"
+              "value": true
             },
             "event": "terminator:make_nether_portal"
           }
@@ -1639,6 +1888,7 @@
         "remove": {
           "component_groups": [
             "minecraft:bow_ranged_attack",
+            "minecraft:crossbow_ranged_unit",
             "minecraft:trident_mode_switcher",
             "got_out_of_powder_snow_environment_sensor"
           ]
@@ -1647,10 +1897,24 @@
           "component_groups": [ "minecraft:melee_attack" ]
         }
       },
+      "minecraft:crossbow_ranged_mode": {
+        "remove": {
+          "component_groups": [
+            "minecraft:melee_attack",
+            "minecraft:bow_ranged_attack",
+            "minecraft:trident_mode_switcher",
+            "got_out_of_powder_snow_environment_sensor"
+          ]
+        },
+        "add": {
+          "component_groups": [ "minecraft:crossbow_ranged_unit" ]
+        }
+      },
       "minecraft:bow_ranged_mode": {
         "remove": {
           "component_groups": [
             "minecraft:melee_attack",
+            "minecraft:crossbow_ranged_unit",
             "minecraft:trident_mode_switcher",
             "got_out_of_powder_snow_environment_sensor"
           ]
@@ -1664,6 +1928,7 @@
           "component_groups": [
             "minecraft:melee_attack",
             "minecraft:bow_ranged_attack",
+            "minecraft:crossbow_ranged_unit",
             "got_out_of_powder_snow_environment_sensor"
           ]
         },

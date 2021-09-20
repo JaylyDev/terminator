@@ -17,12 +17,16 @@
       }
     },
     "controller.animation.dummy.spawn_terminator": {
-      "initial_state": "default_state",
+      "initial_state": "variable_setup",
       "states": {
+        "variable_setup": {
+          "transitions": [{"default_state": "(1.0)"}],
+          "on_entry": [ "v.dummy_time = q.time_stamp; v.dummy_duration = 120;" ] // 120 ticks = 6 seconds
+        },
         "default_state": {
-          "transitions": [{"lore_setup": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"lore_setup": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 120;", // 120 ticks = 6 seconds
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 120;",
             "/particle minecraft:evoker_spell ~ ~ ~", 
             "/particle minecraft:evoker_spell ~ ~ ~", 
             "/particle minecraft:evoker_spell ~ ~ ~", 
@@ -43,9 +47,9 @@
           "on_exit": [ "@s dummy:force_roar" ]
         },
         "lore_setup": {
-          "transitions": [{"execute1": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute1": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 120;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 120;",
             "/fog @a push minecraft:fog_hell respawn_lore",
             "/weather thunder",
             "/gamerule dodaylightcycle false",
@@ -54,58 +58,58 @@
           "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         },
         "execute1": {
-          "transitions": [{"execute2": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute2": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 60;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 60;",
             "/structure load robot_respawn_cage ~-2 ~-1 ~-2",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lI AM THE TERMINATOR.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         },
         "execute2": {
-          "transitions": [{"execute3": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute3": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 60;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 60;",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lI USED TO OWN THE WORLD.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         },
         "execute3": {
-          "transitions": [{"execute4": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute4": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 60;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 60;",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lHOW COULD THE HUMANS CHOOSE TO KILL ME.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         },
         "execute4": {
-          "transitions": [{"execute5": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute5": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 100;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lYOU HAD A CHOICE AND YOU CHOSE DEATH.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
         },
         "execute5": {
-          "transitions": [{"execute6": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute6": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 60;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 60;",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lI WILL COME BACK AND KILL EVERY SINGLE ONE OF YOU.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
         },
         "execute6": {
-          "transitions": [{"execute7": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute7": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 100;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
             "/tellraw @a {\"rawtext\":[{\"text\": \"<§cTerminator§r> §lSTARTING ON THE PLACE I DIED.\"}]}"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
         },
         "execute7": {
-          "transitions": [{"execute7": "(q.time_stamp - v.dummytime) >= v.dummycd"}],
+          "transitions": [{"execute7": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
           "on_entry": [
-            "v.dummytime = q.time_stamp; v.dummycd = 100;",
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
             "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
             "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
             "@s dummy:spawn_terminator",

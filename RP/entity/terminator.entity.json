@@ -26,7 +26,10 @@
         "scalez": "variable.entity_scale",
         "initialize": ["variable.hand_bob = 0.0;"],
         "pre_animation": [
+          "variable.charge_amount = math.clamp((query.main_hand_item_max_duration - (query.main_hand_item_use_duration - query.frame_alpha + 1.0)) / 10.0, 0.0, 1.0f);",
+          "variable.crossbow_charge = query.get_animation_frame;",
           "variable.entity_scale = 0.975;",
+          "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
           "variable.terminator_variant = q.variant;",
           "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
           "variable.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / variable.gliding_speed_value) * 57.3;",
@@ -56,8 +59,12 @@
           { "bow_and_arrow" : "q.get_equipped_item_name == 'bow' && q.has_target" },
           { "charging": "q.is_charging" },
           { "brandish_spear": "variable.is_brandishing_spear" },
-          { "shield_block_main_hand": "q.get_equipped_item_name('main_hand') == 'shield' && q.get_equipped_item_name('off_hand') != 'shield' && q.mark_variant == 1"},
-          { "shield_block_off_hand": "q.get_equipped_item_name('off_hand') == 'shield' && q.mark_variant == 1"}
+          { "shield_block_main_hand": "q.get_equipped_item_name('main_hand') == 'shield' && q.get_equipped_item_name('off_hand') != 'shield' && q.mark_variant == 1" },
+          { "shield_block_off_hand": "q.get_equipped_item_name('off_hand') == 'shield' && q.mark_variant == 1" },
+          { "third_person_crossbow_equipped": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_hold": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_charge": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_controller": "q.get_equipped_item_name('main_hand') == 'crossbow'" }
         ]
       },
       "animations": {
@@ -81,11 +88,12 @@
         "charging": "animation.humanoid.charging.v1.0",
         "brandish_spear": "animation.humanoid.brandish_spear",
         "cape": "animation.player.cape",
-        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
-        "crossbow_hold": "animation.player.crossbow_hold",
-        "crossbow_controller": "controller.animation.player.crossbow",
         "shield_block_main_hand": "animation.terminator.shield_block_main_hand",
-        "shield_block_off_hand": "animation.terminator.shield_block_off_hand"
+        "shield_block_off_hand": "animation.terminator.shield_block_off_hand",
+        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+        "crossbow_hold": "animation.pillager.crossbow.hold",
+        "crossbow_charge": "animation.pillager.crossbow.charge",
+        "crossbow_controller": "controller.animation.player.crossbow"
       },
       "render_controllers": [ "controller.render.terminator" ],
       "enable_attachables": true

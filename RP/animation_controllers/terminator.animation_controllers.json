@@ -1,40 +1,49 @@
 {
 	"format_version" : "1.10.0",
 	"animation_controllers" : {
-		"controller.animation.player.crossbow" : {
-			"initial_state" : "default",
-			"states" : {
-				"charge" : {
-					"animations" : [ "third_person_crossbow_equipped" ],
-					"transitions" : [
-						{
-							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
-						},
-						{
-							"hold" : "query.item_is_charged"
-						}
-					]
+		"controller.animation.terminator.crossbow" : {
+			"initial_state" : "default_state",
+			"states": {
+				"default_state": {
+					"transitions": [
+						{	"crossbow_standby": "(q.time_stamp - v.charge_time) > v.charge_duration" }
+					],
+					"on_entry": [ "v.charge_time = q.time_stamp; v.charge_duration = 5;" ],
+					"on_exit": [ "variable.crossbow_charge = 0.0;" ]
 				},
-				"default" : {
-					"transitions" : [
-						{
-							"hold" : "query.item_is_charged"
-						},
-						{
-							"charge" : "query.item_remaining_use_duration > 0.0"
-						}
-					]
+				"crossbow_standby": {
+					"transitions": [
+						{	"crossbow_pulling_0": "(q.time_stamp - v.charge_time) > v.charge_duration" }
+					],
+					"on_entry": [ "v.charge_time = q.time_stamp; v.charge_duration = 5;" ],
+					"on_exit": [ "variable.crossbow_charge = 0.5;" ]
 				},
-				"hold" : {
-					"animations" : [ "crossbow_hold" ],
-					"transitions" : [
-						{
-							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
-						},
-						{
-							"charge" : "query.item_remaining_use_duration > 0.0"
-						}
-					]
+				"crossbow_pulling_0": {
+					"transitions": [
+						{	"crossbow_pulling_1": "(q.time_stamp - v.charge_time) > v.charge_duration" }
+					],
+					"on_entry": [ "v.charge_time = q.time_stamp; v.charge_duration = 5;" ],
+					"on_exit": [ "variable.crossbow_charge = 1.0;" ]
+				},
+				"crossbow_pulling_1": {
+					"transitions": [
+						{	"crossbow_pulling_2": "(q.time_stamp - v.charge_time) > v.charge_duration" }
+					],
+					"on_entry": [ "v.charge_time = q.time_stamp; v.charge_duration = 5;" ],
+					"on_exit": [ "variable.crossbow_charge = 1.5;" ]
+				},
+				"crossbow_pulling_2": {
+					"transitions": [
+						{	"crossbow_charged": "(q.time_stamp - v.charge_time) > v.charge_duration" }
+					],
+					"on_entry": [ "v.charge_time = q.time_stamp; v.charge_duration = 5;" ],
+					"on_exit": [ "variable.crossbow_charge = 2.0;" ]
+				},
+				"crossbow_charged": {
+					"transitions": [
+						{	"default_state": "variable.attack_state == 0" }
+					],
+					"on_exit": [ "variable.crossbow_charge = 0.0;" ]
 				}
 			}
 		}

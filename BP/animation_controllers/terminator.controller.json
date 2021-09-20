@@ -10,7 +10,7 @@
       "states": {
         "default_state": {
           "transitions": [{"regeneration": "q.is_alive && q.health < 20"}],
-          "on_entry": ["/playsound block.end_portal.spawn @a"] // sound effect
+          "on_entry": ["/playsound block.end_portal.spawn @a ~ ~ ~"] // sound effect
         },
         "regeneration":{
           "on_entry": [

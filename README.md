@@ -5,9 +5,7 @@
 ### Latest Version
 **Release**: Patch 1.2.10
 
-**Beta**: Beta 1.2.23.40
-
-**Development**: Beta 1.2.100.0
+**Beta**: Beta 1.3.0.50
 
 -----
 ## Description
@@ -33,6 +31,8 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/manhunt/blob/terminator
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Release 1.3.0 | [Linkvertise](https://linkvertise.com/329333/mcrobot?o=sharing) | [Release 1.3.0](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Release%201.3.0.md)
+Beta 1.2.100 | [Download](https://www.youtube.com/watch?v=paJ57YMwNRE)
 Beta 1.2.23 | <!-- Unavailable --> | [Beta 1.2.23](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.23.md)
 Beta 1.2.20 | <!-- Unavailable --> | Building modification (v2.0.103)
 Beta 1.2.18 | <!-- Unavailable --> | [8th combat beta](https://github.com/JaylyDev/manhunt/blob/terminator/.github/Changelog/Beta%201.2.18.md)
