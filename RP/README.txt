@@ -1,7 +1,7 @@
             Minecraft Terminator for Bedrock Edition
     Download here: https://mcpedl.com/mc-terminator-addon-1/
 
-Add-on version: 1.3.0.50
+Add-on version: 1.3.1.1 [Beta]
 
 Created by: JaylyMC
 
@@ -9,7 +9,7 @@ Created by: JaylyMC
  - YouTube: https://youtube.com/jaylymc
  - Twitter: https://twitter.com/jaylyplays
  - Discord: https://discord.gg/Xn8TCJWA
- - GitHub: https://github.com/jaylydev/manhunt/tree/terminator
+ - GitHub: https://github.com/jaylydev/terminator
 
 Important:
  - You are not allowed to repost this add-on to other websites.
@@ -22,4 +22,4 @@ Licensed under the GNU 3.0 license.
 
  - Check LICENSE.txt for more infomation
                  or
- - Check https://github.com/JaylyDev/manhunt/blob/terminator/LICENSE.md for the latest license infomation
+ - Check https://github.com/JaylyDev/terminator/blob/main/LICENSE.md for the latest license infomation

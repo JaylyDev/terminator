@@ -18,4 +18,4 @@ Contribution:
 
 No. Unless you wanted to make it better, then fork the repo from github repo
 
-Github Repository for AdvancedBuilding module: https://github.com/JaylyDev/manhunt/tree/terminator/BP/animation_controllers/AdvancedBuilding
+Github Repository for AdvancedBuilding module: https://github.com/jaylydev/terminator/BP/animation_controllers/AdvancedBuilding
