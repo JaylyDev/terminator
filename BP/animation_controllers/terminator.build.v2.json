@@ -112,9 +112,9 @@
         "vertical.up": {
           "transitions": [{"default_state": "(1.0)"}],
           "on_entry": [
-            "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ tp ~ ~1 ~",
+            "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ detect ~ ~ ~ air 0 tp ~ ~1 ~",
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ cobblestone 0 replace air",
-            "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ tp ~ ~1 ~",
+            "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ detect ~ ~ ~ air 0 tp ~ ~1 ~",
             "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ cobblestone 0 replace air"
           ]
         },

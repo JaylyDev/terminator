@@ -57,8 +57,8 @@ def restart_minecraft(appid, appname):
     else: pass
 
 username = getpass.getuser()
-fromDirectory_rp = "C:\\Users\\" + username + "\\Documents\\GitHub\\manhunt\\RP"
-fromDirectory_bp = "C:\\Users\\" + username + "\\Documents\\GitHub\\manhunt\\BP"
+fromDirectory_rp = "C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\RP"
+fromDirectory_bp = "C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\BP"
 requested = False
 logEnabled = False
 

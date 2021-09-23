@@ -241,7 +241,7 @@
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.3
+          "speed_multiplier": 1.0
         },
         "minecraft:attack": {
           "damage": 1
@@ -454,12 +454,12 @@
       },
       "minecraft:crossbow_ranged_unit": {
         "minecraft:behavior.ranged_attack": {
-          "priority": 8,
+          "priority": 6,
           "attack_interval_min": 1,
           "attack_interval_max": 1,
           "attack_radius": 15,
           "attack_radius_min": 4,
-          "speed_multiplier": 1.0,
+          "speed_multiplier": 0.3034514709288858, // 1.31 (sneaking) / 4.317 (walking)
           "target_in_sight_time": 0.1
         },
         "minecraft:shooter": {
@@ -574,7 +574,8 @@
           "priority": 1,
           "attack_interval_min": 1.0, // default is 1.0
           "attack_interval_max": 3.0, // default is 3.0
-          "attack_radius": 15.0
+          "attack_radius": 15.0,
+          "speed_multiplier": 0.3034514709288858 // 1.31 (sneaking) / 4.317 (walking)
         },
         "minecraft:attack": {
           "damage": 3
@@ -695,7 +696,7 @@
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.3,
+          "speed_multiplier": 1.0,
           "melee_fov": 90
         },
         "minecraft:attack": {
@@ -937,14 +938,15 @@
           "priority": 1,
           "attack_interval_min": 1.0,
           "attack_interval_max": 3.0,
-          "attack_radius": 15.0
+          "attack_radius": 15.0,
+          "speed_multiplier": 0.3034514709288858 // 1.31 (sneaking) / 4.317 (walking)
         }
       },
       "minecraft:trident_melee_attack": {
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
-          "speed_multiplier": 1.3,
+          "speed_multiplier": 1.0,
           "melee_fov": 90
         },
         "minecraft:attack": {
@@ -1006,7 +1008,23 @@
           "minecraft:web",
           "minecraft:magma",
           "minecraft:lava",
-          "minecraft:flowing_lava"
+          "minecraft:flowing_lava",
+          "minecraft:fire",
+          "minecraft:sweet_berry_bush",
+          "minecraft:cactus",
+          "minecraft:trapdoor",
+          "minecraft:acacia_trapdoor",
+          "minecraft:crimson_trapdoor",
+          "minecraft:dark_oak_trapdoor",
+          "minecraft:iron_trapdoor",
+          "minecraft:jungle_trapdoor",
+          "minecraft:spruce_trapdoor",
+          "minecraft:warped_trapdoor",
+          "minecraft:tnt",
+          "minecraft:wither_rose",
+          "minecraft:big_dripleaf",
+          "minecraft:pointed_dripstone",
+          "minecraft:soul_fire"
         ]
       },
       "minecraft:follow_range": {
@@ -1020,29 +1038,31 @@
       "minecraft:jump.static": {
         "jump_power": 0.42
       },
-      "minecraft:can_climb": {},
+      "minecraft:can_climb": {
+      },
       "minecraft:inventory": {
         "inventory_size": 36,
         "private": true
       },
       "minecraft:movement": {
-        "value": 0.4317 // walking speed is approximately 4.317 m/s
+        // Walking speed: 4.317 * 0.075 = 0.323775 (walking speed is approximately 4.317 m/s)
+        // Sprinting speed: (5.612 / 4.317) * 0.323775 = 0.4209 (sprinting speed is around 5.612 m/s)
+        "value": [0.323775, 0.4209]
       },
       "minecraft:underwater_movement": {
-        "value": 0.104 // default is 0.08
+        // According to https://minecraft.fandom.com/wiki/Swimming#Usage: 
+        // When swimming on the surface of still water, the player moves at 2.20 blocks per second (2.2 * 0.075 = 0.165)
+        // If the player is partially submerged in water, the player moves at 1.97 blocks per second (1.97 * 0.075 = 0.14775)
+        "value": 0.14775
       },
       "minecraft:health": {
-        "value": 40,
-        "max": 40
+        "value": 60,
+        "max": 60
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
-            "filters": {
-              "all_of": [
-                { "test": "in_lava", "subject": "self", "operator": "==", "value": true }
-              ]
-            },
+            "filters": { "all_of": [{ "test": "in_lava", "subject": "self", "operator": "==", "value": true }]},
             "cause": "lava",
             "damage_per_tick": 4
           }
@@ -1100,7 +1120,7 @@
         ]
       },
       // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
-      // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/manhunt/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
+      // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
       "minecraft:break_blocks": {
         "breakable_blocks": [
           "acacia_button",
@@ -1394,13 +1414,52 @@
             },
             "max_dist": 8,
             "walk_speed_multiplier": 1.0,
-            "sprint_speed_multiplier": 1.3
+            "sprint_speed_multiplier": 1.299976835765578 // 5.612 / 4.317
           }
         ]
+      },      
+      "minecraft:behavior.avoid_block": {
+        "priority": 7,
+        "tick_interval": 5,
+        "search_range": 8,
+        "search_height": 4,
+        "sprint_speed_modifier": 1.299976835765578, // 5.612 / 4.317
+        "target_selection_method": "nearest",
+        "target_blocks": [
+          "minecraft:powder_snow",
+          "minecraft:web",
+          "minecraft:magma",
+          "minecraft:lava",
+          "minecraft:flowing_lava",
+          "minecraft:fire",
+          "minecraft:sweet_berry_bush",
+          "minecraft:cactus",
+          "minecraft:trapdoor",
+          "minecraft:acacia_trapdoor",
+          "minecraft:crimson_trapdoor",
+          "minecraft:dark_oak_trapdoor",
+          "minecraft:iron_trapdoor",
+          "minecraft:jungle_trapdoor",
+          "minecraft:spruce_trapdoor",
+          "minecraft:warped_trapdoor",
+          "minecraft:tnt",
+          "minecraft:wither_rose",
+          "minecraft:big_dripleaf",
+          "minecraft:pointed_dripstone",
+          "minecraft:soul_fire",
+          "minecraft:item.soul_campfire"
+        ]
       },
-      "minecraft:behavior.eat_carried_item": {
-        "priority": 0,
-        "delay_before_eating": 0
+      "minecraft:behavior.random_stroll": {
+        "priority": 8,
+        "speed_multiplier": 0.6
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 9,
+        "look_distance": 8
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 10
       },
 
       // End of terminator's priorities
@@ -1578,8 +1637,7 @@
           { "item": "tropical_fish", "heal_amount": 1 }
         ] // credit: https://minecraft.fandom.com/wiki/Food#Foods
       },
-      "minecraft:scaffolding_climber": {
-      },
+      "minecraft:scaffolding_climber": {},
       "minecraft:environment_sensor": {
         "triggers": [
           {
