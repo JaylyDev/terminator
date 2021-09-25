@@ -30,6 +30,391 @@
       }
     },
     "component_groups": {
+      "terminator:break_blocks.v2": {
+        // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
+        // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
+        "minecraft:break_blocks": {
+          "breakable_blocks": [
+            "acacia_button",
+            "acacia_standing_sign",
+            "acacia_wall_sign",
+            "activator_rail",
+            "amethyst_cluster",
+            "ancient_debris",
+            "azalea",
+            "azalea_leaves",
+            "azalea_leaves_flowered",
+            "bamboo",
+            "bamboo_sapling",
+            "barrel",
+            "basalt",
+            "beacon",
+            "bed",
+            "beetroot",
+            "big_dripleaf",
+            "birch_button",
+            "birch_standing_sign",
+            "birch_wall_sign",
+            "blackstone",
+            "blackstone_wall",
+            "blast_furnace",
+            "bookshelf",
+            "brewing_stand",
+            "brown_mushroom",
+            "cactus",
+            "cake",
+            "carpet",
+            "carrots",
+            "carved_pumpkin",
+            "cauldron",
+            "cave_vines",
+            "cave_vines_body_with_berries",
+            "cave_vines_head_with_berries",
+            "chest",
+            "chorus_flower",
+            "chorus_plant",
+            "cocoa",
+            "crimson_button",
+            "crimson_fungus",
+            "crimson_roots",
+            "crimson_standing_sign",
+            "crimson_wall_sign",
+            "dark_oak_button",
+            "darkoak_standing_sign",
+            "darkoak_wall_sign",
+            "deadbush",
+            "detector_rail",
+            "double_plant",
+            "ender_chest",
+            "fire",
+            "flower_pot",
+            "flowering_azalea",
+            "frame",
+            "glass",
+            "glass_pane",
+            "glow_frame",
+            "glow_lichen",
+            "glowstone",
+            "golden_rail",
+            "gravel",
+            "hanging_roots",
+            "jungle_button",
+            "jungle_standing_sign",
+            "jungle_wall_sign",
+            "kelp",
+            "large_amethyst_bud",
+            "leaves",
+            "leaves2",
+            "lever",
+            "lit_pumpkin",
+            "lit_redstone_lamp",
+            "loom",
+            "medium_amethyst_bud",
+            "nether_sprouts",
+            "nether_wart",
+            "potatoes",
+            "powered_comparator",
+            "powered_repeater",
+            "rail",
+            "red_flower",
+            "red_mushroom",
+            "redstone_torch",
+            "redstone_wire",
+            "reeds",
+            "sapling",
+            "scaffolding",
+            "sea_pickle",
+            "seagrass",
+            "shulker_box",
+            "slime",
+            "small_amethyst_bud",
+            "snow_layer",
+            "soul_fire",
+            "soul_torch",
+            "spruce_button",
+            "spruce_standing_sign",
+            "spruce_wall_sign",
+            "stained_glass",
+            "stained_glass_pane",
+            "stained_hardened_clay",
+            "standing_banner",
+            "standing_sign",
+            "stone_button",
+            "sweet_berry_bush",
+            "tallgrass",
+            "tinted_glass",
+            "tnt",
+            "torch",
+            "trapped_chest",
+            "tripWire",
+            "tripwire_hook",
+            "turtle_egg",
+            "twisting_vines",
+            "undyed_shulker_box",
+            "unlit_redstone_torch",
+            "unpowered_comparator",
+            "unpowered_repeater",
+            "vine",
+            "wall_banner",
+            "wall_sign",
+            "warped_button",
+            "warped_fungus",
+            "warped_roots",
+            "warped_standing_sign",
+            "warped_wall_sign",
+            "waterlily",
+            "web",
+            "weeping_vines",
+            "wheat",
+            "wither_rose",
+            "wooden_button",
+            "yellow_flower",
+            // Following blocks are added since beta 1.2.22
+            "dirt",
+            "stone",
+            "grass",
+            "sand",
+            "tuff",
+            "netherrack",
+            "end_stone",
+            "honey_block",
+            "candle"
+          ]
+        },
+        "minecraft:block_sensor": {
+          "sensor_radius": 2,
+          "on_break":[
+            {
+              "block_list": [
+                "azalea",
+                "beetroot",
+                "carrots",
+                "cave_vines",
+                "cave_vines_body_with_berries",
+                "cave_vines_head_with_berries",
+                "deadbush",
+                "fire",
+                "flower_pot",
+                "tallgrass",
+                "honey_block",
+                "kelp",
+                "waterlily",
+                "brown_mushroom",
+                "red_mushroom",
+                "nether_sprouts",
+                "nether_wart",
+                "potatoes",
+                "redstone_torch",
+                "redstone_wire",
+                "unlit_redstone_torch",
+                "unpowered_comparator",
+                "unpowered_repeater",
+                "powered_comparator",
+                "powered_repeater",
+                "crimson_roots",
+                "hanging_roots",
+                "warped_roots",
+                "sapling",
+                "scaffolding",
+                "sea_pickle",
+                "seagrass",
+                "slime",
+                "loom",
+                "tnt",
+                "torch",
+                "tripWire",
+                "tripwire_hook",
+                "wheat",
+                "yellow_flower",
+                "bamboo_sapling"
+              ],
+              "on_block_broken": "terminator:on_block_broken.cooldown=0.05"
+            },
+            {
+              "block_list": [
+                "snow_layer",
+                "big_dripleaf",
+                "candle",
+                "carpet",
+                "twisting_vines",
+                "weeping_vines",
+                "azalea_leaves",
+                "azalea_leaves_flowered",
+                "leaves",
+                "leaves2",
+                "cocoa",
+                "bed",
+                "stained_glass",
+                "stained_glass_pane",
+                "lit_redstone_lamp",
+                "glowstone",
+                "glass",
+                "glass_pane"
+              ],
+              "on_block_broken": "terminator:on_block_broken.cooldown=0.5"
+            },
+            {
+              "block_list": [
+                "chorus_flower",
+                "chorus_plant",
+                "cactus",
+                "sand",
+                "turtle_egg",
+                "lever",
+                "dirt",
+                "cake",
+                "acacia_button",
+                "birch_button",
+                "crimson_button",
+                "dark_oak_button",
+                "jungle_button",
+                "spruce_button",
+                "stone_button",
+                "warped_button",
+                "wooden_button",
+                "gravel",
+                "grass",
+                "dirt"
+              ],
+              "on_block_broken": "terminator:on_block_broken.cooldown=1.0"
+            },
+            {
+              "block_list": [
+                "activator_rail",
+                "detector_rail",
+                "golden_rail",
+                "rail",
+                "netherrack",
+                "brewing_stand",
+                "acacia_standing_sign",
+                "acacia_wall_sign",
+                "birch_standing_sign",
+                "birch_wall_sign",
+                "crimson_standing_sign",
+                "crimson_wall_sign",
+                "darkoak_standing_sign",
+                "darkoak_wall_sign",
+                "jungle_standing_sign",
+                "jungle_wall_sign",
+                "spruce_standing_sign",
+                "spruce_wall_sign",
+                "standing_sign",
+                "wall_sign",
+                "warped_standing_sign",
+                "warped_wall_sign",
+                "carved_pumpkin",
+                "lit_pumpkin",
+                "nether_wart",
+                "standing_banner",
+                "wall_banner",
+                "bamboo",
+                "end_stone"
+              ],
+              "on_block_broken": "terminator:on_block_broken.cooldown=2.5"
+            },
+            {
+              "block_list": [
+                "amethyst_cluster",
+                "ancient_debris",
+                "barrel",
+                "basalt",
+                "beacon",
+                "blackstone",
+                "blackstone_wall",
+                "blast_furnace",
+                "bookshelf",
+                "brewing_stand",
+                "brown_mushroom",
+                "cactus",
+                "cauldron",
+                "ender_chest",
+                "fire",
+                "flower_pot",
+                "frame",
+                "glow_frame",
+                "glow_lichen",
+                "glowstone",
+                "golden_rail",
+                "gravel",
+                "large_amethyst_bud",
+                "medium_amethyst_bud",
+                "reeds",
+                "shulker_box",
+                "sweet_berry_bush",
+                "tallgrass",
+                "tinted_glass",
+                "tnt",
+                "torch",
+                "trapped_chest",
+                "tripWire",
+                "tripwire_hook",
+                "twisting_vines",
+                "undyed_shulker_box",
+                "web",
+                "wither_rose",
+                "stone",
+                "tuff"
+              ],
+              "on_block_broken": "terminator:on_block_broken.cooldown.random"
+            }
+          ]
+        }
+      },
+      "terminator:break_blocks.cooldown=0.05": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": false,
+          "time": 0.05,
+          "time_down_event": {
+            "event": "terminator:break_cooldown_remove",
+            "target": "self"
+          }
+        }
+      },
+      "terminator:break_blocks.cooldown=0.5": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [ 0.15, 0.45 ],
+          "time_down_event": {
+            "event": "terminator:break_cooldown_remove",
+            "target": "self"
+          }
+        }
+      },
+      "terminator:break_blocks.cooldown=1.0": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [ 0.6, 1.0 ],
+          "time_down_event": {
+            "event": "terminator:break_cooldown_remove",
+            "target": "self"
+          }
+        }
+      },
+      "terminator:break_blocks.cooldown=2.5": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [ 1.05, 2.5 ],
+          "time_down_event": {
+            "event": "terminator:break_cooldown_remove",
+            "target": "self"
+          }
+        }
+      },
+      "terminator:break_blocks.cooldown.random": {
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [ 0.0, 4.5 ],
+          "time_down_event": {
+            "event": "terminator:break_cooldown_remove",
+            "target": "self"
+          }
+        }
+      },
       "in_powder_snow": {
         "minecraft:is_shaking": {},
         "minecraft:environment_sensor": {
@@ -39,7 +424,8 @@
                 "test": "in_block",
                 "subject": "self",
                 "operator": "!=",
-                "value": "minecraft:powder_snow" },
+                "value": "minecraft:powder_snow" 
+              },
               "event": "got_out_of_powder_snow"
             },
             {
@@ -275,7 +661,8 @@
             { 
               "filters": {
                 "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "player" },
+                  { "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+                  { "test": "is_family", "subject": "other", "operator": "!=", "value": "terminator" },
                   { "test": "has_mob_effect", "subject": "other", "operator": "!=", "value": "invisibility"}
                 ]
               },
@@ -342,14 +729,13 @@
         }
       },
       "terminator:spawn_terminator": {
-        "minecraft:spawn_entity": {
-          "entities":{
-            "min_wait_time": 0,
-            "max_wait_time": 1,
-            "num_to_spawn": 1,
-            "single_use": true,
-            "spawn_entity": "entity:terminator",
-            "spawn_event": "terminator:disable_respawn_event"
+        "minecraft:timer": {
+          "looping": false,
+          "randomInterval": true,
+          "time": [ 0, 1 ],
+          "time_down_event": {
+            "event": "terminator:force_respawn",
+            "target": "self"
           }
         }
       },
@@ -973,7 +1359,7 @@
         "allow_name_tag_renaming": true
       },
       "minecraft:type_family": {
-        "family": [ "terminator" ]
+        "family": [ "terminator", "player" ]
       },
       "minecraft:equip_item": {
       },
@@ -1072,7 +1458,7 @@
         "total_supply": 15,
         "suffocate_time": 0,
         "breathes_air": true,
-        "breathes_water": true
+        "breathes_water": false
       },
       "minecraft:shareables": {
         "items": [
@@ -1117,153 +1503,6 @@
           { "item": "minecraft:trident", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
           { "item": "minecraft:crossbow", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
           { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true }
-        ]
-      },
-      // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
-      // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
-      "minecraft:break_blocks": {
-        "breakable_blocks": [
-          "acacia_button",
-          "acacia_standing_sign",
-          "acacia_wall_sign",
-          "activator_rail",
-          "amethyst_cluster",
-          "ancient_debris",
-          "azalea",
-          "azalea_leaves",
-          "azalea_leaves_flowered",
-          "bamboo",
-          "bamboo_sapling",
-          "barrel",
-          "basalt",
-          "beacon",
-          "bed",
-          "beetroot",
-          "big_dripleaf",
-          "birch_button",
-          "birch_standing_sign",
-          "birch_wall_sign",
-          "blackstone",
-          "blackstone_wall",
-          "blast_furnace",
-          "bookshelf",
-          "brewing_stand",
-          "brown_mushroom",
-          "cactus",
-          "cake",
-          "carpet",
-          "carrots",
-          "carved_pumpkin",
-          "cauldron",
-          "cave_vines",
-          "cave_vines_body_with_berries",
-          "cave_vines_head_with_berries",
-          "chest",
-          "chorus_flower",
-          "chorus_plant",
-          "cocoa",
-          "crimson_button",
-          "crimson_fungus",
-          "crimson_roots",
-          "crimson_standing_sign",
-          "crimson_wall_sign",
-          "dark_oak_button",
-          "darkoak_standing_sign",
-          "darkoak_wall_sign",
-          "deadbush",
-          "detector_rail",
-          "double_plant",
-          "fire",
-          "flower_pot",
-          "flowering_azalea",
-          "frame",
-          "glass",
-          "glass_pane",
-          "glow_frame",
-          "glow_lichen",
-          "glowstone",
-          "golden_rail",
-          "gravel",
-          "hanging_roots",
-          "jungle_button",
-          "jungle_standing_sign",
-          "jungle_wall_sign",
-          "kelp",
-          "large_amethyst_bud",
-          "leaves",
-          "leaves2",
-          "lever",
-          "lit_pumpkin",
-          "lit_redstone_lamp",
-          "loom",
-          "medium_amethyst_bud",
-          "nether_sprouts",
-          "nether_wart",
-          "potatoes",
-          "powered_comparator",
-          "powered_repeater",
-          "rail",
-          "red_flower",
-          "red_mushroom",
-          "redstone_torch",
-          "redstone_wire",
-          "reeds",
-          "sapling",
-          "scaffolding",
-          "sea_pickle",
-          "seagrass",
-          "shulker_box",
-          "slime",
-          "small_amethyst_bud",
-          "snow_layer",
-          "soul_fire",
-          "soul_torch",
-          "spruce_button",
-          "spruce_standing_sign",
-          "spruce_wall_sign",
-          "stained_glass",
-          "stained_glass_pane",
-          "stained_hardened_clay",
-          "standing_banner",
-          "standing_sign",
-          "stone_button",
-          "sweet_berry_bush",
-          "tallgrass",
-          "tinted_glass",
-          "tnt",
-          "torch",
-          "trapped_chest",
-          "tripWire",
-          "tripwire_hook",
-          "turtle_egg",
-          "twisting_vines",
-          "undyed_shulker_box",
-          "unlit_redstone_torch",
-          "unpowered_comparator",
-          "unpowered_repeater",
-          "vine",
-          "wall_banner",
-          "wall_sign",
-          "warped_button",
-          "warped_fungus",
-          "warped_roots",
-          "warped_standing_sign",
-          "warped_wall_sign",
-          "waterlily",
-          "web",
-          "weeping_vines",
-          "wheat",
-          "wither_rose",
-          "wooden_button",
-          "yellow_flower",
-          // Following blocks are added since beta 1.2.22
-          "dirt",
-          "stone",
-          "grass",
-          "sand",
-          "tuff",
-          "netherrack",
-          "end_stone"
         ]
       },
       "minecraft:damage_sensor": {
@@ -1467,6 +1706,8 @@
       "minecraft:persistent": {
       },
       "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
       },
       "minecraft:pushable": {
         "is_pushable": true,
@@ -1830,8 +2071,7 @@
             },
             "run_command": {
               "command": [
-                "summon entity:dummy",
-                "tag @e[type=entity:dummy,tag=!varient2] add varient1",
+                "summon entity:dummy ~ ~ ~ dummy:request_spawning",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -1847,11 +2087,9 @@
             "run_command": {
               "command": [
                 "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but he respawned!\"}]}",
-                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event \"Terminator\""
               ]
-            },
-            "add": {
-              "component_groups": [ "terminator:spawn_terminator" ]
             }
           },
           {
@@ -1880,10 +2118,7 @@
           ]
         },
         "run_command": {
-          "command": [
-            "summon entity:dummy ~ ~ ~",
-            "tag @e[type=entity:dummy,tag=!varient1] add varient2"
-          ]
+          "command": [ "summon entity:dummy ~ ~ ~ dummy:request_pathfind" ]
         }
       },
       "terminator:remove_escape": {
@@ -1923,7 +2158,7 @@
       },
       "terminator:disable_shield": {
         "add": {
-          "component_groups": ["terminator:set_default_varient"]
+          "component_groups": [ "terminator:set_default_varient" ]
         },
         "remove": {
           "component_groups": [ "shield:on_use" ]
@@ -2058,6 +2293,22 @@
             "setblock ~ ~ ~ fire",
             "playsound fire.ignite @a ~ ~ ~"
           ]
+        }
+      },
+      "terminator:on_block_broken.cooldown=0.05": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.cooldown=0.05" ]
+        }
+      },
+      "terminator:break_cooldown_remove": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.cooldown=0.05" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
         }
       }
     }

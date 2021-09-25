@@ -30,6 +30,8 @@
           "knockback_strength": 2,
           "knockback_damage": 0,
           "knockback_range": 6,
+					"knockback_horizontal_strength": 2,
+					"knockback_vertical_strength": 1,
           "knockback_filters": {
             "all_of": [
               {
@@ -53,15 +55,6 @@
         }
 			},
       "dummy:force_spawn_entity": {
-        "minecraft:spawn_entity": {
-          "entities": {
-            "min_wait_time": 0,
-            "max_wait_time": 0,
-            "spawn_entity": "entity:terminator",
-						"spawn_event": "terminator:disable_respawn_event",
-						"single_use": true
-          }
-        },
 				"minecraft:instant_despawn": {
 					"remove_child_entities": true
 				},
@@ -135,24 +128,6 @@
 			},
 			"minecraft:environment_sensor": {
 				"triggers":[
-					{
-						"filters":{
-							"all_of": [
-								{"test": "is_mark_variant", "subject": "self", "operator": "==", "value": 0},
-								{"test": "has_tag", "subject": "self", "operator": "==", "value": "varient1"}
-							]
-						},
-						"event": "dummy:request_spawning"
-					},
-					{
-						"filters":{
-							"all_of": [
-								{"test": "is_mark_variant", "subject": "self", "operator": "==", "value": 0},
-								{"test": "has_tag", "subject": "self", "operator": "==", "value": "varient2"}
-							]
-						},
-						"event": "dummy:request_pathfind"
-					},
 					{
 						"filters":{
 							"test": "has_component",

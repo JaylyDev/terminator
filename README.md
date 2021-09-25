@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.4.23
+**Beta**: Beta 1.3.6.11
 
 -----
 ## Description
