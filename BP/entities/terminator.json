@@ -1079,6 +1079,19 @@
         }
       },
       "minecraft:melee_attack": {
+	      "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ 0.0, 1.1, -0.35 ],
+            "lock_rider_rotation": 0
+          }
+        },
+	      "minecraft:scale": {
+          "value": 1.0625
+        },
         "minecraft:behavior.melee_attack": {
           "priority": 1,
           "track_target": true,
@@ -1086,8 +1099,10 @@
           "melee_fov": 90
         },
         "minecraft:attack": {
-          "damage": 1
-        },
+        "damage": 3,
+        "effect_name": "poison",
+        "effect_duration": 30
+      },
         "minecraft:environment_sensor": {
           "triggers": [
             {
@@ -1341,11 +1356,31 @@
       }
     },
     "components": { // Terminator Components
+	    "minecraft:breedable": {
+          "require_tame": false,
+          "blend_attributes": false,
+          "environment_requirements": {
+            "blocks": "sticky_piston",
+            "count": 1,
+            "radius": 5
+          },
+          "breed_items": "end_rod",
+          "breeds_with": {
+            "mate_type": "minecraft:player",
+		  "baby_type": "entity:terminator"
+            "breed_event": {
+              "event": "minecraft:entity_born",
+              "target": "baby"
+            }
+          },
+          "mutation_factor": {
+            "variant": 1.0
+          }
+        },
       "minecraft:experience_reward": {
         "on_death": "Math.Min(query.last_hit_by_player ? (query.is_invisible ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0, 200)"
       },
       "minecraft:boss": {
-        "should_darken_sky": true, // this variable does not work LMAO
         "name": "Terminator",
         "hud_range": 64
       },
@@ -1443,7 +1478,7 @@
       },
       "minecraft:health": {
         "value": 60,
-        "max": 60
+        "max": 60000
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -1456,7 +1491,7 @@
       },
       "minecraft:breathable": {
         "total_supply": 15,
-        "suffocate_time": 0,
+        "suffocate_time": 1,
         "breathes_air": true,
         "breathes_water": false
       },
@@ -2309,6 +2344,13 @@
         },
         "add": {
           "component_groups": [ "terminator:break_blocks.v2" ]
+        }
+      },
+	    "minecraft:entity_born": {
+        "add": {
+          "component_groups": [
+            "minecraft:panda_baby"
+          ]
         }
       }
     }
