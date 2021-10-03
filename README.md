@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.6.11
+**Beta**: Beta 1.3.7.1
 
 -----
 ## Description
@@ -31,6 +31,9 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LI
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.3.6 | |
+Beta 1.3.4 | |
+Beta 1.3.1 | |
 Release 1.3.0 | [Linkvertise](https://linkvertise.com/329333/mcrobot?o=sharing) | [Release 1.3.0](https://github.com/JaylyDev/terminator/blob/main/.github/Changelog/Release%201.3.0.md)
 Beta 1.2.100 | [Download](https://www.youtube.com/watch?v=paJ57YMwNRE)
 Beta 1.2.23 | <!-- Unavailable --> | [Beta 1.2.23](https://github.com/JaylyDev/terminator/blob/main/.github/Changelog/Beta%201.2.23.md)
