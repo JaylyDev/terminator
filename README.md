@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.7.1
+**Beta**: Beta 1.3.8.5
 
 -----
 ## Description
@@ -31,6 +31,7 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LI
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.3.8
 Beta 1.3.6 | |
 Beta 1.3.4 | |
 Beta 1.3.1 | |
