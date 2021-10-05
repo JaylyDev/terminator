@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.6.11
+**Beta**: Beta 1.3.9.5
 
 -----
 ## Description
@@ -17,6 +17,10 @@ Developer:
 
 Special thanks to:
 - May5Flames (Terminator's crafting recipe)
+- bigguy69420
+
+![4D910BF9-C298-4EFC-9097-845FBBD8F10D](https://user-images.githubusercontent.com/91819282/136058665-ce018c7a-39ce-4fe5-a1bf-77d86afeef6f.jpeg)
+
 
 ## Questions, Bugs and Feedbacks
 Want to report a bug or suggest new features for the addon? [Click Here](https://github.com/JaylyDev/terminator/issues/new/choose)
@@ -31,8 +35,12 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LI
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.3.9 | [bigguy69420](https://github.com/bigguy69420/terminator)
+Beta 1.3.6
+Beta 1.3.4
+Beta 1.3.1
 Release 1.3.0 | [Linkvertise](https://linkvertise.com/329333/mcrobot?o=sharing) | [Release 1.3.0](https://github.com/JaylyDev/terminator/blob/main/.github/Changelog/Release%201.3.0.md)
-Beta 1.2.100 | [Download](https://www.youtube.com/watch?v=paJ57YMwNRE)
+Beta 1.2.100 | [Download](https://www.youtube.com/watch?v=paJ57YMwNRE) | Worst changelog
 Beta 1.2.23 | <!-- Unavailable --> | [Beta 1.2.23](https://github.com/JaylyDev/terminator/blob/main/.github/Changelog/Beta%201.2.23.md)
 Beta 1.2.20 | <!-- Unavailable --> | Building modification (v2.0.103)
 Beta 1.2.18 | <!-- Unavailable --> | [8th combat beta](https://github.com/JaylyDev/terminator/blob/main/.github/Changelog/Beta%201.2.18.md)
