@@ -30,6 +30,61 @@
       }
     },
     "component_groups": {
+	    "minecraft:wolf_tame": {
+        "minecraft:is_tamed": {
+        },
+        "minecraft:health": {
+          "value": 20,
+          "max": 20
+        },
+        "minecraft:color": {
+          "value": 14
+        },
+        "minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1.0,
+          "start_distance": 10,
+          "stop_distance": 2
+        },
+        "minecraft:attack": {
+          "damage": 4
+        },
+        "minecraft:behavior.breed": {
+          "priority": 2,
+          "speed_multiplier": 1.0
+        },
+
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 5,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
+              "max_dist": 16
+            }
+          ]
+        },
+
+        "minecraft:leashable": {
+          "soft_distance": 4.0,
+          "hard_distance": 6.0,
+          "max_distance": 10.0,
+          "on_leash": {
+            "event": "minecraft:on_leash",
+            "target": "self"
+          },
+          "on_unleash": {
+            "event": "minecraft:on_unleash",
+            "target": "self"
+          }
+        }
+      },
       "terminator:break_blocks.v2": {
         // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
         // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
@@ -1366,6 +1421,14 @@
             "variant": 1.0
           }
         },
+	    "minecraft:tameable": {
+        "probability": 0.33,
+        "tame_items": "bone",
+        "tame_event": {
+          "event": "minecraft:on_tame",
+          "target": "self"
+        }
+      },
       "minecraft:boss": {
         "should_darken_sky": true, // this variable does not work LMAO
         "name": "Terminator",
@@ -2344,6 +2407,13 @@
         },
         "add": {
           "component_groups": [ "terminator:break_blocks.v2" ]
+        }
+      },
+	    "minecraft:on_tame": {
+        "add": {
+          "component_groups": [
+            "minecraft:wolf_tame"
+          ]
         }
       }
     }
