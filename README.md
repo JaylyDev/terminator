@@ -5,7 +5,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.9.5
+**Beta**: Beta 1.3.11.9
 
 -----
 ## Description
@@ -35,7 +35,7 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LI
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
-Beta 1.3.9 | [bigguy69420](https://github.com/bigguy69420/terminator)
+Beta 1.3.11 | [bigguy69420](https://github.com/bigguy69420/terminator)
 Beta 1.3.6
 Beta 1.3.4
 Beta 1.3.1
