@@ -2655,7 +2655,7 @@
       "terminator:enable_invulnerable": {
         "add": {
           "component_groups": [ "terminator:invulnerable" ]
-        
+	}
       }
     }
   }
