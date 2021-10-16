@@ -32,6 +32,7 @@ Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LI
 ## Download archives
 Version | Link | Changelog
 ----|----|----|
+Beta 1.3.13 | [Download](https://github.com/JaylyDev/terminator/releases/tag/v1.3.13) | [Changelog]( https://github.com/JaylyDev/terminator/releases/tag/v1.3.13)
 Beta 1.3.11 | [bigguy69420](https://github.com/bigguy69420/terminator) | [Pull Request](https://github.com/JaylyDev/terminator/commit/d404c8581a90de6835cf18066e48ce6d16e9f021)
 Beta 1.3.6
 Beta 1.3.4
