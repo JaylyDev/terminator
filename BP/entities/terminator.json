@@ -30,123 +30,21 @@
       }
     },
     "component_groups": {
+      "terminator:physics": {
+        "minecraft:physics": {
+          "has_collision": true,
+          "has_gravity": true
+        }
+      },
 	    "minecraft:snowball_ranged_attack": {
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
           "attack_interval_min": 0.0, // default is 0.0
           "attack_interval_max": 1.0, // default is 3.0
           "attack_radius": 15.0
-	},
+        },
         "minecraft:shooter": {
           "def": "minecraft:snowball"
-        },
-        "minecraft:environment_sensor": {
-          "triggers": [
-            {
-              "filters": {
-                "all_of":[
-                  {
-                    "test": "is_underwater",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": true
-                  },
-                  {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
-                  }
-                ]
-                
-              },
-              "event": "minecraft:melee_mode"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
-                  },
-                  {
-                    "test": "has_ranged_weapon",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": false
-                  }
-                ]
-              },
-              "event": "minecraft:melee_mode"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": "minecraft:trident"
-                  }
-                ]
-              },
-              "event": "minecraft:trident_ranged_mode"
-            },
-            {
-              "filters": {
-                "test": "in_block",
-                "subject": "self",
-                "operator": "==",
-                "value": "minecraft:powder_snow"
-              },
-              "event": "got_in_powder_snow"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {"test": "has_mob_effect","subject": "self","value": "bad_omen"},
-                  {"test": "is_in_village","subject": "self","value": true}
-                ]
-              },
-              "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters":{
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target" 
-              },
-              "event": "terminator:fix_default_target"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "in_water",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": false
-                  },
-                  {
-                    "test": "has_ranged_weapon",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": true
-                  },
-                  {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": "minecraft:crossbow"
-                  }
-                ]
-              },
-              "event": "minecraft:crossbow_ranged_mode"
-            }
-          ]
         }
       },
 	    "minecraft:wolf_tame": {
@@ -624,7 +522,7 @@
         }
       },
       "got_out_of_powder_snow_environment_sensor": {
-        "minecraft:environment_sensor": {
+        "minecraft:environment_sensor": { // this environment sensor include all combat mode requirements
           "triggers": [
             {
               "filters": {
@@ -735,6 +633,19 @@
                 "value": "minecraft:behavior.nearest_attackable_target" 
               },
               "event": "terminator:fix_default_target"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:snowball"
+                  }
+                ]
+              },
+              "event": "minecraft:snowball_ranged_mode"
             }
           ]
         }
@@ -994,6 +905,66 @@
           ]
         }
       },
+      "terminator:invulnerable": {
+        "minecraft:damage_sensor": {
+          "triggers": [
+            { "cause": "anvil", "deals_damage": false },
+            { "cause": "block_explosion", "deals_damage": false },
+            { "cause": "charging", "deals_damage": false },
+            { "cause": "contact", "deals_damage": false },
+            { "cause": "drowning", "deals_damage": false },
+            {
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {"test": "is_family", "subject": "other", "operator": "==", "value": "player"},
+                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "terminator"},
+                    {"test": "has_equipment", "subject": "other", "operator": "==", "value": "barrier"}
+                  ]
+                }
+              },
+              "cause": "entity_attack",
+              "deals_damage": true
+            },
+            {
+              "on_damage": {
+                "filters": {
+                  "all_of": [
+                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "player"},
+                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "terminator"}
+                  ]
+                }
+              },
+              "cause": "entity_attack",
+              "deals_damage": false
+            },
+            { "cause": "entity_explosion", "deals_damage": false  },
+            { "cause": "fall", "deals_damage": false },
+            { "cause": "falling_block", "deals_damage": false },
+            { "cause": "fire", "deals_damage": false },
+            { "cause": "fire_tick", "deals_damage": false },
+            { "cause": "fireworks", "deals_damage": false },
+            { "cause": "fly_into_wall", "deals_damage": false },
+            { "cause": "freezing", "deals_damage": false },
+            { "cause": "lava", "deals_damage": false },
+            { "cause": "lightning", "deals_damage": false },
+            { "cause": "magic", "deals_damage": false },
+            { "cause": "magma", "deals_damage": false },
+            { "cause": "override", "deals_damage": false },
+            { "cause": "piston", "deals_damage": false },
+            { "cause": "projectile", "deals_damage": false },
+            { "cause": "stalactite", "deals_damage": false },
+            { "cause": "stalagmite", "deals_damage": false },
+            { "cause": "starve", "deals_damage": false },
+            { "cause": "suffocation", "deals_damage": false },
+            { "cause": "suicide", "deals_damage": false },
+            { "cause": "temperature", "deals_damage": false },
+            { "cause": "thorns", "deals_damage": false },
+            { "cause": "void", "deals_damage": true },
+            { "cause": "wither", "deals_damage": false }
+          ]
+        }
+      },
       "shield:on_use": {
         "minecraft:timer": {
           "time": 0.125,
@@ -1125,6 +1096,19 @@
                 "value": true
               },
               "event": "terminator:make_nether_portal"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:snowball"
+                  }
+                ]
+              },
+              "event": "minecraft:snowball_ranged_mode"
             }
           ]
         }
@@ -1248,6 +1232,19 @@
                 ]
               },
               "event": "minecraft:crossbow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:snowball"
+                  }
+                ]
+              },
+              "event": "minecraft:snowball_ranged_mode"
             }
           ]
         }
@@ -1353,6 +1350,19 @@
                 "value": "minecraft:behavior.nearest_attackable_target" 
               },
               "event": "terminator:fix_default_target"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:snowball"
+                  }
+                ]
+              },
+              "event": "minecraft:snowball_ranged_mode"
             }
           ]
         }
@@ -1486,6 +1496,19 @@
                 "value": "minecraft:behavior.nearest_attackable_target" 
               },
               "event": "terminator:fix_default_target"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:snowball"
+                  }
+                ]
+              },
+              "event": "minecraft:snowball_ranged_mode"
             }
           ]
         }
@@ -1909,15 +1932,16 @@
       
       "minecraft:persistent": {
       },
-      "minecraft:physics": {
-        "has_collision": true,
-        "has_gravity": true
-      },
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
       "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 0,
+          "max_dropped_ticks": 0,
+          "use_motion_prediction_hints": true
+        }
       },
       "minecraft:tick_world": {
         "never_despawn": true,
@@ -2082,7 +2106,8 @@
           { "item": "tropical_fish", "heal_amount": 1 }
         ] // credit: https://minecraft.fandom.com/wiki/Food#Foods
       },
-      "minecraft:scaffolding_climber": {},
+      "minecraft:scaffolding_climber": {}, // compatible for Minecraft v1.17.10.21 or below
+      "minecraft:block_climber": {}, // compatible for Minecraft v1.17.10.22 or above
       "minecraft:environment_sensor": {
         "triggers": [
           {
@@ -2201,8 +2226,25 @@
               "value": true
             },
             "event": "terminator:make_nether_portal"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_equipment",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:snowball"
+                }
+              ]
+            },
+            "event": "minecraft:snowball_ranged_mode"
           }
         ]
+      },
+      "minecraft:strength": {
+        "max": 36,
+        "value": 1
       }
     },
 
@@ -2221,9 +2263,27 @@
           "component_groups": [
             "terminator:set_default_varient",
             "terminator:default_attack_target",
-            "minecraft:melee_attack"
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2"
           ]
-        }
+        },
+        "sequence": [
+          {
+            "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "nophysics" },
+            "add": {
+              "component_groups": [ "terminator:physics" ]
+            }
+          },
+          {
+            "filters": { "test": "has_tag", "subject": "self", "operator": "==", "value": "nophysics" },
+            "remove": {
+              "component_groups": [ "terminator:physics" ]
+            },
+            "run_command": {
+              "command": [ "tag @s remove nophysics" ]
+            }
+          }
+        ]
       },
       "minecraft:gain_bad_omen": {
         "add": {
@@ -2450,16 +2510,18 @@
         }
       },
 			"minecraft:snowball_ranged_mode": {
-"remove": {
-"component_groups": [
-"minecraft:melee_attack",
+        "remove": {
+          "component_groups": [
+            "minecraft:melee_attack",
             "minecraft:bow_ranged_attack",
             "minecraft:crossbow_ranged_unit",
             "got_out_of_powder_snow_environment_sensor",
-	"minecraft:trident_mode_switcher"
-	]
-},
-				"add": { "component_groups": [ "minecraft:snowball_ranged_attack" ]}
+            "minecraft:trident_mode_switcher"
+          ]
+        },
+				"add": { 
+          "component_groups": [ "minecraft:snowball_ranged_attack" ]
+        }
 			},
       "terminator:fix_default_target": {
         "add": {
@@ -2520,20 +2582,80 @@
           "component_groups": [ "terminator:break_blocks.cooldown=0.05" ]
         }
       },
+      "terminator:on_block_broken.cooldown=0.5": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.cooldown=0.5" ]
+        }
+      },
+      "terminator:on_block_broken.cooldown=1.0": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.cooldown=1.0" ]
+        }
+      },
+      "terminator:on_block_broken.cooldown=2.5": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.cooldown=2.5" ]
+        }
+      },
+      "terminator:on_block_broken.cooldown=random": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "add": {
+          "component_groups": [ "terminator:break_blocks.cooldown.random" ]
+        }
+      },
       "terminator:break_cooldown_remove": {
         "remove": {
-          "component_groups": [ "terminator:break_blocks.cooldown=0.05" ]
+          "component_groups": [ 
+            "terminator:break_blocks.cooldown=0.05",
+            "terminator:break_blocks.cooldown=0.5",
+            "terminator:break_blocks.cooldown=1.0",
+            "terminator:break_blocks.cooldown=2.5",
+            "terminator:break_blocks.cooldown.random"
+          ]
         },
         "add": {
           "component_groups": [ "terminator:break_blocks.v2" ]
         }
       },
-	    "minecraft:on_tame": {
+	    "minecraft:on_tame": { // What?
         "add": {
           "component_groups": [
             "minecraft:wolf_tame"
           ]
         }
+      },
+      "terminator:disable_respawn": {
+        "run_command": {
+          "command": [
+            "tag @s add terminatordeathrequest"
+          ]
+        },
+        "trigger": "minecraft:entity_spawned"
+      },
+      "terminator:disable_physics": {
+        "run_command": {
+          "command": [ "tag @s add nophysics" ]
+        },
+        "remove": {
+          "component_groups": [ "terminator:physics" ]
+        },
+        "trigger": "minecraft:entity_spawned"
+      },
+      "terminator:enable_invulnerable": {
+        "add": {
+          "component_groups": [ "terminator:invulnerable" ]
+        
       }
     }
   }
