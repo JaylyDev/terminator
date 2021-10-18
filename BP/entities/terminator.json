@@ -17,7 +17,8 @@
           "terminator.shield",
           "terminator.build.forward",
           "terminator.build.vertical",
-          "terminator.build.suffocation"
+          "terminator.build.suffocation",
+          "terminator.break_blocks"
         ]
       },
       "animations": {
@@ -26,14 +27,15 @@
         "terminator.shield": "controller.animation.terminator.shield",
         "terminator.build.forward": "controller.animation.terminator.build.forward",
         "terminator.build.vertical": "controller.animation.terminator.build.vertical",
-        "terminator.build.suffocation": "controller.animation.terminator.build.suffocation"
+        "terminator.build.suffocation": "controller.animation.terminator.build.suffocation",
+        "terminator.break_blocks": "controller.animation.terminator.break_blocks.v2"
       }
     },
     "component_groups": {
-      "terminator:physics": {
+      "terminator:disable_physics": {
         "minecraft:physics": {
-          "has_collision": true,
-          "has_gravity": true
+          "has_collision": false,
+          "has_gravity": false
         }
       },
 	    "minecraft:snowball_ranged_attack": {
@@ -87,7 +89,6 @@
             }
           ]
         },
-
         "minecraft:leashable": {
           "soft_distance": 4.0,
           "hard_distance": 6.0,
@@ -105,6 +106,7 @@
       "terminator:break_blocks.v2": {
         // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
         // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
+        
         "minecraft:break_blocks": {
           "breakable_blocks": [
             "acacia_button",
@@ -252,239 +254,6 @@
             "honey_block",
             "candle"
           ]
-        },
-        "minecraft:block_sensor": {
-          "sensor_radius": 2,
-          "on_break":[
-            {
-              "block_list": [
-                "azalea",
-                "beetroot",
-                "carrots",
-                "cave_vines",
-                "cave_vines_body_with_berries",
-                "cave_vines_head_with_berries",
-                "deadbush",
-                "fire",
-                "flower_pot",
-                "tallgrass",
-                "honey_block",
-                "kelp",
-                "waterlily",
-                "brown_mushroom",
-                "red_mushroom",
-                "nether_sprouts",
-                "nether_wart",
-                "potatoes",
-                "redstone_torch",
-                "redstone_wire",
-                "unlit_redstone_torch",
-                "unpowered_comparator",
-                "unpowered_repeater",
-                "powered_comparator",
-                "powered_repeater",
-                "crimson_roots",
-                "hanging_roots",
-                "warped_roots",
-                "sapling",
-                "scaffolding",
-                "sea_pickle",
-                "seagrass",
-                "slime",
-                "loom",
-                "tnt",
-                "torch",
-                "tripWire",
-                "tripwire_hook",
-                "wheat",
-                "yellow_flower",
-                "bamboo_sapling"
-              ],
-              "on_block_broken": "terminator:on_block_broken.cooldown=0.05"
-            },
-            {
-              "block_list": [
-                "snow_layer",
-                "big_dripleaf",
-                "candle",
-                "carpet",
-                "twisting_vines",
-                "weeping_vines",
-                "azalea_leaves",
-                "azalea_leaves_flowered",
-                "leaves",
-                "leaves2",
-                "cocoa",
-                "bed",
-                "stained_glass",
-                "stained_glass_pane",
-                "lit_redstone_lamp",
-                "glowstone",
-                "glass",
-                "glass_pane"
-              ],
-              "on_block_broken": "terminator:on_block_broken.cooldown=0.5"
-            },
-            {
-              "block_list": [
-                "chorus_flower",
-                "chorus_plant",
-                "cactus",
-                "sand",
-                "turtle_egg",
-                "lever",
-                "dirt",
-                "cake",
-                "acacia_button",
-                "birch_button",
-                "crimson_button",
-                "dark_oak_button",
-                "jungle_button",
-                "spruce_button",
-                "stone_button",
-                "warped_button",
-                "wooden_button",
-                "gravel",
-                "grass",
-                "dirt"
-              ],
-              "on_block_broken": "terminator:on_block_broken.cooldown=1.0"
-            },
-            {
-              "block_list": [
-                "activator_rail",
-                "detector_rail",
-                "golden_rail",
-                "rail",
-                "netherrack",
-                "brewing_stand",
-                "acacia_standing_sign",
-                "acacia_wall_sign",
-                "birch_standing_sign",
-                "birch_wall_sign",
-                "crimson_standing_sign",
-                "crimson_wall_sign",
-                "darkoak_standing_sign",
-                "darkoak_wall_sign",
-                "jungle_standing_sign",
-                "jungle_wall_sign",
-                "spruce_standing_sign",
-                "spruce_wall_sign",
-                "standing_sign",
-                "wall_sign",
-                "warped_standing_sign",
-                "warped_wall_sign",
-                "carved_pumpkin",
-                "lit_pumpkin",
-                "nether_wart",
-                "standing_banner",
-                "wall_banner",
-                "bamboo",
-                "end_stone"
-              ],
-              "on_block_broken": "terminator:on_block_broken.cooldown=2.5"
-            },
-            {
-              "block_list": [
-                "amethyst_cluster",
-                "ancient_debris",
-                "barrel",
-                "basalt",
-                "beacon",
-                "blackstone",
-                "blackstone_wall",
-                "blast_furnace",
-                "bookshelf",
-                "brewing_stand",
-                "brown_mushroom",
-                "cactus",
-                "cauldron",
-                "ender_chest",
-                "fire",
-                "flower_pot",
-                "frame",
-                "glow_frame",
-                "glow_lichen",
-                "glowstone",
-                "golden_rail",
-                "gravel",
-                "large_amethyst_bud",
-                "medium_amethyst_bud",
-                "reeds",
-                "shulker_box",
-                "sweet_berry_bush",
-                "tallgrass",
-                "tinted_glass",
-                "tnt",
-                "torch",
-                "trapped_chest",
-                "tripWire",
-                "tripwire_hook",
-                "twisting_vines",
-                "undyed_shulker_box",
-                "web",
-                "wither_rose",
-                "stone",
-                "tuff"
-              ],
-              "on_block_broken": "terminator:on_block_broken.cooldown.random"
-            }
-          ]
-        }
-      },
-      "terminator:break_blocks.cooldown=0.05": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": false,
-          "time": 0.05,
-          "time_down_event": {
-            "event": "terminator:break_cooldown_remove",
-            "target": "self"
-          }
-        }
-      },
-      "terminator:break_blocks.cooldown=0.5": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": true,
-          "time": [ 0.15, 0.45 ],
-          "time_down_event": {
-            "event": "terminator:break_cooldown_remove",
-            "target": "self"
-          }
-        }
-      },
-      "terminator:break_blocks.cooldown=1.0": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": true,
-          "time": [ 0.6, 1.0 ],
-          "time_down_event": {
-            "event": "terminator:break_cooldown_remove",
-            "target": "self"
-          }
-        }
-      },
-      "terminator:break_blocks.cooldown=2.5": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": true,
-          "time": [ 1.05, 2.5 ],
-          "time_down_event": {
-            "event": "terminator:break_cooldown_remove",
-            "target": "self"
-          }
-        }
-      },
-      "terminator:break_blocks.cooldown.random": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": true,
-          "time": [ 0.0, 4.5 ],
-          "time_down_event": {
-            "event": "terminator:break_cooldown_remove",
-            "target": "self"
-          }
         }
       },
       "in_powder_snow": {
@@ -714,9 +483,6 @@
           "track_target": true,
           "speed_multiplier": 1.0
         },
-        "minecraft:attack": {
-          "damage": 1
-        },
         "minecraft:entity_sensor": {
           "event_filters": {
             "all_of": [
@@ -918,7 +684,6 @@
                 "filters": {
                   "all_of": [
                     {"test": "is_family", "subject": "other", "operator": "==", "value": "player"},
-                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "terminator"},
                     {"test": "has_equipment", "subject": "other", "operator": "==", "value": "barrier"}
                   ]
                 }
@@ -929,9 +694,9 @@
             {
               "on_damage": {
                 "filters": {
-                  "all_of": [
-                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "player"},
-                    {"test": "is_family", "subject": "other", "operator": "!=", "value": "terminator"}
+                  "any_of": [
+                    {"test": "is_family", "subject": "other", "operator": "==", "value": "player"},
+                    {"test": "is_family", "subject": "other", "operator": "==", "value": "terminator"}
                   ]
                 }
               },
@@ -1121,9 +886,6 @@
           "attack_radius": 15.0,
           "speed_multiplier": 0.3034514709288858 // 1.31 (sneaking) / 4.317 (walking)
         },
-        "minecraft:attack": {
-          "damage": 3
-        },
         "minecraft:shooter": {
           "def": "minecraft:arrow"
         },
@@ -1255,9 +1017,6 @@
           "track_target": true,
           "speed_multiplier": 1.0,
           "melee_fov": 90
-        },
-        "minecraft:attack": {
-          "damage": 1
         },
         "minecraft:environment_sensor": {
           "triggers": [
@@ -1531,9 +1290,6 @@
           "track_target": true,
           "speed_multiplier": 1.0,
           "melee_fov": 90
-        },
-        "minecraft:attack": {
-          "damage": 1
         }
       }
     },
@@ -1577,6 +1333,10 @@
         "hud_range": 64
       },
       "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:physics": {
+        "has_collision": true,
+        "has_gravity": true
       },
       "minecraft:loot": {
         "table": "loot_tables/empty.json"
@@ -1932,6 +1692,12 @@
       
       "minecraft:persistent": {
       },
+      "minecraft:attack": {
+        "damage": {
+          "range_min": 1,
+          "range_max": 3
+        }
+      },
       "minecraft:pushable": {
         "is_pushable": true,
         "is_pushable_by_piston": true
@@ -2266,24 +2032,7 @@
             "minecraft:melee_attack",
             "terminator:break_blocks.v2"
           ]
-        },
-        "sequence": [
-          {
-            "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "nophysics" },
-            "add": {
-              "component_groups": [ "terminator:physics" ]
-            }
-          },
-          {
-            "filters": { "test": "has_tag", "subject": "self", "operator": "==", "value": "nophysics" },
-            "remove": {
-              "component_groups": [ "terminator:physics" ]
-            },
-            "run_command": {
-              "command": [ "tag @s remove nophysics" ]
-            }
-          }
-        ]
+        }
       },
       "minecraft:gain_bad_omen": {
         "add": {
@@ -2574,60 +2323,6 @@
           ]
         }
       },
-      "terminator:on_block_broken.cooldown=0.05": {
-        "remove": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.cooldown=0.05" ]
-        }
-      },
-      "terminator:on_block_broken.cooldown=0.5": {
-        "remove": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.cooldown=0.5" ]
-        }
-      },
-      "terminator:on_block_broken.cooldown=1.0": {
-        "remove": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.cooldown=1.0" ]
-        }
-      },
-      "terminator:on_block_broken.cooldown=2.5": {
-        "remove": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.cooldown=2.5" ]
-        }
-      },
-      "terminator:on_block_broken.cooldown=random": {
-        "remove": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.cooldown.random" ]
-        }
-      },
-      "terminator:break_cooldown_remove": {
-        "remove": {
-          "component_groups": [ 
-            "terminator:break_blocks.cooldown=0.05",
-            "terminator:break_blocks.cooldown=0.5",
-            "terminator:break_blocks.cooldown=1.0",
-            "terminator:break_blocks.cooldown=2.5",
-            "terminator:break_blocks.cooldown.random"
-          ]
-        },
-        "add": {
-          "component_groups": [ "terminator:break_blocks.v2" ]
-        }
-      },
 	    "minecraft:on_tame": { // What?
         "add": {
           "component_groups": [
@@ -2644,18 +2339,40 @@
         "trigger": "minecraft:entity_spawned"
       },
       "terminator:disable_physics": {
-        "run_command": {
-          "command": [ "tag @s add nophysics" ]
-        },
-        "remove": {
-          "component_groups": [ "terminator:physics" ]
+        "add": {
+          "component_groups": [ "terminator:disable_physics" ]
         },
         "trigger": "minecraft:entity_spawned"
       },
       "terminator:enable_invulnerable": {
         "add": {
           "component_groups": [ "terminator:invulnerable" ]
-	}
+        }
+      },
+      "terminator:enable_break_blocks": {
+        "add": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        }
+      },
+      "terminator:disable_break_blocks": {
+        "remove": {
+          "component_groups": [ "terminator:break_blocks.v2" ]
+        }
+      },
+      "terminator:check_test": {
+        "filters": {
+          "all_of": [
+            {
+              "test": "has_component",
+              "subject": "self",
+              "operator": "==",
+              "value": "minecraft:break_blocks"
+            }
+          ]
+        },
+        "run_command": {
+          "command": [ "say §aEvent §r'terminator:check_test' §apassed" ]
+        }
       }
     }
   }

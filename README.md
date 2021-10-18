@@ -12,7 +12,7 @@
 ### Latest Version
 **Release**: Release 1.3.0.50
 
-**Beta**: Beta 1.3.13.15
+**Beta**: Beta 1.3.14.10
 
 -----
 
