@@ -43,12 +43,127 @@
 	    "minecraft:snowball_ranged_attack": {
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
-          "attack_interval_min": 0.0, // default is 0.0
-          "attack_interval_max": 0.2, // default is 3.0
-          "attack_radius": 15.0
+          "attack_interval_min": 0.0,
+          "attack_interval_max": 0.2,
+          "attack_radius": 15.0,
+          "attack_radius_min": 3.0
         },
         "minecraft:shooter": {
           "def": "minecraft:snowball"
+        },
+        "minecraft:environment_sensor": { // this environment sensor include all combat mode requirements
+          "triggers": [
+            {
+              "filters": {
+                "all_of":[
+                  {
+                    "test": "is_underwater",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "minecraft:trident"
+                  }
+                ]
+                
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "test": "has_equipment",
+                "subject": "self",
+                "operator": "!=",
+                "value": "minecraft:snowball"
+              },
+              "event": "minecraft:melee_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:bow"
+                  }
+                ]
+              },
+              "event": "minecraft:bow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "in_water",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "has_ranged_weapon",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:crossbow"
+                  }
+                ]
+              },
+              "event": "minecraft:crossbow_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "self",
+                    "operator": "==",
+                    "value": "minecraft:trident"
+                  }
+                ]
+              },
+              "event": "minecraft:trident_ranged_mode"
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {"test": "has_mob_effect","subject": "self","value": "bad_omen"},
+                  {"test": "is_in_village","subject": "self","value": true}
+                ]
+              },
+              "event": "minecraft:trigger_raid"
+            },
+            {
+              "filters":{
+                "test": "has_component",
+                "subject": "self",
+                "operator": "!=",
+                "value": "minecraft:behavior.nearest_attackable_target" 
+              },
+              "event": "terminator:fix_default_target"
+            }
+          ]
         }
       },
       "terminator:break_blocks.v2": {
@@ -1407,7 +1522,8 @@
           { "item": "minecraft:shield", "want_amount": 64, "surplus_amount": 64, "priority": 1, "stored_in_inventory": true },
           { "item": "minecraft:trident", "want_amount": 64, "surplus_amount": 64, "priority": 2, "stored_in_inventory": true },
           { "item": "minecraft:crossbow", "want_amount": 64, "surplus_amount": 64, "priority": 3, "stored_in_inventory": true },
-          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true }
+          { "item": "minecraft:bow", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true },
+          { "item": "minecraft:snowball", "want_amount": 64, "surplus_amount": 64, "priority": 4, "stored_in_inventory": true }
         ]
       },
       "minecraft:damage_sensor": {
@@ -2114,7 +2230,8 @@
             "minecraft:bow_ranged_attack",
             "minecraft:crossbow_ranged_unit",
             "minecraft:trident_mode_switcher",
-            "got_out_of_powder_snow_environment_sensor"
+            "got_out_of_powder_snow_environment_sensor",
+            "minecraft:snowball_ranged_attack"
           ]
         },
         "add": {
@@ -2127,7 +2244,8 @@
             "minecraft:melee_attack",
             "minecraft:bow_ranged_attack",
             "minecraft:trident_mode_switcher",
-            "got_out_of_powder_snow_environment_sensor"
+            "got_out_of_powder_snow_environment_sensor",
+            "minecraft:snowball_ranged_attack"
           ]
         },
         "add": {
@@ -2140,7 +2258,8 @@
             "minecraft:melee_attack",
             "minecraft:crossbow_ranged_unit",
             "minecraft:trident_mode_switcher",
-            "got_out_of_powder_snow_environment_sensor"
+            "got_out_of_powder_snow_environment_sensor",
+            "minecraft:snowball_ranged_attack"
           ]
         },
         "add": {
@@ -2153,7 +2272,8 @@
             "minecraft:melee_attack",
             "minecraft:bow_ranged_attack",
             "minecraft:crossbow_ranged_unit",
-            "got_out_of_powder_snow_environment_sensor"
+            "got_out_of_powder_snow_environment_sensor",
+            "minecraft:snowball_ranged_attack"
           ]
         },
         "add": {
