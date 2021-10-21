@@ -44,7 +44,7 @@
         "minecraft:behavior.ranged_attack": {
           "priority": 1,
           "attack_interval_min": 0.0, // default is 0.0
-          "attack_interval_max": 1.0, // default is 3.0
+          "attack_interval_max": 0.2, // default is 3.0
           "attack_radius": 15.0
         },
         "minecraft:shooter": {
