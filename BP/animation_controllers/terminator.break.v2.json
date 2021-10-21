@@ -1,0 +1,211 @@
+/********************************************************
++*   (c) JaylyMC. All rights reserved.                    *
++*********************************************************/
+
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.terminator.break_blocks.v2": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            {
+              "enable_break_blocks": "q.count(q.get_nearby_entities(64, 'entity:terminator')) <= 5"
+            },
+            {
+              "disable_break_blocks": "q.count(q.get_nearby_entities(64, 'entity:terminator')) > 5"
+            },
+            {
+              "default_state": "(1.0)"
+            }
+          ]
+        },
+        "disable_break_blocks": {
+          "transitions": [
+            {
+              "default_state": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "@s terminator:disable_break_blocks"
+          ]
+        },
+        "enable_break_blocks": {
+          "transitions": [
+            {
+              "default_state": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "@s terminator:enable_break_blocks"
+          ]
+        }
+      }
+    },
+    "controller.animation.terminator.break_blocks_backup": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            {
+              "running_state": "(1.0)"
+            }
+          ]
+        },
+        "running_state": {
+          "transitions": [
+            {
+              "default_state": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace acacia_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace acacia_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace acacia_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace activator_rail",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace amethyst_cluster",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace ancient_debris",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace azalea",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace azalea_leaves",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace azalea_leaves_flowered",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace bamboo",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace bamboo_sapling",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace barrel",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace basalt",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace beacon",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace bed",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace beetroot",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace big_dripleaf",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace birch_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace birch_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace birch_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace blackstone",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace blackstone_wall",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace blast_furnace",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace bookshelf",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace brewing_stand",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace brown_mushroom",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cactus",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cake",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace carpet",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace carrots",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace carved_pumpkin",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cauldron",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cave_vines",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cave_vines_body_with_berries",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cave_vines_head_with_berries",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace chest",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace chorus_flower",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace chorus_plant",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace cocoa",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace crimson_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace crimson_fungus",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace crimson_roots",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace crimson_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace crimson_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace dark_oak_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace darkoak_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace darkoak_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace deadbush",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace detector_rail",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace double_plant",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace ender_chest",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace fire",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace flower_pot",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace flowering_azalea",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace frame",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace glass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace glass_pane",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace glow_frame",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace glow_lichen",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace glowstone",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace golden_rail",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace gravel",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace hanging_roots",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace jungle_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace jungle_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace jungle_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace kelp",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace large_amethyst_bud",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace leaves",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace leaves2",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace lever",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace lit_pumpkin",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace lit_redstone_lamp",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace loom",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace medium_amethyst_bud",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace nether_sprouts",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace nether_wart",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace potatoes",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace powered_comparator",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace powered_repeater",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace rail",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace red_flower",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace red_mushroom",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace redstone_torch",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace redstone_wire",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace reeds",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace sapling",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace scaffolding",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace sea_pickle",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace seagrass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace shulker_box",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace slime",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace small_amethyst_bud",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace snow_layer",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace soul_fire",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace soul_torch",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace spruce_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace spruce_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace spruce_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace stained_glass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace stained_glass_pane",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace stained_hardened_clay",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace standing_banner",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace stone_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace sweet_berry_bush",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tallgrass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tinted_glass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tnt",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace torch",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace trapped_chest",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tripWire",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tripwire_hook",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace turtle_egg",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace twisting_vines",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace undyed_shulker_box",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace unlit_redstone_torch",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace unpowered_comparator",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace unpowered_repeater",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace vine",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace wall_banner",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace warped_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace warped_fungus",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace warped_roots",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace warped_standing_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace warped_wall_sign",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace waterlily",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace web",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace weeping_vines",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace wheat",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace wither_rose",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace wooden_button",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace yellow_flower",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace dirt",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace stone",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace grass",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace sand",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace tuff",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace netherrack",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace end_stone",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace honey_block",
+            "/fill ~ ~ ~ ~ ~1 ~ air 0 replace candle"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -122,26 +122,6 @@
           ]
         }
       }
-    },
-    "controller.animation.terminator.break_blocks.v2": {
-      "initial_state": "default_state",
-      "states": {
-        "default_state": {
-          "transitions": [
-            { "enable_break_blocks": "q.count(q.get_nearby_entities(64, 'entity:terminator')) <= 5" },
-            { "disable_break_blocks": "q.count(q.get_nearby_entities(64, 'entity:terminator')) > 5" },
-            { "default_state": "(1.0)" }
-          ]
-        },
-        "disable_break_blocks": {
-          "transitions": [{"default_state": "(1.0)"}],
-          "on_exit": [ "@s terminator:disable_break_blocks" ]
-        },
-        "enable_break_blocks": { 
-          "transitions": [{"default_state": "(1.0)"}],
-          "on_exit": [ "@s terminator:enable_break_blocks" ]
-        }
-      }
     }
   }
 }

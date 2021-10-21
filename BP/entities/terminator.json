@@ -18,7 +18,8 @@
           "terminator.build.forward",
           "terminator.build.vertical",
           "terminator.build.suffocation",
-          "terminator.break_blocks"
+          "terminator.break",
+          "terminator.break.backup"
         ]
       },
       "animations": {
@@ -28,7 +29,8 @@
         "terminator.build.forward": "controller.animation.terminator.build.forward",
         "terminator.build.vertical": "controller.animation.terminator.build.vertical",
         "terminator.build.suffocation": "controller.animation.terminator.build.suffocation",
-        "terminator.break_blocks": "controller.animation.terminator.break_blocks.v2"
+        "terminator.break": "controller.animation.terminator.break_blocks.v2",
+        "terminator.break.backup": "controller.animation.terminator.break_blocks_backup"
       }
     },
     "component_groups": {
@@ -47,60 +49,6 @@
         },
         "minecraft:shooter": {
           "def": "minecraft:snowball"
-        }
-      },
-	    "minecraft:wolf_tame": {
-        "minecraft:is_tamed": {
-        },
-        "minecraft:health": {
-          "value": 20,
-          "max": 20
-        },
-        "minecraft:color": {
-          "value": 14
-        },
-        "minecraft:behavior.follow_owner": {
-          "priority": 6,
-          "speed_multiplier": 1.0,
-          "start_distance": 10,
-          "stop_distance": 2
-        },
-        "minecraft:attack": {
-          "damage": 4
-        },
-        "minecraft:behavior.breed": {
-          "priority": 2,
-          "speed_multiplier": 1.0
-        },
-
-        "minecraft:behavior.owner_hurt_by_target": {
-          "priority": 1
-        },
-        "minecraft:behavior.owner_hurt_target": {
-          "priority": 2
-        },
-        "minecraft:behavior.nearest_attackable_target": {
-          "priority": 5,
-          "must_see": true,
-          "entity_types": [
-            {
-              "filters": { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
-              "max_dist": 16
-            }
-          ]
-        },
-        "minecraft:leashable": {
-          "soft_distance": 4.0,
-          "hard_distance": 6.0,
-          "max_distance": 10.0,
-          "on_leash": {
-            "event": "minecraft:on_leash",
-            "target": "self"
-          },
-          "on_unleash": {
-            "event": "minecraft:on_unleash",
-            "target": "self"
-          }
         }
       },
       "terminator:break_blocks.v2": {
@@ -1297,36 +1245,6 @@
       "minecraft:experience_reward": {
         "on_death": "Math.Min(query.last_hit_by_player ? (query.is_invisible ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0, 200)"
       },
-			"minecraft:breedable": {
-				"allow_sitting": false,
-          "require_tame": false,
-          "blend_attributes": false,
-          "environment_requirements": {
-            "blocks": "bed",
-            "count": 2,
-            "radius": 5
-          },
-          "breed_items": "carrot",
-          "breeds_with": {
-            "mate_type": "entity:terminator",
-            "baby_type": "entity:terminator",
-            "breed_event": {
-              "event": "terminator:disable_respawn_event",
-              "target": "baby"
-            }
-          },
-          "mutation_factor": {
-            "variant": 1.0
-          }
-        },
-	    "minecraft:tameable": {
-        "probability": 0.33,
-        "tame_items": "bone",
-        "tame_event": {
-          "event": "minecraft:on_tame",
-          "target": "self"
-        }
-      },
       "minecraft:boss": {
         "should_darken_sky": true, // this variable does not work LMAO
         "name": "Terminator",
@@ -1443,9 +1361,9 @@
       },
       "minecraft:breathable": {
         "total_supply": 15,
-        "suffocate_time": 0,
-        "breathes_air": true,
-        "breathes_water": false
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": true
       },
       "minecraft:shareables": {
         "items": [
@@ -2099,7 +2017,7 @@
             },
             "run_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"selector\": \"@s\"}, {\"text\": \" died, but he respawned!\"}]}",
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
                 "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event \"Terminator\""
               ]
@@ -2113,7 +2031,7 @@
             },
             "run_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"text\": \"§6§l\"}, {\"selector\": \"@s\"}, {\"text\": \" died\"}]}",
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}",
                 "summon lightning_bolt ~ -40 ~"
               ]
             }
@@ -2323,13 +2241,6 @@
           ]
         }
       },
-	    "minecraft:on_tame": { // What?
-        "add": {
-          "component_groups": [
-            "minecraft:wolf_tame"
-          ]
-        }
-      },
       "terminator:disable_respawn": {
         "run_command": {
           "command": [
@@ -2352,27 +2263,52 @@
       "terminator:enable_break_blocks": {
         "add": {
           "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "run_command": {
+          "command": [ "tag @s remove enabledterminatorbreakblocksbackup" ]
         }
       },
       "terminator:disable_break_blocks": {
         "remove": {
           "component_groups": [ "terminator:break_blocks.v2" ]
+        },
+        "run_command": {
+          "command": [ "tag @s add enabledterminatorbreakblocksbackup" ]
         }
       },
       "terminator:check_test": {
-        "filters": {
-          "all_of": [
-            {
-              "test": "has_component",
-              "subject": "self",
-              "operator": "==",
-              "value": "minecraft:break_blocks"
+        "sequence": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_component",
+                  "subject": "self",
+                  "operator": "==",
+                  "value": "minecraft:break_blocks"
+                }
+              ]
+            },
+            "run_command": {
+              "command": [ "say §aEvent §r'check_test' §apassed" ]
             }
-          ]
-        },
-        "run_command": {
-          "command": [ "say §aEvent §r'terminator:check_test' §apassed" ]
-        }
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_component",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value": "minecraft:break_blocks"
+                }
+              ]
+            },
+            "run_command": {
+              "command": [ "say §cEvent §r'check_test' §cnot passed" ]
+            }
+          }
+        ]
       }
     }
   }

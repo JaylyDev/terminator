@@ -1,7 +1,7 @@
             Minecraft Terminator for Bedrock Edition
     Download here: https://mcpedl.com/mc-terminator-addon-1/
 
-Add-on version: 1.3.14.10 [Beta]
+Add-on version: 1.3.20.25
 
 Created by: JaylyMC
 
