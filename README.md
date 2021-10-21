@@ -16,7 +16,7 @@
 -----
 
 ### Latest Version
-**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.0.50 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
+**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.20.25 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
 **Beta**: v1.3.14.10 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
 
