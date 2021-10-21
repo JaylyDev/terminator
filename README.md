@@ -5,14 +5,20 @@
   <img src="https://img.shields.io/github/downloads/jaylydev/terminator/total.svg" alt="GitHub All Releases"/>
   <img src="https://img.shields.io/github/languages/code-size/jaylydev/terminator.svg" alt="Code size"/>
   <img src="https://img.shields.io/github/repo-size/jaylydev/terminator.svg" alt="GitHub repo size"/>
+  <img src="https://img.shields.io/tokei/lines/github/jaylydev/terminator" alt="Total lines"/>
+  <img src="https://img.shields.io/github/commit-activity/m/jaylydev/terminator" alt="Commit Activity"/>
+  <!--
+  <img src="https://img.shields.io/github/downloads/jaylydev/terminator/monthly.svg" alt="Monthly downloads"/>
+  <img src="https://travis-ci.org/jaylydev/terminator.svg?branch=main" alt="Build status"/>
+  -->
 </p>
   
 -----
 
 ### Latest Version
-**Release**: Release 1.3.0.50
+**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.0.50 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
-**Beta**: Beta 1.3.14.10
+**Beta**: v1.3.14.10 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
 
 -----
 
@@ -27,7 +33,7 @@ Special thanks to:
 ## Questions, Bugs and Feedbacks
 Want to report a bug or suggest new features for the addon? [Click Here](https://github.com/JaylyDev/terminator/issues/new/choose)
 
-Please ask and answer questions [here](https://discord.gg/Xn8TCJWA)
+Please ask and answer questions <a href="https://discord.gg/Xn8TCJWA"/>here <img src="https://img.shields.io/discord/570758760373420033" alt="Online members"></a>
 
 ## License
 Copyright (c) JaylyDev. All rights reserved.
