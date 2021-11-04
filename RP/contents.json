@@ -1,0 +1,73 @@
+{
+    "content": [
+        {
+            "path": "animations/terminator.animations.json"
+        },
+        {
+            "path": "animation_controllers/terminator.animation_controllers.json"
+        },
+        {
+            "path": "contents.json"
+        },
+        {
+            "path": "desktop.ini"
+        },
+        {
+            "path": "entity/dummy.entity.json"
+        },
+        {
+            "path": "entity/terminator.entity.json"
+        },
+        {
+            "path": "LICENSE.txt"
+        },
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "models/entity/dummy.geo.json"
+        },
+        {
+            "path": "models/entity/terminator.geo.json"
+        },
+        {
+            "path": "pack_icon.png"
+        },
+        {
+            "path": "README.txt"
+        },
+        {
+            "path": "render_controllers/dummy.render_controllers.json"
+        },
+        {
+            "path": "render_controllers/terminator.render_controllers.json"
+        },
+        {
+            "path": "terminator.code-workspace"
+        },
+        {
+            "path": "texts/en_GB.lang"
+        },
+        {
+            "path": "texts/en_US.lang"
+        },
+        {
+            "path": "texts/languages.json"
+        },
+        {
+            "path": "texts/language_names.json"
+        },
+        {
+            "path": "texts/translate.lang.js"
+        },
+        {
+            "path": "texts/workspace.code-workspace"
+        },
+        {
+            "path": "textures/entity/terminator/steve.png"
+        },
+        {
+            "path": "ui/debug_screen.json"
+        }
+    ]
+}
