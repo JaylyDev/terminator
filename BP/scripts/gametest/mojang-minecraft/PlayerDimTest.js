@@ -6,11 +6,12 @@ World.events.beforeChat.subscribe(eventChat => {
   var playercount = players.length;
 
   try {
-    let cmd = Commands.run('testfor @a[rm=0.01]', World.getDimension('nether'));
-    count = cmd.victim.length;
+    let playercmd = Commands.run('testfor @a[rm=0.01]', World.getDimension('overworld'));
+    let terminatorcmd = Commands.run('testfor @e[rm=0.01,type=entity:terminator]', World.getDimension('overworld'));
+    playercountresult = cmd.victim.length;
 
-    if ((count / playercount) > 0.5) {
-      Commands.run('event entity @e[type=entity:terminator] terminator:find_portal') 
+    if ((playercountresult / playercount) > 0.5 && terminatorcmd == 0) {
+      Commands.run('event entity @e[type=entity:terminator] terminator:find_portal_to_overworld') 
     }
   } catch {}
 }
