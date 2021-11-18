@@ -9,7 +9,8 @@ World.events.beforeChat.subscribe(eventChat => {
     let cmd = Commands.run('testfor @a[rm=0.01]', World.getDimension('nether'));
     count = cmd.victim.length;
 
-  if ((count / playercount) > 0.5) {
-    Commands.run('event entity @e[type=entity:terminator] terminator:find_portal') }
+    if ((count / playercount) > 0.5) {
+      Commands.run('event entity @e[type=entity:terminator] terminator:find_portal') 
+    }
   } catch {}
 }
