@@ -1,1 +1,1 @@
-import 'scripts/gametest/PlayerDimTest.js'
+import 'scripts/gametest/mojang-minecraft/PlayerDimTest.js'
