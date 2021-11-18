@@ -2325,26 +2325,72 @@
           "command": [ "tag @s remove terminatorsuffocate" ]
         }
       },
-			"terminator:find_portal_to_overworld": {
-				"sequence": [
-					{
-						"filters": { 
-						  "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
-						},
-						"add": { 
-						  "component_groups": [ "terminator:find_end_portal" ]
-						}
-					},
-					{
-						"filters": { 
-						  "test": "is_biome", "subject": "self", "operator": "==", "value": "the_nether" 
-						},
-						"add": { 
-						  "component_groups": [ "terminator:find_nether_portal" ]
-						}
-					}
-				]
-			},
+      "terminator:find_portal_to_overworld": {
+        "sequence": [
+          {
+            "filters": { 
+	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_end_portal" ]
+	    }
+	  },
+          {
+            "filters": { 
+	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_end_portal" ]
+	    }
+	  },
+	]
+      },
+      "terminator:find_portal_to_nether": {
+        "sequence": [
+          {
+            "filters": { 
+	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_end_portal" ]
+	    }
+	  },
+          {
+            "filters": { 
+	      "all_of": [
+		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
+		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
+		      ]
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_nether_portal" ]
+	    }
+	  },
+	]
+      },
+      "terminator:find_portal_to_the_end": {
+        "sequence": [
+          {
+            "filters": { 
+	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_nether" 
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_nether_portal" ]
+	    }
+	  },
+          {
+            "filters": { 
+		    "all_of": [
+		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
+		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
+		      ]
+	    },
+	    "add": { 
+	      "component_groups": [ "terminator:find_end_portal" ]
+	    }
+	  },
+	]
+      },
       "terminator:make_nether_portal": {
         "filters":{
           "all_of": [
