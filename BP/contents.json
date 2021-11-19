@@ -127,10 +127,13 @@
             "path": "recipes/terminator_spawn_egg.json"
         },
         {
-            "path": "structures/robot_respawn_cage.mcstructure"
+            "path": "scripts/gametests/Main.js"
         },
         {
-            "path": "terminator.code-workspace"
+            "path": "scripts/gametests/mojang-minecraft/PlayerDimTest.js"
+        },
+        {
+            "path": "structures/robot_respawn_cage.mcstructure"
         },
         {
             "path": "texts/en_GB.lang"
@@ -143,6 +146,9 @@
         },
         {
             "path": "texts/language_names.json"
+        },
+        {
+            "path": "workspace.code-workspace"
         }
     ]
 }

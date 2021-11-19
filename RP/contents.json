@@ -43,9 +43,6 @@
             "path": "render_controllers/terminator.render_controllers.json"
         },
         {
-            "path": "terminator.code-workspace"
-        },
-        {
             "path": "texts/en_GB.lang"
         },
         {
@@ -64,10 +61,22 @@
             "path": "texts/workspace.code-workspace"
         },
         {
+            "path": "textures/entity/terminator/alex.pdn"
+        },
+        {
+            "path": "textures/entity/terminator/alex.png"
+        },
+        {
+            "path": "textures/entity/terminator/steve.pdn"
+        },
+        {
             "path": "textures/entity/terminator/steve.png"
         },
         {
             "path": "ui/debug_screen.json"
+        },
+        {
+            "path": "workspace.code-workspace"
         }
     ]
 }
