@@ -127,6 +127,12 @@
             "path": "recipes/terminator_spawn_egg.json"
         },
         {
+            "path": "scripts/gametest/main.js"
+        },
+        {
+            "path": "scripts/gametest/mojang-minecraft/PlayerDimTest.js"
+        },
+        {
             "path": "structures/robot_respawn_cage.mcstructure"
         },
         {

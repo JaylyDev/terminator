@@ -169,7 +169,6 @@
       "terminator:break_blocks.v2": {
         // Updated module "terminator:break_blocks" from v1 to v2 in terminator addon v1.2.18.7
         // "terminator:break_blocks.v1" library archive in: https://github.com/JaylyDev/terminator/blob/2fc1edd15e370b3a2b5983b310d18ff321f8be22/BP/entities/terminator.json#L153 
-        
         "minecraft:break_blocks": {
           "breakable_blocks": [
             "acacia_button",
@@ -372,7 +371,6 @@
                     "value": "minecraft:trident"
                   }
                 ]
-                
               },
               "event": "minecraft:melee_mode"
             },
@@ -578,8 +576,8 @@
 					],
 					"on_stay_completed": [
 						{
-								"event": "terminator:disable_find_end_portal",
-								"target": "self"
+							"event": "terminator:disable_find_end_portal",
+							"target": "self"
 						}
 					]
 				}
@@ -595,9 +593,7 @@
 					"stay_duration": 20.0,
 					"target_selection_method": "random",
 					"target_offset": [0, 0.25, 0],
-					"target_blocks": [ 
-						"minecraft:portal"
-					],
+					"target_blocks": [ "minecraft:portal"	],
 					"on_stay_completed": [
 						{
 							"event": "terminator:disable_find_nether_portal",
@@ -2382,67 +2378,67 @@
         "sequence": [
           {
             "filters": { 
-	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_end_portal" ]
-	    }
-	  },
+	            "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+	          },
+            "add": { 
+              "component_groups": [ "terminator:find_end_portal" ]
+            }
+          },
           {
             "filters": { 
-	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_end_portal" ]
-	    }
-	  },
-	]
+              "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+            },
+            "add": { 
+              "component_groups": [ "terminator:find_end_portal" ]
+            }
+          }
+        ]
       },
       "terminator:find_portal_to_nether": {
         "sequence": [
           {
             "filters": { 
-	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_end_portal" ]
-	    }
-	  },
+              "test": "is_biome", "subject": "self", "operator": "==", "value": "the_end" 
+            },
+            "add": { 
+              "component_groups": [ "terminator:find_end_portal" ]
+            }
+          },
           {
             "filters": { 
-	      "all_of": [
-		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
-		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
-		      ]
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_nether_portal" ]
-	    }
-	  },
-	]
+              "all_of": [
+                { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
+                { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
+              ]
+            },
+            "add": { 
+              "component_groups": [ "terminator:find_nether_portal" ]
+            }
+	        } 
+	      ]
       },
       "terminator:find_portal_to_the_end": {
         "sequence": [
           {
             "filters": { 
-	      "test": "is_biome", "subject": "self", "operator": "==", "value": "the_nether" 
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_nether_portal" ]
-	    }
-	  },
+              "test": "is_biome", "subject": "self", "operator": "==", "value": "the_nether" 
+            },
+            "add": { 
+              "component_groups": [ "terminator:find_nether_portal" ]
+            }
+          },
           {
             "filters": { 
-		    "all_of": [
-		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
-		      { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
-		      ]
-	    },
-	    "add": { 
-	      "component_groups": [ "terminator:find_end_portal" ]
-	    }
-	  },
-	]
+		          "all_of": [
+		            { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_nether" },
+		           { "test": "is_biome", "subject": "self", "operator": "!=", "value": "the_end" }
+		          ]
+            },
+            "add": { 
+              "component_groups": [ "terminator:find_end_portal" ]
+            }
+          }
+        ]
       },
       "terminator:make_nether_portal": {
         "filters":{
@@ -2502,9 +2498,7 @@
 			},
       "terminator:disable_respawn": {
         "run_command": {
-          "command": [
-            "tag @s add terminatordeathrequest"
-          ]
+          "command": [ "tag @s add terminatordeathrequest" ]
         },
         "trigger": "minecraft:entity_spawned"
       },
@@ -2535,37 +2529,27 @@
           "command": [ "tag @s add enabledterminatorbreakblocksbackup" ]
         }
       },
-      "terminator:check_test": {
+      "terminator:check_test:minecraft:break_blocks": {
         "sequence": [
           {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "has_component",
-                  "subject": "self",
-                  "operator": "==",
-                  "value": "minecraft:break_blocks"
-                }
-              ]
-            },
-            "run_command": {
-              "command": [ "say §aEvent §r'check_test' §apassed" ]
-            }
+            "filters": { "all_of": [{ "test": "has_component", "subject": "self", "operator": "==", "value": "minecraft:break_blocks" }]},
+            "run_command": { "command": [ "say §aEvent §r'check_test:minecraft:break_blocks' §apassed" ]}
           },
           {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "has_component",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "minecraft:break_blocks"
-                }
-              ]
-            },
-            "run_command": {
-              "command": [ "say §cEvent §r'check_test' §cnot passed" ]
-            }
+            "filters": { "all_of": [{ "test": "has_component", "subject": "self", "operator": "!=", "value": "minecraft:break_blocks" }]},
+            "run_command": { "command": [ "say §cEvent §r'check_test:minecraft:break_blocks' §cnot passed" ]}
+          }
+        ]
+      },
+      "terminator:check_test:minecraft:behavior.move_to_block": {
+        "sequence": [
+          {
+            "filters": { "all_of": [{ "test": "has_component", "subject": "self", "operator": "==", "value": "minecraft:behavior.move_to_block" }]},
+            "run_command": { "command": [ "say §aEvent §r'check_test:minecraft:behavior.move_to_block' §apassed" ]}
+          },
+          {
+            "filters": { "all_of": [{ "test": "has_component", "subject": "self", "operator": "!=", "value": "minecraft:behavior.move_to_block" }]},
+            "run_command": { "command": [ "say §cEvent §r'check_test:minecraft:behavior.move_to_block' §cnot passed" ]}
           }
         ]
       }
