@@ -7,7 +7,6 @@ function DimensionTest (dimension) {
   const disableLogging = true;
 
   try {
-    var playerdimcount = Commands.run('testfor @a[rm=0]', World.getDimension(dimension)).victim.length;
 
     if ((playerdimcount / playercount) > 0.5) {
       if (dimension == 'the end') {
