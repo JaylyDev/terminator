@@ -1,0 +1,28 @@
+{
+	"type": "minecraftBedrock",
+	"name": "Terminator",
+	"namespace": "bridge",
+	"targetVersion": "1.17.40",
+	"description": "",
+	"packs": {
+		"behaviorPack": "./BP",
+		"resourcePack": "./RP"
+	},
+	"experimentalGameplay": {
+		"cavesAndCliffs": false,
+		"holidayCreatorFeatures": true,
+		"creationOfCustomBiomes": false,
+		"additionalModdingCapabilities": false,
+		"upcomingCreatorFeatures": false,
+		"enableGameTestFramework": true,
+		"experimentalMolangFeatures": true,
+		"educationEdition": false
+	},
+	"authors": [ 
+    "JaylyMC" 
+  ],
+	"bridge": {
+		"darkTheme": "bridge.blue.dark_theme",
+		"lightTheme": "solved.custom_theme.light_coral"
+	}
+}

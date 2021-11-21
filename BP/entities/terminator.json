@@ -561,20 +561,23 @@
       },
 			"terminator:find_end_portal": {
 				"minecraft:behavior.move_to_block": {
-					"priority": 10,
-					"tick_interval": 1,
-					"start_chance": 0.5,
-					"search_range": 6,
-					"search_height": 4,
+					"priority": 1,
+					"tick_interval": 0,
+					"search_range": 1024,
+					"search_height": 384,
+          "start_chance": 100.0,
 					"goal_radius": 1.0,
-					"stay_duration": 20.0,
-					"target_selection_method": "random",
+					"stay_duration": 1.0,
+					"target_selection_method": "nearest",
 					"target_offset": [0, 0.25, 0],
-					"target_blocks": [ 
-						"minecraft:end_portal",
-						"minecraft:end_portal_frame"
+					"target_blocks": [ "minecraft:end_portal" ],
+					"on_reach": [
+						{
+							"event": "terminator:disable_find_end_portal",
+							"target": "self"
+						}
 					],
-					"on_stay_completed": [
+          "on_stay_completed": [
 						{
 							"event": "terminator:disable_find_end_portal",
 							"target": "self"
@@ -584,17 +587,23 @@
 			},
 			"terminator:find_nether_portal": {
 				"minecraft:behavior.move_to_block": {
-					"priority": 10,
-					"tick_interval": 1,
-					"start_chance": 0.5,
-					"search_range": 6,
-					"search_height": 4,
+					"priority": 1,
+					"tick_interval": 0,
+					"search_range": 512,
+					"search_height": 384,
+          "start_chance": 100.0,
 					"goal_radius": 1.0,
-					"stay_duration": 20.0,
-					"target_selection_method": "random",
+					"stay_duration": 1.0,
+					"target_selection_method": "nearest",
 					"target_offset": [0, 0.25, 0],
 					"target_blocks": [ "minecraft:portal"	],
-					"on_stay_completed": [
+					"on_reach": [
+						{
+							"event": "terminator:disable_find_nether_portal",
+							"target": "self"
+						}
+					],
+          "on_stay_completed": [
 						{
 							"event": "terminator:disable_find_nether_portal",
 							"target": "self"
@@ -1731,7 +1740,7 @@
         "priority": 7,
         "tick_interval": 5,
         "search_range": 8,
-        "search_height": 4,
+        "search_height": 384,
         "sprint_speed_modifier": 1.299976835765578, // 5.612 / 4.317
         "target_selection_method": "nearest",
         "target_blocks": [

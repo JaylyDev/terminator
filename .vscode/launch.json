@@ -1,12 +1,13 @@
 { 
   "version": "0.2.0",
   "configurations": [
-    /*{ //Uncomment when Gametest Framework is involved with this addon
+    /*{
       "type": "minecraft-js",
       "request": "attach",
-      "name": "Wait for Minecraft Debug Connections",
-      "mode": "listen",
+      "name": "Attach to Minecraft",
+      "mode": "connect",
       "localRoot": "${workspaceFolder}/",
+      "host": "localhost",
       "port": 19144
     }*/
   ]

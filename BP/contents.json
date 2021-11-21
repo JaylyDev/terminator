@@ -73,6 +73,12 @@
             "path": "functions/terminator/changelog.mcfunction"
         },
         {
+            "path": "functions/terminator/debug/check_test/break_blocks.mcfunction"
+        },
+        {
+            "path": "functions/terminator/debug/check_test/move_to_block.mcfunction"
+        },
+        {
             "path": "functions/terminator/killall.mcfunction"
         },
         {
@@ -127,7 +133,13 @@
             "path": "recipes/terminator_spawn_egg.json"
         },
         {
+            "path": "scripts/gametests/gametest-docs.cmd"
+        },
+        {
             "path": "scripts/gametests/Main.js"
+        },
+        {
+            "path": "scripts/gametests/mojang-minecraft/EntityLocation.js"
         },
         {
             "path": "scripts/gametests/mojang-minecraft/PlayerDimTest.js"
