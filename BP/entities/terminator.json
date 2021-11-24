@@ -2191,11 +2191,11 @@
             },
             "run_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
                 "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event \"Terminator\""
               ]
-            }
+            },
+						"trigger": "terminator:respawn_message"
           },
           {
             "filters":{
@@ -2212,6 +2212,50 @@
           }
         ]
       },
+			"terminator:respawn_message": {
+				"sequence": [
+					{
+						"filters": { 
+							"test": "has_damage", "subject": "self", "operator": "==", "value": "anvil" 
+						},
+						"run_command": { 
+							"command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.anvil\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]
+					  }
+					},
+					{
+						"filters": { 
+							"test": "has_damage", "subject": "self", "operator": "==", "value": "attack" 
+						},
+						"run_command": { 
+							"command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]
+					  }
+					},
+					{
+						"filters": { 
+							"test": "has_damage", "subject": "self", "operator": "==", "value": "block_explosion" 
+						},
+						"run_command": { 
+							"command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.explosion\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]
+					  }
+					},
+					{
+						"filters": { 
+							"test": "has_damage", "subject": "self", "operator": "==", "value": "contact" 
+						},
+						"run_command": { 
+							"command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]
+					  }
+					},
+          {
+						"filters": { 
+							"test": "has_damage", "subject": "self", "operator": "==", "value": "fatal" 
+						},
+						"run_command": {
+							"command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]
+					  }
+					}
+        ]
+			},
       "terminator:escape": {
         "add": {
           "component_groups": [ "terminator:find_path" ]
