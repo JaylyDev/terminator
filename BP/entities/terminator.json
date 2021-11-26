@@ -2204,15 +2204,13 @@
               ]
             },
             "run_command": {
-              "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}",
-                "summon lightning_bolt ~ -40 ~"
-              ]
-            }
+							"command": [ "summon lightning_bolt ~ -40 ~" ]
+            },
+						"trigger": "terminator:death_message"
           }
         ]
       },
-			"terminator:respawn_message": {
+			"terminator:death_message": {
 				// All translate text (vanilla death messages) are according to https://github.com/ZtechNetwork/MCBVanillaResourcePack/blob/master/texts/en_US.lang#L2194
 				"sequence": [
 					{
@@ -2249,63 +2247,63 @@
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "fire" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.onFire\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.onFire\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "fire_tick" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.onFire\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.onFire\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "fly_into_tick" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.flyIntoWall\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.flyIntoWall\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "lava" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.lava\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.lava\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "magic" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.magic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.magic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "override" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "piston" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" }
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" }
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "projectile" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "stalacite" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.stalacite\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.stalacite\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},]}" ]}
 					},
 					{
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "stalagmite" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.stalagmite\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.stalagmite\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "starve" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.starve\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.starve\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "suffocation" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.inWall\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.inWall\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "thorns" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "void" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.outOfWorld\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.outOfWorld\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": { "test": "has_damage", "subject": "self", "operator": "==", "value": "wither" },
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.wither\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.wither\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					},
           {
 						"filters": {
@@ -2315,7 +2313,7 @@
 								{ "test": "has_damage", "subject": "self", "operator": "==", "value": "fatal" }
 							]
 						},
-						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+						"run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.generic\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
 					}
         ]
 			},
