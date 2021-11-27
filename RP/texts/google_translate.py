@@ -30,19 +30,19 @@ def get_webpage(url, verbose, debug):
         Chrome/37.0.2049.0 Safari/537.36"""
 
     if verbose:
-        print "\nAttempting request to url..."
+        print("\nAttempting request to url...")
     request = urllib2.Request(url)
     if verbose:
-        print "Request to url completed."
+        print("Request to url completed.")
 
     opener = urllib2.build_opener()
     request.add_header("User-Agent", chrome_user_agent)
 
     if verbose:
-        print "\nDownloading data from url..."
+        print("\nDownloading data from url...")
     data = opener.open(request).read()
     if verbose:
-        print "Data successfully downloaded from url."
+        print("Data successfully downloaded from url.")
 
     if debug:
         with open("output.html", "w") as f:
@@ -55,7 +55,7 @@ def parse_page(text, verbose):
     """ Parses the web page text for the all important translation. """
 
     if verbose:
-        print "\nParsing web page for translation..."
+        print("\nParsing web page for translation...")
     soup = bs4.BeautifulSoup(text)
     trans_results = [td.find("span") for td in
                      soup.findAll("pre", {"data-placeholder": "Translation"})]
@@ -64,16 +64,16 @@ def parse_page(text, verbose):
                      soup.findAll("pre", {"id": "tw-target-rmn"})]
 
     if not trans_results:
-        print "Error: No translation found on web page."
+        print("Error: No translation found on web page.")
         exit(2)
 
     translation = trans_results[0].text
     if verbose:
-        print "Translation successfully found.\n"
+        print("Translation successfully found.\n")
 
     romanisation = roman_results[0].text
     if verbose:
-        print "Romanisation successfully found.\n"
+        print("Romanisation successfully found.\n")
 
     return translation, romanisation
 
@@ -106,24 +106,23 @@ def translate(phrase, to, _from=None, verbose=False, debug=False):
         _from = _from.lower().capitalize()
 
     if to not in languages:
-        print "Error: language {} not supported.".format(to)
-        print "See `translate.py --langs` for all supported languages."
+        print("Error: language {} not supported.".format(to))
+        print("See `translate.py --langs` for all supported languages.")
         exit(1)
 
     if _from:
         if _from not in languages:
-            print "Error: language {} not supported.".format(_from)
-            print "See `translate.py --langs` for all supported languages."
+            print("Error: language {} not supported.".format(_from))
+            print("See `translate.py --langs` for all supported languages.")
             exit(1)
 
     if not _from:
         if verbose:
-            print ("\nTranslating {} to {} using autodetect..."
-                   .format(phrase, to))
+            print("\nTranslating {} to {} using autodetect...".format(phrase, to))
         query = "translation+{}+to+{}".format(phrase, to).replace(" ", "+")
     else:
         if verbose:
-            print "\nTranslating {} from {} to {}...".format(phrase, _from, to)
+            print("\nTranslating {} from {} to {}...".format(phrase, _from, to))
         query = ("translate+{}+from+{}+to+{}"
                  .format(phrase, _from, to).replace(" ", "+"))
 
@@ -133,9 +132,9 @@ def translate(phrase, to, _from=None, verbose=False, debug=False):
 
     translation, romanisation = parse_page(text, verbose)
 
-    print "Translation:", translation
+    print("Translation:", translation)
     if romanisation:
-        print "Romanisation:", romanisation
+        print("Romanisation:", romanisation)
 
     return translation
 
