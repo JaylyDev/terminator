@@ -1,0 +1,5 @@
+message.entity.respawn.generic=, ale respili!
+item.spawn_egg.entity.entity:terminator.name=Trýznik
+entity.entity:terminator.name=Terminátor
+entity.entity:terminator<>.name=Terminátor
+entity.entity:dummy.name=Dummy

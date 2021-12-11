@@ -1,0 +1,5 @@
+message.entity.respawn.generic=, Tapi mereka respawned!
+entity.entity:dummy.name=Contoh
+item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.
+entity.entity:terminator.name=Terminator.
+entity.entity:terminator<>.name=Terminator.

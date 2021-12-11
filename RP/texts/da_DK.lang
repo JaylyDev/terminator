@@ -1,0 +1,5 @@
+entity.entity:dummy.name=Dummy.
+message.entity.respawn.generic=, men de respawted!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator.
+entity.entity:terminator.name=Terminator.
+entity.entity:terminator<>.name=Terminator.

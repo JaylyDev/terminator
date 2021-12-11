@@ -1,0 +1,5 @@
+item.spawn_egg.entity.entity:terminator.name=Терминатор на хайвера
+entity.entity:dummy.name=Манекен
+entity.entity:terminator.name=Терминатор
+message.entity.respawn.generic=, но те решават!
+entity.entity:terminator<>.name=Терминатор

@@ -1,0 +1,5 @@
+entity.entity:dummy.name=Ανδρείκελο
+entity.entity:terminator.name=Τελειωτής
+message.entity.respawn.generic=, αλλά αναπνέω!
+item.spawn_egg.entity.entity:terminator.name=Τερματιστής
+entity.entity:terminator<>.name=Τελειωτής

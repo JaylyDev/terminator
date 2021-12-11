@@ -139,9 +139,6 @@
             "path": "scripts/gametests/Main.js"
         },
         {
-            "path": "scripts/gametests/mojang-minecraft/EntityLocation.js"
-        },
-        {
             "path": "scripts/gametests/mojang-minecraft/PlayerDimTest.js"
         },
         {

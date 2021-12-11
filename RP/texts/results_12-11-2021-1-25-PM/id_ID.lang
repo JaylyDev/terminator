@@ -1,0 +1,5 @@
+entity.entity:terminator<>.name=Terminator
+entity.entity:terminator.name=Terminator
+item.spawn_egg.entity.entity:terminator.name=Gissande terminator
+message.entity.respawn.generic=, men de respuderade!
+entity.entity:dummy.name=Dummy

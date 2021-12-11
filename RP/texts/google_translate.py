@@ -1,4 +1,5 @@
 """ Made by https://github.com/drewsberry/google-translate """
+""" Only works on Python 2.7 cringe """
 
 import urllib2
 import click

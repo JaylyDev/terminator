@@ -1,0 +1,5 @@
+message.entity.respawn.generic=, mas eles respostas!
+item.spawn_egg.entity.entity:terminator.name=Terminador de Spawn.
+entity.entity:terminator.name=o Exterminador do Futuro
+entity.entity:terminator<>.name=o Exterminador do Futuro
+entity.entity:dummy.name=Fictício

@@ -1,0 +1,5 @@
+message.entity.respawn.generic=, de megfelelnek!
+item.spawn_egg.entity.entity:terminator.name=Spawn terminátor
+entity.entity:dummy.name=Színlelt
+entity.entity:terminator.name=Végrehajtó
+entity.entity:terminator<>.name=Végrehajtó

@@ -1,0 +1,5 @@
+entity.entity:terminator.name=Terminátor
+message.entity.respawn.generic=, ale oni respuzovali!
+entity.entity:terminator<>.name=Terminátor
+entity.entity:dummy.name=Fiktivní
+item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.

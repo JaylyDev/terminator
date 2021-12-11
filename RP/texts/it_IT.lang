@@ -1,0 +1,5 @@
+entity.entity:terminator.name=Terminator.
+entity.entity:terminator<>.name=Terminator.
+entity.entity:dummy.name=Manichino
+message.entity.respawn.generic=, ma sono ripawn!
+item.spawn_egg.entity.entity:terminator.name=Terminator di spawn.

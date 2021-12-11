@@ -1,0 +1,5 @@
+message.entity.respawn.generic=，但他们重生了！
+entity.entity:terminator.name=终结者
+entity.entity:dummy.name=假
+item.spawn_egg.entity.entity:terminator.name=产卵终结者
+entity.entity:terminator<>.name=终结者
