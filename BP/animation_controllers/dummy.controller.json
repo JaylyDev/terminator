@@ -95,9 +95,10 @@
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
             "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
             "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "/summon entity:terminator ~ ~ ~ terminator:disable_respawn_event \"Terminator\"",
+            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event\" \"Terminator\"",
             "/fog @a remove respawn_lore",
-            "@s dummy:spawn_terminator"
+            "@s dummy:spawn_terminator",
+            "/event entity @s death_message:all"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
         }
