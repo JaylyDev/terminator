@@ -1,0 +1,12 @@
+"death_message:starve": { 
+  "sequence": [
+    { 
+      "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" },
+      "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.starve\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
+    },
+    { 
+      "filters": { "test": "has_tag", "subject":"self", "operator":"==", "value": "terminatordeathrequest" },
+      "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.starve\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}" ]}
+    }
+  ]
+},

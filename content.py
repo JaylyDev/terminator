@@ -32,12 +32,12 @@ def writeFile(filepath, content):
     f.write(f"{content}")
     f.close()
 
-RPfolderpath = f"{os.getcwd()}\\RP"
+RPfolderpath = f"{os.getcwd()}\\data\\resource_pack"
 RPresult = getListOfFiles(RPfolderpath)
 RPcontent = addFileToPath(RPresult, RPfolderpath)
 writeFile(RPfolderpath, RPcontent)
 
-BPfolderpath = f"{os.getcwd()}\\BP"
+BPfolderpath = f"{os.getcwd()}\\data\\behavior_pack"
 BPresult = getListOfFiles(BPfolderpath)
 BPcontent = addFileToPath(BPresult, BPfolderpath)
 writeFile(BPfolderpath, BPcontent)
