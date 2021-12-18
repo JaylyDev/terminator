@@ -37,12 +37,14 @@ function main(id, source, mcid) {
     'all': false
   };
 
-  var type_family = JSON.parse(fs.readFileSync(path.join(__dirname, '/type_family.json')).toString())['minecraft:entity']['components']['minecraft:type_family']['family'];
+  var type_family = JSON.parse(fs.readFileSync(path.join(__dirname, '/type_family.json')).toString())['minecraft:type_family']['family_lang'];
+  var family_name = JSON.parse(fs.readFileSync(path.join(__dirname, '/type_family.json')).toString())['minecraft:type_family']['family_name'];
+
   if (requires_other_family[`${source}`] == true) {
     var event = `{"${id}:${source}": { "sequence": []}}`;
     event = JSON.parse(event);
-    for (let i = 0; i < type_family.length; i++) {
-      event[`${id}:${source}`]['sequence'].push({ "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${type_family[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"text\":\"${type_family[i]}\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}`] } }, { "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${type_family[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"text\":\"${type_family[i]}\"}]}}]}`] } })
+    for (let i = 0; i < family_name.length; i++) {
+      event[`${id}:${source}`]['sequence'].push({ "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}`] } }, { "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}}]}`] } })
     };
     event = JSON.stringify(event).slice(1,-1) + ',\n';
   } else {
@@ -138,7 +140,7 @@ var death_source_id = 'death_message';
 var datetime = Date.now();
 
 for (let a = 0; a < death_source.length; a++) {
-  fs.appendFileSync(path.join(__dirname, `/death_message_${datetime}.json`), main(death_source_id, death_source[a], minecraft_death_id[death_source[a]]), function (err) {
+  fs.appendFileSync(path.join(__dirname, `/death_message_${datetime}.txt`), main(death_source_id, death_source[a], minecraft_death_id[death_source[a]]), function (err) {
     if (err) { return console.error(err); };
   });
   console.log(main(death_source_id, death_source[a], minecraft_death_id[death_source[a]]));
