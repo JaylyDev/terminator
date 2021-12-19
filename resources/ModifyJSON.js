@@ -52,9 +52,8 @@ function ListFiles(dir, done) {
 };
 
 var credit_msg = `/********************************************************\n+*   (c) JaylyMC. All rights reserved.                    *\n+*********************************************************/\n\n`;
-// var inputDirectoryPath = `C:\\Users\\${require("os").userInfo().username}\\Documents\\GitHub\\terminator\\data`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
-var inputDirectoryPath = `..\\${path.join(__dirname)}\\data`;
-var outputDirectoryPath = `${path.join(__dirname)}\\ModifyJSON`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
+var inputDirectoryPath = path.join(`${__dirname}\\..\\data`);
+var outputDirectoryPath = path.join(`${__dirname}\\ModifyJSON`);
 var obfuscate = true;
 var minify = true;
 var show_credit = true; // Modify credit_msg if show_credit = true
@@ -79,12 +78,12 @@ ListFiles(inputDirectoryPath, function (err, files) {
         var content = fs.readFileSync(`${file}`).toString().replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
       };
       var OutputFilepath = file.replace(inputDirectoryPath, outputDirectoryPath).split('\\');
-      var OutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
+      var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
       var OutputFilename = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\');
-      fs.mkdirSync(OutputDirectoryPath, { recursive: true });
+      fs.mkdirSync(FileOutputDirectoryPath, { recursive: true });
       if (obfuscate == true) { content = obfuscateJSON(content); } else {};
       if (show_credit == true){ content = credit_msg + content; } else {};
-      fs.writeFileSync(`${OutputDirectoryPath}\\${OutputFilename}`, content, function (err) {
+      fs.writeFileSync(`${FileOutputDirectoryPath}\\${OutputFilename}`, content, function (err) {
         if (err) { return console.error(err); };
       });
     };
