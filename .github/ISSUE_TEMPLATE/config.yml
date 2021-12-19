@@ -2,4 +2,10 @@ blank_issues_enabled: false
 contact_links:
   - name: Question
     url: https://discord.gg/Xn8TCJWA
-    about: Please ask and answer questions here.
+    about: Please ask and answer questions here
+  - name: Bug Report
+    url: https://github.com/JaylyDev/terminator/issues/new?assignees=&labels=&template=bug_report.md&title=&labels=bug
+    about: Report a bug to help us improve
+  - name: Feature Request
+    url: https://github.com/JaylyDev/terminator/issues/new?assignees=&labels=&template=feature_request.md&title=&labels=enhancement
+    about: Suggest an idea for this project
