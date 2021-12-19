@@ -52,8 +52,9 @@ function ListFiles(dir, done) {
 };
 
 var credit_msg = `/********************************************************\n+*   (c) JaylyMC. All rights reserved.                    *\n+*********************************************************/\n\n`;
-var inputDirectoryPath = `C:\\Users\\${require("os").userInfo().username}\\Documents\\GitHub\\terminator\\data`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
-var outputDirectoryPath = `${path.join(__dirname)}\\resources\\ModifyJSON`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
+// var inputDirectoryPath = `C:\\Users\\${require("os").userInfo().username}\\Documents\\GitHub\\terminator\\data`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
+var inputDirectoryPath = `..\\${path.join(__dirname)}\\data`;
+var outputDirectoryPath = `${path.join(__dirname)}\\ModifyJSON`; // DO NOT ADD '\\' AT THE END OF THE VARIABLE
 var obfuscate = true;
 var minify = true;
 var show_credit = true; // Modify credit_msg if show_credit = true
