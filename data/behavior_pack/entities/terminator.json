@@ -34,6 +34,26 @@
       }
     },
     "component_groups": {
+      "terminator:steve_default_skin": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "terminator:alex_default_skin": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "terminator:steve_christmas_skin": {
+        "minecraft:variant": {
+          "value": 2
+        }
+      },
+      "terminator:alex_christmas_skin": {
+        "minecraft:variant": {
+          "value": 3
+        }
+      },
       "terminator:dev_death_detect": {
         "minecraft:damage_sensor": {
           "triggers": [
@@ -1476,16 +1496,18 @@
           "speed_multiplier": 1.0,
           "melee_fov": 90
         }
+      },
+      "terminator:bossbar": {
+        "minecraft:boss": {
+          "should_darken_sky": true, // this variable does not work LMAO
+          "name": "entity.entity:terminator.name",
+          "hud_range": 64
+        }
       }
     },
     "components": { // Terminator Components
       "minecraft:experience_reward": {
         "on_death": "Math.Min(query.last_hit_by_player ? (query.is_invisible ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0, 200)"
-      },
-      "minecraft:boss": {
-        "should_darken_sky": true, // this variable does not work LMAO
-        "name": "Terminator",
-        "hud_range": 64
       },
       "minecraft:is_hidden_when_invisible": {
       },
@@ -2202,13 +2224,30 @@
 
     "events": {
       "minecraft:entity_spawned": {
-        "randomize": [
+        "sequence": [
           {
-            "weight": 380,
-            "remove": {},
-            "add": {
-              "component_groups": [ "minecraft:can_have_equipment" ]
-            }
+            "randomize": [
+              {
+                "weight": 25,
+                "add": {
+                  "component_groups": [ "minecraft:can_have_equipment" ]
+                }
+              },
+              { "weight": 75 }
+            ]
+          },
+          {
+            "filters": { "test": "has_component", "operator": "!=", "value": "minecraft:variant" },
+            "randomize": [
+              {
+                "weight": 50,
+                "add": { "component_groups": [ "terminator:steve_default_skin" ] }
+              },
+              {
+                "weight": 50,
+                "add": { "component_groups": [ "terminator:alex_default_skin" ] }
+              }
+            ]
           }
         ],
         "add": {
@@ -2265,14 +2304,14 @@
             "filters":{
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
-                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"}
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
               ]
             },
             "run_command": {
               "command": [
-                "summon entity:dummy ~ ~ ~ dummy:request_spawning",
+                "summon entity:dummy ~ ~ ~ dummy:request_spawning_steve",
                 "fog @a remove respawn_lore",
-                // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
             }
@@ -2281,17 +2320,49 @@
             "filters":{
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
-                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"}
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "summon entity:dummy ~ ~ ~ dummy:request_spawning_alex",
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
               ]
             },
             "run_command": {
               "command": [
                 // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event \"Terminator\""
+                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_steve"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
               ]
             },
-						"trigger": "terminator:respawn_message"
+            "run_command": {
+              "command": [
+                // "event entity @s death_message:all",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_alex"
+              ]
+            }
           },
           {
             "filters":{
@@ -2307,19 +2378,6 @@
             }
           }
         ]
-      },
-      "death_message:detect":{
-        "add": {
-          "component_groups": ["terminator:death_reason"]
-        }
-      },
-      "terminator:enable_death_detect_and_noRespawn":{
-        "add": {
-          "component_groups": ["terminator:death_reason"]
-        },
-        "run_command": {
-          "command": [ "tag @s add terminatordeathrequest" ]
-        }
       },
       "terminator:enable_dev_mode_death_detect_no_respawn": {
         "add": {
@@ -2354,11 +2412,46 @@
           ]
         }
       },
-			"terminator:disable_respawn_event": {
+      "terminator:disable_respawn_event_randomize": {
+        "randomize": [
+          {
+            "weight": 25,
+            "add": {
+              "component_groups": [ "minecraft:can_have_equipment" ]
+            }
+          },
+          { "weight": 75 }
+        ]
+      },
+      "terminator:disable_respawn_event_steve": {
         "run_command": {
           "command": [ "tag @s add disablerespawnevent" ]
         },
-        "trigger": "minecraft:entity_spawned"
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:steve_default_skin"
+          ]
+        },
+        "trigger": "terminator:disable_respawn_event_randomize"
+      },
+			"terminator:disable_respawn_event_alex": {
+        "run_command": {
+          "command": [ "tag @s add disablerespawnevent" ]
+        },
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:alex_default_skin"
+          ]
+        },
+        "trigger": "terminator:disable_respawn_event_randomize"
 			},
       "terminator:spawn_no_respawn_event_special_death_detect": {
         "run_command": {
@@ -3062,7 +3155,47 @@
       "death_message:dev:thorns": { "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:thorns\"}]}" ]}},
       "death_message:dev:void": { "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:void\"}]}" ]}},
       "death_message:dev:wither": { "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:wither\"}]}" ]}},
-      "death_message:dev:all": { "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:all\"}]}" ]}}
+      "death_message:dev:all": { "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:all\"}]}" ]}},
+      "terminator:disable_regeneration": {
+        "run_command": { "command": ["tag @s add terminatorNoRegeneration"]}
+      },
+      "terminator:christmas_skin": {
+        "sequence": [
+          {
+            "filters": { "test": "is_variant", "operator": "==", "value": 0 },
+            "add": {
+              "component_groups": [ "terminator:steve_christmas_skin" ]
+            }
+          },
+          {
+            "filters": { "test": "is_variant", "operator": "==", "value": 1 },
+            "add": {
+              "component_groups": [ "terminator:alex_christmas_skin" ]
+            }
+          }
+        ]
+      },
+      "terminator:default_skin": {
+        "sequence": [
+          {
+            "filters": { "test": "is_variant", "operator": "==", "value": 2 },
+            "add": {
+              "component_groups": [ "terminator:steve_default_skin" ]
+            }
+          },
+          {
+            "filters": { "test": "is_variant", "operator": "==", "value": 3 },
+            "add": {
+              "component_groups": [ "terminator:alex_default_skin" ]
+            }
+          }
+        ]
+      },
+      "terminator:enable_bossbar": {
+        "add": {
+          "component_groups": [ "terminator:bossbar" ]
+        }
+      }
     }
   }
 }

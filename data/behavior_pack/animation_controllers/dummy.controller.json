@@ -83,24 +83,38 @@
           "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
         },
         "execute6": {
-          "transitions": [{"execute7": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
+          "transitions": [
+            {"execute7_steve": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.mark_variant == 1"},
+            {"execute7_alex": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.mark_variant == 3"}
+          ],
           "on_entry": [
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;"
           ],
           "on_exit": [ "/summon minecraft:lightning_bolt","@s dummy:force_roar" ]
         },
-        "execute7": {
-          "transitions": [{"execute7": "(q.time_stamp - v.dummy_time) >= v.dummy_duration"}],
+        "execute7_steve": {
           "on_entry": [
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
             "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
             "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event\" \"Terminator\"",
+            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event_steve\"",
             "/fog @a remove respawn_lore",
             "@s dummy:spawn_terminator",
-            "/event entity @s death_message:all"
-          ],
-          "on_exit": [ "/summon minecraft:lightning_bolt", "@s dummy:force_roar" ]
+            "/summon minecraft:lightning_bolt",
+            "@s dummy:force_roar"
+          ]
+        },
+        "execute7_alex": {
+          "on_entry": [
+            "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
+            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
+            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
+            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event_alex\"",
+            "/fog @a remove respawn_lore",
+            "@s dummy:spawn_terminator",
+            "/summon minecraft:lightning_bolt",
+            "@s dummy:force_roar" 
+          ]
         }
       }
     }

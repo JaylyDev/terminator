@@ -3,4 +3,4 @@
 # *   (c) JaylyMC. All rights reserved.                   *
 # *********************************************************
 
-summon entity:terminator ~ ~ ~ terminator:enable_dev_mode_death_detect_no_respawn Terminator
+summon entity:terminator ~ ~ ~ terminator:enable_dev_mode_death_detect_no_respawn

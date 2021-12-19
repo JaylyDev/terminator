@@ -55,12 +55,6 @@
             "path": "functions/terminator/debug/commands/death_detect/NoRespawnAndEnableDevMode.mcfunction"
         },
         {
-            "path": "functions/terminator/debug/commands/death_detect/respawn/false.mcfunction"
-        },
-        {
-            "path": "functions/terminator/debug/commands/death_detect/respawn/true.mcfunction"
-        },
-        {
             "path": "functions/terminator/debug/commands/tellraw/death_message.mcfunction"
         },
         {
@@ -91,6 +85,9 @@
             "path": "functions/terminator/kit/netherite.mcfunction"
         },
         {
+            "path": "functions/terminator/nbt/enableBossbar.mcfunction"
+        },
+        {
             "path": "functions/terminator/nbt/invulnerable.mcfunction"
         },
         {
@@ -98,6 +95,9 @@
         },
         {
             "path": "functions/terminator/nbt/nophysics.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/noregen.mcfunction"
         },
         {
             "path": "functions/terminator/nbt/norespawn.mcfunction"
@@ -124,13 +124,19 @@
             "path": "recipes/terminator_spawn_egg.json"
         },
         {
+            "path": "scripts/gametests/christmas.js"
+        },
+        {
+            "path": "scripts/gametests/gamertag.js"
+        },
+        {
             "path": "scripts/gametests/gametest-docs.cmd"
         },
         {
             "path": "scripts/gametests/Main.js"
         },
         {
-            "path": "scripts/gametests/mojang-minecraft/PlayerDimTest.js"
+            "path": "scripts/gametests/PlayerDimTest.js"
         },
         {
             "path": "structures/robot_respawn_cage.mcstructure"

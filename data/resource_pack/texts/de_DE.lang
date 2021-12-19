@@ -1,5 +1,6 @@
-entity.entity:terminator.name=Terminator
 message.entity.respawn.generic=, aber sie regen auf!
-item.spawn_egg.entity.entity:terminator.name=Spawnterminator
 entity.entity:terminator<>.name=Terminator
+item.spawn_egg.entity.entity:terminator.name=Spawnterminator
 entity.entity:dummy.name=Dummy.
+entity.player.name=Spieler
+entity.entity:terminator.name=Terminator

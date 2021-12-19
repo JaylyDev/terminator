@@ -1,5 +1,6 @@
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-message.entity.respawn.generic=Mutta he restawned!
 entity.entity:terminator<>.name=Terminaattori
-entity.entity:terminator.name=Terminaattori
+entity.player.name=Pelaaja
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:dummy.name=Nukke
+entity.entity:terminator.name=Terminaattori
+message.entity.respawn.generic=Mutta he restawned!

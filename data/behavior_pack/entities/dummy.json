@@ -13,7 +13,7 @@
 			"scripts": {
 				"animate": [
 					{"dummy.escape_pathfind": "q.mark_variant == 2"},
-					{"dummy.spawn_terminator": "q.mark_variant == 1"}
+					{"dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3"}
 				]
 			},
 			"animations": {
@@ -38,7 +38,7 @@
                 "test": "is_family",
                 "subject": "other",
                 "operator": "!=",
-                "value": "entity:dummy"
+                "value": "dummy"
               }
             ]
           },
@@ -61,7 +61,7 @@
 				"minecraft:explode": {
           "fuse_length": -1,
           "fuse_lit": true,
-          "power": 160, // default is 160
+          "power": 200,
           "causes_fire": true,
           "destroy_affected_by_griefing": false,
 					"breaks_blocks": true,
@@ -69,7 +69,7 @@
 					"max_resistance": 3.40282e+38
         }
       },
-			"dummy:spawning_variant": {
+			"dummy:spawning_variant_steve": {
 				"minecraft:mark_variant": {
 					"value": 1
 				}
@@ -77,6 +77,11 @@
 			"dummy:pathfinding_variant": {
 				"minecraft:mark_variant": {
 					"value": 2
+				}
+			},
+			"dummy:spawning_variant_alex": {
+				"minecraft:mark_variant": {
+					"value": 3
 				}
 			},
 			"dummy:detect_terminator": {
@@ -159,9 +164,14 @@
 					"component_groups": ["dummy:force_spawn_entity"]
 				}
 			},
-			"dummy:request_spawning": {
+			"dummy:request_spawning_steve": {
 				"add": {
-					"component_groups": ["dummy:spawning_variant"]
+					"component_groups": ["dummy:spawning_variant_steve"]
+				}
+			},
+			"dummy:request_spawning_alex": {
+				"add": {
+					"component_groups": ["dummy:spawning_variant_alex"]
 				}
 			},
 			"dummy:request_pathfind": {

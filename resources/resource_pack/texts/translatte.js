@@ -79,8 +79,8 @@ const mcLangId = [
 	"uk_UA"
 ];
 
-const id = ['entity.entity:terminator.name', 'entity.entity:dummy.name', 'item.spawn_egg.entity.entity:terminator.name', 'entity.entity:terminator<>.name', 'message.entity.respawn.generic'];
-const words = ['Terminator', 'Dummy', 'Spawn Terminator', 'Terminator', ', but they respawned!'];
+const id = ['entity.entity:terminator.name', 'entity.entity:dummy.name', 'item.spawn_egg.entity.entity:terminator.name', 'entity.entity:terminator<>.name', 'message.entity.respawn.generic', 'entity.player.name'];
+const words = ['Terminator', 'Dummy', 'Spawn Terminator', 'Terminator', ', but they respawned!', 'Player'];
 
 var scriptExecuteTimeStamp = Date.now();
 

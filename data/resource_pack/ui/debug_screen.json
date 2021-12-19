@@ -21,15 +21,27 @@
   },
 
   "jayly_watermark": {
-    "type": "label",
-    "color": "$main_header_text_color",
-    "layer": 2,
-    "text": "§bTerminator\n  ©JaylyMC",
-    "size": [ "default", 10 ],
-    "max_size": [ "100%", "100%" ],
+    "type": "image",
+    "size": [ "100%c + 12px", "100%c + 5px" ],
+    "offset": [-3, -1],
+    "texture": "textures/ui/hud_tip_text_background",
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
-    "offset": [-3, -1]
+    "alpha": 0.5,
+    "controls": [
+      {
+        "actionbar_message": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": "$tool_tip_text",
+          "layer": 1,
+          "text": "§bTerminator\nv1.3.40\n©JaylyMC",
+          "localize": false,
+          "text_alignment": "center"
+        }
+      }
+    ]
   },
 
   "content_panel": {

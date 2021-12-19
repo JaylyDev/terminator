@@ -15,7 +15,10 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "steve": "textures/entity/terminator/steve"
+        "steve": "textures/entity/terminator/steve",        
+        "alex": "textures/entity/terminator/alex",
+        "steve_xmas": "textures/entity/terminator/steve_xmas",
+        "alex_xmas": "textures/entity/terminator/alex_xmas"
       },
       "geometry": {
         "default": "geometry.terminator"

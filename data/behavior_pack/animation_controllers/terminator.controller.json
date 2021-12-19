@@ -14,11 +14,11 @@
         },
         "regeneration":{
           "on_entry": [
-            "/effect @s regeneration 6 4 false",
-            "/effect @s absorption 24 3 false",
-            "/effect @s resistance 60 0 false",
-            "/effect @s fire_resistance 60 0 false",
-            "@s terminator:escape"
+            "/effect @s[tag=!terminatorNoRegeneration] regeneration 6 4 false",
+            "/effect @s[tag=!terminatorNoRegeneration] absorption 24 3 false",
+            "/effect @s[tag=!terminatorNoRegeneration] resistance 60 0 false",
+            "/effect @s[tag=!terminatorNoRegeneration] fire_resistance 60 0 false",
+            "/event entity @s[tag=!terminatorNoRegeneration] terminator:escape"
           ]
         }
       }

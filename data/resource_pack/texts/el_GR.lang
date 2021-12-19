@@ -1,5 +1,6 @@
-entity.entity:dummy.name=Ανδρείκελο
-entity.entity:terminator.name=Τελειωτής
 message.entity.respawn.generic=, αλλά αναπνέω!
+entity.entity:terminator.name=Τελειωτής
+entity.player.name=Παίχτης
+entity.entity:dummy.name=Ανδρείκελο
 item.spawn_egg.entity.entity:terminator.name=Τερματιστής
 entity.entity:terminator<>.name=Τελειωτής

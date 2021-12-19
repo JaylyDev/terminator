@@ -8,19 +8,15 @@
   <img src="https://img.shields.io/github/repo-size/jaylydev/terminator.svg" alt="GitHub repo size"/>
   <img src="https://img.shields.io/tokei/lines/github/jaylydev/terminator" alt="Total lines"/>
   <img src="https://img.shields.io/github/commit-activity/m/jaylydev/terminator" alt="Commit Activity"/>
-  <!--
-  <img src="https://img.shields.io/github/downloads/jaylydev/terminator/monthly.svg" alt="Monthly downloads"/>
-  <img src="https://travis-ci.org/jaylydev/terminator.svg?branch=main" alt="Build status"/>
-  -->
 </p>
   
 -----
 
 ### Latest Version
 
-**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.20.25 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
+**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.40.12 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
-**Beta**: v1.3.34.7 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
+**Beta**: v1.3.41.0 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
 
 ---
 

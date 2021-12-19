@@ -55,9 +55,6 @@
             "path": "texts/de_DE.lang"
         },
         {
-            "path": "texts/docs.md"
-        },
-        {
             "path": "texts/el_GR.lang"
         },
         {
@@ -73,9 +70,6 @@
             "path": "texts/es_MX.lang"
         },
         {
-            "path": "texts/execute_translatte.bat"
-        },
-        {
             "path": "texts/fi_FI.lang"
         },
         {
@@ -83,9 +77,6 @@
         },
         {
             "path": "texts/fr_FR.lang"
-        },
-        {
-            "path": "texts/google_translate.py"
         },
         {
             "path": "texts/hu_HU.lang"
@@ -133,19 +124,10 @@
             "path": "texts/sv_SE.lang"
         },
         {
-            "path": "texts/translate_text.py"
-        },
-        {
-            "path": "texts/translatte.js"
-        },
-        {
             "path": "texts/tr_TR.lang"
         },
         {
             "path": "texts/uk_UA.lang"
-        },
-        {
-            "path": "texts/workspace.code-workspace"
         },
         {
             "path": "texts/zh_CN.lang"
@@ -160,10 +142,22 @@
             "path": "textures/entity/terminator/alex.png"
         },
         {
+            "path": "textures/entity/terminator/alex_xmas.pdn"
+        },
+        {
+            "path": "textures/entity/terminator/alex_xmas.png"
+        },
+        {
             "path": "textures/entity/terminator/steve.pdn"
         },
         {
             "path": "textures/entity/terminator/steve.png"
+        },
+        {
+            "path": "textures/entity/terminator/steve_xmas.pdn"
+        },
+        {
+            "path": "textures/entity/terminator/steve_xmas.png"
         },
         {
             "path": "ui/debug_screen.json"

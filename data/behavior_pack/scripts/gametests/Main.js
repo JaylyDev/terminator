@@ -1,1 +1,3 @@
-import 'scripts/gametests/mojang-minecraft/PlayerDimTest.js';
+import 'scripts/gametests/PlayerDimTest.js';
+import 'scripts/gametests/gamertag.js';
+import 'scripts/gametests/christmas.js';

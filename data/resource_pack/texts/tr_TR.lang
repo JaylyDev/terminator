@@ -1,5 +1,6 @@
-entity.entity:dummy.name=Kukla
 entity.entity:terminator.name=Terminatör
-message.entity.respawn.generic=, ama önemsediler!
 item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
+entity.entity:dummy.name=Kukla
 entity.entity:terminator<>.name=Terminatör
+entity.player.name=oyuncu
+message.entity.respawn.generic=, ama önemsediler!

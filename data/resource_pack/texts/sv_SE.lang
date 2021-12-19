@@ -1,5 +1,6 @@
-message.entity.respawn.generic=, men de respuderade!
-entity.entity:dummy.name=Dummy
 item.spawn_egg.entity.entity:terminator.name=Gissande terminator
 entity.entity:terminator.name=Terminator
+entity.player.name=Spelare
+message.entity.respawn.generic=, men de respuderade!
+entity.entity:dummy.name=Dummy
 entity.entity:terminator<>.name=Terminator
