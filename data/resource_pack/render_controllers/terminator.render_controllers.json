@@ -12,7 +12,8 @@
 						"Texture.steve", 
 						"Texture.alex", 
 						"Texture.steve_xmas", 
-						"Texture.alex_xmas"
+						"Texture.alex_xmas",
+            "Texture.custom"
 					]
 				}
 			},

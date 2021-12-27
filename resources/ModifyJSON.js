@@ -47,6 +47,14 @@ function ListFiles(dir, done) {
   stringArr.forEach(str => unicodeArr.push(`"${escapeToUnicode(str).replace(/\\u005c$/g, '\\')}"`));
   syntaxArr.map((value, index) => obfuscated += `${value}${unicodeArr[index] ? unicodeArr[index] : ''}`);
   obfuscated = obfuscated.replace(/\\u005c\\u006e/g, '\\n');
+  obfuscated = obfuscated.replace(/\\u0041\\u0072\\u0072\\u0061\\u0079\\u002e\\u0073\\u006b\\u0069\\u006e\\u0073/g, 'Array.skins');
+  /* For whatever reason this error occurs if i dont replace array.skins in unicode:
+
+  [Rendering][error]-render_controllers/efa2a22a83688dafef5c8b18e2af2e89.json | render_controllers | controller.render.terminator | arrays | textures | Array.skins | child 'Array.skins' not valid here.
+
+  [Geometry][error]-entity:terminator | entity:terminator | Invalid render controller: controller.render.terminator
+  
+  */
 
   return obfuscated;
 };
@@ -83,6 +91,16 @@ ListFiles(inputDirectoryPath, function (err, files) {
       fs.mkdirSync(FileOutputDirectoryPath, { recursive: true });
       if (obfuscate == true) { content = obfuscateJSON(content); } else {};
       if (show_credit == true){ content = credit_msg + content; } else {};
+      fs.writeFileSync(`${FileOutputDirectoryPath}\\${OutputFilename}`, content, function (err) {
+        if (err) { return console.error(err); };
+      });
+    } else {
+      console.log(`\x1b[32mOther type of file found \x1b[0m- ${file.replace(inputDirectoryPath, '')}`);
+      var content = fs.readFileSync(`${file}`);
+      var OutputFilepath = file.replace(inputDirectoryPath, outputDirectoryPath).split('\\');
+      var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
+      var OutputFilename = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\');
+      fs.mkdirSync(FileOutputDirectoryPath, { recursive: true });
       fs.writeFileSync(`${FileOutputDirectoryPath}\\${OutputFilename}`, content, function (err) {
         if (err) { return console.error(err); };
       });

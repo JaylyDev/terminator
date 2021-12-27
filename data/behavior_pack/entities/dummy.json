@@ -13,7 +13,7 @@
 			"scripts": {
 				"animate": [
 					{"dummy.escape_pathfind": "q.mark_variant == 2"},
-					{"dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3"}
+					{"dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3 || q.mark_variant == 4"}
 				]
 			},
 			"animations": {
@@ -82,6 +82,11 @@
 			"dummy:spawning_variant_alex": {
 				"minecraft:mark_variant": {
 					"value": 3
+				}
+			},
+			"dummy:spawning_variant_custom": {
+				"minecraft:mark_variant": {
+					"value": 4
 				}
 			},
 			"dummy:detect_terminator": {
@@ -174,6 +179,11 @@
 					"component_groups": ["dummy:spawning_variant_alex"]
 				}
 			},
+			"dummy:request_spawning_custom": {
+				"add": {
+					"component_groups": ["dummy:spawning_variant_custom"]
+				}
+			},
 			"dummy:request_pathfind": {
 				"add": {
 					"component_groups": ["dummy:pathfinding_variant"]
@@ -199,9 +209,7 @@
 			},
 			"dummy:sensor_activated": {
 				"run_command": {
-					"command": [
-						"tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}"
-					]
+					"command": [ "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}" ]
 				}
 			}
 		}

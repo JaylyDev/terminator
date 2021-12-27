@@ -7,6 +7,9 @@
             "path": "animation_controllers/terminator.animation_controllers.json"
         },
         {
+            "path": "contents.json"
+        },
+        {
             "path": "desktop.ini"
         },
         {
@@ -14,6 +17,9 @@
         },
         {
             "path": "entity/terminator.entity.json"
+        },
+        {
+            "path": "entity/textures_hash.js"
         },
         {
             "path": "LICENSE.txt"
@@ -131,6 +137,9 @@
         },
         {
             "path": "texts/zh_TW.lang"
+        },
+        {
+            "path": "textures/entity/custom.png"
         },
         {
             "path": "textures/entity/terminator/alex.pdn"

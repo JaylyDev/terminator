@@ -54,6 +54,11 @@
           "value": 3
         }
       },
+      "terminator:custom_skin": {
+        "minecraft:variant": {
+          "value": 4
+        }
+      },
       "terminator:dev_death_detect": {
         "minecraft:damage_sensor": {
           "triggers": [
@@ -2336,6 +2341,22 @@
             "filters":{
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                {"test": "is_variant", "value": 4}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "summon entity:dummy ~ ~ ~ dummy:request_spawning_custom",
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
                 {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
               ]
@@ -2367,14 +2388,26 @@
           {
             "filters":{
               "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                {"test": "is_variant", "value": 4}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_custom"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest"}
               ]
             },
             "run_command": { 
-              "command": [
-                // "event entity @s death_message:all",
-                "summon lightning_bolt ~ -40 ~"
-              ]
+              "command": [ "summon lightning_bolt ~ -40 ~" ]
             }
           }
         ]
@@ -2449,6 +2482,21 @@
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:alex_default_skin"
+          ]
+        },
+        "trigger": "terminator:disable_respawn_event_randomize"
+			},
+      "terminator:disable_respawn_event_custom": {
+        "run_command": {
+          "command": [ "tag @s add disablerespawnevent" ]
+        },
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:custom_skin"
           ]
         },
         "trigger": "terminator:disable_respawn_event_randomize"
@@ -3195,6 +3243,9 @@
         "add": {
           "component_groups": [ "terminator:bossbar" ]
         }
+      },
+      "terminator:enable_custom_skin": {
+        "add": {"component_groups": ["terminator:custom_skin"]}
       }
     }
   }
