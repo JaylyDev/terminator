@@ -169,6 +169,9 @@
             "path": "ui/debug_screen.json"
         },
         {
+            "path": "ui/pause_screen.json"
+        },
+        {
             "path": "workspace.code-workspace"
         }
     ]
