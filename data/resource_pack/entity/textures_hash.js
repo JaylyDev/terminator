@@ -10,10 +10,7 @@ for (let index = 0; index < assignment.length; index++) {
   var imagename = value.toString().split('/').pop();
   var result = require('crypto').createHash('md5').update(imagename).digest("hex");
   textures[assignment[index]] = value.toString().replace(imagename, '') + result;
-};/*
-fs.mkdirSync(path.join(`${__dirname}\\..\\..\\..\\resources\\ModifyJSON\\resource_pack\\entity`), {recursive: true})
-fs.writeFileSync(path.join(`${__dirname}\\..\\..\\..\\resources\\ModifyJSON\\resource_pack\\entity\\${filename}`), JSON.stringify(entity, null, 2))
-*/
+};
 const credit = `/********************************************************
 +*   (c) JaylyMC. All rights reserved.                    *
 +*********************************************************/
