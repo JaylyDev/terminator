@@ -14,26 +14,22 @@
         "base_color": "#4f8cd3"
       },
       "materials": {
-        "default": "entity_alphatest"
+        "default": "entity_alphatest",
+        "cape": "entity_alphatest",
+        "animated": "player_animated"
       },
-      /* Strings before filenames are hashed
-      "textures": {
-        "steve": "textures/entity/terminator/steve",        
-        "alex": "textures/entity/terminator/alex",
-        "steve_xmas": "textures/entity/terminator/steve_xmas",
-        "alex_xmas": "textures/entity/terminator/alex_xmas",
-        "custom": "textures/entity/custom"
-      },
-      */
       "textures": {
         "steve": "textures/entity/terminator/d69403e2673e611d4cbd3fad6fd1788e",
         "alex": "textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f",
         "steve_xmas": "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796",
         "alex_xmas": "textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea",
-        "custom": "textures/entity/custom"
+        "cape_default": "textures/entity/cape_invisible",
+        "custom": "textures/entity/custom",
+        "cape_custom": "textures/entity/cape_custom"
       },
       "geometry": {
-        "default": "geometry.terminator"
+        "default": "geometry.terminator",
+        "cape": "geometry.cape"
       },
       "scripts": {
         "scalex": "variable.entity_scale",
