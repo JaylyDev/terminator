@@ -1,0 +1,14 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.elytra": {
+      "geometry": "Geometry.default",
+      "materials": [ { "*": "variable.is_enchanted ? Material.enchanted : Material.default" } ],
+      "textures": [ "Texture.default", "Texture.cape", "Texture.enchanted" ],
+      "part_visibility": [
+        { "cape": "query.armor_texture_slot(1) == 5 && query.has_cape" },
+        { "default": "query.armor_texture_slot(1) == 5 && !query.has_cape" }
+      ]
+    }
+  }
+}

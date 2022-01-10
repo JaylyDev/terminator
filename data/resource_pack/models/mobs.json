@@ -1,0 +1,80 @@
+/********************************************************
++*   File is taken from:
++*   (c) Mojang and (c) Microsoft                       *
++********************************************************/
+
+{
+  "format_version": "1.8.0",
+  "geometry.cape": {
+    "texturewidth": 64,
+    "textureheight": 32,
+
+    "bones": [
+      {
+        "name": "root",
+        "pivot": [ 0.0, 0.0, 0.0 ]
+      },
+      {
+        "name": "body",
+        "pivot": [ 0.0, 24.0, 0.0 ],
+        "parent": "waist"
+      },
+      {
+        "name": "waist",
+        "parent": "root",
+        "neverRender": true,
+        "pivot": [ 0.0, 12.0, 0.0 ]
+      },
+      {
+        "name": "cape",
+        "parent": "body",
+        "pivot": [ 0.0, 24.0, 3.0 ],
+        "bind_pose_rotation": [0.0, 180.0, 0.0],
+        "rotation": [0.0, 180.0, 0.0],
+        "cubes": [
+          {
+            "origin": [ -5.0, 8.0, 3.0 ],
+            "size": [ 10, 16, 1 ],
+            "uv": [ 0, 0 ]
+          }
+        ]
+      }
+    ]
+  },
+  "geometry.elytra": {
+    "texturewidth": 64,
+    "textureheight": 32,
+
+    "bones": [
+      {
+        "name": "body",
+        "pivot": [ 0.0, 24.0, 0.0 ]
+      },
+      {
+        "name": "left_wing",
+        "pivot": [ 0.0, 24.0, 0.0 ],
+        "parent": "body",
+        "cubes": [
+          {
+            "origin": [ -10.0, 0.0, 0.0 ],
+            "size": [ 10, 20, 2 ],
+            "uv": [ 22, 0 ]
+          }
+        ]
+      },
+      {
+        "name": "right_wing",
+        "pivot": [ 0.0, 24.0, 0.0 ],
+        "parent": "body",
+        "mirror": true,
+        "cubes": [
+          {
+            "origin": [ 0.0, 0.0, 0.0 ],
+            "size": [ 10, 20, 2 ],
+            "uv": [ 22, 0 ]
+          }
+        ]
+      }
+    ]
+  }
+}

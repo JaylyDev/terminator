@@ -1,178 +1,206 @@
 {
-    "content": [
-        {
-            "path": "animations/terminator.animations.json"
-        },
-        {
-            "path": "animation_controllers/terminator.animation_controllers.json"
-        },
-        {
-            "path": "contents.json"
-        },
-        {
-            "path": "desktop.ini"
-        },
-        {
-            "path": "entity/dummy.entity.json"
-        },
-        {
-            "path": "entity/terminator.entity.json"
-        },
-        {
-            "path": "entity/textures_hash.js"
-        },
-        {
-            "path": "LICENSE.txt"
-        },
-        {
-            "path": "manifest.json"
-        },
-        {
-            "path": "models/entity/dummy.geo.json"
-        },
-        {
-            "path": "models/entity/terminator.geo.json"
-        },
-        {
-            "path": "pack_icon.png"
-        },
-        {
-            "path": "README.txt"
-        },
-        {
-            "path": "render_controllers/dummy.render_controllers.json"
-        },
-        {
-            "path": "render_controllers/terminator.render_controllers.json"
-        },
-        {
-            "path": "texts/bg_BG.lang"
-        },
-        {
-            "path": "texts/cs_CZ.lang"
-        },
-        {
-            "path": "texts/da_DK.lang"
-        },
-        {
-            "path": "texts/de_DE.lang"
-        },
-        {
-            "path": "texts/el_GR.lang"
-        },
-        {
-            "path": "texts/en_GB.lang"
-        },
-        {
-            "path": "texts/en_US.lang"
-        },
-        {
-            "path": "texts/es_ES.lang"
-        },
-        {
-            "path": "texts/es_MX.lang"
-        },
-        {
-            "path": "texts/fi_FI.lang"
-        },
-        {
-            "path": "texts/fr_CA.lang"
-        },
-        {
-            "path": "texts/fr_FR.lang"
-        },
-        {
-            "path": "texts/hu_HU.lang"
-        },
-        {
-            "path": "texts/id_ID.lang"
-        },
-        {
-            "path": "texts/it_IT.lang"
-        },
-        {
-            "path": "texts/ja_JP.lang"
-        },
-        {
-            "path": "texts/ko_KR.lang"
-        },
-        {
-            "path": "texts/languages.json"
-        },
-        {
-            "path": "texts/language_names.json"
-        },
-        {
-            "path": "texts/nb_NO.lang"
-        },
-        {
-            "path": "texts/nl_NL.lang"
-        },
-        {
-            "path": "texts/pl_PL.lang"
-        },
-        {
-            "path": "texts/pt_BR.lang"
-        },
-        {
-            "path": "texts/pt_PT.lang"
-        },
-        {
-            "path": "texts/ru_RU.lang"
-        },
-        {
-            "path": "texts/sk_SK.lang"
-        },
-        {
-            "path": "texts/sv_SE.lang"
-        },
-        {
-            "path": "texts/tr_TR.lang"
-        },
-        {
-            "path": "texts/uk_UA.lang"
-        },
-        {
-            "path": "texts/zh_CN.lang"
-        },
-        {
-            "path": "texts/zh_TW.lang"
-        },
-        {
-            "path": "textures/entity/custom.png"
-        },
-        {
-            "path": "textures/entity/terminator/alex.pdn"
-        },
-        {
-            "path": "textures/entity/terminator/alex.png"
-        },
-        {
-            "path": "textures/entity/terminator/alex_xmas.pdn"
-        },
-        {
-            "path": "textures/entity/terminator/alex_xmas.png"
-        },
-        {
-            "path": "textures/entity/terminator/steve.pdn"
-        },
-        {
-            "path": "textures/entity/terminator/steve.png"
-        },
-        {
-            "path": "textures/entity/terminator/steve_xmas.pdn"
-        },
-        {
-            "path": "textures/entity/terminator/steve_xmas.png"
-        },
-        {
-            "path": "ui/debug_screen.json"
-        },
-        {
-            "path": "ui/pause_screen.json"
-        },
-        {
-            "path": "workspace.code-workspace"
-        }
-    ]
+   "content" : [
+      {
+         "path" : "models/mobs.json"
+      },
+      {
+         "path" : "contents.json"
+      },
+      {
+         "path" : "texts/en_GB.lang"
+      },
+      {
+         "path" : "animation_controllers/terminator.animation_controllers.json"
+      },
+      {
+         "path" : "texts/fr_FR.lang"
+      },
+      {
+         "path" : "pack_icon.png"
+      },
+      {
+         "path" : "animations/terminator.animations.json"
+      },
+      {
+         "path" : "desktop.ini"
+      },
+      {
+         "path" : "entity/dummy.entity.json"
+      },
+      {
+         "path" : "entity/textures_hash.js"
+      },
+      {
+         "path" : "texts/pt_PT.lang"
+      },
+      {
+         "path" : "texts/da_DK.lang"
+      },
+      {
+         "path" : "entity/terminator.entity.json"
+      },
+      {
+         "path" : "texts/nb_NO.lang"
+      },
+      {
+         "path" : "texts/zh_TW.lang"
+      },
+      {
+         "path" : "textures/entity/custom.png"
+      },
+      {
+         "path" : "manifest.json"
+      },
+      {
+         "path" : "models/entity/dummy.geo.json"
+      },
+      {
+         "path" : "models/entity/terminator.geo.json"
+      },
+      {
+         "path" : "texts/ja_JP.lang"
+      },
+      {
+         "path" : "texts/nl_NL.lang"
+      },
+      {
+         "path" : "README.txt"
+      },
+      {
+         "path" : "render_controllers/cape.render_controllers.json"
+      },
+      {
+         "path" : "texts/cs_CZ.lang"
+      },
+      {
+         "path" : "render_controllers/dummy.render_controllers.json"
+      },
+      {
+         "path" : "texts/languages.json"
+      },
+      {
+         "path" : "render_controllers/terminator.render_controllers.json"
+      },
+      {
+         "path" : "texts/bg_BG.lang"
+      },
+      {
+         "path" : "texts/de_DE.lang"
+      },
+      {
+         "path" : "texts/fi_FI.lang"
+      },
+      {
+         "path" : "texts/el_GR.lang"
+      },
+      {
+         "path" : "texts/en_US.lang"
+      },
+      {
+         "path" : "texts/pl_PL.lang"
+      },
+      {
+         "path" : "render_controllers/elytra.render_controllers.json"
+      },
+      {
+         "path" : "texts/es_ES.lang"
+      },
+      {
+         "path" : "texts/es_MX.lang"
+      },
+      {
+         "path" : "texts/fr_CA.lang"
+      },
+      {
+         "path" : "texts/hu_HU.lang"
+      },
+      {
+         "path" : "texts/id_ID.lang"
+      },
+      {
+         "path" : "texts/it_IT.lang"
+      },
+      {
+         "path" : "texts/ko_KR.lang"
+      },
+      {
+         "path" : "texts/language_names.json"
+      },
+      {
+         "path" : "texts/pt_BR.lang"
+      },
+      {
+         "path" : "texts/ru_RU.lang"
+      },
+      {
+         "path" : "texts/tr_TR.lang"
+      },
+      {
+         "path" : "texts/sk_SK.lang"
+      },
+      {
+         "path" : "textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea.png"
+      },
+      {
+         "path" : "texts/sv_SE.lang"
+      },
+      {
+         "path" : "texts/uk_UA.lang"
+      },
+      {
+         "path" : "texts/zh_CN.lang"
+      },
+      {
+         "path" : "textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f.png"
+      },
+      {
+         "path" : "textures/entity/cape_custom.png"
+      },
+      {
+         "path" : "textures/entity/cape_invisible.png"
+      },
+      {
+         "path" : "textures/entity/terminator/steve.png"
+      },
+      {
+         "path" : "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796.png"
+      },
+      {
+         "path" : "textures/entity/terminator/alex.pdn"
+      },
+      {
+         "path" : "textures/entity/terminator/alex.png"
+      },
+      {
+         "path" : "textures/entity/terminator/alex_xmas.pdn"
+      },
+      {
+         "path" : "textures/entity/terminator/alex_xmas.png"
+      },
+      {
+         "path" : "textures/entity/terminator/d69403e2673e611d4cbd3fad6fd1788e.png"
+      },
+      {
+         "path" : "textures/entity/terminator/steve.pdn"
+      },
+      {
+         "path" : "textures/entity/terminator/steve_xmas.pdn"
+      },
+      {
+         "path" : "textures/entity/terminator/steve_xmas.png"
+      },
+      {
+         "path" : "ui/debug_screen.json"
+      },
+      {
+         "path" : "workspace.code-workspace"
+      },
+      {
+         "path" : "animations/player.animation.json"
+      },
+      {
+         "path" : "attachables/elytra.json"
+      }
+   ],
+   "version" : 1
 }

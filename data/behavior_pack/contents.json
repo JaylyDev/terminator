@@ -133,13 +133,13 @@
             "path": "scripts/gametests/gamertag.js"
         },
         {
-            "path": "scripts/gametests/gametest-docs.cmd"
-        },
-        {
             "path": "scripts/gametests/Main.js"
         },
         {
             "path": "scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "scripts/gametests/terminal.js"
         },
         {
             "path": "structures/robot_respawn_cage.mcstructure"

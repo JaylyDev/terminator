@@ -1,5 +1,5 @@
 /********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
++*   (c) JaylyMC. All rights reserved.         *
 +*********************************************************/
 
 // use this file if addon filenames is going to be modified
@@ -23,9 +23,9 @@
         "alex": "textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f",
         "steve_xmas": "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796",
         "alex_xmas": "textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea",
-        "cape_default": "textures/entity/cape_invisible",
         "custom": "textures/entity/custom",
-        "cape_custom": "textures/entity/cape_custom"
+        "cape_default": "textures/entity/cape_invisible",
+        "cape": "textures/entity/cape_custom"
       },
       "geometry": {
         "default": "geometry.terminator",
@@ -57,69 +57,27 @@
           "move.legs",
           "attack.positions",
           "attack.rotations",
-          {
-            "move.arms": "q.ground_speed > 0.0"
-          },
-          {
-            "move.legs": "q.ground_speed > 0.0"
-          },
-          {
-            "riding.arms": "q.is_riding > 0.0"
-          },
-          {
-            "riding.legs": "q.is_riding > 0.0"
-          },
-          {
-            "sitting": "q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0"
-          },
-          {
-            "attack.positions": "variable.attack_time > 0.0"
-          },
-          {
-            "attack.rotations": "variable.attack_time > 0.0"
-          },
-          {
-            "sneaking": "q.is_sneaking > 0.0"
-          },
-          {
-            "sleeping": "q.is_sleeping > 0.0"
-          },
-          {
-            "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )"
-          },
-          {
-            "swimming": "variable.swim_amount > 0.0 && q.is_in_water"
-          },
-          {
-            "third_person_bow_equipped": "q.get_equipped_item_name == 'bow' && q.has_target"
-          },
-          {
-            "bow_and_arrow": "q.get_equipped_item_name == 'bow' && q.has_target"
-          },
-          {
-            "charging": "q.is_charging"
-          },
-          {
-            "brandish_spear": "variable.is_brandishing_spear"
-          },
-          {
-            "shield_block_main_hand": "q.get_equipped_item_name('main_hand') == 'shield' && q.get_equipped_item_name('off_hand') != 'shield' && q.mark_variant == 1"
-          },
-          {
-            "shield_block_off_hand": "q.get_equipped_item_name('off_hand') == 'shield' && q.mark_variant == 1"
-          },
-          {
-            "third_person_crossbow_equipped": "q.get_equipped_item_name('main_hand') == 'crossbow'"
-          },
-          {
-            "crossbow_hold": "q.get_equipped_item_name('main_hand') == 'crossbow'"
-          },
-          {
-            "crossbow_charge": "q.get_equipped_item_name('main_hand') == 'crossbow'"
-          },
-          {
-            "crossbow_controller": "q.get_equipped_item_name('main_hand') == 'crossbow'"
-          }
+          { "move.arms": "q.ground_speed > 0.0" },
+          { "move.legs": "q.ground_speed > 0.0" },
+          { "riding.arms": "q.is_riding > 0.0" },
+          { "riding.legs": "q.is_riding > 0.0" },
+          { "sitting": "q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0" },
+          { "attack.positions": "variable.attack_time > 0.0" },
+          { "attack.rotations": "variable.attack_time > 0.0" },
+          { "sneaking": "q.is_sneaking > 0.0" },
+          { "sleeping": "q.is_sleeping > 0.0" },
+          { "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )" },
+          { "swimming": "variable.swim_amount > 0.0 && q.is_in_water" },
+          { "third_person_bow_equipped": "q.get_equipped_item_name == 'bow' && q.has_target" },
+          { "bow_and_arrow": "q.get_equipped_item_name == 'bow' && q.has_target" },
+          { "charging": "q.is_charging" },
+          { "brandish_spear": "variable.is_brandishing_spear" },
+          { "shield_block_main_hand": "q.get_equipped_item_name('main_hand') == 'shield' && q.get_equipped_item_name('off_hand') != 'shield' && q.mark_variant == 1" },
+          { "shield_block_off_hand": "q.get_equipped_item_name('off_hand') == 'shield' && q.mark_variant == 1" },
+          { "third_person_crossbow_equipped": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_hold": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_charge": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
+          { "crossbow_controller": "q.get_equipped_item_name('main_hand') == 'crossbow'" }
         ]
       },
       "animations": {
@@ -142,7 +100,7 @@
         "bow_and_arrow": "animation.humanoid.bow_and_arrow",
         "charging": "animation.humanoid.charging.v1.0",
         "brandish_spear": "animation.humanoid.brandish_spear",
-        "cape": "animation.player.cape",
+        "cape": "animation.terminator.cape",
         "shield_block_main_hand": "animation.terminator.shield_block_main_hand",
         "shield_block_off_hand": "animation.terminator.shield_block_off_hand",
         "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
@@ -151,7 +109,8 @@
         "crossbow_controller": "controller.animation.player.crossbow"
       },
       "render_controllers": [
-        "controller.render.terminator"
+        "controller.render.terminator",
+        "controller.render.player.cape"
       ],
       "enable_attachables": true
     }

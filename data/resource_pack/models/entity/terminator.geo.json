@@ -3,7 +3,7 @@
 +*********************************************************/
 
 {
-	"format_version": "1.10.0",
+	"format_version": "1.8.0",
 	"geometry.terminator": {
 		"texturewidth": 64,
 		"textureheight": 64,
@@ -88,7 +88,12 @@
 					{"origin": [-4.05, 0, -2], "size": [4, 12, 4], "uv": [0, 16], "mirror": false},
 					{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [0, 32], "mirror": false}
 				]
-			}
+			},
+      {
+        "name": "cape",
+        "pivot": [ 0.0, 24, 3.0 ],
+        "parent": "body"
+      }
 		]
 	}
 }

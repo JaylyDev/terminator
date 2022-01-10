@@ -1,0 +1,13 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.player.cape": {
+      "geometry": "Geometry.cape",
+      "materials": [ { "*": "Material.cape" } ],
+      "textures": [ "Texture.cape" ],
+      "part_visibility": [
+        { "cape": "query.armor_texture_slot(1) != 5" }
+      ]
+    }
+  }
+}
