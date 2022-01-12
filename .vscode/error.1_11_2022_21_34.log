@@ -1,0 +1,41 @@
+[{
+	"resource": "/C:/Users//Documents/GitHub/terminator/data/behavior_pack/functions/terminator/debug/commands/death_detect/oRespawnAndEnableDevMode.mcfunction",
+	"owner": "_generated_diagnostic_collection_name_#0",
+	"code": {
+		"value": "minecraft.format.path.length",
+		"target": {
+			"$mid": 1,
+			"external": "https://github.com/Blockception/Minecraft-Error-Codes/blob/main/minecraft/format/path/length.md",
+			"path": "/Blockception/Minecraft-Error-Codes/blob/main/minecraft/format/path/length.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Path is too long: 'functions/terminator/debug/commands/death_detect/oRespawnAndEnableDevMode.mcfunction', should be maximum of: 80 but is: 84 characters long",
+	"source": "mc",
+	"startLineNumber": 1,
+	"startColumn": 1,
+	"endLineNumber": 1,
+	"endColumn": 2
+},{
+	"resource": "/c:/Users//Documents/GitHub/terminator/data/behavior_pack/functions/terminator/debug/commands/death_detect/NoRespawnAndEnableDevMode.mcfunction",
+	"owner": "_generated_diagnostic_collection_name_#0",
+	"code": {
+		"value": "minecraft.format.path.length",
+		"target": {
+			"$mid": 1,
+			"external": "https://github.com/Blockception/Minecraft-Error-Codes/blob/main/minecraft/format/path/length.md",
+			"path": "/Blockception/Minecraft-Error-Codes/blob/main/minecraft/format/path/length.md",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 8,
+	"message": "Path is too long: 'functions/terminator/debug/commands/death_detect/NoRespawnAndEnableDevMode.mcfunction', should be maximum of: 80 but is: 85 characters long",
+	"source": "mc",
+	"startLineNumber": 1,
+	"startColumn": 1,
+	"endLineNumber": 1,
+	"endColumn": 2
+}]

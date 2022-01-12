@@ -5,14 +5,14 @@
   "format_version": 2,
   "header": {
     "name": "Terminator [Resource Pack]",
-    "description": "By Jayly\nPack Version: 1.3.50.13 [Beta]\nPlatform: Windows",
+    "description": "By Jayly\nPack Version: 1.3.50.17 [Beta]\nPlatform: Windows",
     "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
     "version": [1, 3, 50],
     "min_engine_version": [1, 17, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.3.50.13 [Beta]\nPlatform: Windows",
+      "description": "By Jayly\nPack Version: 1.3.50.17 [Beta]\nPlatform: Windows",
       "type": "resources",
       "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
       "version": [1, 3, 50]
