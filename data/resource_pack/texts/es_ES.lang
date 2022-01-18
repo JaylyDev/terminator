@@ -2,5 +2,5 @@ entity.entity:terminator.name=Terminator
 entity.entity:dummy.name=Ficticio
 entity.entity:terminator<>.name=Terminator
 entity.player.name=Jugador
-message.entity.respawn.generic=, ¡pero reescribieron!
-item.spawn_egg.entity.entity:terminator.name=Terminador de engendro
+message.entity.respawn.generic=, ¡Pero reapareció!
+item.spawn_egg.entity.entity:terminator.name=Generador de Terminator

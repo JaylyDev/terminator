@@ -8,25 +8,25 @@ assignees: ''
 ---
 
 **Describe the bug**
-> A clear and concise description of what the bug is.
+A clear and concise description of what the bug is.
 
 **How To Reproduce**
-> Steps to reproduce the behavior:
+Steps to reproduce the behavior:
 1.
 2.
 
 **Expected behavior**
-> A clear and concise description of what you expected to happen.
+A clear and concise description of what you expected to happen.
 
 **Screenshots**
-> If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain your problem.
 
 **Addon Metadata (please complete the following information):**
- - Affected Version(s): [Example: v1.0.0]
+Affected Version(s): [Example: v1.0.0]
 
 **Platform (please complete the following information):**
- - Affected Platform: [Example: iPhone]
- - Affected Minecraft Version(s): [Example: v1.16.220]
+Affected Platform: [Example: iPhone]
+Affected Minecraft Version(s): [Example: v1.16.220]
 
 **Additional context**
-> Add any other context about the problem here.
+Add any other context about the problem here.
