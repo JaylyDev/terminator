@@ -1,6 +1,8 @@
 # Minecraft Terminator (Bedrock)
 
-### Documentation: https://mcpedl.com/mc-terminator-addon-1/
+## Documentation
+### Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
+### Custom Commands: [docs/commands/gametest.md](https://github.com/JaylyDev/terminator/blob/main/docs/commands/gametest.md)
 
 <p align="center">
   <img src="https://img.shields.io/github/downloads/jaylydev/terminator/total.svg" alt="GitHub All Releases"/>
@@ -20,17 +22,6 @@
 
 ---
 
-## Credits
-
-Developer:
-
-- [Jayly](https://mcpedl.com/user/itsdominicplays/)
-
-Special thanks to:
-
-- May5Flames (Terminator's crafting recipe)
-- [bigguy69420](https://github.com/bigguy69420/terminator)
-
 ## Questions, Bugs and Feedbacks
 
 Want to report a bug or suggest new features for the addon? [Click Here](https://github.com/JaylyDev/terminator/issues/new/choose)
@@ -41,7 +32,7 @@ Please ask and answer questions <a href="https://discord.gg/Xn8TCJWA"/>here <img
 
 Copyright (c) JaylyDev. All rights reserved.
 
-Licensed under the [GNU 3.0](https://github.com/JaylyDev/terminator/blob/main/LICENSE.md) license.
+Licensed under the [GPL-3.0 License](https://github.com/JaylyDev/terminator/blob/main/LICENSE).
 
 ## Download archives
 
