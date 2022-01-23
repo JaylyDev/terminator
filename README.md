@@ -16,7 +16,7 @@
 
 **Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.45 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
-**Beta**: v1.3.50.17 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
+**Beta**: v1.3.51.8 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
 
 ---
 

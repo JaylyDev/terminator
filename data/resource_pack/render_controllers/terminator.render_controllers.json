@@ -15,9 +15,12 @@
 						"Texture.alex_xmas",
             "Texture.custom"
 					]
-				}
+				},
+        "geometries": {
+          "Array.geos": [ "geometry.terminator", "geometry.terminatorSlim" ]
+        }
 			},
-      "geometry": "Geometry.default",
+      "geometry": "((query.variant == 0) || (query.variant == 2) || (query.variant == 4)) ? Array.geos[0] : Array.geos[1]",
       "materials": [ { "*": "Material.default" } ],
       "textures": [ "Array.skins[query.variant]" ]
     }

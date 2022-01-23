@@ -1,6 +1,6 @@
 {
 	"format_version": "1.8.0",
-	"geometry.terminator": {
+	"geometry.terminatorSlim": {
 		"texturewidth": 64,
 		"textureheight": 64,
 		"visible_bounds_width": 2,
@@ -17,8 +17,13 @@
 				"pivot": [0, 24, 0],
 				"cubes": [
 					{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 16]},
-					{"origin": [-4, 12, -2], "size": [8, 12, 4], "inflate": 0.25, "uv": [16, 32]}
+					{"origin": [-4, 12, -2], "size": [8, 12, 4], "uv": [16, 32], "inflate": 0.25}
 				]
+			},
+			{
+				"name": "cape",
+				"parent": "body",
+				"pivot": [0, 24, 3]
 			},
 			{
 				"name": "head",
@@ -26,7 +31,7 @@
 				"pivot": [0, 24, 0],
 				"cubes": [
 					{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [0, 0]},
-					{"origin": [-4, 24, -4], "size": [8, 8, 8], "inflate": 0.5, "uv": [32, 0]}
+					{"origin": [-4, 24, -4], "size": [8, 8, 8], "uv": [32, 0], "inflate": 0.5}
 				]
 			},
 			{
@@ -42,8 +47,8 @@
 				"parent": "root",
 				"pivot": [5, 22, 0],
 				"cubes": [
-					{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [32, 48]},
-					{"origin": [4, 12, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [48, 48]}
+					{"origin": [4, 12, -2], "size": [3, 12, 4], "uv": [32, 48]},
+					{"origin": [4, 12, -2], "size": [3, 12, 4], "uv": [48, 48], "inflate": 0.25}
 				]
 			},
 			{
@@ -57,8 +62,8 @@
 				"pivot": [-5, 22, 0],
 				"mirror": true,
 				"cubes": [
-					{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 16], "mirror": false},
-					{"origin": [-8, 12, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [40, 32], "mirror": false}
+					{"origin": [-7, 12, -2], "size": [3, 12, 4], "uv": [40, 16], "mirror": false},
+					{"origin": [-7, 12, -2], "size": [3, 12, 4], "uv": [40, 32], "inflate": 0.25, "mirror": false}
 				]
 			},
 			{
@@ -72,7 +77,7 @@
 				"pivot": [1.9, 12, 0],
 				"cubes": [
 					{"origin": [0.05, 0, -2], "size": [4, 12, 4], "uv": [16, 48]},
-					{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [0, 48]}
+					{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "uv": [0, 48], "inflate": 0.25}
 				]
 			},
 			{
@@ -82,14 +87,9 @@
 				"mirror": true,
 				"cubes": [
 					{"origin": [-4.05, 0, -2], "size": [4, 12, 4], "uv": [0, 16], "mirror": false},
-					{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "inflate": 0.25, "uv": [0, 32], "mirror": false}
+					{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "uv": [0, 32], "inflate": 0.25, "mirror": false}
 				]
-			},
-      {
-        "name": "cape",
-        "pivot": [ 0.0, 24, 3.0 ],
-        "parent": "body"
-      }
+			}
 		]
 	}
 }
