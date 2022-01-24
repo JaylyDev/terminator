@@ -592,6 +592,31 @@
         "minecraft:spell_effects": {
         }
       },
+      "terminator:breedable": {
+	"minecraft:breedable": {
+          "allow_sitting": false,
+          "require_tame": false,
+          "inherit_tamed": false,
+          "breeds_with": [
+            {
+              "mate_type": "entity:terminator",
+              "baby_type": "entity:terminator",
+              "breed_event": {
+                "event": "terminator:disable_respawn",
+                "target": "baby"
+              }
+            },
+            {
+              "mate_type": "minecraft:player",
+              "baby_type": "minecraft:player"
+            }
+          ],
+          "breed_items": [
+            "golden_carrot",
+            "carrot"
+          ]
+        }
+      },
       "minecraft:raid_trigger": {
         "minecraft:raid_trigger": {
           "triggered_event": {
@@ -2830,7 +2855,7 @@
       "death_message:anvil": { 
         "sequence": [
           { 
-            "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" },
+            "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" },p
             "run_command": { "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.anvil\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}" ]}
           },
           { 
@@ -2949,6 +2974,11 @@
           }
         ]
       },
+	    "breedable:true": {
+		    "add": {
+"component_groups": [ "terminator:breedable" ]
+		    }
+	    },
       "death_message:fireworks": { 
         "sequence": [
           { 
