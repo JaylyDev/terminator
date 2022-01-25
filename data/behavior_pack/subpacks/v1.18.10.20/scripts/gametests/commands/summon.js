@@ -65,7 +65,7 @@ export function terminator (target, user_input) { // target: string, user_input:
        * These are the keys player are allow to modify 
        * when spawning a terminator with custom commands 
        */
-      const default_nbt = {
+       const default_nbt = {
         "nametag": "Terminator",
         "customskin": false,
         "bossbar": false,
@@ -73,7 +73,9 @@ export function terminator (target, user_input) { // target: string, user_input:
         "deathevent": true,
         "physics": true,
         "regeneration": true,
-        "respawn": true
+        "respawn": true,
+         "breedable": false,
+         "coords": { "x": "~", "y": "~", "z": "~" }
       };
       
       // Applying player's JSON input to default NBT key values
@@ -128,11 +130,41 @@ export function terminator (target, user_input) { // target: string, user_input:
         console.log(`user_input['regeneration'] is a type of ${typeof user_input['regeneration']} instead of 'boolean'`);
       };
 
+      if (typeof user_input['coords'] == 'object') {
+        if ((typeof user_input['coords']["x"] != 'number') || (user_input["coords"]["x"] != "~")) {
+          console.log(`user_input['coords']['x'] (${user_input['coords']['x']}) is not a type of integer nor '~'`);
+        } else {
+          nbt_input['coords']['x'] = user_input['coords']["x"];
+          console.log(nbt_input['coords']["x"]);
+        };
+         if ((typeof user_input['coords']["y"] != 'number') || (user_input["coords"]["y"] != "~")) {
+          console.log(`user_input['coords']['y'] (${user_input['coords']['y']}) is not a type of integer nor '~'`);
+        } else {
+          nbt_input['coords']["y"] = user_input['coords']["y"];
+          console.log(nbt_input['coords']["y"]);
+        }
+        if ((typeof user_input['coords']["z"] != 'number') || (user_input["coords"]["z"] != "~")) {
+          console.log(`user_input['coords']['z'] (${user_input['coords']['z']}) is not a type of integer nor '~'`);
+        } else {
+          nbt_input['coords']["z"] = user_input['coords']["z"];
+          console.log(nbt_input['coords']["z"]);
+        }  
+      } else {
+        console.log(`user_input['coords'] is a type of ${typeof user_input['coords']} instead of 'object'`);
+      };
+       
       if (typeof user_input['respawn'] == 'boolean') {
         nbt_input['respawn'] = user_input['respawn'];
         console.log(nbt_input['respawn']);
       } else {
         console.log(`user_input['respawn'] is a type of ${typeof user_input['respawn']} instead of 'boolean'`);
+      };
+       
+       if (typeof user_input['breedable'] == 'boolean') {
+        nbt_input['breedable'] = user_input['breedable'];
+        console.log(nbt_input['breedable']);
+      } else {
+        console.log(`user_input['breedable'] is a type of ${typeof user_input['breedable']} instead of 'boolean'`);
       };
 
       console.log('User input: ' + JSON.stringify(user_input, null, 2));
@@ -160,17 +192,20 @@ export function terminator (target, user_input) { // target: string, user_input:
       if (nbt_input['physics'] == false) {
         entityData.entity.triggerEvent('terminator:disable_physics')
       };
+       if (nbt_input['breedable'] == true) {
+        entityData.entity.triggerEvent('breedable:true');
+      };
       if (nbt_input['regeneration'] == false) {
         entityData.entity.triggerEvent('terminator:disable_regeneration')
       };
       if (nbt_input['respawn'] == false) {
         entityData.entity.triggerEvent('terminator:disable_respawn')
       };
-
-      world.events.entityCreate.unsubscribe(modifyEntityData);
+       
+      World.events.entityCreate.unsubscribe(modifyEntityData);
     };
   });
-  world.getDimension('overworld').runCommand(`execute ${target} ~~~ summon entity:terminator`);
+  world.getDimension('overworld').runCommand(`execute ${target} ${nbt_input.coords.x} ${nbt_input.coords.y} ${nbt_input.coords.z} summon entity:terminator`);
 };
 
 export function error (target) { // target: string

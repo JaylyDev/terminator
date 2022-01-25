@@ -1,4 +1,4 @@
-GameTest Commands
+# GameTest Commands
 GameTest Commands is a new toolset available to players customize terminator's entity behavior.
 It's dependent with GameTest Framework in Minecraft: Bedrock Edition.
 
@@ -66,4 +66,6 @@ deathevent | boolean | true
 physics | boolean | true
 regeneration | boolean | true
 respawn | boolean | true
+breedable | boolean | false
+coords | object | ```{"x": "~", "y": "~", "z": "~"}```
 -----
