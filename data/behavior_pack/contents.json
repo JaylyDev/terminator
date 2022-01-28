@@ -52,7 +52,7 @@
             "path": "functions/terminator/changelog.mcfunction"
         },
         {
-            "path": "functions/terminator/debug/commands/death_detect/NoRespawnAndEnableDevMode.mcfunction"
+            "path": "functions/terminator/debug/commands/death_detect/NoRespawnDev.mcfunction"
         },
         {
             "path": "functions/terminator/debug/commands/tellraw/death_message.mcfunction"
@@ -127,22 +127,73 @@
             "path": "recipes/terminator_spawn_egg.json"
         },
         {
-            "path": "scripts/gametests/christmas.js"
-        },
-        {
-            "path": "scripts/gametests/gamertag.js"
-        },
-        {
-            "path": "scripts/gametests/Main.js"
-        },
-        {
-            "path": "scripts/gametests/PlayerDimTest.js"
-        },
-        {
-            "path": "scripts/gametests/terminal.js"
-        },
-        {
             "path": "structures/robot_respawn_cage.mcstructure"
+        },
+        {
+            "path": "subpacks/v1.16.210.05/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/v1.16.210.05/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/v1.16.210.05/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/v1.16.210.05/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/christmas.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/v1.17.30.04/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/christmas.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/v1.18.10.20/scripts/gametests/terminal.js"
         },
         {
             "path": "texts/en_GB.lang"

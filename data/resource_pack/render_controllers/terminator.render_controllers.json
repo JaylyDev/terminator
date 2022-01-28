@@ -17,7 +17,10 @@
 					]
 				},
         "geometries": {
-          "Array.geos": [ "geometry.terminator", "geometry.terminatorSlim" ]
+          "Array.geos": [
+            "geometry.default",
+            "geometry.slim"
+          ]
         }
 			},
       "geometry": "((query.variant == 0) || (query.variant == 2) || (query.variant == 4)) ? Array.geos[0] : Array.geos[1]",

@@ -201,11 +201,13 @@ export function terminator (target, user_input) { // target: string, user_input:
       if (nbt_input['respawn'] == false) {
         entityData.entity.triggerEvent('terminator:disable_respawn')
       };
+
+      entityData.entity.teleport(new Location(nbt_input['coords']['x'], nbt_input['coords']['y'], nbt_input['coords']['z']), world.getDimension(entityData.entity.dimension), 0, 0);
        
-      World.events.entityCreate.unsubscribe(modifyEntityData);
+      world.events.entityCreate.unsubscribe(modifyEntityData);
     };
   });
-  world.getDimension('overworld').runCommand(`execute ${target} ${nbt_input.coords.x} ${nbt_input.coords.y} ${nbt_input.coords.z} summon entity:terminator`);
+  world.getDimension('overworld').runCommand(`execute ${target} ~~~ summon entity:terminator`);
 };
 
 export function error (target) { // target: string

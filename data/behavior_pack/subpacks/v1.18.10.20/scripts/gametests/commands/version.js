@@ -27,7 +27,7 @@ export function gametest (type) { // type: ( 'string' | 'array' | 'object' )
 };
 
 export function module (type) { // type: ( 'string' | 'array' | 'object' )
-  const version = [ 0, 4, 23 ];
+  const version = [ 0, 4, 25 ];
   if (type == 'string') {
     return `${version[0]}.${version[1]}.${version[2]}`;
   } else if (type == 'array') {

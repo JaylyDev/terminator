@@ -29,6 +29,7 @@
       },
       "geometry": {
         "default": "geometry.terminator",
+        "slim": "geometry.terminatorSlim",
         "cape": "geometry.cape"
       },
       "scripts": {
