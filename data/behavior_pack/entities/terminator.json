@@ -59,6 +59,11 @@
           "value": 4
         }
       },
+      "terminator:customSlim_skin": {
+        "minecraft:variant": {
+          "value": 5
+        }
+      },
       "terminator:dev_death_detect": {
         "minecraft:damage_sensor": {
           "triggers": [
@@ -3277,6 +3282,9 @@
       },
       "terminator:enable_custom_skin": {
         "add": {"component_groups": ["terminator:custom_skin"]}
+      },
+      "terminator:enable_customSlim_skin": {
+        "add": {"component_groups": ["terminator:customSlim_skin"]}
       }
     }
   }

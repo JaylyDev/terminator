@@ -1,6 +1,6 @@
 // Custom commands for Minecraft Terminator script APIs (experimental)
-// Dependencies: @types/mojang-minecraft@0.1.3 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.3.tgz>
-//               data\behavior_pack\subpacks\v1.17.30.04\scripts\gametests\commands\index.js
+// Dependencies: @types/mojang-minecraft@0.1.0 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.0.tgz>
+//               data\behavior_pack\subpacks\v1.16.210.05\scripts\gametests\commands\index.js
 // Project: https://github.com/JaylyDev/terminator/
 // Created by: https://github.com/JaylyDev
 
@@ -9,7 +9,7 @@
    ***************************************************************************** */
 
 export function gametest (type) { // type: ( 'string' | 'array' | 'object' )
-  const version = [ 1, 18, 10, 20 ];
+  const version = [ 1, 16, 210, 5 ];
   if (type == 'string') {
     return `${version[0]}.${version[1]}.${version[2]}.${version[3]}`;
   } else if (type == 'array') {

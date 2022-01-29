@@ -9,7 +9,7 @@ It's dependent with GameTest Framework in Minecraft: Bedrock Edition.
 
 **GameTest Framework (Minecraft)**: 
 
-- **Stable** - v1.17.30.04
+- **Stable** - v1.16.210.05
 
 - **Beta** - v1.18.10.20
 
@@ -56,16 +56,17 @@ Terminator | entity:terminator | terminator
 
 ### Entity: terminator
 
-NBT Data | Variable type | Default value
--|-|-
-nametag | string | "Terminator"
-customskin | boolean | false
-bossbar | boolean | false
-invulnerable | boolean | false
-deathevent | boolean | true
-physics | boolean | true
-regeneration | boolean | true
-respawn | boolean | true
-breedable | boolean | false
-coords | object | ```{"x": "~", "y": "~", "z": "~"}```
+NBT Data | Variable type | Default value | Available Version
+-|-|-|-
+nametag | string | "Terminator" | Above v1.16.210
+customskin | boolean | false | Above v1.16.210
+bossbar | boolean | false | Above v1.16.210
+invulnerable | boolean | false | Above v1.16.210
+deathevent | boolean | true | Above v1.16.210
+physics | boolean | true | Above v1.16.210
+regeneration | boolean | true | Above v1.16.210
+respawn | boolean | true | Above v1.16.210
+breedable | boolean | false | Above v1.16.210
+coords | object | ```{"x": "~", "y": "~", "z": "~"}``` | Above v1.18.10
+skinmodel | string | "steve" | Above v1.16.210
 -----

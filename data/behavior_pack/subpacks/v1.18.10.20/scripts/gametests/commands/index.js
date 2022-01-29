@@ -70,6 +70,8 @@ world.events.beforeChat.subscribe((data) => {
         message.client(playerName, `GameTest Framework version: ${version.gametest('string')}`);
         message.client(playerName, `Add-on GameTest module version: ${version.module('string')}`);
       }
+    } else if (cmd[0] == `${prefix}help`) {
+      help.display(playerName);
     } else {
       /**
        * @throws This function throws exception in client chat

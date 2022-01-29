@@ -23,7 +23,8 @@
         "alex": "textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f",
         "steve_xmas": "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796",
         "alex_xmas": "textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea",
-        "custom": "textures/entity/custom",
+        "custom": "textures/entity/steve",
+        "customSlim": "textures/entity/alex",
         "cape_default": "textures/entity/cape_invisible",
         "cape": "textures/entity/cape_custom"
       },
@@ -36,9 +37,7 @@
         "scalex": "variable.entity_scale",
         "scaley": "variable.entity_scale",
         "scalez": "variable.entity_scale",
-        "initialize": [
-          "variable.hand_bob = 0.0;"
-        ],
+        "initialize": [ "variable.hand_bob = 0.0;" ],
         "pre_animation": [
           "variable.charge_amount = math.clamp((query.main_hand_item_max_duration - (query.main_hand_item_use_duration - query.frame_alpha + 1.0)) / 10.0, 0.0, 1.0f);",
           "variable.crossbow_charge = query.get_animation_frame;",

@@ -1,6 +1,6 @@
 // Custom commands for Minecraft Terminator script APIs (experimental)
-// Dependencies: @types/mojang-minecraft@0.1.1 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.1.tgz>
-//               data\behavior_pack\subpacks\v1.17.30.04\scripts\gametests\commands\index.js
+// Dependencies: @types/mojang-minecraft@0.1.0 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.0.tgz>
+//               data\behavior_pack\subpacks\v1.16.210.05\scripts\gametests\commands\index.js
 // Project: https://github.com/JaylyDev/terminator/
 // Created by: https://github.com/JaylyDev
 
@@ -8,54 +8,8 @@
    Copyright (c) JaylyMC.
    ***************************************************************************** */
 
-import { World, Commands } from 'mojang-minecraft';
+import { World, Commands } from 'Minecraft';
 import * as message from 'scripts/gametests/commands/message.js';
-
-/**
- * From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
- * Polyfill
- * This code adds compatible Object.keys support in older environments that do not natively support it
- */
-if (!Object.keys) {
-  Object.keys = (function () {
-    'use strict';
-    var hasOwnProperty = Object.prototype.hasOwnProperty,
-      hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
-      dontEnums = [
-        'toString',
-        'toLocaleString',
-        'valueOf',
-        'hasOwnProperty',
-        'isPrototypeOf',
-        'propertyIsEnumerable',
-        'constructor'
-      ],
-      dontEnumsLength = dontEnums.length;
-
-    return function (obj) {
-      if (typeof obj !== 'function' && (typeof obj !== 'object' || obj === null)) {
-        throw new TypeError('Object.keys called on non-object');
-      }
-
-      var result = [], prop, i;
-
-      for (prop in obj) {
-        if (hasOwnProperty.call(obj, prop)) {
-          result.push(prop);
-        }
-      }
-
-      if (hasDontEnumBug) {
-        for (i = 0; i < dontEnumsLength; i++) {
-          if (hasOwnProperty.call(obj, dontEnums[i])) {
-            result.push(dontEnums[i]);
-          }
-        }
-      }
-      return result;
-    };
-  }());
-};
 
 export function terminator(target, user_input) { // target: string, user_input: object
   var modifyEntityData = World.events.entityCreate.subscribe((entityData) => {
@@ -192,7 +146,7 @@ export function terminator(target, user_input) { // target: string, user_input: 
       World.events.entityCreate.unsubscribe(modifyEntityData);
     };
   });
-  Commands.run(`execute ${target} ~~~ summon entity:terminator`, World.getDimension('overworld'));
+  Commands.run(`execute ${target} ~~~ summon entity:terminator`);
 };
 
 export function error(target) { // target: string

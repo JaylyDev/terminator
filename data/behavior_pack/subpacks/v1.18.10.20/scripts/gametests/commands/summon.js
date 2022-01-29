@@ -17,22 +17,22 @@ import * as message from 'scripts/gametests/commands/message.js';
  * This code adds compatible Object.keys support in older environments that do not natively support it
  */
 if (!Object.keys) {
-  Object.keys = (function() {
+  Object.keys = (function () {
     'use strict';
     var hasOwnProperty = Object.prototype.hasOwnProperty,
-        hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
-        dontEnums = [
-          'toString',
-          'toLocaleString',
-          'valueOf',
-          'hasOwnProperty',
-          'isPrototypeOf',
-          'propertyIsEnumerable',
-          'constructor'
-        ],
-        dontEnumsLength = dontEnums.length;
+      hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+      dontEnums = [
+        'toString',
+        'toLocaleString',
+        'valueOf',
+        'hasOwnProperty',
+        'isPrototypeOf',
+        'propertyIsEnumerable',
+        'constructor'
+      ],
+      dontEnumsLength = dontEnums.length;
 
-    return function(obj) {
+    return function (obj) {
       if (typeof obj !== 'function' && (typeof obj !== 'object' || obj === null)) {
         throw new TypeError('Object.keys called on non-object');
       }
@@ -57,7 +57,7 @@ if (!Object.keys) {
   }());
 };
 
-export function terminator (target, user_input) { // target: string, user_input: object
+export function terminator(target, user_input) { // target: string, user_input: object
   var modifyEntityData = world.events.entityCreate.subscribe((entityData) => {
     console.log('entityCreate callback has been added from "scripts/gametests/commands/summon.js"');
     if (entityData.entity.id === "entity:terminator") {
@@ -65,7 +65,7 @@ export function terminator (target, user_input) { // target: string, user_input:
        * These are the keys player are allow to modify 
        * when spawning a terminator with custom commands 
        */
-       const default_nbt = {
+      const default_nbt = {
         "nametag": "Terminator",
         "customskin": false,
         "bossbar": false,
@@ -74,10 +74,11 @@ export function terminator (target, user_input) { // target: string, user_input:
         "physics": true,
         "regeneration": true,
         "respawn": true,
-         "breedable": false,
-         "coords": { "x": "~", "y": "~", "z": "~" }
+        "breedable": false,
+        "coords": { "x": "~", "y": "~", "z": "~" },
+        "skinmodel": "steve"
       };
-      
+
       // Applying player's JSON input to default NBT key values
       var nbt_input = default_nbt;
 
@@ -137,7 +138,7 @@ export function terminator (target, user_input) { // target: string, user_input:
           nbt_input['coords']['x'] = user_input['coords']["x"];
           console.log(nbt_input['coords']["x"]);
         };
-         if ((typeof user_input['coords']["y"] != 'number') || (user_input["coords"]["y"] != "~")) {
+        if ((typeof user_input['coords']["y"] != 'number') || (user_input["coords"]["y"] != "~")) {
           console.log(`user_input['coords']['y'] (${user_input['coords']['y']}) is not a type of integer nor '~'`);
         } else {
           nbt_input['coords']["y"] = user_input['coords']["y"];
@@ -148,28 +149,35 @@ export function terminator (target, user_input) { // target: string, user_input:
         } else {
           nbt_input['coords']["z"] = user_input['coords']["z"];
           console.log(nbt_input['coords']["z"]);
-        }  
+        }
       } else {
         console.log(`user_input['coords'] is a type of ${typeof user_input['coords']} instead of 'object'`);
       };
-       
+
       if (typeof user_input['respawn'] == 'boolean') {
         nbt_input['respawn'] = user_input['respawn'];
         console.log(nbt_input['respawn']);
       } else {
         console.log(`user_input['respawn'] is a type of ${typeof user_input['respawn']} instead of 'boolean'`);
       };
-       
-       if (typeof user_input['breedable'] == 'boolean') {
+
+      if (typeof user_input['breedable'] == 'boolean') {
         nbt_input['breedable'] = user_input['breedable'];
         console.log(nbt_input['breedable']);
       } else {
         console.log(`user_input['breedable'] is a type of ${typeof user_input['breedable']} instead of 'boolean'`);
       };
 
+      if (typeof user_input['skinmodel'] == 'string' && user_input['skinmodel'] == ('steve' || 'alex')) {
+        nbt_input['skinmodel'] = user_input['skinmodel'];
+        console.log(nbt_input['skinmodel']);
+      } else {
+        console.log(`user_input['skinmodel'] is a type of ${typeof user_input['skinmodel']} instead of 'string'`);
+      };
+
       console.log('User input: ' + JSON.stringify(user_input, null, 2));
       console.log('NBT Input: ' + JSON.stringify(nbt_input, null, 2));
-      
+
       /**
        * Executing events based on 'nbt_input' variable
        * If the option is undefined in user_input
@@ -192,7 +200,7 @@ export function terminator (target, user_input) { // target: string, user_input:
       if (nbt_input['physics'] == false) {
         entityData.entity.triggerEvent('terminator:disable_physics')
       };
-       if (nbt_input['breedable'] == true) {
+      if (nbt_input['breedable'] == true) {
         entityData.entity.triggerEvent('breedable:true');
       };
       if (nbt_input['regeneration'] == false) {
@@ -201,16 +209,19 @@ export function terminator (target, user_input) { // target: string, user_input:
       if (nbt_input['respawn'] == false) {
         entityData.entity.triggerEvent('terminator:disable_respawn')
       };
+      if (nbt_input['skinmodel'] == 'alex') {
+        entityData.entity.triggerEvent('terminator:enable_customSlim_skin')
+      };
 
       entityData.entity.teleport(new Location(nbt_input['coords']['x'], nbt_input['coords']['y'], nbt_input['coords']['z']), world.getDimension(entityData.entity.dimension), 0, 0);
-       
+
       world.events.entityCreate.unsubscribe(modifyEntityData);
     };
   });
   world.getDimension('overworld').runCommand(`execute ${target} ~~~ summon entity:terminator`);
 };
 
-export function error (target) { // target: string
+export function error(target) { // target: string
   var error_msg = "This add-on currenly do not support this entity.";
   message.client(target, error_msg)
 };

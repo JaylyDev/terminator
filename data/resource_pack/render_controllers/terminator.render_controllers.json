@@ -13,7 +13,8 @@
 						"Texture.alex", 
 						"Texture.steve_xmas", 
 						"Texture.alex_xmas",
-            "Texture.custom"
+            "Texture.custom",
+            "Texture.customSlim"
 					]
 				},
         "geometries": {

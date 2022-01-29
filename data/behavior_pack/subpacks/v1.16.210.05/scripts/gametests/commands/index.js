@@ -1,5 +1,5 @@
 // Custom commands for Minecraft Terminator script APIs (experimental)
-// Dependencies: @types/mojang-minecraft@0.1.1 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.1.tgz>
+// Dependencies: @types/mojang-minecraft@0.1.0 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.0.tgz>
 // Project: https://github.com/JaylyDev/terminator/
 // Created by: https://github.com/JaylyDev
 
@@ -7,7 +7,7 @@
    Copyright (c) JaylyMC.
    ***************************************************************************** */
 
-import { World } from "mojang-minecraft";
+import { World } from 'Minecraft';
 import * as version from 'scripts/gametests/commands/version.js';
 import * as message from 'scripts/gametests/commands/message.js';
 import * as summon from 'scripts/gametests/commands/summon.js';
