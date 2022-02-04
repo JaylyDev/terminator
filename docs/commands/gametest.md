@@ -9,11 +9,12 @@ It's dependent with GameTest Framework in Minecraft: Bedrock Edition.
 
 **GameTest Framework (Minecraft)**: 
 
-- **Stable** - v1.16.210.05
+Status | Version
+-|-
+Stable | <center>v1.16.210.05<br>v1.17.30.04<br>v1.18.10.20
+Beta | <center>v1.18.20.23
 
-- **Beta** - v1.18.10.20
-
-**GameTest Commands (Add-on module)**: v0.4.23
+**GameTest Commands (Add-on module)**: v0.4.35
 
 -----
 GameTest commands are still in development and it's experimental.
@@ -69,4 +70,14 @@ respawn | boolean | true | Above v1.16.210
 breedable | boolean | false | Above v1.16.210
 coords | object | ```{"x": "~", "y": "~", "z": "~"}``` | Above v1.18.10
 skinmodel | string | "steve" | Above v1.16.210
+
 -----
+### #changeSkin
+This command creates an UI popup and allows player to change skin for existing terminators
+> This command is a test for new "mojang-minecraft-ui" GameTest Framework module
+
+**Usage:** `#changeSkin`
+
+> Available to 
+> - Minecraft beta 1.18.20.21 or above
+> - Add-on GameTest v0.4.35

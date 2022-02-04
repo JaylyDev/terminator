@@ -1,5 +1,5 @@
 // Custom commands for Minecraft Terminator script APIs (experimental)
-// Dependencies: @types/mojang-minecraft@0.1.1 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.1.tgz>
+// Dependencies: @types/mojang-minecraft@0.1.3 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.3.tgz>
 // Project: https://github.com/JaylyDev/terminator/
 // Created by: https://github.com/JaylyDev
 
@@ -35,6 +35,13 @@ const definitions = [
         "gametest",
         "module"
       ]
+    }
+  },
+  {
+    "command": "#changeSkin",
+    "infomation": {
+      "definition": "This command currenly can change existing terminator skins only!",
+      "usage": [ "" ]
     }
   }
 ];

@@ -1,5 +1,5 @@
 item.spawn_egg.entity.entity:terminator.name=产卵终结者
-entity.player.name=播放器
+entity.player.name=玩家
 message.entity.respawn.generic=，但他们重生了！
 entity.entity:terminator.name=终结者
 entity.entity:terminator<>.name=终结者

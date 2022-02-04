@@ -3285,6 +3285,34 @@
       },
       "terminator:enable_customSlim_skin": {
         "add": {"component_groups": ["terminator:customSlim_skin"]}
+      },
+      "terminator:switch_skin_to_alex": {
+        "add": {
+          "component_groups": [ "terminator:alex_default_skin" ]
+        },
+        "remove": {
+          "component_groups": [
+            "terminator:steve_default_skin",
+            "terminator:steve_christmas_skin",
+            "terminator:alex_christmas_skin",
+            "terminator:custom_skin",
+            "terminator:customSlim_skin"
+          ]
+        }
+      },
+      "terminator:switch_skin_to_steve": {
+        "add": {
+          "component_groups": [ "terminator:steve_default_skin" ]
+        },
+        "remove": {
+          "component_groups": [
+            "terminator:alex_default_skin",
+            "terminator:alex_christmas_skin",
+            "terminator:steve_christmas_skin",
+            "terminator:custom_skin",
+            "terminator:customSlim_skin"
+          ]
+        }
       }
     }
   }

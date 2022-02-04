@@ -10,7 +10,7 @@
 
 import * as message from 'scripts/gametests/commands/message.js';
 
-export const definitions = [
+const definitions = [
   {
     "command": "#help",
     "infomation": {
