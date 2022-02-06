@@ -1,6 +1,6 @@
 // JavaScript terminal for Terminator script APIs (experimental)
 // Dependencies: @types/mojang-minecraft@0.1.3 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.3.tgz>
-//               data\behavior_pack\subpacks\v1.17.30.04\scripts\gametests\commands\index.js
+//               data\behavior_pack\subpacks\v1.18.20.23\scripts\gametests\Main.js
 // Project: https://github.com/JaylyDev/terminator/
 // Created by: https://github.com/JaylyDev
 

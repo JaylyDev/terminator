@@ -81,3 +81,5 @@ This command creates an UI popup and allows player to change skin for existing t
 > Available to 
 > - Minecraft beta 1.18.20.21 or above
 > - Add-on GameTest v0.4.35
+
+> 1.3.52.34 Update: This command is broken, currently waiting for a fix

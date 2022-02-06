@@ -13,7 +13,7 @@ import * as message from 'scripts/gametests/commands/message.js';
 import * as summon from 'scripts/gametests/commands/summon.js';
 import * as help from 'scripts/gametests/commands/help.js';
 import { operator_test } from 'scripts/minecraft/permission.js';
-import { skinChange } from "scripts/gametests/commands/changeSkin-ui.js";
+import { skinChange } from "scripts/gametests/commands/skinchange-ui.js";
 
 let prefix = "#";
 

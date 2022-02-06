@@ -12,11 +12,13 @@ import { world } from 'mojang-minecraft';
 
 export function client (target, data) { // target: string, data: string
   console.log(`[${Date()}] <${target}> ${data}`);
+  data = data.replace(/\\\"/g, "\\\\\"").replace(/\"/g, "\\\"");
   world.getDimension('overworld').runCommand(`tellraw ${target} {"rawtext":[{"text":"§7${data}"}]}`);
 };
 
 export function server (sender, data) { // sender: string, data: string
   console.log(`[${Date()}] <${sender} -> server> ${data}`);
+  data = data.replace(/\\\"/g, "\\\\\"").replace(/\"/g, "\\\"");
   for (let player of world.getPlayers()) {
     player.runCommand(`tellraw @s {"rawtext":[{"text":"[${sender}: ${data}]"}]}`);
   }

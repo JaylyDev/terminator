@@ -13,6 +13,14 @@ world.events.beforeChat.subscribe((data) => {
     var command = data.message.split('');
     command.shift();
     command = command.join('');
-    message.client(playerName, viewObj(world.getDimension('overworld').runCommand(`execute ${playerName} ~ ~ ~ ${command}`)).join('\n§r'));
+    try {
+      const CommandResult = viewObj(world.getDimension('overworld').runCommand(`execute ${playerName} ~ ~ ~ ${command}`)).join('\n§r');
+      message.client(playerName, `/${command}`);
+      message.client(playerName, CommandResult);
+    } catch (error) {
+      const CommandResult = viewObj(JSON.parse(error)).join('\n§r');
+      message.client(playerName, `/${command}`);
+      message.client(playerName, CommandResult);
+    };
   }
 });
