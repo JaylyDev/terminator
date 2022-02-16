@@ -2438,7 +2438,7 @@
               ]
             },
             "run_command": { 
-              "command": [ "summon lightning_bolt ~ -40 ~" ]
+              "command": [ "/tellraw @a {\"rawtext\":[{\"translate\":\"multiplayer.player.left\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}" ] // remove lighting bolt and add left mesg
             }
           }
         ]
