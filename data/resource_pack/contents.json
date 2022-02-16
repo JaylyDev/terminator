@@ -25,9 +25,6 @@
             "path": "entity/terminator.entity.json"
         },
         {
-            "path": "entity/textures_hash.js"
-        },
-        {
             "path": "manifest.json"
         },
         {
@@ -154,13 +151,16 @@
             "path": "texts/zh_TW.lang"
         },
         {
+            "path": "textures/entity/alex.png"
+        },
+        {
             "path": "textures/entity/cape_custom.png"
         },
         {
             "path": "textures/entity/cape_invisible.png"
         },
         {
-            "path": "textures/entity/custom.png"
+            "path": "textures/entity/steve.png"
         },
         {
             "path": "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796.png"
@@ -199,10 +199,10 @@
             "path": "textures/entity/terminator/steve_xmas.png"
         },
         {
-            "path": "ui/debug_screen.json"
+            "path": "ui/chat_screen.json"
         },
         {
-            "path": "workspace.code-workspace"
+            "path": "ui/debug_screen.json"
         }
     ]
 }

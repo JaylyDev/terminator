@@ -2341,6 +2341,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
               ]
             },
@@ -2357,6 +2358,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
               ]
             },
@@ -2373,6 +2375,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"test": "is_variant", "value": 4}
               ]
             },
@@ -2389,6 +2392,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
               ]
             },
@@ -2405,6 +2409,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
               ]
             },
@@ -2421,6 +2426,7 @@
               "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "!=", "value": "void"},
                 {"test": "is_variant", "value": 4}
               ]
             },
@@ -2434,11 +2440,113 @@
           {
             "filters":{
               "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_steve",
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_alex",
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"test": "is_variant", "value": 4}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_custom",
+                "summon entity:dummy ~ ~ ~ dummy:request_spawning_custom",
+                "fog @a remove respawn_lore",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"any_of": [{"test": "is_variant", "value": 0}, {"test": "is_variant", "value": 2}]}
+              ]
+            },
+            "run_command": {
+              "command": [
+                // "event entity @s death_message:all",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_steve"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"any_of": [{"test": "is_variant", "value": 1}, {"test": "is_variant", "value": 3}]}
+              ]
+            },
+            "run_command": {
+              "command": [
+                // "event entity @s death_message:all",
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_alex"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
+                {"test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest"},
+                {"test": "has_tag", "subject": "self", "operator": "==", "value": "disablerespawnevent"},
+                { "test": "has_damage", "subject": "self", "operator": "==", "value": "void"},
+                {"test": "is_variant", "value": 4}
+              ]
+            },
+            "run_command": {
+              "command": [
+                "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
+                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_custom"
+              ]
+            }
+          },
+          {
+            "filters":{
+              "all_of": [
                 {"test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest"}
               ]
             },
             "run_command": { 
-              "command": [ "/tellraw @a {\"rawtext\":[{\"translate\":\"multiplayer.player.left\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}" ] // remove lighting bolt and add left mesg
+              "command": [ "tellraw @a {\"rawtext\":[{\"translate\":\"multiplayer.player.left\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}" ] // remove lighting bolt and add left mesg
             }
           }
         ]
@@ -3281,10 +3389,32 @@
         }
       },
       "terminator:enable_custom_skin": {
-        "add": {"component_groups": ["terminator:custom_skin"]}
+        "add": {
+          "component_groups": ["terminator:custom_skin"]
+        },
+        "remove": {
+          "component_groups": [
+            "terminator:steve_default_skin",
+            "terminator:steve_christmas_skin",
+            "terminator:alex_default_skin",
+            "terminator:alex_christmas_skin",
+            "terminator:customSlim_skin"
+          ]
+        }
       },
       "terminator:enable_customSlim_skin": {
-        "add": {"component_groups": ["terminator:customSlim_skin"]}
+        "add": {
+          "component_groups": ["terminator:customSlim_skin"]
+        },
+        "remove": {
+          "component_groups": [
+            "terminator:steve_default_skin",
+            "terminator:steve_christmas_skin",
+            "terminator:alex_default_skin",
+            "terminator:alex_christmas_skin",
+            "terminator:custom_skin"
+          ]
+        }
       },
       "terminator:switch_skin_to_alex": {
         "add": {
@@ -3311,6 +3441,87 @@
             "terminator:steve_christmas_skin",
             "terminator:custom_skin",
             "terminator:customSlim_skin"
+          ]
+        }
+      },
+      "terminator:spawn_disable_respawn_steve": {
+        "run_command": {
+          "command": [ "tag @s add terminatordeathrequest" ]
+        },
+        "sequence": [
+          {
+            "randomize": [
+              {
+                "weight": 25,
+                "add": {
+                  "component_groups": [ "minecraft:can_have_equipment" ]
+                }
+              },
+              { "weight": 75 }
+            ]
+          }
+        ],
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:steve_default_skin"
+          ]
+        }
+      },
+      "terminator:spawn_disable_respawn_alex": {
+        "run_command": {
+          "command": [ "tag @s add terminatordeathrequest" ]
+        },
+        "sequence": [
+          {
+            "randomize": [
+              {
+                "weight": 25,
+                "add": {
+                  "component_groups": [ "minecraft:can_have_equipment" ]
+                }
+              },
+              { "weight": 75 }
+            ]
+          }
+        ],
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:alex_default_skin"
+          ]
+        }
+      },
+      "terminator:spawn_disable_respawn_custom": {
+        "run_command": {
+          "command": [ "tag @s add terminatordeathrequest" ]
+        },
+        "sequence": [
+          {
+            "randomize": [
+              {
+                "weight": 25,
+                "add": {
+                  "component_groups": [ "minecraft:can_have_equipment" ]
+                }
+              },
+              { "weight": 75 }
+            ]
+          }
+        ],
+        "add": {
+          "component_groups": [
+            "terminator:set_default_varient",
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:custom_skin"
           ]
         }
       }

@@ -130,70 +130,415 @@
             "path": "structures/robot_respawn_cage.mcstructure"
         },
         {
-            "path": "subpacks/v1.16.210.05/scripts/gametests/gamertag.js"
+            "path": "subpacks/Console/functions/terminator/kit/chainmail.mcfunction"
         },
         {
-            "path": "subpacks/v1.16.210.05/scripts/gametests/Main.js"
+            "path": "subpacks/Console/functions/terminator/kit/diamond.mcfunction"
         },
         {
-            "path": "subpacks/v1.16.210.05/scripts/gametests/PlayerDimTest.js"
+            "path": "subpacks/Console/functions/terminator/kit/golden.mcfunction"
         },
         {
-            "path": "subpacks/v1.16.210.05/scripts/gametests/terminal.js"
+            "path": "subpacks/Console/functions/terminator/kit/iron.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/christmas.js"
+            "path": "subpacks/Console/functions/terminator/kit/leather.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/index.js"
+            "path": "subpacks/Console/functions/terminator/kit/netherite.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/message.js"
+            "path": "subpacks/Console/functions/terminator/nodeathevent.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/summon.js"
+            "path": "subpacks/Console/functions/terminator.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/commands/version.js"
+            "path": "subpacks/Console/functions/warning.mcfunction"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/gamertag.js"
+            "path": "subpacks/Console/scripts/gametests/Main.js"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/Main.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/commands/help.js"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/PlayerDimTest.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/commands/index.js"
         },
         {
-            "path": "subpacks/v1.17.30.04/scripts/gametests/terminal.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/commands/message.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/christmas.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/commands/summon.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/index.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/commands/version.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/message.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/gamertag.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/summon.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/Main.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/commands/version.js"
+            "path": "subpacks/Mobile/v1.16.210.05/scripts/gametests/PlayerDimTest.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/gamertag.js"
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/commands/help.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/Main.js"
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/commands/index.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/PlayerDimTest.js"
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/commands/message.js"
         },
         {
-            "path": "subpacks/v1.18.10.20/scripts/gametests/terminal.js"
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.17.30.04/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/credentials/access.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/credentials/developer.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/credentials/MojangImportTest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/credentials/MojangMinecraftUITest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/teleport.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/minecraft/command.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.10.20/scripts/minecraft/viewObj.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-gametest/index.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-gametest/LICENSE"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-gametest/package.json"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-gametest/README.md"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft/index.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft/LICENSE"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft/package.json"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft/README.md"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft-ui/index.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft-ui/LICENSE"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft-ui/package.json"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/@types/mojang-minecraft-ui/README.md"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/blueimp/md5.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/credentials/access.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/credentials/developer.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/credentials/MojangImportTest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/credentials/MojangMinecraftUITest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/minecraft/command.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/minecraft/viewObj.js"
+        },
+        {
+            "path": "subpacks/Mobile/v1.18.20.23/scripts/sha256.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.16.210.05/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/christmas.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.17.30.04/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/credentials/access.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/credentials/developer.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/credentials/MojangImportTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/credentials/MojangMinecraftUITest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/christmas.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/teleport.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/minecraft/command.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.10.20/scripts/minecraft/viewObj.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-gametest/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-gametest/LICENSE"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-gametest/package.json"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-gametest/README.md"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft/LICENSE"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft/package.json"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft/README.md"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft-ui/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft-ui/LICENSE"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft-ui/package.json"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/@types/mojang-minecraft-ui/README.md"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/blueimp/md5.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/credentials/access.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/credentials/developer.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/credentials/MojangImportTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/credentials/MojangMinecraftUITest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/christmas.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/Main.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/gametests/terminal.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/minecraft/command.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/minecraft/viewObj.js"
+        },
+        {
+            "path": "subpacks/Windows/v1.18.20.23/scripts/sha256.js"
         },
         {
             "path": "texts/en_GB.lang"
@@ -206,9 +551,6 @@
         },
         {
             "path": "texts/language_names.json"
-        },
-        {
-            "path": "workspace.code-workspace"
         }
     ]
 }

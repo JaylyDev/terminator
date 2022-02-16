@@ -14,7 +14,7 @@ Status | Version
 Stable | <center>v1.16.210.05<br>v1.17.30.04<br>v1.18.10.20
 Beta | <center>v1.18.20.23
 
-**GameTest Commands (Add-on module)**: v0.4.35
+**GameTest Commands (Add-on module)**: v0.4.92
 
 -----
 GameTest commands are still in development and it's experimental.
@@ -68,18 +68,23 @@ physics | boolean | true | Above v1.16.210
 regeneration | boolean | true | Above v1.16.210
 respawn | boolean | true | Above v1.16.210
 breedable | boolean | false | Above v1.16.210
-coords | object | ```{"x": "~", "y": "~", "z": "~"}``` | Above v1.18.10
-skinmodel | string | "steve" | Above v1.16.210
+coords | object | <pre><code class="lang-json">{<br>  <span class="hljs-string">"x"</span>: <span class="hljs-selector-class">Location</span><span class="hljs-selector-class">.x</span>,<br>  <span class="hljs-string">"y"</span>: <span class="hljs-selector-class">Location</span><span class="hljs-selector-class">.y</span>,<br>  <span class="hljs-string">"z"</span>: <span class="hljs-selector-class">Location</span><span class="hljs-selector-class">.z</span><br>}</code></pre> | Above v1.18.10
+skinmodel | string | "steve" or "alex" | Above v1.16.210
+dimension | function | <pre><code class="lang-js"><span class="hljs-selector-tag">entity</span><span class="hljs-selector-class">.dimension</span></code></pre> | Soon
 
 -----
-### #changeSkin
+### #teleport
 This command creates an UI popup and allows player to change skin for existing terminators
 > This command is a test for new "mojang-minecraft-ui" GameTest Framework module
 
-**Usage:** `#changeSkin`
+**Usage:** `#teleport <entity: string> <numberId: number>`
 
-> Available to 
-> - Minecraft beta 1.18.20.21 or above
-> - Add-on GameTest v0.4.35
+**Example:** `#teleport terminator 0`
 
-> 1.3.52.34 Update: This command is broken, currently waiting for a fix
+**Available entities** - The following list is entities that can be spawned with the `#teleport` command:
+
+Entity | Minecraft Identifier | #summon Identifier
+-|-|-
+Terminator | entity:terminator | terminator
+
+**numberId** - The number shows in entity's nametag, returns 0 if parameter is not requested

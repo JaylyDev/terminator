@@ -41,8 +41,8 @@ if locate == True:
     try:
         ## toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\Terminator"
         ## toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\Terminator"
-        toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\T3z7Yc2fAAA=\\resource_packs\\Terminator"
-        toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\T3z7Yc2fAAA=\\behavior_packs\\Terminator"
+        toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\7cYHYpo6AAA=\\resource_packs\\Terminator"
+        toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\7cYHYpo6AAA=\\behavior_packs\\Terminator"
         appid = "shell:appsFolder\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App"
         appname = "Minecraft.Windows.exe"
         run("rd \"" + toDirectory_rp + "\" /s /q")

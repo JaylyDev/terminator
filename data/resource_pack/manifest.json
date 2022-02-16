@@ -5,36 +5,66 @@
   "format_version": 2,
   "header": {
     "name": "Terminator [Resource Pack]",
-    "description": "By Jayly\nPack Version: 1.3.52.34 [Beta]\nPlatform: Windows",
+    "description": "By Jayly\nPack Version: 1.3.69.21 [Beta]",
     "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-    "version": [1, 3, 52],
-    "min_engine_version": [1, 17, 0]
+    "version": [1, 3, 69],
+    "min_engine_version": [1, 16, 210]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.3.52.34 [Beta]\nPlatform: Windows",
+      "description": "By Jayly\nPack Version: 1.3.69.21 [Beta]",
       "type": "resources",
       "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
-      "version": [1, 3, 52]
+      "version": [1, 3, 69]
     }
   ],
   "subpacks": [ // Minecraft sets last array as default option
 		{
+      // To support consoles mainly
+			"folder_name": "Console",
+			"name": "GameTest Framework [Console]",
+			"memory_tier": 1
+    },
+		{
       // Old GameTest version for compatibility
-			"folder_name": "v1.16.210.05",
-			"name": "GameTest Framework v1.16.210",
+			"folder_name": "Mobile/v1.16.210.05",
+			"name": "GameTest Framework v1.16.210 [Mobile]",
 			"memory_tier": 1
     },
     {
-      // GameTest for Minecraft Beta 1.18.10.20 or above
-			"folder_name": "v1.18.10.20",
-			"name": "GameTest Framework v1.18.10 [Beta]",
+      // Old GameTest version for compatibility
+			"folder_name": "Windows/v1.16.21005.0",
+			"name": "GameTest Framework v1.16.210 [Windows]",
 			"memory_tier": 1
     },
     {
       // Stable GameTest for Terminator add-on package
-			"folder_name": "v1.17.30.04",
-			"name": "GameTest Framework v1.17.30 [Stable]",
+			"folder_name": "Mobile/v1.17.30.04",
+			"name": "GameTest Framework v1.17.30 [Mobile]",
+			"memory_tier": 1
+    },
+    {
+      // Stable GameTest for Terminator add-on package
+			"folder_name": "Windows/v1.17.3004.0",
+			"name": "GameTest Framework v1.17.30 [Windows]",
+			"memory_tier": 1
+    },
+    {
+      // Stable GameTest for Minecraft 1.18.10 or above
+			"folder_name": "Mobile/v1.18.10.20",
+			"name": "GameTest Framework v1.18.10 [Mobile]",
+			"memory_tier": 1
+    },
+    {
+      // Stable GameTest for Minecraft 1.18.10 or above
+			"folder_name": "Windows/v1.18.1020.0",
+			"name": "GameTest Framework v1.18.10 [Windows]",
+			"memory_tier": 1
+    },
+    {
+      // GameTest for Minecraft Beta 1.18.20.21 or above
+			"folder_name": "Windows/v1.18.2023.0",
+			"name": "GameTest Framework v1.18.20 [Windows Beta]",
 			"memory_tier": 1
     }
   ],
@@ -42,7 +72,7 @@
     {
       // Terminator resource pack
       "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-      "version": [1, 3, 52]
+      "version": [1, 3, 69]
     }
   ],
   "metadata": {

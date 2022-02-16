@@ -10,13 +10,13 @@
 
 ## Documentations
 ### Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
-### Custom Commands: [docs/commands/gametest.md](https://github.com/JaylyDev/terminator/blob/main/docs/commands/gametest.md)
+### Detailed explaination: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
 ## Latest Versions
 
 **Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.45 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
-**Beta**: v1.3.52.34 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
+**Beta**: v1.3.69.21 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
 
 ## Questions, Bugs and Feedbacks
 
