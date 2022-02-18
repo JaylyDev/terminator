@@ -5,14 +5,14 @@
   "format_version": 2,
   "header": {
     "name": "pack.name",
-    "description": "By Jayly\nPack Version: 1.3.69.21 [Beta]",
+    "description": "By Jayly\nPack Version: 1.3.69.25 [Beta]",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
     "version": [1, 3, 69],
     "min_engine_version": [1, 16, 210]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.3.69.21 [Beta]",
+      "description": "By Jayly\nPack Version: 1.3.69.25 [Beta]",
       "type": "data",
       "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
       "version": [1, 3, 69]
@@ -66,6 +66,12 @@
       // Stable GameTest for Minecraft 1.18.10 or above
 			"folder_name": "Windows/v1.18.1020.0",
 			"name": "GameTest Framework v1.18.10 [Windows]",
+			"memory_tier": 1
+    },
+    {
+      // GameTest for Minecraft Beta 1.18.20.21 or above
+			"folder_name": "Windows/v1.18.20.23",
+			"name": "GameTest Framework v1.18.23 [Mobile Beta]",
 			"memory_tier": 1
     },
     {
