@@ -1,1 +1,193 @@
-{}
+{
+    "content": [
+        {
+            "path": "animation_controllers/dummy.controller.json"
+        },
+        {
+            "path": "animation_controllers/terminator.break.v2.json"
+        },
+        {
+            "path": "animation_controllers/terminator.build.v2.json"
+        },
+        {
+            "path": "animation_controllers/terminator.controller.json"
+        },
+        {
+            "path": "contents.json"
+        },
+        {
+            "path": "desktop.ini"
+        },
+        {
+            "path": "entities/dummy.json"
+        },
+        {
+            "path": "entities/terminator.json"
+        },
+        {
+            "path": "functions/changelog.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/chainmail.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/diamond.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/golden.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/iron.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/leather.mcfunction"
+        },
+        {
+            "path": "functions/player/kit/netherite.mcfunction"
+        },
+        {
+            "path": "functions/terminator/debug/commands/death_detect/NoRespawnDev.mcfunction"
+        },
+        {
+            "path": "functions/terminator/debug/commands/tellraw/death_message.mcfunction"
+        },
+        {
+            "path": "functions/terminator/debug/components/break_blocks.mcfunction"
+        },
+        {
+            "path": "functions/terminator/debug/components/move_to_block.mcfunction"
+        },
+        {
+            "path": "functions/terminator/killall.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/chainmail.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/diamond.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/golden.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/iron.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/leather.mcfunction"
+        },
+        {
+            "path": "functions/terminator/kit/netherite.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/customskin.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/enableBossbar.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/invulnerable.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/nodeathevent.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/nophysics.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/noregen.mcfunction"
+        },
+        {
+            "path": "functions/terminator/nbt/norespawn.mcfunction"
+        },
+        {
+            "path": "functions/terminator.mcfunction"
+        },
+        {
+            "path": "LICENSE.txt"
+        },
+        {
+            "path": "loot_tables/entities/terminator_equipment.json"
+        },
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "pack_icon.png"
+        },
+        {
+            "path": "README.txt"
+        },
+        {
+            "path": "recipes/terminator_spawn_egg.json"
+        },
+        {
+            "path": "scripts/blueimp/md5.js"
+        },
+        {
+            "path": "scripts/credentials/access.js"
+        },
+        {
+            "path": "scripts/credentials/developer.js"
+        },
+        {
+            "path": "scripts/credentials/MojangImportTest.js"
+        },
+        {
+            "path": "scripts/credentials/MojangMinecraftUITest.js"
+        },
+        {
+            "path": "scripts/gametests/christmas.js"
+        },
+        {
+            "path": "scripts/gametests/commands/help.js"
+        },
+        {
+            "path": "scripts/gametests/commands/index.js"
+        },
+        {
+            "path": "scripts/gametests/commands/message.js"
+        },
+        {
+            "path": "scripts/gametests/commands/summon.js"
+        },
+        {
+            "path": "scripts/gametests/commands/version.js"
+        },
+        {
+            "path": "scripts/gametests/gamertag.js"
+        },
+        {
+            "path": "scripts/gametests/Main.js"
+        },
+        {
+            "path": "scripts/gametests/PlayerDimTest.js"
+        },
+        {
+            "path": "scripts/minecraft/command.js"
+        },
+        {
+            "path": "scripts/minecraft/viewObj.js"
+        },
+        {
+            "path": "scripts/sha256.js"
+        },
+        {
+            "path": "signatures.json"
+        },
+        {
+            "path": "structures/robot_respawn_cage.mcstructure"
+        },
+        {
+            "path": "texts/en_GB.lang"
+        },
+        {
+            "path": "texts/en_US.lang"
+        },
+        {
+            "path": "texts/languages.json"
+        },
+        {
+            "path": "texts/language_names.json"
+        }
+    ]
+}
