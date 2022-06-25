@@ -20,3 +20,12 @@ jobs:
       - name: Compile 💻
         working-directory: ./resources
         run: ./ModifyJSON.bat
+
+  json-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: json-syntax-check
+        uses: limitusus/json-syntax-check@v1
+        with:
+          pattern: "\\.json$"
