@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: json-syntax-check
+      - name: Validate JSON ✔️
         uses: limitusus/json-syntax-check@v1
         with:
           pattern: "\\.json$"
