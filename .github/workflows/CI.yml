@@ -16,7 +16,7 @@ jobs:
   steps:
     - name: Check-out the repository
       uses: actions/checkout@v3
-#    - name: Install dependencies
+    #    - name: Install dependencies
 
     - name: Compile
       run: |
