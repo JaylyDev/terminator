@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  compile:
+    runs-on: windows-latest
+
+  steps:
+    - name: Check-out the repository
+      uses: actions/checkout@v3
+#    - name: Install dependencies
+
+    - name: Compile
+      run: |
+        cd /resources/
+        ./compile-addon.bat
