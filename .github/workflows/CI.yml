@@ -19,4 +19,4 @@ jobs:
 
       - name: Compile 💻
         working-directory: ./resources
-        run: ./compile-addon.bat
+        run: ./ModifyJSON.bat
