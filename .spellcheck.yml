@@ -3,7 +3,6 @@ spellchecker: aspell
 matrix:
   - name: MD files
     sources:
-    - *.md
     - ./*.md
 
     aspell: 
