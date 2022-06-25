@@ -5,6 +5,5 @@ data/resource_pack/textures/entity/terminator/d69403e2673e611d4cbd3fad6fd1788e.p
 data/resource_pack/textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f.png
 data/resource_pack/textures/entity/terminator/03be37ee5ca804de27c0664ae6014796.png
 data/resource_pack/textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea.png
-data/behavior_pack/scripts/gametests/terminal.js
 resources/@types/
 data/behavior_pack/subpacks/*/scripts/credentials/tokens.txt

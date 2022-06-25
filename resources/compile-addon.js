@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const crypto = require("crypto");
 
 function ListFiles(dir, done) {
   var results = [];
@@ -24,7 +25,7 @@ function ListFiles(dir, done) {
 
 var inputDirectoryPath = path.join(`${__dirname}\\ModifyJSON`);
 var outputDirectoryPath = path.join(`${__dirname}\\compile-addon`);
-var ignoreFilenames = ['manifest', 'languages', 'language_names', 'contents', 'pack_icon', 'LICENSE', 'README', 'custom', 'en_US', 'en_GB', 'de_DE', 'es_ES', 'es_MX', 'fr_FR', 'fr_CA', 'it_IT', 'ja_JP', 'ko_KR', 'pt_BR', 'pt_PT', 'ru_RU', 'zh_CN', 'zh_TW', 'nl_NL', 'bg_BG', 'cs_CZ', 'da_DK', 'el_GR', 'fi_FI', 'hu_HU', 'id_ID', 'nb_NO', 'pl_PL', 'sk_SK', 'sv_SE', 'tr_TR', 'uk_UA'];
+var ignoreFilenames = ['manifest', 'languages', 'language_names', 'contents', 'pack_icon', 'LICENSE', 'README', 'custom', 'en_US', 'en_GB', 'de_DE', 'es_ES', 'es_MX', 'fr_FR', 'fr_CA', 'it_IT', 'ja_JP', 'ko_KR', 'pt_BR', 'pt_PT', 'ru_RU', 'zh_CN', 'zh_TW', 'nl_NL', 'bg_BG', 'cs_CZ', 'da_DK', 'el_GR', 'fi_FI', 'hu_HU', 'id_ID', 'nb_NO', 'pl_PL', 'sk_SK', 'sv_SE', 'tr_TR', 'uk_UA', 'alex', 'cape_custom', 'cape_invisible', 'steve'];
 
 ListFiles(inputDirectoryPath, function (err, files) {
   if (err) throw err;
@@ -38,7 +39,7 @@ ListFiles(inputDirectoryPath, function (err, files) {
       var OutputFilepath = file.replace(inputDirectoryPath, outputDirectoryPath).split('\\');
       var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
       if (ignoreFilenames.includes(String(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, ''))) == false) {
-        var OutputFilename = require('crypto').createHash('md5').update(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, '')).digest("hex");
+        var OutputFilename = crypto.createHash('md5').update(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, '')).digest("hex");
         OutputFilename = OutputFilename.replace('df14c2f0c0cf63c4b3b1662f119fb826', 'language_names').replace('f3e334d42863e8250c7d03efefbfd387', 'languages');
       } else {
         var OutputFilename = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, '');
@@ -54,7 +55,7 @@ ListFiles(inputDirectoryPath, function (err, files) {
       var getExtension = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().split('.').pop().toString();
       var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
       if ((ignoreFilenames.includes(String(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(`.${getExtension}`, ''))) == false) && (getExtension != 'js') && (getExtension != 'mcfunction')) {
-        var OutputFilename = require('crypto').createHash('md5').update(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(`.${getExtension}`, '')).digest("hex");
+        var OutputFilename = crypto.createHash('md5').update(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(`.${getExtension}`, '')).digest("hex");
       } else {
         var OutputFilename = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(`.${getExtension}`, '');
       };

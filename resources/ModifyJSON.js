@@ -48,6 +48,7 @@ function ListFiles(dir, done) {
   syntaxArr.map((value, index) => obfuscated += `${value}${unicodeArr[index] ? unicodeArr[index] : ''}`);
   obfuscated = obfuscated.replace(/\\u005c\\u006e/g, '\\n');
   obfuscated = obfuscated.replace(/\\u0041\\u0072\\u0072\\u0061\\u0079\\u002e\\u0073\\u006b\\u0069\\u006e\\u0073/g, 'Array.skins');
+  obfuscated = obfuscated.replace(/\\u0041\\u0072\\u0072\\u0061\\u0079\\u002e\\u0067\\u0065\\u006f\\u0073/g, 'Array.geos');
   /* For whatever reason this error occurs if i dont replace array.skins in unicode:
 
   [Rendering][error]-render_controllers/efa2a22a83688dafef5c8b18e2af2e89.json | render_controllers | controller.render.terminator | arrays | textures | Array.skins | child 'Array.skins' not valid here.

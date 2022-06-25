@@ -19,8 +19,8 @@
 				},
         "geometries": {
           "Array.geos": [
-            "geometry.default",
-            "geometry.slim"
+            "Geometry.default",
+            "Geometry.slim"
           ]
         }
 			},
