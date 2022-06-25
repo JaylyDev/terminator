@@ -13,11 +13,11 @@ jobs:
   compile:
     runs-on: windows-latest
 
-  steps:
-    - uses: actions/checkout@v3
-    #    - name: Install dependencies
+    steps:
+      - uses: actions/checkout@v3
+      #    - name: Install dependencies
 
-    - name: Compile
-      run: |
-        cd /resources/
-        ./compile-addon.bat
+      - name: Compile
+        run: |
+          cd /resources/
+          ./compile-addon.bat
