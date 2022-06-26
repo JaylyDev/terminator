@@ -1,5 +1,6 @@
-resources/ModifyJSON/
-resources/compile-addon/
+resources/ModifyJSON
+resources/compile-addon/behavior_pack/behavior_pack
+resources/compile-addon/resource_pack/resource_pack
 resources/publish
 data/resource_pack/textures/entity/terminator/d69403e2673e611d4cbd3fad6fd1788e.png
 data/resource_pack/textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f.png
