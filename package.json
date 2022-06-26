@@ -1,0 +1,19 @@
+{
+  "author": {
+    "name": "Jayly",
+    "url": "https://github.com/jaylydev"
+  },
+  "name": "bds-test",
+  "license": "GPL-3.0",
+  "version": "0.1.0",
+  "scripts": {
+    "local-workflow": "powershell ./workflow.ps1",
+    "publish": "node src/compiler.js"
+  },
+  "dependencies": {
+    "properties-parser": "^0.3.1"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.0.0"
+  }
+}

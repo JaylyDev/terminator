@@ -36,7 +36,8 @@ ListFiles(inputDirectoryPath, function (err, files) {
     if (filename.toLowerCase() == extention.toLowerCase()) {
       console.log(`\x1b[32m${extention} file found \x1b[0m- ${file.replace(inputDirectoryPath, '')}`);
       var content = fs.readFileSync(`${file}`);
-      var OutputFilepath = file.replace(inputDirectoryPath, outputDirectoryPath).split('\\');
+      var type = file.replace(inputDirectoryPath, '').split("\\")[1];
+      var OutputFilepath = file.replace(inputDirectoryPath, `${outputDirectoryPath}\\${type}`).split('\\');
       var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
       if (ignoreFilenames.includes(String(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, ''))) == false) {
         var OutputFilename = crypto.createHash('md5').update(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(/.json/g, '')).digest("hex");
@@ -51,7 +52,8 @@ ListFiles(inputDirectoryPath, function (err, files) {
     } else {
       console.log(`\x1b[32mOther type of file found \x1b[0m- ${file.replace(inputDirectoryPath, '')}`);
       var content = fs.readFileSync(`${file}`);
-      var OutputFilepath = file.replace(inputDirectoryPath, outputDirectoryPath).split('\\');
+      var type = file.replace(inputDirectoryPath, '').split("\\")[1];
+      var OutputFilepath = file.replace(inputDirectoryPath, `${outputDirectoryPath}\\${type}`).split('\\');
       var getExtension = OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().split('.').pop().toString();
       var FileOutputDirectoryPath = OutputFilepath.slice(0, -1).toString().replace(/,/g, '/');
       if ((ignoreFilenames.includes(String(OutputFilepath.slice(OutputFilepath.length - 1, OutputFilepath.length - 0).toString().replace(/,/g, '\\').replace(`.${getExtension}`, ''))) == false) && (getExtension != 'js') && (getExtension != 'mcfunction')) {
