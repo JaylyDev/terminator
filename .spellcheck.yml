@@ -1,0 +1,14 @@
+spellchecker: aspell
+
+matrix:
+  - name: MD files
+    sources:
+    - ./*.md
+
+    aspell: 
+      lang: en
+      d: en_US
+
+    dictionary:
+      wordlists:
+      - dictionary/en-custom.txt

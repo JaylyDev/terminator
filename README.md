@@ -10,7 +10,7 @@
 
 ## Documentations
 ### Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
-### Detailed explaination: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
+### Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
 ## Latest Versions
 

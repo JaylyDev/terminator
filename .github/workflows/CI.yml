@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  compile:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      #    - name: Install dependencies
+
+      - name: Compile 💻
+        working-directory: ./resources
+        run: ./ModifyJSON.bat
+
+  json-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate JSON ✔️
+        uses: limitusus/json-syntax-check@v1
+        with:
+          pattern: "\\.json$"
+
+  spell-checking:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Spellcheck
+      - uses: actions/checkout@v2
+
+      - name: Spellcheck 👀
+        uses: igsekor/pyspelling-any@v0.0.2
