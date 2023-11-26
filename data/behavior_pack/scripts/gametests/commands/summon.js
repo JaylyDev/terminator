@@ -112,6 +112,6 @@ export function terminator(user_input) { // target: string, user_input: object
     entity.triggerEvent('terminator:enable_customSlim_skin')
   };
 
-  console.warn('User input: ' + JSON.stringify(user_input, null, 2));
+  console.log('User input: ' + JSON.stringify(user_input, null, 2));
   }, 2)
 };
