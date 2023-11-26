@@ -29,8 +29,8 @@ def jt_dircopy_exe(fromDirectory, toDirectory, logEnabled, PackageName):
             messagebox.showerror(PackageName, "Error: " + str(Error))
 
 username = getpass.getuser()
-fromDirectory_rp = "C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\resources\\compile-addon\\resource_pack"
-fromDirectory_bp = "C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\resources\\compile-addon\\behavior_pack"
+fromDirectory_rp = ".\\resources\\ModifyJSON\\resource_pack"
+fromDirectory_bp = ".\\resources\\ModifyJSON\\behavior_pack"
 logEnabled = False
 PackageName = "Package Update"
 
@@ -39,12 +39,11 @@ root.withdraw()
 locate = messagebox.askyesno(title=PackageName, message="Press 'Yes' to save to Minecraft\nPress 'No' to cancel process")
 if locate == True:
     try:
-        run("C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\resources\\rd-cache.bat")
-        run("node C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\resources\\ModifyJSON.js")
-        run("node C:\\Users\\" + username + "\\Documents\\GitHub\\terminator\\resources\\compile-addon.js")
+        run(".\\resources\\rd-cache.bat")
+        run("node .\\resources\\ModifyJSON.js")
 
-        toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\resource_packs\\Terminator"
-        toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\behavior_packs\\Terminator"
+        toDirectory_rp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_resource_packs\\Terminator"
+        toDirectory_bp = "C:\\Users\\" + username + "\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_behavior_packs\\Terminator"
         appid = "shell:appsFolder\Microsoft.MinecraftUWP_8wekyb3d8bbwe!App"
         appname = "Minecraft.Windows.exe"
         run("rd \"" + toDirectory_rp + "\" /s /q")

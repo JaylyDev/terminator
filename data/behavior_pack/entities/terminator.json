@@ -2318,22 +2318,6 @@
           "component_groups": [ "minecraft:raid_trigger" ]
         }
       },
-      "terminator:suffocation": {
-        "run_command": {
-          "command": [ 
-            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"}, {\"selector\": \"@s\"}, {\"text\": \"] terminator:suffocation\"}]}", // logging
-            "tag @s add terminator_suffocation_x" 
-          ]
-        }
-      },
-      "terminator:remove_suffocation": {
-        "run_command": {
-          "command": [ 
-            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"}, {\"selector\": \"@s\"}, {\"text\": \"] terminator:remove_suffocation\"}]}", // logging
-            "tag @s remove terminator_suffocation_x" 
-          ]
-        }
-      },
       "terminator:respawn": {
         "sequence": [
           {

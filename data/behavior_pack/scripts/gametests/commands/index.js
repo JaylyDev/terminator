@@ -1,5 +1,5 @@
 import { world, system, Player } from "@minecraft/server";
-import { ModalFormData } from "@minecraft/server-ui";
+import { ModalFormData, ModalFormResponse } from "@minecraft/server-ui";
 import * as summon from './summon.js';
 
 let prefix = "#";
@@ -34,11 +34,11 @@ function generateModalForm(settings) {
   return new ModalFormData()
     .title("Spawn Terminator")
     .textField("Name Tag", "Terminator", "Terminator")
-    .textField("Spawn Coordinates", "x y z")
+    .textField("Spawn Coordinates", "x y z", "~ ~ ~")
     .dropdown("Dimension", ["Overworld", "Nether", "The End"], dimensionIndex)
     .dropdown("Skin Model", ["Steve", "Alex"], skinModelIndex)
     .toggle("Enable Custom Skin", settings.customskin)
-    .toggle("Enable Boossbar", settings.bossbar)
+    .toggle("Enable Bossbar", settings.bossbar)
     .toggle("Enable Immunity", settings.invulnerable)
     .toggle("Enable Death Event", settings.deathevent)
     .toggle("Enable Physics", settings.physics)
@@ -63,14 +63,13 @@ function parseCoordinates(paramString, playerLocation) {
     // @ts-ignore
     const key = ["x", "y", "z"][i];
     if (coordinates[i].startsWith("~")) {
-      parsedCoordinates[key] = parseFloat(coordinates[i].replace("~", "")) + playerLocation[key];
+      const location = parseFloat(coordinates[i].replace("~", ""));
+      parsedCoordinates[key] = (Number.isNaN(location) ? 0 : location) + playerLocation[key];
     } else {
       parsedCoordinates[key] = parseFloat(coordinates[i]);
     }
   }
-
   return parsedCoordinates;
-
 }
 
 system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
@@ -91,7 +90,7 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
       "skinmodel": "steve"
     };
     const form = generateModalForm(default_nbt);
-    form.show(sourceEntity).then(result => {
+    form.show(sourceEntity).then((result) => {
       if (result.canceled) return;
       /**
        * @type {[string, string, number, number, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean ]}
@@ -139,6 +138,7 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
         skinmodel
       }
       summon.terminator(jsonInput);
-    });
+    })
+    .catch((error) => console.error(error + "\n" + error.stack));
   }
 }, { namespaces: ['terminator'] });
