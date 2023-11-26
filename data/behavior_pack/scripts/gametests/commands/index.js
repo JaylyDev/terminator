@@ -1,143 +1,144 @@
-// Custom commands for Minecraft Terminator script APIs (experimental)
-// Dependencies: @types/mojang-minecraft@0.1.3 <https://registry.npmjs.org/@types/mojang-minecraft/-/mojang-minecraft-0.1.3.tgz>
-// Project: https://github.com/JaylyDev/terminator/
-// Created by: https://github.com/JaylyDev
-
-/* *****************************************************************************
-   Copyright (c) JaylyMC.
-   ***************************************************************************** */
-
-import { world } from "mojang-minecraft";
-import * as version from './version.js';
-import * as message from './message.js';
+import { world, system, Player } from "@minecraft/server";
+import { ModalFormData } from "@minecraft/server-ui";
 import * as summon from './summon.js';
-import * as help from './help.js';
-import { authorize } from '../../credentials/developer.js';
-import * as auth from '../../credentials/access.js';
 
 let prefix = "#";
 
-world.events.beforeChat.subscribe((data) => {
-  // Chat logging stuff
-  let playerName = data.sender.name ?? data.sender.nameTag;
+/**
+ * 
+ * @param {import("./summon.js").ITerminatorInputParam} settings 
+ */
+function generateModalForm(settings) {
+  let dimensionIndex = 0;
+  let skinModelIndex = 0;
+  switch (settings.dimension.id) {
+    case "minecraft:overworld":
+      dimensionIndex = 0;
+      break;
+    case "minecraft:nether":
+      dimensionIndex = 1;
+      break;
+    case "minecraft:the_end":
+      dimensionIndex = 2;
+      break;
+  };
+  switch (settings.skinmodel) {
+    case "steve":
+      skinModelIndex = 0;
+      break;
+    case "alex":
+      skinModelIndex = 1;
+      break;
+  };
 
-  // Main script
-  if (data.message.substring(0, 1) == prefix) {
-    data.cancel = true; // cancels message sent to public chat
-    var cmd = data.message.split(' ');
-    if (cmd[0] == `${prefix}summon`) {
-      /**
-       * @requires
-       * Operator permissions
-       * @returns
-       * For spawning an entity based on entity identifier input and customization input in JSON
-       * @example
-       * ```
-       *    #summon terminator {"nameTag":"custom"}
-       *    #summon terminator {"regeneration":true,"respawn":true}
-       * ```
-       */
-      if (cmd[1] == 'terminator') {
-        // get json part
-        var jsonNBT = data.message.split(" ");
-        console.log(`1 - ${jsonNBT}`);
-        jsonNBT.shift();
-        console.log(`2 - ${jsonNBT}`);
-        jsonNBT.shift();
-        console.log(`3 - ${jsonNBT}`);
-        jsonNBT = jsonNBT.join('');
-        console.log(`4 - ${jsonNBT}`);
-        try {
-          var jsonInput = JSON.parse(jsonNBT);
-          console.log(`5.0 - ${jsonNBT}`);
-        } catch {
-          var jsonInput = {};
-          console.log(`5.1 - ${jsonNBT}`);
-        }
-        summon.terminator(playerName, jsonInput);
-      } else if (cmd[1] != undefined) {
-        summon.error(playerName);
-      } else message.client(playerName, 'Syntax error: Unexpected \\"\\": at \\"#summon>><<\\"');
-    } else if (cmd[0] == `${prefix}version`) {
-      /**
-       * @returns
-       * GameTest Framework version and Add-on GameTest Package version
-       * @example
-       * ```
-       *    #version gametest
-       *    #version
-       * ```
-       */
-      if (cmd[1] == "gametest") {
-        message.client(playerName, `GameTest Framework version: ${version.gametest('string')}`);
-      } else if (cmd[1] == "module") {
-        message.client(playerName, `Add-on GameTest module version: ${version.module('string')}`);
-      } else {
-        message.client(playerName, `GameTest Framework version: ${version.gametest('string')}`);
-        message.client(playerName, `Add-on GameTest module version: ${version.module('string')}`);
-      }
-    } else if (cmd[0] == `${prefix}help`) {
-      help.display(playerName);
-    } else if (cmd[0] == `${prefix}modalformtest` && auth.players.includes(playerName)) {
-      /**
-       * @param
-       * This function execute test commands.
-       * @requires 
-       * authorization along with a key
-       * @returns
-       * according input "module" and status message
-       */
-      var respondStatus = authorize(cmd[1], cmd[2], playerName);
-      var statusCode = respondStatus['response']['code'];
-      if (statusCode == 0) { try { ModalForm() } catch {} } else {
-        console.error(JSON.stringify(respondStatus));
-        message.client(JSON.stringify(respondStatus));
-      };
-    } else if (cmd[0] == `${prefix}importgametest` && auth.players.includes(playerName)) {
-      /**
-       * @param
-       * This function execute test commands.
-       * @requires 
-       * authorization along with a key
-       * @returns
-       * according input "module" and status message
-       */
-      var respondStatus = authorize(cmd[1], cmd[2], playerName);
-      var statusCode = respondStatus['response']['code'];
-      if (statusCode == 0) {
-        try { mojang_minecraft(); } catch (err) {};
-        try { mojang_gametest(); } catch (err) {};
-        try { mojang_minecraft_ui(); } catch (err) {};
-      } else {
-        console.error(JSON.stringify(respondStatus));
-        message.client(playerName, JSON.stringify(respondStatus));
-      };
-    } else if (cmd[0] == `${prefix}fillChunk` && auth.players.includes(playerName)) {
-      /**
-       * @description
-       * experiment with placing blocks
-       */
-      const blocks = (cmd[1] * cmd[2] * cmd[3]);
+  return new ModalFormData()
+    .title("Spawn Terminator")
+    .textField("Name Tag", "Terminator", "Terminator")
+    .textField("Spawn Coordinates", "x y z")
+    .dropdown("Dimension", ["Overworld", "Nether", "The End"], dimensionIndex)
+    .dropdown("Skin Model", ["Steve", "Alex"], skinModelIndex)
+    .toggle("Enable Custom Skin", settings.customskin)
+    .toggle("Enable Boossbar", settings.bossbar)
+    .toggle("Enable Immunity", settings.invulnerable)
+    .toggle("Enable Death Event", settings.deathevent)
+    .toggle("Enable Physics", settings.physics)
+    .toggle("Enable Regeneration", settings.regeneration)
+    .toggle("Enable Respawn", settings.respawn)
+    .toggle("Enable Breedability", settings.breedable);
+};
 
-      const playerCoord = { x: Math.floor(data.sender.location.x), y: Math.floor(data.sender.location.y), z: Math.floor(data.sender.location.z) };
+/**
+ * @param {string} paramString 
+ * @param {import("@minecraft/server").Vector3} playerLocation 
+ * @returns 
+ */
+function parseCoordinates(paramString, playerLocation) {
+  /** @type {string[]} */
+  const coordinates = paramString.split(" ");
+  /** @type {import("@minecraft/server").Vector3} */
+  const parsedCoordinates = { x: 0, y: 0, z: 0 };
 
-      const array = Array.from(Array(blocks), (item, i) => ({ x: i % 16 + playerCoord.x, y: -64 + Math.floor(i / 256) % 384, z: Math.floor(i / 16) % 16 + playerCoord.z }));
-
-      for (let blocks = 0; blocks < array.length; blocks++) {
-        const BlockLocation = array[blocks];
-        console.log(`${playerName}: setblock ${BlockLocation.x} ${BlockLocation.y} ${BlockLocation.z} stone`)
-        try {
-          data.sender.runCommand(`setblock ${BlockLocation.x} ${BlockLocation.y} ${BlockLocation.z} stone`);
-          console.log(`§dBlock ${blocks}: Code 0`);
-        } catch (error) { console.log(`§dBlock ${blocks}: Code ${error.statusCode}`) };
-      };
-      message.client(playerName, `§d${array.length} block(s) has been changed.`);
+  for (let i = 0; i < 3; i++) {
+    /** @type {keyof import("@minecraft/server").Vector3} */
+    // @ts-ignore
+    const key = ["x", "y", "z"][i];
+    if (coordinates[i].startsWith("~")) {
+      parsedCoordinates[key] = parseFloat(coordinates[i].replace("~", "")) + playerLocation[key];
     } else {
-      /**
-       * @param
-       * This function throws exception in client chat
-       */
-      message.client(playerName, `§cUnknown command: §7${cmd[0]}§c. Please check that the command exists.`);
+      parsedCoordinates[key] = parseFloat(coordinates[i]);
     }
   }
-});
+
+  return parsedCoordinates;
+
+}
+
+system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
+  if (id == 'terminator:spawn' && (sourceEntity instanceof Player)) {
+    /** @type {import("./summon.js").ITerminatorInputParam} */
+    const default_nbt = {
+      "nametag": "Terminator",
+      "customskin": false,
+      "bossbar": false,
+      "invulnerable": false,
+      "deathevent": true,
+      "physics": true,
+      "regeneration": true,
+      "respawn": true,
+      "breedable": false,
+      "coords": sourceEntity.location,
+      "dimension": sourceEntity.dimension,
+      "skinmodel": "steve"
+    };
+    const form = generateModalForm(default_nbt);
+    form.show(sourceEntity).then(result => {
+      if (result.canceled) return;
+      /**
+       * @type {[string, string, number, number, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean ]}
+       */
+      // @ts-ignore
+      const [nameTag, locationString, dimensionIndex, skinModelIndex, customSkin, bossbar, invulnerable, deathEvent, physics, regeneration, respawn, breedable] = result.formValues;
+      let dimension = world.getDimension('overworld');
+      /** @type {"steve" | "alex"} */
+      let skinmodel = "steve";
+      switch (dimensionIndex) {
+        case 0:
+          dimension = world.getDimension('overworld');
+          break;
+        case 1:
+          dimension = world.getDimension('nether');
+          break;
+        case 2:
+          dimension = world.getDimension('the_end');
+          break;
+      }
+      switch (skinModelIndex) {
+        case 0:
+          skinmodel = "steve";
+          break;
+        case 1:
+          skinmodel = "alex";
+          break;
+      }
+
+      /**
+       * @type {import("./summon.js").ITerminatorInputParam}
+       */
+      const jsonInput = {
+        "nametag": nameTag,
+        "customskin": customSkin,
+        "bossbar": bossbar,
+        "invulnerable": invulnerable,
+        "deathevent": deathEvent,
+        "physics": physics,
+        "regeneration": regeneration,
+        "respawn": respawn,
+        "breedable": breedable,
+        coords: parseCoordinates(locationString, sourceEntity.location),
+        dimension,
+        skinmodel
+      }
+      summon.terminator(jsonInput);
+    });
+  }
+}, { namespaces: ['terminator'] });

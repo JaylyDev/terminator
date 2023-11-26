@@ -7,3 +7,4 @@ data/resource_pack/textures/entity/terminator/03be37ee5ca804de27c0664ae6014796.p
 data/resource_pack/textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea.png
 resources/@types/
 data/behavior_pack/subpacks/*/scripts/credentials/tokens.txt
+node_modules
