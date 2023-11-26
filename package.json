@@ -1,0 +1,20 @@
+{
+  "name": "terminator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "<p align=\"center\">\r   <img src=\"https://img.shields.io/github/downloads/jaylydev/terminator/total.svg\" alt=\"GitHub All Releases\"/>\r   <img src=\"https://img.shields.io/github/languages/code-size/jaylydev/terminator.svg\" alt=\"Code size\"/>\r   <img src=\"https://img.shields.io/github/repo-size/jaylydev/terminator.svg\" alt=\"GitHub repo size\"/>\r   <img src=\"https://img.shields.io/tokei/lines/github/jaylydev/terminator\" alt=\"Total lines\"/>\r   <img src=\"https://img.shields.io/github/commit-activity/m/jaylydev/terminator\" alt=\"Commit Activity\"/>\r </p>",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@minecraft/server": "^1.6.0",
+    "@minecraft/server-ui": "^1.1.0"
+  }
+}

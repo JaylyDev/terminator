@@ -1,17 +1,12 @@
-import { world } from 'mojang-minecraft';
+import { world } from '@minecraft/server';
 
 const disableLogging = true;
 
-function getCount(identifier) {
-  let entities = [];
-  for (let entity of world.getDimension('overworld').getEntities()) {
-    if (entity.id === identifier) {
-      entities.push(entity.nameTag);
-    }
-  };
-  return entities.length;
-};
-
+/**
+ * 
+ * @param {string} identifier 
+ * @returns 
+ */
 function getNameNumber (identifier) {
   let numbers = [0];
   for (let entity of world.getDimension('overworld').getEntities()) {
@@ -23,14 +18,13 @@ function getNameNumber (identifier) {
     };
   };
   var getMaxNum = Math.max(...numbers);
-  if (disableLogging == false) { console.warn(numbers) };
   return getMaxNum;
 };
 
-world.events.entityCreate.subscribe((entityData) => {
-  if (entityData.entity.id === "entity:terminator") {
+world.afterEvents.entitySpawn.subscribe((entityData) => {
+  if (entityData.entity.typeId === "entity:terminator") {
     let entityName = "Terminator";
-    var terminators = getCount("entity:terminator")
+    var terminators = world.getDimension('overworld').getEntities({ type: "entity:terminator" }).length;
     if (terminators > 1) {
       entityData.entity.nameTag = `${entityName} (${getNameNumber("entity:terminator") + 1})`
     } else {

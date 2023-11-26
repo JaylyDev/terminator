@@ -4,19 +4,15 @@
   <img src="https://img.shields.io/github/downloads/jaylydev/terminator/total.svg" alt="GitHub All Releases"/>
   <img src="https://img.shields.io/github/languages/code-size/jaylydev/terminator.svg" alt="Code size"/>
   <img src="https://img.shields.io/github/repo-size/jaylydev/terminator.svg" alt="GitHub repo size"/>
-  <img src="https://img.shields.io/tokei/lines/github/jaylydev/terminator" alt="Total lines"/>
   <img src="https://img.shields.io/github/commit-activity/m/jaylydev/terminator" alt="Commit Activity"/>
 </p>
 
+**Latest Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.4.0 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
+
 ## Documentations
-### Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
-### Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
-## Latest Versions
-
-**Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.3.70 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
-
-**Beta**: v1.3.70.158 <img src="https://img.shields.io/github/release-date-pre/jaylydev/terminator" alt="Release date pre"/>
+- Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
+- Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
 ## Questions, Bugs and Feedbacks
 

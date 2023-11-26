@@ -19,10 +19,10 @@
         "animated": "player_animated"
       },
       "textures": {
-        "steve": "textures/entity/terminator/d69403e2673e611d4cbd3fad6fd1788e",
-        "alex": "textures/entity/terminator/534b44a19bf18d20b71ecc4eb77c572f",
-        "steve_xmas": "textures/entity/terminator/03be37ee5ca804de27c0664ae6014796",
-        "alex_xmas": "textures/entity/terminator/7291883f5c1e8f666913b5ff9448f2ea",
+        "steve": "textures/entity/terminator/steve_default",
+        "alex": "textures/entity/terminator/alex_default",
+        "steve_xmas": "textures/entity/terminator/steve_xmas",
+        "alex_xmas": "textures/entity/terminator/alex_xmas",
         "custom": "textures/entity/steve",
         "customSlim": "textures/entity/alex",
         "cape_default": "textures/entity/cape_invisible",
