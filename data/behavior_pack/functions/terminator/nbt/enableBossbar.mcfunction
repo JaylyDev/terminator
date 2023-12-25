@@ -2,4 +2,4 @@
 # *********************************************************
 # *   (c) JaylyMC. All rights reserved.                   *
 # *********************************************************
-summon entity:terminator ~ ~ ~ terminator:enable_bossbar
+summon entity:terminator ~ ~ ~ ~ ~ terminator:enable_bossbar

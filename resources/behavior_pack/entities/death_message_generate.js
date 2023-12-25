@@ -44,7 +44,7 @@ function main(id, source, mcid) {
     var event = `{"${id}:${source}": { "sequence": []}}`;
     event = JSON.parse(event);
     for (let i = 0; i < family_name.length; i++) {
-      event[`${id}:${source}`]['sequence'].push({ "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}`] } }, { "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "run_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}}]}`] } })
+      event[`${id}:${source}`]['sequence'].push({ "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "queue_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}`] } }, { "filters": { "all_of": [{ "test": "has_tag", "subject": "self", "operator": "==", "value": "terminatordeathrequest" }, { "test": "is_family", "subject": "other", "operator": "==", "value": `${family_name[i]}` }] }, "queue_command": { "command": [`tellraw @a {\"rawtext\":[{\"translate\":\"${mcid}\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"${type_family[family_name[i]]}\"}]}}]}`] } })
     };
     event = JSON.stringify(event).slice(1,-1) + ',\n';
   } else {
@@ -52,11 +52,11 @@ function main(id, source, mcid) {
   "sequence": [
     { 
       "filters": { "test": "has_tag", "subject": "self", "operator": "!=", "value": "terminatordeathrequest" },
-      "run_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"translate\\":\\"${mcid}\\",\\"with\\":{\\"rawtext\\":[{\\"selector\\":\\"@s\\"}]}},{\\"translate\\":\\"message.entity.respawn.generic\\"}]}" ]}
+      "queue_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"translate\\":\\"${mcid}\\",\\"with\\":{\\"rawtext\\":[{\\"selector\\":\\"@s\\"}]}},{\\"translate\\":\\"message.entity.respawn.generic\\"}]}" ]}
     },
     { 
       "filters": { "test": "has_tag", "subject":"self", "operator":"==", "value": "terminatordeathrequest" },
-      "run_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"translate\\":\\"${mcid}\\",\\"with\\":{\\"rawtext\\":[{\\"selector\\":\\"@s\\"}]}}]}" ]}
+      "queue_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"translate\\":\\"${mcid}\\",\\"with\\":{\\"rawtext\\":[{\\"selector\\":\\"@s\\"}]}}]}" ]}
     }
   ]
 },

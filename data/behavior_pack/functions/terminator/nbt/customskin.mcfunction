@@ -2,4 +2,4 @@
 # *********************************************************
 # *   (c) JaylyMC. All rights reserved.                   *
 # *********************************************************
-summon entity:terminator ~ ~ ~ terminator:enable_custom_skin
+summon entity:terminator ~ ~ ~ ~ ~ terminator:enable_custom_skin

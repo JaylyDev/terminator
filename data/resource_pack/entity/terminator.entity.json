@@ -68,16 +68,16 @@
           { "sleeping": "q.is_sleeping > 0.0" },
           { "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )" },
           { "swimming": "variable.swim_amount > 0.0 && q.is_in_water" },
-          { "third_person_bow_equipped": "q.get_equipped_item_name == 'bow' && q.has_target" },
-          { "bow_and_arrow": "q.get_equipped_item_name == 'bow' && q.has_target" },
+          { "third_person_bow_equipped": "q.is_item_name_any('slot.weapon.mainhand', 'bow') && q.has_target" },
+          { "bow_and_arrow": "q.is_item_name_any('slot.weapon.mainhand', 'bow') && q.has_target" },
           { "charging": "q.is_charging" },
           { "brandish_spear": "variable.is_brandishing_spear" },
-          { "shield_block_main_hand": "q.get_equipped_item_name('main_hand') == 'shield' && q.get_equipped_item_name('off_hand') != 'shield' && q.mark_variant == 1" },
-          { "shield_block_off_hand": "q.get_equipped_item_name('off_hand') == 'shield' && q.mark_variant == 1" },
-          { "third_person_crossbow_equipped": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
-          { "crossbow_hold": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
-          { "crossbow_charge": "q.get_equipped_item_name('main_hand') == 'crossbow'" },
-          { "crossbow_controller": "q.get_equipped_item_name('main_hand') == 'crossbow'" }
+          { "shield_block_main_hand": "q.is_item_name_any('slot.weapon.mainhand', 'shield') && !q.is_item_name_any('slot.weapon.offhand', 'shield') && q.mark_variant == 1" },
+          { "shield_block_off_hand": "q.is_item_name_any('slot.weapon.offhand', 'shield') && q.mark_variant == 1" },
+          { "third_person_crossbow_equipped": "q.is_item_name_any('slot.weapon.mainhand', 'crossbow')" },
+          { "crossbow_hold": "q.is_item_name_any('slot.weapon.mainhand', 'crossbow')" },
+          { "crossbow_charge": "q.is_item_name_any('slot.weapon.mainhand', 'crossbow')" },
+          { "crossbow_controller": "q.is_item_name_any('slot.weapon.mainhand', 'crossbow')" }
         ]
       },
       "animations": {

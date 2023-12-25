@@ -1,5 +1,5 @@
 function main(id, source) {
-  var event = `"${id}:dev:${source}": { "run_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"text\\":\\"${id}:dev:${source}\\"}]}" ]}},`;
+  var event = `"${id}:dev:${source}": { "queue_command": { "command": [ "tellraw @a {\\"rawtext\\":[{\\"text\\":\\"${id}:dev:${source}\\"}]}" ]}},`;
   return event;
 };
 

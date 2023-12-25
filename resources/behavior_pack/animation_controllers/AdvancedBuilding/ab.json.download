@@ -28,65 +28,65 @@
         "forward.north": { // yRot(147, 213)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // z -= 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace tallgrass"
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace air",
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace tallgrass"
           ]
         },
         "forward.northeast": { // yRot(214, 236)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // z -= 1 && x += 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace tallgrass",
-            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 minecraft:block 0 replace air",
-            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 minecraft:block 0 replace tallgrass"
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace air",
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace tallgrass",
+            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 minecraft:block replace air",
+            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 minecraft:block replace tallgrass"
           ]
         },
         "forward.east": { // yRot(237, 303)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // x += 1
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block 0 replace air",
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block 0 replace tallgrass"
+            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block replace air",
+            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block replace tallgrass"
           ]
         },
         "forward.southeast": { // yRot(237, 303)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // x += 1 && z += 1
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block 0 replace air",
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block 0 replace tallgrass",
-            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 minecraft:block 0 replace air",
-            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 minecraft:block 0 replace tallgrass"
+            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block replace air",
+            "/fill ~1 ~-1 ~ ~1 ~-1 ~ minecraft:block replace tallgrass",
+            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 minecraft:block replace air",
+            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 minecraft:block replace tallgrass"
           ]
         },
         "forward.south": { // yRot(-33, 33)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // z += 1
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block 0 replace air",
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block 0 replace tallgrass"
+            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block replace air",
+            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block replace tallgrass"
           ]
         },
         "forward.southwest": { // yRot(-33, 33)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // z += 1 && x -= 1
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block 0 replace air",
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block 0 replace tallgrass",
-            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 minecraft:block 0 replace air",
-            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 minecraft:block 0 replace tallgrass"
+            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block replace air",
+            "/fill ~ ~-1 ~1 ~ ~-1 ~1 minecraft:block replace tallgrass",
+            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 minecraft:block replace air",
+            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 minecraft:block replace tallgrass"
           ]
         },
         "forward.west": { // yRot(67, 123)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // x -= 1
-            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ minecraft:block 0 replace air",
-            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ minecraft:block 0 replace tallgrass"
+            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ minecraft:block replace air",
+            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ minecraft:block replace tallgrass"
           ]
         },
         "forward.northwest": { // yRot(-33, 33)
           "transitions": [{ "default_state": "q.is_alive" }],
           "on_entry": [ // z -= 1 && x -= 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block 0 replace tallgrass",
-            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 minecraft:block 0 replace air",
-            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 minecraft:block 0 replace tallgrass"
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace air",
+            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 minecraft:block replace tallgrass",
+            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 minecraft:block replace air",
+            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 minecraft:block replace tallgrass"
           ]
         }
       }
@@ -100,9 +100,9 @@
           "transitions": [{"default_state": "(1.0)"}],
           "on_entry": [
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ tp ~ ~1 ~",
-            "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ minecraft:block 0 replace air",
+            "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ minecraft:block replace air",
             "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ tp ~ ~1 ~",
-            "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ minecraft:block 0 replace air"
+            "/execute @e[family=dummy,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ minecraft:block replace air"
           ]
         }
       }

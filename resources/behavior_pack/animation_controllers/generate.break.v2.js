@@ -39,7 +39,7 @@ var terminator = JSON.parse(minecraft_json);
 var blocks = terminator['minecraft:entity'].component_groups['terminator:break_blocks.v2']['minecraft:break_blocks'].breakable_blocks
 
 // string for 'break_blocks_on_entry_message' & location for 'on_entry'
-var break_blocks_on_entry_message = '/fill ~ ~ ~ ~ ~1 ~ air 0 replace '
+var break_blocks_on_entry_message = '/fill ~ ~ ~ ~ ~1 ~ air replace '
 var on_entry = controller.animation_controllers['controller.animation.terminator.break_blocks_backup'].states.running_state.on_entry
 
 // write code

@@ -3,5 +3,5 @@
 # *   (c) JaylyMC. All rights reserved.                   *
 # *********************************************************
 
-summon entity:terminator ~ ~ ~ terminator:disable_regeneration
+summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_regeneration
 tellraw @s {"rawtext":[{"text": "§cTerminator successfully summoned"}]}

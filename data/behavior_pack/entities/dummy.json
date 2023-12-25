@@ -193,7 +193,7 @@
 				"add": {
 					"component_groups": [	"dummy:detect_terminator"	]
 				},
-				"run_command": {
+				"queue_command": {
 					"command": ["spreadplayers ~ ~ 32 48 @s"]
 				}
 			},
@@ -201,14 +201,14 @@
 				"add": {
 					"component_groups": ["dummy:despawn"]
 				},
-				"run_command": {
+				"queue_command": {
 					"command": [
 						"tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
 					]
 				}
 			},
 			"dummy:sensor_activated": {
-				"run_command": {
+				"queue_command": {
 					"command": [ "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}" ]
 				}
 			}
