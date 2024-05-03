@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
     "module": "es2020",
     "target": "es2020",
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitAny": true
   },
-  "include": ["./data/behavior_pack/scripts/**/*.js"]
+  "include": ["./src/**/*.ts"]
 }

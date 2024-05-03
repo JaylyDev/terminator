@@ -1,5 +1,0 @@
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-entity.entity:terminator.name=Терминатор
-message.entity.respawn.generic=, но они заразились!
-entity.entity:terminator<>.name=Терминатор
-entity.entity:dummy.name=Дурачок

@@ -11,14 +11,14 @@
 
 ## Documentations
 
-- Basic Gameplay: https://mcpedl.com/mc-terminator-addon-1/
+- Basic Gameplay: https://jaylydev.github.io/posts/terminator
 - Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
 ## Questions, Bugs and Feedbacks
 
 Want to report a bug or suggest new features for the addon? [Click Here](https://github.com/JaylyDev/terminator/issues/new/choose)
 
-Please ask and answer questions <a href="https://discord.gg/Xn8TCJWA"/>here <img src="https://img.shields.io/discord/570758760373420033" alt="Online members"></a>
+Please ask and answer questions <a href="https://discord.gg/SuhGvZEXb4"/>here <img src="https://img.shields.io/discord/570758760373420033" alt="Online members"></a>
 
 ## License
 

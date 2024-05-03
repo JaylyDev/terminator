@@ -1,5 +1,0 @@
-entity.entity:terminator.name=ターミネーター
-message.entity.respawn.generic=しかし、彼らは再現しました！
-entity.entity:terminator<>.name=ターミネーター
-entity.entity:dummy.name=ダミー
-item.spawn_egg.entity.entity:terminator.name=スポーンターミネーター

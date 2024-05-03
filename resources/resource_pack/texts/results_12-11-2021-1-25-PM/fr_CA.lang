@@ -1,5 +1,0 @@
-entity.entity:terminator.name=터미네이터
-message.entity.respawn.generic=하지만 그들은 삭제되었습니다!
-item.spawn_egg.entity.entity:terminator.name=스폰 터미네이터
-entity.entity:terminator<>.name=터미네이터
-entity.entity:dummy.name=가짜의

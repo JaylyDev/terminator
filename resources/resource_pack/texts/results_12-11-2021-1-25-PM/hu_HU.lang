@@ -1,5 +1,0 @@
-entity.entity:dummy.name=Dummy
-entity.entity:terminator.name=Terminátor
-item.spawn_egg.entity.entity:terminator.name=Trýznik
-entity.entity:terminator<>.name=Terminátor
-message.entity.respawn.generic=, ale respili!

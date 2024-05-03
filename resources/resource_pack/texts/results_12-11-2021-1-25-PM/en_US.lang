@@ -1,5 +1,0 @@
-entity.entity:terminator.name=Terminator
-entity.entity:terminator<>.name=Terminator
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-entity.entity:dummy.name=Dummy
-message.entity.respawn.generic=, but they respawned!
