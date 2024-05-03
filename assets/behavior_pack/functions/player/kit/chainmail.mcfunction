@@ -1,7 +1,6 @@
 # This gives you chailmail armour
-# *********************************************************
-# *   (c) JaylyMC. All rights reserved.                   *
-# *********************************************************
+# Copyright (c) JaylyMC.
+# Licensed under the GPL-3.0 License.
 
 replaceitem entity @s slot.armor.head 0 chainmail_helmet
 replaceitem entity @s slot.armor.chest 0 chainmail_chestplate

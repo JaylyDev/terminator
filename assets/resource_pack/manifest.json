@@ -4,15 +4,15 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Terminator [Resource Pack]",
-    "description": "By Jayly\nPack Version: 2.0.0-beta",
+    "name": "pack.name",
+    "description": "pack.description",
     "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
     "version": "2.0.0-beta",
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 2.0.0-beta",
+      "description": "pack.description",
       "type": "resources",
       "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
       "version": "2.0.0-beta"
@@ -28,6 +28,6 @@
   "metadata": {
     "authors": ["JaylyMC"],
     "license": "https://github.com/JaylyDev/terminator/blob/main/LICENSE",
-    "url": "https://github.com/jaylydev/terminator"
+    "url": "https://jaylydev.github.io/posts/terminator/"
   }
 }

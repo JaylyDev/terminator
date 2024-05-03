@@ -1,6 +1,8 @@
-item.spawn_egg.entity.entity:terminator.name=产卵终结者
+item.spawn_egg.entity.entity:terminator.name=终结者生成蛋
 entity.player.name=玩家
 message.entity.respawn.generic=，但他们重生了！
 entity.entity:terminator.name=终结者
 entity.entity:terminator<>.name=终结者
 entity.entity:dummy.name=假
+pack.name=终结者[资源包]
+pack.description=一个阻止你完成游戏的机器人。 由 Jayly 制作 - https://jaylydev.github.io/posts/terminator/

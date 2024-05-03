@@ -11,7 +11,7 @@
 
 ## Documentations
 
-- Basic Gameplay: https://jaylydev.github.io/posts/terminator
+- Basic Gameplay: https://jaylydev.github.io/posts/terminator/
 - Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
 
 ## Questions, Bugs and Feedbacks

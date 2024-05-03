@@ -1,5 +1,4 @@
 # this summons the terminator with bossbar
-# *********************************************************
-# *   (c) JaylyMC. All rights reserved.                   *
-# *********************************************************
+# Copyright (c) JaylyMC.
+# Licensed under the GPL-3.0 License.
 summon entity:terminator ~ ~ ~ terminator:enable_bossbar

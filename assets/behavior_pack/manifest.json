@@ -5,14 +5,14 @@
   "format_version": 2,
   "header": {
     "name": "pack.name",
-    "description": "By Jayly\nPack Version: 2.0.0-beta",
+    "description": "pack.description",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
     "version": "2.0.0-beta",
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 2.0.0-beta",
+      "description": "pack.description",
       "type": "data",
       "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
       "version": "2.0.0-beta"
@@ -23,7 +23,7 @@
       "version": [1, 0, 0],
       "type": "script",
       "language": "javascript",
-      "entry": "scripts/gametests/Main.js"
+      "entry": "scripts/main.js"
     }
   ],
   "dependencies": [
@@ -35,7 +35,7 @@
     {
       // Minecraft native module - needed to use the "mojang-minecraft" module
       "module_name": "@minecraft/server",
-      "version": "1.6.0"
+      "version": "1.10.0"
     },
     {
       "module_name": "@minecraft/server-ui",
@@ -45,6 +45,6 @@
   "metadata": {
     "authors": ["JaylyMC"],
     "license": "LICENSE.txt",
-    "url": "https://github.com/jaylydev/terminator"
+    "url": "https://jaylydev.github.io/posts/terminator/"
   }
 }

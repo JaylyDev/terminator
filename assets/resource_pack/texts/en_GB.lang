@@ -4,3 +4,5 @@ entity.player.name=Player
 entity.entity:terminator<>.name=Terminator
 entity.entity:terminator.name=Terminator
 message.entity.respawn.generic=, but they respawned!
+pack.name=Terminator [Resource Pack]
+pack.description=A robot that prevents you from beating the game. Made by Jayly - https://jaylydev.github.io/posts/terminator/

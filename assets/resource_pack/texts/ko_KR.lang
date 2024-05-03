@@ -4,3 +4,5 @@ entity.entity:terminator<>.name=터미네이터
 entity.player.name=플레이어
 entity.entity:terminator.name=터미네이터
 message.entity.respawn.generic=하지만 그들은 삭제되었습니다!
+pack.name=터미네이터 [리소스 팩]
+pack.description=게임에서 승리하는 것을 방해하는 로봇입니다. Jayly 제작 - https://jaylydev.github.io/posts/terminator/

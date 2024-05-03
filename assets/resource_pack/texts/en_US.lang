@@ -4,3 +4,5 @@ item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.player.name=Player
 entity.entity:terminator.name=Terminator
 entity.entity:dummy.name=Dummy
+pack.name=Terminator [Resource Pack]
+pack.description=A robot that prevents you from beating the game. Made by Jayly - https://jaylydev.github.io/posts/terminator/

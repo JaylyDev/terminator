@@ -1,7 +1,6 @@
 # This summons a terminator with leather armour
-# *********************************************************
-# *   (c) JaylyMC. All rights reserved.                   *
-# *********************************************************
+# Copyright (c) JaylyMC.
+# Licensed under the GPL-3.0 License.
 
 summon entity:terminator "Terminator" ~~~
 replaceitem entity @e[type=entity:terminator,r=5] slot.armor.head 0 leather_helmet

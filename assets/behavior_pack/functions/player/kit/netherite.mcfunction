@@ -1,7 +1,6 @@
 # This gives you netherite armour
-# *********************************************************
-# *   (c) JaylyMC. All rights reserved.                   *
-# *********************************************************
+# Copyright (c) JaylyMC.
+# Licensed under the GPL-3.0 License.
 
 replaceitem entity @s slot.armor.head 0 netherite_helmet
 replaceitem entity @s slot.armor.chest 0 netherite_chestplate

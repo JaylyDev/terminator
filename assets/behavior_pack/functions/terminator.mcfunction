@@ -1,7 +1,6 @@
 # this summons the terminator
-# *********************************************************
-# *   (c) JaylyMC. All rights reserved.                   *
-# *********************************************************
+# Copyright (c) JaylyMC.
+# Licensed under the GPL-3.0 License.
 
 summon entity:terminator
 tellraw @s {"rawtext":[{"text": "§cTerminator successfully summoned"}]}

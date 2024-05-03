@@ -4,3 +4,5 @@ entity.entity:terminator.name=Terminator.
 entity.entity:dummy.name=Contoh
 item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.
 entity.player.name=Pemain
+pack.name=Terminator [Paket Sumber Daya]
+pack.description=Robot yang mencegah Anda menyelesaikan permainan. Dibuat oleh Jayly - https://jaylydev.github.io/posts/terminator/
