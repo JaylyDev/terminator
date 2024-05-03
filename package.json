@@ -6,6 +6,11 @@
   "keywords": [],
   "author": "JaylyDev",
   "license": "GPL-3.0-only",
+  "scripts": {
+    "dev": "npm run build && npm run deploy",
+    "build": "node scripts/build.mjs",
+    "deploy": "node scripts/deploy.mjs"
+  },
   "dependencies": {
     "@minecraft/math": "^1.3.5",
     "@minecraft/server": "^1.10.0",
@@ -14,6 +19,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^7.8.0",
+    "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
     "eslint-plugin-minecraft-linting": "^1.2.2"
   }

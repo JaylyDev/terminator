@@ -5,17 +5,17 @@
   "format_version": 2,
   "header": {
     "name": "pack.name",
-    "description": "By Jayly\nPack Version: 1.4.0",
+    "description": "By Jayly\nPack Version: 2.0.0-beta",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-    "version": [1, 4, 0],
-    "min_engine_version": [1, 16, 210]
+    "version": "2.0.0-beta",
+    "min_engine_version": [1, 21, 0]
   },
   "modules": [
     {
-      "description": "By Jayly\nPack Version: 1.4.0",
+      "description": "By Jayly\nPack Version: 2.0.0-beta",
       "type": "data",
       "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
-      "version": [1, 4, 0]
+      "version": "2.0.0-beta"
     },
     {
       "description": "",
@@ -30,7 +30,7 @@
     {
       // Terminator resource pack
       "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-      "version": [1, 4, 0]
+      "version": "2.0.0-beta"
     },
     {
       // Minecraft native module - needed to use the "mojang-minecraft" module

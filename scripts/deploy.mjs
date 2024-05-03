@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { copyFile as _copyFile, mkdir as _mkdir, rmdir as _rmdir, existsSync, promises } from 'fs';
 import { resolve, join } from 'path';
 import { promisify } from 'util';
@@ -44,6 +43,9 @@ async function cleanInstallAssets() {
   }
 }
 
+/**
+ * @param {string} folderPath
+ */
 async function deleteFolderRecursive(folderPath) {
   const entries = await promises.readdir(folderPath, { withFileTypes: true });
 
@@ -60,6 +62,10 @@ async function deleteFolderRecursive(folderPath) {
   await rmdir(folderPath);
 }
 
+/**
+ * @param {string} source
+ * @param {string} target
+ */
 async function copyFilesRecursively(source, target) {
   const entries = await promises.readdir(source, { withFileTypes: true });
 

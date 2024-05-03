@@ -1,7 +1,7 @@
             Minecraft Terminator for Bedrock Edition
     Download here: https://jaylydev.github.io/posts/terminator
 
-Add-on version: 1.4.0
+Add-on version: 2.0.0-beta
 
 Created by: JaylyMC
 
