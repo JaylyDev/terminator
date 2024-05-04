@@ -3,35 +3,37 @@
 +*********************************************************/
 
 {
-	"format_version": "1.16.0",
-	"minecraft:entity": {
-		"description": {
-			"identifier": "entity:dummy",
-			"is_summonable": true,
-			"is_spawnable": false,
-			"is_experimental": false,
-			"scripts": {
-				"animate": [
-					{"dummy.escape_pathfind": "q.mark_variant == 2"},
-					{"dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3 || q.mark_variant == 4"}
-				]
-			},
-			"animations": {
-				"dummy.escape_pathfind": "controller.animation.dummy.escape_pathfind",
-				"dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
-			}
-		},
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "entity:dummy",
+      "is_summonable": true,
+      "is_spawnable": false,
+      "is_experimental": false,
+      "scripts": {
+        "animate": [
+          { "dummy.escape_pathfind": "q.mark_variant == 2" },
+          {
+            "dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3 || q.mark_variant == 4"
+          }
+        ]
+      },
+      "animations": {
+        "dummy.escape_pathfind": "controller.animation.dummy.escape_pathfind",
+        "dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
+      }
+    },
     "component_groups": {
-			"dummy:roar": {
-				"minecraft:behavior.knockback_roar": {
+      "dummy:roar": {
+        "minecraft:behavior.knockback_roar": {
           "duration": 0.1,
           "attack_time": 0.1,
           "cooldown_time": 0.0,
           "knockback_strength": 2,
           "knockback_damage": 0,
           "knockback_range": 6,
-					"knockback_horizontal_strength": 2,
-					"knockback_vertical_strength": 1,
+          "knockback_horizontal_strength": 2,
+          "knockback_vertical_strength": 1,
           "knockback_filters": {
             "all_of": [
               {
@@ -42,176 +44,183 @@
               }
             ]
           },
-					"damage_filters":{
-						"all_of": [
-							{
-								"test": "is_family",
-								"subject": "other",
-								"operator": "==",
-								"value": "unset"
-							}
-						]
-					}
+          "damage_filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "==",
+                "value": "unset"
+              }
+            ]
+          }
         }
-			},
+      },
       "dummy:force_spawn_entity": {
-				"minecraft:instant_despawn": {
-					"remove_child_entities": true
-				},
-				"minecraft:explode": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": true
+        },
+        "minecraft:explode": {
           "fuse_length": -1,
           "fuse_lit": true,
           "power": 200,
           "causes_fire": true,
           "destroy_affected_by_griefing": false,
-					"breaks_blocks": true,
-					"fire_affected_by_griefing": false,
-					"max_resistance": 3.40282e+38
+          "breaks_blocks": true,
+          "fire_affected_by_griefing": false,
+          "max_resistance": 3.40282e38
         }
       },
-			"dummy:spawning_variant_steve": {
-				"minecraft:mark_variant": {
-					"value": 1
-				}
-			},
-			"dummy:pathfinding_variant": {
-				"minecraft:mark_variant": {
-					"value": 2
-				}
-			},
-			"dummy:spawning_variant_alex": {
-				"minecraft:mark_variant": {
-					"value": 3
-				}
-			},
-			"dummy:spawning_variant_custom": {
-				"minecraft:mark_variant": {
-					"value": 4
-				}
-			},
-			"dummy:detect_terminator": {
-				"minecraft:entity_sensor": {
-					"event_filters":{
-						"all_of": [
-							{"test": "is_family", "subject": "other", "operator":"equals", "value": "terminator"}
-						]
-					},
-					"minimum_count": 1,
-					"maximum_count": 32767,
-					"relative_range": true,
-					"require_all": false,
-					"sensor_range": 5,
-					"event": "dummy:request_despawn"
-				}
-			},
-			"dummy:despawn": {
-				"minecraft:instant_despawn": {
-					"remove_child_entities": true
-				}
-			}
+      "dummy:spawning_variant_steve": {
+        "minecraft:mark_variant": {
+          "value": 1
+        }
+      },
+      "dummy:pathfinding_variant": {
+        "minecraft:mark_variant": {
+          "value": 2
+        }
+      },
+      "dummy:spawning_variant_alex": {
+        "minecraft:mark_variant": {
+          "value": 3
+        }
+      },
+      "dummy:spawning_variant_custom": {
+        "minecraft:mark_variant": {
+          "value": 4
+        }
+      },
+      "dummy:detect_terminator": {
+        "minecraft:entity_sensor": {
+          "event_filters": {
+            "all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "operator": "equals",
+                "value": "terminator"
+              }
+            ]
+          },
+          "minimum_count": 1,
+          "maximum_count": 32767,
+          "relative_range": true,
+          "require_all": false,
+          "sensor_range": 5,
+          "event": "dummy:request_despawn"
+        }
+      },
+      "dummy:despawn": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": true
+        }
+      }
     },
-		"components": {
-			"minecraft:custom_hit_test": {
-				"hitboxes": [
-					{
-						"pivot": [0, 100, 0],
-						"width": 0,
-						"height": 0
-					}
-				]
-			},
-			"minecraft:type_family": {
-				"family": [	"dummy"	]
-			},
-			"minecraft:damage_sensor": {
-				"triggers": {
-					"deals_damage": false
-				}
-			},
-			"minecraft:pushable": {
-				"is_pushable": false,
-				"is_pushable_by_piston": false
-			},
-			"minecraft:collision_box": {
-				"width": 0.0001,
-				"height": 0.0001
-			},
-			"minecraft:environment_sensor": {
-				"triggers":[
-					{
-						"filters":{
-							"test": "has_component",
-							"subject": "self",
-							"value": "minecraft:entity_sensor"
-						},
-						"event": "dummy:sensor_activated"
-					}
-				]
-			},
-			"minecraft:tick_world": {
+    "components": {
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "pivot": [0, 100, 0],
+            "width": 0,
+            "height": 0
+          }
+        ]
+      },
+      "minecraft:type_family": {
+        "family": ["dummy"]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "deals_damage": false
+        }
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "width": 0.0001,
+        "height": 0.0001
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "filters": {
+              "test": "has_component",
+              "subject": "self",
+              "value": "minecraft:entity_sensor"
+            },
+            "event": "dummy:sensor_activated"
+          }
+        ]
+      },
+      "minecraft:tick_world": {
         "never_despawn": true,
         "radius": 4
       }
-		},
-		"events": {
-			"dummy:force_roar": {
-			  "add": {
-					"component_groups": ["dummy:roar"]
-				}
-			},
-			"dummy:finish_setup": {
-			  "remove": {
-					"component_groups": ["dummy:roar"]
-				}
-			},
-			"dummy:spawn_terminator":{
-				"add": {
-					"component_groups": ["dummy:force_spawn_entity"]
-				}
-			},
-			"dummy:request_spawning_steve": {
-				"add": {
-					"component_groups": ["dummy:spawning_variant_steve"]
-				}
-			},
-			"dummy:request_spawning_alex": {
-				"add": {
-					"component_groups": ["dummy:spawning_variant_alex"]
-				}
-			},
-			"dummy:request_spawning_custom": {
-				"add": {
-					"component_groups": ["dummy:spawning_variant_custom"]
-				}
-			},
-			"dummy:request_pathfind": {
-				"add": {
-					"component_groups": ["dummy:pathfinding_variant"]
-				}
-			},
-			"dummy:create_terminator_target": {
-				"add": {
-					"component_groups": [	"dummy:detect_terminator"	]
-				},
-				"run_command": {
-					"command": ["spreadplayers ~ ~ 32 48 @s"]
-				}
-			},
-			"dummy:request_despawn": {
-				"add": {
-					"component_groups": ["dummy:despawn"]
-				},
-				"run_command": {
-					"command": [
-						"tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
-					]
-				}
-			},
-			"dummy:sensor_activated": {
-				"run_command": {
-					"command": [ "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}" ]
-				}
-			}
-		}
-	}
+    },
+    "events": {
+      "dummy:force_roar": {
+        "add": {
+          "component_groups": ["dummy:roar"]
+        }
+      },
+      "dummy:finish_setup": {
+        "remove": {
+          "component_groups": ["dummy:roar"]
+        }
+      },
+      "dummy:spawn_terminator": {
+        "add": {
+          "component_groups": ["dummy:force_spawn_entity"]
+        }
+      },
+      "dummy:request_spawning_steve": {
+        "add": {
+          "component_groups": ["dummy:spawning_variant_steve"]
+        }
+      },
+      "dummy:request_spawning_alex": {
+        "add": {
+          "component_groups": ["dummy:spawning_variant_alex"]
+        }
+      },
+      "dummy:request_spawning_custom": {
+        "add": {
+          "component_groups": ["dummy:spawning_variant_custom"]
+        }
+      },
+      "dummy:request_pathfind": {
+        "add": {
+          "component_groups": ["dummy:pathfinding_variant"]
+        }
+      },
+      "dummy:create_terminator_target": {
+        "add": {
+          "component_groups": ["dummy:detect_terminator"]
+        },
+        "queue_command": {
+          "command": ["spreadplayers ~ ~ 32 48 @s"]
+        }
+      },
+      "dummy:request_despawn": {
+        "add": {
+          "component_groups": ["dummy:despawn"]
+        },
+        "queue_command": {
+          "command": [
+            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
+          ]
+        }
+      },
+      "dummy:sensor_activated": {
+        "queue_command": {
+          "command": [
+            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}"
+          ]
+        }
+      }
+    }
+  }
 }
