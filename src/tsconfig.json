@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "module": "es2020",
-    "target": "es2020",
-    "moduleResolution": "node",
-    "noImplicitAny": true
-  },
-  "include": ["./**/*.ts"]
-}

@@ -8,8 +8,9 @@
       "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "minecraft-linting"],
-  "overrides": [{ "files": [ "*.ts"] }],
+  "overrides": [{ "files": [ "src/**/*.ts"] }],
   "rules": {
       "minecraft-linting/avoid-unnecessary-command": "warn"
-  }
+  },
+  "ignorePatterns": ["scripts/*"]
 }

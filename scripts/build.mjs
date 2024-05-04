@@ -12,7 +12,7 @@ const external = [
 ];
 
 build({
-    entryPoints: ["src/Main.ts"],
+    entryPoints: ["src/index.ts"],
     outfile: "assets/behavior_pack/scripts/main.js",
     bundle: true,
     minify: true,
