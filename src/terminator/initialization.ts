@@ -7,20 +7,24 @@ import {
 } from "@minecraft/server";
 import { terminatorSpawn } from "../terminator-events/onTerminatorSpawn";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
+import { MinecraftColor } from "../minecraft-color";
 
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
-  const numberOfTerminators = world
+  const terminatorPopulation = world
     .getDimension("overworld")
     .getEntities({ type: "entity:terminator" }).length;
 
-  entity.nameTag = `Terminator (${numberOfTerminators})`;
+  if (terminatorPopulation > 1)
+    entity.nameTag = `Terminator (${terminatorPopulation - 1})`;
+  else entity.nameTag = "Terminator";
 });
 
 // broadcast to world
 terminatorSpawn.subscribe(({ entity }) => {
   const rawtext: RawText = {
     rawtext: [
+      { text: MinecraftColor.yellow },
       { translate: "multiplayer.player.joined", with: [entity.nameTag] },
     ],
   };

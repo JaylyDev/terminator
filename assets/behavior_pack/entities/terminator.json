@@ -2,7 +2,7 @@
 // Licensed under the GPL-3.0 License.
 
 {
-  "format_version": "1.16.0",
+  "format_version": "1.20.80",
   "minecraft:entity": {
     "description": {
       "identifier": "entity:terminator",

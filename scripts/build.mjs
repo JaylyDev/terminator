@@ -12,13 +12,13 @@ const external = [
 ];
 
 build({
-    entryPoints: ["src/index.ts"],
-    outfile: "assets/behavior_pack/scripts/main.js",
-    bundle: true,
-    minify: true,
-    format: "esm",
-    external,
-  })
+  entryPoints: ["src/index.ts"],
+  outfile: "assets/behavior_pack/scripts/main.js",
+  bundle: true,
+  minify: false,
+  format: "esm",
+  external,
+})
   .then(() => {
     console.log("Bundling finished!");
   })

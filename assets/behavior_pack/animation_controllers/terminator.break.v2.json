@@ -1,6 +1,5 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 
 {
   "format_version": "1.10.0",
@@ -27,9 +26,7 @@
               "default_state": "(1.0)"
             }
           ],
-          "on_entry": [
-            "@s terminator:disable_break_blocks"
-          ]
+          "on_entry": ["@s terminator:disable_break_blocks"]
         },
         "enable_break_blocks": {
           "transitions": [
@@ -37,9 +34,7 @@
               "default_state": "(1.0)"
             }
           ],
-          "on_entry": [
-            "@s terminator:enable_break_blocks"
-          ]
+          "on_entry": ["@s terminator:enable_break_blocks"]
         }
       }
     },

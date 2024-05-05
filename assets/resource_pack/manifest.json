@@ -1,31 +1,32 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 {
   "format_version": 2,
   "header": {
     "name": "pack.name",
     "description": "pack.description",
     "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-    "version": "2.0.0-beta",
-    "min_engine_version": [1, 21, 0]
+    "version": [2, 0, 0],
+    "min_engine_version": [1, 20, 80],
+    "pack_scope": "world"
   },
   "modules": [
     {
       "description": "pack.description",
       "type": "resources",
       "uuid": "8d366fcf-2511-4fc0-936b-cf1fa9f73651",
-      "version": "2.0.0-beta"
+      "version": [2, 0, 0]
     }
   ],
   "dependencies": [
     {
       // Terminator behavior pack
       "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-      "version": "2.0.0-beta"
+      "version": [2, 0, 0]
     }
   ],
   "metadata": {
+    "product_type": "addon",
     "authors": ["JaylyMC"],
     "license": "https://github.com/JaylyDev/terminator/blob/main/LICENSE",
     "url": "https://jaylydev.github.io/posts/terminator/"

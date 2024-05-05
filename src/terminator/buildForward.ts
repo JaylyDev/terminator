@@ -6,26 +6,31 @@ class BridgeDirection {
   private constructor() {
     throw new TypeError("Illegal Constructor.");
   }
-  static readonly North = new Vector3Builder(0, -1, -1);
-  static readonly West = new Vector3Builder(0, -1, -1);
-  static readonly East = new Vector3Builder(1, -1, 0);
-  static readonly South = new Vector3Builder(-1, -1, 0);
-  static readonly NorthEast = [
-    new Vector3Builder(0, -1, -1),
-    new Vector3Builder(1, -1, -1),
-  ];
-  static readonly SouthWest = [
-    new Vector3Builder(0, -1, 1),
-    new Vector3Builder(-1, -1, 1),
-  ];
-  static readonly SouthEast = [
-    new Vector3Builder(1, -1, 1),
-    new Vector3Builder(1, -1, 0),
-  ];
-  static readonly NorthWest = [
-    new Vector3Builder(0, -1, 1),
-    new Vector3Builder(-1, -1, 1),
-  ];
+
+  public static get North() {
+    return new Vector3Builder(0, -1, -1);
+  }
+  public static get West() {
+    return new Vector3Builder(0, -1, -1);
+  }
+  public static get East() {
+    return new Vector3Builder(1, -1, 0);
+  }
+  public static get South() {
+    return new Vector3Builder(-1, -1, 0);
+  }
+  public static get NorthEast() {
+    return [new Vector3Builder(0, -1, -1), new Vector3Builder(1, -1, -1)];
+  }
+  public static get SouthWest() {
+    return [new Vector3Builder(0, -1, 1), new Vector3Builder(-1, -1, 1)];
+  }
+  public static get SouthEast() {
+    return [new Vector3Builder(1, -1, 1), new Vector3Builder(1, -1, 0)];
+  }
+  public static get NorthWest() {
+    return [new Vector3Builder(0, -1, 1), new Vector3Builder(-1, -1, 1)];
+  }
 }
 
 export enum TerminatorBuildDirection {

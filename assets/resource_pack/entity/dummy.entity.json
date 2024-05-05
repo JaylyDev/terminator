@@ -1,22 +1,21 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 
 {
-	"format_version": "1.10.0",
-	"minecraft:client_entity": {
-		"description": {
-			"identifier": "entity:dummy",
-			"materials": {
-				"default": "entity_alphatest"
-			},
-			"geometry": {
-				"default": "geometry.dummy"
-			},
-			"render_controllers": ["controller.render.dummy"],
-			"textures": {
-				"default": ""
-			}
-		}
-	}
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "entity:dummy",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "geometry": {
+        "default": "geometry.dummy"
+      },
+      "render_controllers": ["controller.render.dummy"],
+      "textures": {
+        "default": ""
+      }
+    }
+  }
 }

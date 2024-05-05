@@ -1,14 +1,13 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 
 {
-	"format_version": "1.10.0",
-	"render_controllers": {
-		"controller.render.dummy": {
-			"geometry": "Geometry.default",
-			"textures": ["Texture.default"],
-			"materials": [ { "*": "Material.default"	}	]
-		}
-	}
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.dummy": {
+      "geometry": "Geometry.default",
+      "textures": ["Texture.default"],
+      "materials": [{ "*": "Material.default" }]
+    }
+  }
 }
