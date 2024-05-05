@@ -35,62 +35,13 @@
         }
       }
     },
-    "controller.animation.terminator.bridging": {
-      "initial_state": "default_state",
-      "states": {
-        "default_state": {
-          "transitions": [
-            {
-              "bridge.east": "q.target_y_rotation <= 45 && q.target_y_rotation > -45"
-            },
-            {
-              "bridge.south": "q.target_y_rotation <= 135 && q.target_y_rotation > 45"
-            },
-            {
-              "bridge.west": "q.target_y_rotation <= 225 && q.target_y_rotation > 135"
-            },
-            {
-              "bridge.north": "q.target_y_rotation <= 315 && q.target_y_rotation > 225"
-            }
-          ]
-        },
-        "bridge.east": {
-          "transitions": [{ "default_state": "(1.0)" }],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.east\"}]}", // logging
-            "/execute @s ~ ~ ~ fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace air"
-          ]
-        },
-        "bridge.south": {
-          "transitions": [{ "default_state": "(1.0)" }],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.south\"}]}", // logging
-            "/execute @s ~ ~ ~ fill ~-1 ~-1 ~ ~-1 ~-1 ~ cobblestone 0 replace air"
-          ]
-        },
-        "bridge.west": {
-          "transitions": [{ "default_state": "(1.0)" }],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.west\"}]}", // logging
-            "/execute @s ~ ~ ~ fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace air"
-          ]
-        },
-        "bridge.north": {
-          "transitions": [{ "default_state": "(1.0)" }],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.bridging/bridge.north\"}]}", // logging
-            "/execute @s ~ ~ ~ fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace air"
-          ]
-        }
-      }
-    },
     "controller.animation.terminator.shield": {
       "initial_state": "default_state",
       "states": {
         "default_state": {
           "transitions": [
             {
-              "running_state": "q.get_equipped_item_name('off_hand') == 'shield'"
+              "running_state": "q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
             },
             { "default_state": "(1.0)" }
           ],
@@ -102,20 +53,20 @@
         "running_state": {
           "transitions": [
             {
-              "default_state": "q.get_equipped_item_name('off_hand') != 'shield'"
+              "default_state": "!q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
             },
             {
-              "activate_shield": "q.get_equipped_item_name('off_hand') == 'shield' && variable.attack_time == 0.0"
+              "activate_shield": "q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time == 0.0"
             }
           ]
         },
         "activate_shield": {
           "transitions": [
             {
-              "default_state": "q.get_equipped_item_name('off_hand') != 'shield'"
+              "default_state": "!q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
             },
             {
-              "deactivate_shield": "(q.get_equipped_item_name('off_hand') == 'shield' && variable.attack_time > 0.0) || (q.mark_variant == 1 && q.get_equipped_item_name('off_hand') == 'shield')"
+              "deactivate_shield": "(q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time > 0.0) || (q.mark_variant == 1 && q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield'))"
             }
           ],
           "on_entry": ["@s terminator:activate_shield"]

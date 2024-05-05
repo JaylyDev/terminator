@@ -20,9 +20,7 @@ class TerminatorSpawnAfterEventSignal {
    * @param callback
    * Function that handles the spawn event.
    */
-  subscribe(
-    callback: (arg: EntitySpawnAfterEvent) => void
-  ): (arg: EntitySpawnAfterEvent) => void {
+  subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void {
     this.handlers.push(callback);
     return callback;
   }

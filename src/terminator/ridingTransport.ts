@@ -6,22 +6,12 @@ system.runInterval(() => {
   const overworld = world.getDimension("overworld");
   const terminators = overworld.getEntities({ type: "entity:terminator" });
   const boats = overworld.getEntities({ type: MinecraftEntityTypes.Boat });
-  const chestBoats = overworld.getEntities({
-    type: MinecraftEntityTypes.ChestBoat,
-  });
-  const minecarts = overworld.getEntities({
-    type: MinecraftEntityTypes.Minecart,
-  });
+  const chestBoats = overworld.getEntities({ type: MinecraftEntityTypes.ChestBoat });
+  const minecarts = overworld.getEntities({ type: MinecraftEntityTypes.Minecart });
 
   for (const terminator of terminators) {
-    let rideableCooldown: number =
-      (terminator.getDynamicProperty("rideableCooldown") as
-        | number
-        | undefined) || -1;
-
-    const isSitting = terminator.getProperty(
-      "terminator:is_sitting"
-    ) as boolean;
+    let rideableCooldown: number = terminator.getDynamicProperty("rideableCooldown") as number | undefined || -1;
+    const isSitting = terminator.getProperty("terminator:is_sitting") as boolean;
 
     // If the rideable cooldown is -1 but terminator is sitting, then ride for 10 - 20 seconds then leave
     if (rideableCooldown === -1 && isSitting) {
@@ -40,10 +30,8 @@ system.runInterval(() => {
       );
       const nearbyChestBoats = chestBoats.filter(
         (chestBoat) =>
-          chestBoat.matches({
-            maxDistance: 1,
-            location: terminator.location,
-          }) && chestBoat.dimension === terminator.dimension
+          chestBoat.matches({ maxDistance: 1, location: terminator.location }) &&
+          chestBoat.dimension === terminator.dimension
       );
       const nearbyMinecarts = minecarts.filter(
         (minecart) =>

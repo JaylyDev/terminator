@@ -1,6 +1,5 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 
 {
   "format_version": "1.10.0",
@@ -9,7 +8,7 @@
       "initial_state": "default_state",
       "states": {
         "default_state": {
-          "transitions": [{"running_state": "(1.0)"}],
+          "transitions": [{ "running_state": "(1.0)" }],
           "on_entry": [
             /*********************************
             +*       north = yRot(180)       *
@@ -17,92 +16,86 @@
             +*       south = yRot(0)         *
             +*        west = yRot(90)        *
             +********************************/
-            "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 45;"
+            "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 135;"
           ]
         },
         "running_state": {
           "transitions": [
-            { "forward.north": "(q.head_y_rotation(0) >= (v.direction_north - 33)) && (q.head_y_rotation(0) <= (v.direction_north + 33)) && q.has_target" },
-            { "forward.east": "(q.head_y_rotation(0) >= (v.direction_east - 33)) && (q.head_y_rotation(0) <= (v.direction_east + 33)) && q.has_target" },
-            { "forward.south": "(q.head_y_rotation(0) >= (v.direction_south - 33)) && (q.head_y_rotation(0) <= (v.direction_south + 33)) && q.has_target" },
-            { "forward.west": "(q.head_y_rotation(0) >= (v.direction_west - 33)) && (q.head_y_rotation(0) <= (v.direction_west + 33)) && q.has_target" },
-            { "forward.northeast": "(q.head_y_rotation(0) >= (v.direction_northeast - 11)) && (q.head_y_rotation(0) <= (v.direction_northeast + 11)) && q.has_target" },
-            { "forward.southeast": "(q.head_y_rotation(0) >= (v.direction_southeast - 11)) && (q.head_y_rotation(0) <= (v.direction_southeast + 11)) && q.has_target" },
-            { "forward.southwest": "(q.head_y_rotation(0) >= (v.direction_southwest - 11)) && (q.head_y_rotation(0) <= (v.direction_southwest + 11)) && q.has_target" },
-            { "forward.northwest": "(q.head_y_rotation(0) >= (v.direction_northwest - 11)) && (q.head_y_rotation(0) <= (v.direction_northwest + 11)) && q.has_target" }
+            {
+              "forward.north": "(q.head_y_rotation(0) >= (v.direction_north - 33)) && (q.head_y_rotation(0) <= (v.direction_north + 33)) && q.has_target"
+            },
+            {
+              "forward.east": "(q.head_y_rotation(0) >= (v.direction_east - 33)) && (q.head_y_rotation(0) <= (v.direction_east + 33)) && q.has_target"
+            },
+            {
+              "forward.south": "(q.head_y_rotation(0) >= (v.direction_south - 33)) && (q.head_y_rotation(0) <= (v.direction_south + 33)) && q.has_target"
+            },
+            {
+              "forward.west": "(q.head_y_rotation(0) >= (v.direction_west - 33)) && (q.head_y_rotation(0) <= (v.direction_west + 33)) && q.has_target"
+            },
+            {
+              "forward.northeast": "(q.head_y_rotation(0) >= (v.direction_northeast - 11)) && (q.head_y_rotation(0) <= (v.direction_northeast + 11)) && q.has_target"
+            },
+            {
+              "forward.southeast": "(q.head_y_rotation(0) >= (v.direction_southeast - 11)) && (q.head_y_rotation(0) <= (v.direction_southeast + 11)) && q.has_target"
+            },
+            {
+              "forward.southwest": "(q.head_y_rotation(0) >= (v.direction_southwest - 11)) && (q.head_y_rotation(0) <= (v.direction_southwest + 11)) && q.has_target"
+            },
+            {
+              "forward.northwest": "(q.head_y_rotation(0) >= (v.direction_northwest - 11)) && (q.head_y_rotation(0) <= (v.direction_northwest + 11)) && q.has_target"
+            }
           ],
-          "on_entry": [ "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 45;" ]
-        },
-        "forward.north": { // yRot(147, 213)
-          "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // z -= 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace tallgrass"
+          "on_entry": [
+            "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 135;"
           ]
         },
-        "forward.northeast": { // yRot(214, 236)
+        "forward.north": {
+          // yRot(147, 213),  z -= 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // z -= 1 && x += 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace tallgrass",
-            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 cobblestone 0 replace air",
-            "/fill ~1 ~-1 ~-1 ~1 ~-1 ~-1 cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_north"]
         },
-        "forward.east": { // yRot(237, 303)
+        "forward.northeast": {
+          // yRot(214, 236), z -= 1 && x += 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // x += 1
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace air",
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_northeast"]
         },
-        "forward.southeast": { // yRot(237, 303)
+        "forward.east": {
+          // yRot(237, 303), x += 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // x += 1 && z += 1
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace air",
-            "/fill ~1 ~-1 ~ ~1 ~-1 ~ cobblestone 0 replace tallgrass",
-            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 cobblestone 0 replace air",
-            "/fill ~1 ~-1 ~1 ~1 ~-1 ~1 cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_east"]
         },
-        "forward.south": { // yRot(-33, 33)
+        "forward.southeast": {
+          // yRot(237, 303), x += 1 && z += 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // z += 1
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace air",
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_southeast"]
         },
-        "forward.southwest": { // yRot(-33, 33)
+        "forward.south": {
+          // yRot(-33, 33), z += 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // z += 1 && x -= 1
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace air",
-            "/fill ~ ~-1 ~1 ~ ~-1 ~1 cobblestone 0 replace tallgrass",
-            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 cobblestone 0 replace air",
-            "/fill ~-1 ~-1 ~1 ~-1 ~-1 ~1 cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_south"]
         },
-        "forward.west": { // yRot(67, 123)
+        "forward.southwest": {
+          // yRot(-33, 33), z += 1 && x -= 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // x -= 1
-            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ cobblestone 0 replace air",
-            "/fill ~-1 ~-1 ~ ~-1 ~-1 ~ cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_southwest"]
         },
-        "forward.northwest": { // yRot(-33, 33)
+        "forward.west": {
+          // yRot(67, 123), x -= 1
           "transitions": [{ "default_state": "q.is_alive" }],
-          "on_entry": [ // z -= 1 && x -= 1
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace air",
-            "/fill ~ ~-1 ~-1 ~ ~-1 ~-1 cobblestone 0 replace tallgrass",
-            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 cobblestone 0 replace air",
-            "/fill ~-1 ~-1 ~-1 ~-1 ~-1 ~-1 cobblestone 0 replace tallgrass"
-          ]
+          "on_entry": ["/scriptevent terminator:forward_west"]
+        },
+        "forward.northwest": {
+          // yRot(-33, 33), z -= 1 && x -= 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_northwest"]
         }
       }
     },
     "controller.animation.terminator.build.vertical": {
       "initial_state": "default_state",
       "states": {
-        "default_state": {"transitions": [{"running_state": "(1.0)"}]},
+        "default_state": { "transitions": [{ "running_state": "(1.0)" }] },
         "running_state": {
           "transitions": [
             { "vertical.up": "q.has_target && q.head_x_rotation(0) < -20" },
@@ -110,7 +103,7 @@
           ]
         },
         "vertical.up": {
-          "transitions": [{"default_state": "(1.0)"}],
+          "transitions": [{ "default_state": "(1.0)" }],
           "on_entry": [
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ detect ~ ~ ~ air 0 tp ~ ~1 ~",
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~ ~ ~ ~ ~ cobblestone 0 replace air",
@@ -119,7 +112,7 @@
           ]
         },
         "vertical.down": {
-          "transitions": [{"default_state": "(1.0)"}],
+          "transitions": [{ "default_state": "(1.0)" }],
           "on_entry": [
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~-1 ~ ~ ~-1 ~ air 0 replace acacia_button",
             "/execute @e[type=player,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~ ~ ~ execute @e[family=terminator,x=~-4,dx=8,y=-64,dy=384,z=~-4,dz=8] ~~~ fill ~ ~-1 ~ ~ ~-1 ~ air 0 replace acacia_door",
@@ -1162,7 +1155,7 @@
     "controller.animation.terminator.build.suffocation": {
       "initial_state": "default_state",
       "states": {
-        "default_state": {"transitions": [{"running_state": "(1.0)"}]},
+        "default_state": { "transitions": [{ "running_state": "(1.0)" }] },
         "running_state": {
           "transitions": [
             { "vertical.up": "q.has_target && q.head_x_rotation(0) < -20" },
@@ -1170,14 +1163,14 @@
           ]
         },
         "vertical.up": {
-          "transitions": [{"default_state": "(1.0)"}],
+          "transitions": [{ "default_state": "(1.0)" }],
           "on_entry": [
             "/execute @s[tag=terminatorsuffocate] ~ ~ ~ setblock ~ ~ ~ cobblestone",
             "/execute @s[tag=terminatorsuffocate] ~ ~ ~ tp ~ ~1 ~"
           ]
         },
         "vertical.down": {
-          "transitions": [{"default_state": "(1.0)"}],
+          "transitions": [{ "default_state": "(1.0)" }],
           "on_entry": [
             "/execute @s[tag=terminatorsuffocate] ~ ~ ~ fill ~ ~1 ~ ~ ~-1 ~ air 0 replace acacia_button",
             "/execute @s[tag=terminatorsuffocate] ~ ~ ~ fill ~ ~1 ~ ~ ~-1 ~ air 0 replace acacia_door",

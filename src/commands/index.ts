@@ -1,11 +1,7 @@
 import { world, system, Player, Vector3 } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
 import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
-import {
-  spawnTerminator,
-  TerminatorInputParam,
-  TerminatorSkinModel,
-} from "./summon.js";
+import { spawnTerminator, TerminatorInputParam, TerminatorSkinModel } from "./summon.js";
 
 function generateModalForm(settings: TerminatorInputParam) {
   let dimensionIndex = 0;
