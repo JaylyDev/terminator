@@ -1,10 +1,18 @@
-import { EntityHealthComponent, RawText, TicksPerSecond, system, world } from "@minecraft/server";
+import {
+  EntityHealthComponent,
+  RawText,
+  TicksPerSecond,
+  system,
+  world,
+} from "@minecraft/server";
 import { terminatorSpawn } from "../terminator-events/onTerminatorSpawn";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
 
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
-  const numberOfTerminators = world.getDimension("overworld").getEntities({ type: "entity:terminator" }).length;
+  const numberOfTerminators = world
+    .getDimension("overworld")
+    .getEntities({ type: "entity:terminator" }).length;
 
   entity.nameTag = `Terminator (${numberOfTerminators})`;
 });
@@ -28,7 +36,10 @@ terminatorSpawn.subscribe(({ entity }) => {
       system.clearRun(id);
       return;
     }
-    if (health.currentValue < 20 && !entity.hasTag("terminatorNoRegeneration")) {
+    if (
+      health.currentValue < 20 &&
+      !entity.hasTag("terminatorNoRegeneration")
+    ) {
       // "/effect @s[tag=!terminatorNoRegeneration] regeneration 6 4 false",
       // "/effect @s[tag=!terminatorNoRegeneration] absorption 24 3 false",
       // "/effect @s[tag=!terminatorNoRegeneration] resistance 60 0 false",
@@ -47,10 +58,14 @@ terminatorSpawn.subscribe(({ entity }) => {
         amplifier: 0,
         showParticles: false,
       });
-      entity.addEffect(MinecraftEffectTypes.FireResistance, 60 * TicksPerSecond, {
-        amplifier: 0,
-        showParticles: false,
-      });
+      entity.addEffect(
+        MinecraftEffectTypes.FireResistance,
+        60 * TicksPerSecond,
+        {
+          amplifier: 0,
+          showParticles: false,
+        }
+      );
       entity.triggerEvent("terminator:escape");
     }
   });
