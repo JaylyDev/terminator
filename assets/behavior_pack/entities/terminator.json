@@ -12,7 +12,7 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          "terminator.sitting",
+          "terminator.is_sitting",
           "terminator.shield",
           "terminator.build.forward",
           "terminator.build.vertical",
@@ -22,13 +22,20 @@
         ]
       },
       "animations": {
-        "terminator.sitting": "controller.animation.terminator.sitting",
+        "terminator.is_sitting": "controller.animation.terminator.is_sitting",
         "terminator.shield": "controller.animation.terminator.shield",
         "terminator.build.forward": "controller.animation.terminator.build.forward",
         "terminator.build.vertical": "controller.animation.terminator.build.vertical",
         "terminator.build.suffocation": "controller.animation.terminator.build.suffocation",
         "terminator.break": "controller.animation.terminator.break_blocks.v2",
         "terminator.break.backup": "controller.animation.terminator.break_blocks_backup"
+      },
+      "properties": {
+        "terminator:is_sitting": {
+          "client_sync": false,
+          "type": "bool",
+          "default": false
+        }
       }
     },
     "component_groups": {
@@ -241,10 +248,10 @@
               }
             },
             {
-              "cause": "suicide",
+              "cause": "self_destruct",
               "on_damage": {
                 "filters": { "test": "has_damage", "value": "fatal" },
-                "event": "death_message:dev:suicide"
+                "event": "death_message:dev:self_destruct"
               }
             },
             {
@@ -1196,7 +1203,7 @@
               "cause": "all",
               "deals_damage": true
             },
-            { "cause": "suicide", "deals_damage": true },
+            { "cause": "self_destruct", "deals_damage": true },
             { "cause": "temperature", "deals_damage": true },
             { "cause": "thorns", "deals_damage": true },
             { "cause": "void", "deals_damage": true },
@@ -1275,7 +1282,7 @@
             { "cause": "stalagmite", "deals_damage": false },
             { "cause": "starve", "deals_damage": false },
             { "cause": "suffocation", "deals_damage": false },
-            { "cause": "suicide", "deals_damage": false },
+            { "cause": "self_destruct", "deals_damage": false },
             { "cause": "temperature", "deals_damage": false },
             { "cause": "thorns", "deals_damage": false },
             { "cause": "void", "deals_damage": true },
@@ -2470,10 +2477,10 @@
             }
           },
           {
-            "cause": "suicide",
+            "cause": "self_destruct",
             "on_damage": {
               "filters": { "test": "has_damage", "value": "fatal" },
-              "event": "death_message:suicide"
+              "event": "death_message:self_destruct"
             }
           },
           {
@@ -14843,7 +14850,7 @@
           }
         ]
       },
-      "death_message:suicide": {
+      "death_message:self_destruct": {
         "sequence": [
           {
             "filters": {
@@ -18542,10 +18549,10 @@
           ]
         }
       },
-      "death_message:dev:suicide": {
+      "death_message:dev:self_destruct": {
         "queue_command": {
           "command": [
-            "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:suicide\"}]}"
+            "tellraw @a {\"rawtext\":[{\"text\":\"death_message:dev:self_destruct\"}]}"
           ]
         }
       },
@@ -18759,6 +18766,16 @@
             "terminator:break_blocks.v2",
             "terminator:custom_skin"
           ]
+        }
+      },
+      "terminator:set_sitting_enabled": {
+        "set_property": {
+          "terminator:is_sitting": true
+        }
+      },
+      "terminator:set_sitting_disabled": {
+        "set_property": {
+          "terminator:is_sitting": false
         }
       }
     }

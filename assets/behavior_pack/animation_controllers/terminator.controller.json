@@ -1,37 +1,37 @@
-/********************************************************
-+*   (c) JaylyMC. All rights reserved.                    *
-+*********************************************************/
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
 
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.terminator.sitting": {
+    "controller.animation.terminator.is_sitting": {
       "initial_state": "default_state",
       "states": {
         "default_state": {
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/default\"}]}" // logging
-          ],
           "transitions": [
-            // q.has_target ? (q.target -> q.has_any_family('player')) : 0.0
             {
-              "cooldown_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0) && ((q.has_target ? (q.target -> q.has_any_family('player')) : 0.0) || (q.has_target ? (q.target -> q.has_any_family('irongolem')) : 0.0))"
+              "sitting_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            },
+            {
+              "non_sitting_state": "!(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
             }
           ]
         },
-        "cooldown_state": {
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_entry\"}]}", // logging
-            "v.random = math.random_integer(60,100); v.tstime_stamp = q.time_stamp;"
-          ],
+        "sitting_state": {
+          "on_entry": ["@s terminator:set_sitting_enabled"],
           "transitions": [
-            { "default_state": "(q.time_stamp - v.tstime_stamp) >= v.random" }
-          ],
-          "on_exit": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.sitting/cooldown/on_exit\"}]}", // logging
-            "/kill @e[type=boat,r=1,c=1]",
-            "/kill @e[type=minecart,r=1,c=1]"
-          ] // force the mob to leave the boat
+            {
+              "non_sitting_state": "!(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            }
+          ]
+        },
+        "non_sitting_state": {
+          "on_entry": ["@s terminator:set_sitting_disabled"],
+          "transitions": [
+            {
+              "sitting_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            }
+          ]
         }
       }
     },
