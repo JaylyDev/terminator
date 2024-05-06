@@ -46,6 +46,7 @@ export enum TerminatorBuildDirection {
 
 const bridgeBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
 
+// Have to use /scriptevent because Entity::target isn't released to stable.
 system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
     if (
@@ -53,6 +54,7 @@ system.afterEvents.scriptEventReceive.subscribe(
       event.sourceEntity.typeId !== "entity:terminator"
     )
       return;
+
     const location = new Vector3Builder(event.sourceEntity.location);
     if (event.id === TerminatorBuildDirection.North) {
       const block = event.sourceEntity.dimension.getBlock(

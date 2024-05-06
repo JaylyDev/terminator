@@ -93,35 +93,97 @@ export function reset<V extends string>(text: V): `§r${V}§r` {
 }
 
 export class MinecraftColor {
-  static readonly black = "§0";
-  static readonly darkBlue = "§1";
-  static readonly darkGreen = "§2";
-  static readonly darkAqua = "§3";
-  static readonly darkRed = "§4";
-  static readonly darkPurple = "§5";
-  static readonly gold = "§6";
-  static readonly gray = "§7";
-  static readonly darkGray = "§8";
-  static readonly blue = "§9";
-  static readonly green = "§a";
-  static readonly aqua = "§b";
-  static readonly red = "§c";
-  static readonly lightPurple = "§d";
-  static readonly yellow = "§e";
-  static readonly white = "§f";
-  static readonly minecoinGold = "§g";
-  static readonly materialQuartz = "§h";
-  static readonly materialIron = "§i";
-  static readonly materialNetherite = "§j";
-  static readonly materialRedstone = "§m";
-  static readonly materialCopper = "§n";
-  static readonly materialGold = "§p";
-  static readonly materialEmerald = "§q";
-  static readonly materialDiamond = "§s";
-  static readonly materialLapis = "§t";
-  static readonly materialAmethyst = "§u";
-  static readonly obfuscated = "§k";
-  static readonly bold = "§l";
-  static readonly italic = "§o";
-  static readonly reset = "§r";
+  public static get black() {
+    return "§0";
+  }
+  public static get darkBlue() {
+    return "§1";
+  }
+  public static get darkGreen() {
+    return "§2";
+  }
+  public static get darkAqua() {
+    return "§3";
+  }
+  public static get darkRed() {
+    return "§4";
+  }
+  public static get darkPurple() {
+    return "§5";
+  }
+  public static get gold() {
+    return "§6";
+  }
+  public static get gray() {
+    return "§7";
+  }
+  public static get darkGray() {
+    return "§8";
+  }
+  public static get blue() {
+    return "§9";
+  }
+  public static get green() {
+    return "§a";
+  }
+  public static get aqua() {
+    return "§b";
+  }
+  public static get red() {
+    return "§c";
+  }
+  public static get lightPurple() {
+    return "§d";
+  }
+  public static get yellow() {
+    return "§e";
+  }
+  public static get white() {
+    return "§f";
+  }
+  public static get minecoinGold() {
+    return "§g";
+  }
+  public static get materialQuartz() {
+    return "§h";
+  }
+  public static get materialIron() {
+    return "§i";
+  }
+  public static get materialNetherite() {
+    return "§j";
+  }
+  public static get materialRedstone() {
+    return "§m";
+  }
+  public static get materialCopper() {
+    return "§n";
+  }
+  public static get materialGold() {
+    return "§p";
+  }
+  public static get materialEmerald() {
+    return "§q";
+  }
+  public static get materialDiamond() {
+    return "§s";
+  }
+  public static get materialLapis() {
+    return "§t";
+  }
+  public static get materialAmethyst() {
+    return "§u";
+  }
+  public static get obfuscated() {
+    return "§k";
+  }
+  public static get bold() {
+    return "§l";
+  }
+  public static get italic() {
+    return "§o";
+  }
+  public static get reset() {
+    return "§r";
+  }
 }
