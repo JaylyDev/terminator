@@ -16,7 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: npm install typescript -g
+      - name: Install dependencies
+        run: |
+          npm install typescript -g
+          npm install
 
       - name: Compile 💻
         run: |
