@@ -8,10 +8,7 @@
       "initial_state": "default_state",
       "states": {
         "default_state": {
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.dummy.escape_pathfind\"}]}",
-            "@s dummy:create_terminator_target"
-          ]
+          "on_entry": ["@s dummy:create_terminator_target"]
         }
       }
     },
@@ -107,9 +104,9 @@
         "execute7_steve": {
           "on_entry": [
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
-            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
-            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event_steve\"",
+            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air replace bedrock",
+            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air replace barrier",
+            "/summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_steve",
             "/fog @a remove respawn_lore",
             "@s dummy:spawn_terminator",
             "/summon minecraft:lightning_bolt",
@@ -119,9 +116,9 @@
         "execute7_alex": {
           "on_entry": [
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
-            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
-            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event_alex\"",
+            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air replace bedrock",
+            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air replace barrier",
+            "/summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_alex",
             "/fog @a remove respawn_lore",
             "@s dummy:spawn_terminator",
             "/summon minecraft:lightning_bolt",
@@ -131,9 +128,9 @@
         "execute7_custom": {
           "on_entry": [
             "v.dummy_time = q.time_stamp; v.dummy_duration = 100;",
-            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air 0 replace bedrock",
-            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air 0 replace barrier",
-            "/summon entity:terminator ~ ~ ~ \"terminator:disable_respawn_event_custom\"",
+            "/fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 air replace bedrock",
+            "/fill ~-2 ~ ~-2 ~2 ~3 ~2 air replace barrier",
+            "/summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_custom",
             "/fog @a remove respawn_lore",
             "@s dummy:spawn_terminator",
             "/summon minecraft:lightning_bolt",

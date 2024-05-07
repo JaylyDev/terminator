@@ -9,3 +9,4 @@ replaceitem entity @e[type=entity:terminator,r=5] slot.armor.legs 0 diamond_legg
 replaceitem entity @e[type=entity:terminator,r=5] slot.armor.feet 0 diamond_boots
 replaceitem entity @e[type=entity:terminator,r=5] slot.weapon.mainhand 0 diamond_sword
 replaceitem entity @e[type=entity:terminator,r=5] slot.weapon.offhand 0 shield
+tellraw @s {{"rawtext":[{{"text":"[§cDeprecated§r] This command will be removed and replaced by UI form soon."}}]}}

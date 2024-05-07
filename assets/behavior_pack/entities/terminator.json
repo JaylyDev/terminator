@@ -14,18 +14,14 @@
           "terminator.is_sitting",
           "terminator.shield",
           "terminator.build.forward",
-          "terminator.build.vertical",
-          "terminator.break",
-          "terminator.break.backup"
+          "terminator.build.vertical"
         ]
       },
       "animations": {
         "terminator.is_sitting": "controller.animation.terminator.is_sitting",
         "terminator.shield": "controller.animation.terminator.shield",
         "terminator.build.forward": "controller.animation.terminator.build.forward",
-        "terminator.build.vertical": "controller.animation.terminator.build.vertical",
-        "terminator.break": "controller.animation.terminator.break_blocks.v2",
-        "terminator.break.backup": "controller.animation.terminator.break_blocks_backup"
+        "terminator.build.vertical": "controller.animation.terminator.build.vertical"
       },
       "properties": {
         "terminator:is_sitting": {
@@ -1703,7 +1699,7 @@
         "value": [0.323775, 0.4209]
       },
       "minecraft:underwater_movement": {
-        // According to https://minecraft.fandom.com/wiki/Swimming#Usage:
+        // According to https://minecraft.wiki/w/Swimming#Usage:
         // When swimming on the surface of still water, the player moves at 2.20 blocks per second (2.2 * 0.075 = 0.165)
         // If the player is partially submerged in water, the player moves at 1.97 blocks per second (1.97 * 0.075 = 0.14775)
         "value": 0.14775
@@ -2603,10 +2599,9 @@
           { "item": "cooked_beef", "heal_amount": 8 },
           { "item": "sweet_berries", "heal_amount": 2 },
           { "item": "tropical_fish", "heal_amount": 1 }
-        ] // credit: https://minecraft.fandom.com/wiki/Food#Foods
+        ] // credit: https://minecraft.wiki/w/Food#Foods
       },
-      "minecraft:scaffolding_climber": {}, // compatible for Minecraft v1.17.10.21 or below
-      "minecraft:block_climber": {}, // compatible for Minecraft v1.17.10.22 or above
+      "minecraft:block_climber": {},
       "minecraft:environment_sensor": {
         "triggers": [
           {
@@ -2848,7 +2843,7 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:dummy ~ ~ ~ dummy:request_spawning_steve",
+                "summon entity:dummy ~ ~ ~ ~ ~ dummy:request_spawning_steve",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -2885,7 +2880,7 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:dummy ~ ~ ~ dummy:request_spawning_alex",
+                "summon entity:dummy ~ ~ ~ ~ ~ dummy:request_spawning_alex",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -2917,7 +2912,7 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:dummy ~ ~ ~ dummy:request_spawning_custom",
+                "summon entity:dummy ~ ~ ~ ~ ~ dummy:request_spawning_custom",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -2956,7 +2951,7 @@
               "command": [
                 // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_steve"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_steve"
               ]
             }
           },
@@ -2993,7 +2988,7 @@
               "command": [
                 // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_alex"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_alex"
               ]
             }
           },
@@ -3024,7 +3019,7 @@
             "queue_command": {
               "command": [
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:disable_respawn_event_custom"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:disable_respawn_event_custom"
               ]
             }
           },
@@ -3059,7 +3054,7 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_steve",
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_steve",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -3096,7 +3091,7 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_alex",
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_alex",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -3128,8 +3123,8 @@
             },
             "queue_command": {
               "command": [
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_custom",
-                "summon entity:dummy ~ ~ ~ dummy:request_spawning_custom",
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_custom",
+                "summon entity:dummy ~ ~ ~ ~ ~ dummy:request_spawning_custom",
                 "fog @a remove respawn_lore",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}"
               ]
@@ -3168,7 +3163,7 @@
               "command": [
                 // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_steve"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_steve"
               ]
             }
           },
@@ -3205,7 +3200,7 @@
               "command": [
                 // "event entity @s death_message:all",
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_alex"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_alex"
               ]
             }
           },
@@ -3236,7 +3231,7 @@
             "queue_command": {
               "command": [
                 "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] terminator:respawn\"}]}",
-                "summon entity:terminator ~ ~ ~ terminator:spawn_disable_respawn_custom"
+                "summon entity:terminator ~ ~ ~ ~ ~ terminator:spawn_disable_respawn_custom"
               ]
             }
           },
@@ -3259,14 +3254,6 @@
           }
         ]
       },
-      "terminator:enable_dev_mode_death_detect_no_respawn": {
-        "add": {
-          "component_groups": ["terminator:dev_death_detect"]
-        },
-        "queue_command": {
-          "command": ["tag @s add terminatordeathrequest"]
-        }
-      },
       "terminator:escape": {
         "add": {
           "component_groups": ["terminator:find_path"]
@@ -3278,7 +3265,7 @@
           ]
         },
         "queue_command": {
-          "command": ["summon entity:dummy ~ ~ ~ dummy:request_pathfind"]
+          "command": ["summon entity:dummy ~ ~ ~ ~ ~ dummy:request_pathfind"]
         }
       },
       "terminator:remove_escape": {
@@ -3608,7 +3595,7 @@
         },
         "queue_command": {
           "command": [
-            "fill ~-1 ~ ~ ~ ~2 ~ air 0 destroy",
+            "fill ~-1 ~ ~ ~ ~2 ~ air destroy",
             "setblock ~ ~-1 ~ obsidian",
             "playsound use.stone @a ~ ~ ~",
             "setblock ~-1~-1~ obsidian",
@@ -3686,17 +3673,11 @@
       "terminator:enable_break_blocks": {
         "add": {
           "component_groups": ["terminator:break_blocks.v2"]
-        },
-        "queue_command": {
-          "command": ["tag @s remove enabledterminatorbreakblocksbackup"]
         }
       },
       "terminator:disable_break_blocks": {
         "remove": {
           "component_groups": ["terminator:break_blocks.v2"]
-        },
-        "queue_command": {
-          "command": ["tag @s add enabledterminatorbreakblocksbackup"]
         }
       },
       "terminator:check_test:minecraft:break_blocks": {
@@ -4879,13 +4860,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
               ]
             }
           },
@@ -4902,13 +4883,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}}]}"
               ]
             }
           },
@@ -8361,13 +8342,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
               ]
             }
           },
@@ -8384,13 +8365,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.mob\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}}]}"
               ]
             }
           },
@@ -12148,13 +12129,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
               ]
             }
           },
@@ -12171,13 +12152,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.arrow\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}}]}"
               ]
             }
           },
@@ -15690,13 +15671,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}},{\"translate\":\"message.entity.respawn.generic\"}]}"
               ]
             }
           },
@@ -15713,13 +15694,13 @@
                   "test": "is_family",
                   "subject": "other",
                   "operator": "==",
-                  "value": "glow_squid"
+                  "value": "squid"
                 }
               ]
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.glow_squid.name\"}]}}]}"
+                "tellraw @a {\"rawtext\":[{\"translate\":\"death.attack.thorns\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"},{\"translate\":\"entity.squid.name\"}]}}]}"
               ]
             }
           },
