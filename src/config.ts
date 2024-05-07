@@ -1,3 +1,4 @@
+import { Vector3 } from "@minecraft/server";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
 /**
@@ -19,3 +20,5 @@ export const UnbreakableBlocks: MinecraftBlockTypes[] = [
   MinecraftBlockTypes.FlowingWater,
   MinecraftBlockTypes.Air,
 ];
+
+export const PlayerJumpImpulse: Vector3 = { x: 0, y: 0.5, z: 0 };

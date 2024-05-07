@@ -9,7 +9,7 @@ import {
   MinecraftBlockTypes,
   MinecraftEntityTypes,
 } from "@minecraft/vanilla-data";
-import { UnbreakableBlocks } from "../config";
+import { PlayerJumpImpulse, UnbreakableBlocks } from "../config";
 
 export enum TerminatorBuildVerticallyDirection {
   Up = "terminator:vertical_up",
@@ -59,7 +59,7 @@ system.afterEvents.scriptEventReceive.subscribe(
 
     if (playersWithinRange.length <= 0 || !dummiesWithinRange) return;
     if (event.id === TerminatorBuildVerticallyDirection.Up) {
-      terminator.applyImpulse({ x: 0, y: 0.5, z: 0 });
+      terminator.applyImpulse(PlayerJumpImpulse);
 
       system.runTimeout(() => {
         const block = terminator.dimension
