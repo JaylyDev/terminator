@@ -11,15 +11,21 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          { "dummy.escape_pathfind": "q.mark_variant == 2" },
+          { "dummy.escape_pathfind": "q.property('dummy:task_type') == 1" },
           {
-            "dummy.spawn_terminator": "q.mark_variant == 1 || q.mark_variant == 3 || q.mark_variant == 4"
+            "dummy.spawn_terminator": "q.property('dummy:task_type') == 0 || q.property('dummy:task_type') == 2 || q.property('dummy:task_type') == 3"
           }
         ]
       },
       "animations": {
         "dummy.escape_pathfind": "controller.animation.dummy.escape_pathfind",
         "dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
+      },
+      "properties": {
+        "dummy:task_type": {
+          "range": [0, 3],
+          "type": "int"
+        }
       }
     },
     "component_groups": {
@@ -68,26 +74,6 @@
           "breaks_blocks": true,
           "fire_affected_by_griefing": false,
           "max_resistance": 3.40282e38
-        }
-      },
-      "dummy:spawning_variant_steve": {
-        "minecraft:mark_variant": {
-          "value": 1
-        }
-      },
-      "dummy:pathfinding_variant": {
-        "minecraft:mark_variant": {
-          "value": 2
-        }
-      },
-      "dummy:spawning_variant_alex": {
-        "minecraft:mark_variant": {
-          "value": 3
-        }
-      },
-      "dummy:spawning_variant_custom": {
-        "minecraft:mark_variant": {
-          "value": 4
         }
       },
       "dummy:detect_terminator": {
@@ -176,23 +162,23 @@
         }
       },
       "dummy:request_spawning_steve": {
-        "add": {
-          "component_groups": ["dummy:spawning_variant_steve"]
-        }
-      },
-      "dummy:request_spawning_alex": {
-        "add": {
-          "component_groups": ["dummy:spawning_variant_alex"]
-        }
-      },
-      "dummy:request_spawning_custom": {
-        "add": {
-          "component_groups": ["dummy:spawning_variant_custom"]
+        "set_property": {
+          "dummy:task_type": 0
         }
       },
       "dummy:request_pathfind": {
-        "add": {
-          "component_groups": ["dummy:pathfinding_variant"]
+        "set_property": {
+          "dummy:task_type": 1
+        }
+      },
+      "dummy:request_spawning_alex": {
+        "set_property": {
+          "dummy:task_type": 2
+        }
+      },
+      "dummy:request_spawning_custom": {
+        "set_property": {
+          "dummy:task_type": 3
         }
       },
       "dummy:create_terminator_target": {

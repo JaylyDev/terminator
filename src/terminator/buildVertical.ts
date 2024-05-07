@@ -5,10 +5,7 @@ import {
   Vector3,
   system,
 } from "@minecraft/server";
-import {
-  MinecraftBlockTypes,
-  MinecraftEntityTypes,
-} from "@minecraft/vanilla-data";
+import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 import { PlayerJumpImpulse, UnbreakableBlocks } from "../config";
 
 export enum TerminatorBuildVerticallyDirection {
@@ -44,7 +41,6 @@ system.afterEvents.scriptEventReceive.subscribe(
     to.y = 320;
     const playersWithinRange = terminator.dimension
       .getPlayers({
-        type: MinecraftEntityTypes.Player,
         location: terminator.location,
         minDistance: 0,
       })
@@ -57,8 +53,15 @@ system.afterEvents.scriptEventReceive.subscribe(
       })
       .some((dummy) => BlockVolumeIsInside(dummy.location, from, to));
 
-    if (playersWithinRange.length <= 0 || !dummiesWithinRange) return;
+    if (playersWithinRange.length <= 0 && !dummiesWithinRange) return;
     if (event.id === TerminatorBuildVerticallyDirection.Up) {
+      const blockAbove = terminator.dimension
+        .getBlock(terminator.location)
+        .above(2);
+      if (!UnbreakableBlocks.some((id) => blockAbove.permutation.matches(id)))
+        blockAbove.setPermutation(
+          BlockPermutation.resolve(MinecraftBlockTypes.Air)
+        );
       terminator.applyImpulse(PlayerJumpImpulse);
 
       system.runTimeout(() => {
