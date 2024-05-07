@@ -4,4 +4,4 @@
 
 summon entity:terminator ~ ~ ~ ~ ~ terminator:enable_invulnerable "Terminator"
 tellraw @s {"rawtext":[{"text": "§cTerminator successfully summoned"}]}
-tellraw @s {"rawtext":[{{"text":"[§cDeprecated§r] This command will be removed and replaced by UI form soon."}}]}
+tellraw @s {"rawtext":[{"text":"[§cDeprecated§r] This command will be removed and replaced by UI form soon."}]}

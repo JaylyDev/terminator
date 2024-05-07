@@ -1,76 +1,430 @@
-import { Entity, ItemStack, RawText } from "@minecraft/server";
-import { DeathAttackMessage } from "./languageKeys";
+import {
+  Entity,
+  EntityEquippableComponent,
+  EntityInventoryComponent,
+  EquipmentSlot,
+  ItemStack,
+  Player,
+  RawMessage,
+} from "@minecraft/server";
+import { DeathAttackMessage, DeathFellMessage } from "./languageKeys";
 
-// death.attack.anvil=%1$s was squashed by a falling anvil
-// death.attack.arrow=%1$s was shot by %2$s
-// death.attack.arrow.item=%1$s was shot by %2$s using %3$s
-// death.attack.bullet=%1$s was sniped by %2$s
-// death.attack.cactus=%1$s was pricked to death
-// death.attack.cactus.player=%1$s walked into a cactus whilst trying to escape %2$s
-// death.attack.drown=%1$s drowned
-// death.attack.drown.player=%1$s drowned whilst trying to escape %2$s
-// death.attack.explosion=%1$s blew up
-// death.attack.explosion.by.bed=%1$s was killed by [Intentional Game Design]
-// death.attack.explosion.player=%1$s was blown up by %2$s
-// death.attack.fall=%1$s hit the ground too hard
-// death.attack.fallingBlock=%1$s was squashed by a falling block
-// death.attack.fireball=%1$s was fireballed by %2$s
-// death.attack.fireball.item=%1$s was fireballed by %2$s using %3$s
-// death.attack.fireworks=%1$s went off with a bang
-// death.attack.flyIntoWall=%1$s experienced kinetic energy
-// death.attack.generic=%1$s died
-// death.attack.indirectMagic=%1$s was killed by %2$s using magic
-// death.attack.indirectMagic.item=%1$s was killed by %2$s using %3$s
-// death.attack.inFire=%1$s went up in flames
-// death.attack.inFire.player=%1$s walked into fire whilst fighting %2$s
-// death.attack.inWall=%1$s suffocated in a wall
-// death.attack.lava=%1$s tried to swim in lava
-// death.attack.lava.player=%1$s tried to swim in lava to escape %2$s
-// death.attack.lightningBolt=%1$s was struck by lightning
-// death.attack.magic=%1$s was killed by magic
-// death.attack.magma=%1$s discovered the floor was lava
-// death.attack.magma.player=%1$s walked on danger zone due to %2$s
-// death.attack.mob=%1$s was slain by %2$s
-// death.attack.mob.item=%1$s was slain by %2$s using %3$s
-// death.attack.onFire=%1$s burned to death
-// death.attack.onFire.player=%1$s was burnt to a crisp whilst fighting %2$s
-// death.attack.outOfWorld=%1$s fell out of the world
-// death.attack.player=%1$s was slain by %2$s
-// death.attack.player.item=%1$s was slain by %2$s using %3$s
-// death.attack.spit=%1$s was spitballed by %2$s
-// death.attack.starve=%1$s starved to death
-// death.attack.sweetBerry=%1$s was poked to death by a sweet berry bush
-// death.attack.thorns=%1$s was killed trying to hurt %2$s
-// death.attack.thrown=%1$s was pummeled by %2$s
-// death.attack.thrown.item=%1$s was pummeled by %2$s using %3$s
-// death.attack.trident=%1$s was impaled to death by %2$s
-// death.attack.wither=%1$s withered away
-// death.attack.freeze=%1$s froze to death
-// death.attack.sonicBoom=%1$s was obliterated by a sonically-charged shriek
-// death.attack.sonicBoom.player=%1$s was obliterated by a sonically-charged shriek whilst trying to escape %2$s
-// death.attack.stalactite=%1$s was skewered by a falling stalactite
-// death.attack.stalagmite=%1$s was impaled on a stalagmite
-// death.fell.accident.generic=%1$s fell from a high place
-// death.fell.accident.ladder=%1$s fell off a ladder
-// death.fell.accident.vines=%1$s fell off some vines
-// death.fell.accident.water=%1$s fell out of the water
-// death.fell.assist=%1$s was doomed to fall by %2$s
-// death.fell.assist.item=%1$s was doomed to fall by %2$s using %3$s
-// death.fell.finish=%1$s fell too far and was finished by %2$s
-// death.fell.finish.item=%1$s fell too far and was finished by %2$s using %3$s
-// death.fell.killer=%1$s was doomed to fall
+function rawMessageTranslator(
+  deadEntity: Entity,
+  damagingEntity?: Entity,
+  damagingItem?: ItemStack
+): RawMessage {
+  const ids: string[] = [
+    `entity.${deadEntity.typeId.replace("minecraft:", "")}.name`,
+  ];
+  if (damagingEntity)
+    ids.push(`entity.${damagingEntity.typeId.replace("minecraft:", "")}.name`);
+  if (damagingItem)
+    ids.push(`item.${damagingItem.typeId.replace("minecraft:", "")}.name`);
+  return {
+    with: {
+      rawtext: ids.map((id) => ({
+        translate: id,
+      })),
+    },
+  };
+}
 
 export class DeathMessageRawText {
-  constructor(
-    public deadEntity: Entity,
-    public damagingEntity: Entity,
-    public damagingItem: ItemStack
-  ) {}
-  attackAnvil(): RawText {
+  public damagingItem?: ItemStack;
+
+  constructor(public deadEntity: Entity, public damagingEntity?: Entity) {
+    // Get the item damaging entity is holding when killing the entity
+    if (damagingEntity instanceof Player) {
+      const equippable = damagingEntity.getComponent(
+        EntityEquippableComponent.componentId
+      ) as EntityEquippableComponent;
+      this.damagingItem = equippable.getEquipment(EquipmentSlot.Mainhand);
+    } else if (damagingEntity instanceof Entity) {
+      const inventory = damagingEntity.getComponent(
+        EntityInventoryComponent.componentId
+      ) as EntityInventoryComponent;
+      this.damagingItem = inventory.container.getItem(0);
+    }
+  }
+  attackAnvil(): RawMessage {
     return {
-      rawtext: [
-        { translate: DeathAttackMessage.anvil, with: [this.deadEntity.typeId] },
-      ],
+      translate: DeathAttackMessage.anvil,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackArrow(): RawMessage {
+    return {
+      translate: DeathAttackMessage.arrow,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackArrowItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.arrowItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackBullet(): RawMessage {
+    return {
+      translate: DeathAttackMessage.bullet,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackCactus(): RawMessage {
+    return {
+      translate: DeathAttackMessage.cactus,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackCactusPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.cactusPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackDrown(): RawMessage {
+    return {
+      translate: DeathAttackMessage.drown,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackDrownPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.drownPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackExplosion(): RawMessage {
+    return {
+      translate: DeathAttackMessage.explosion,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackExplosionByBed(): RawMessage {
+    return {
+      translate: DeathAttackMessage.explosionByBed,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackExplosionPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.explosionPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackFall(): RawMessage {
+    return {
+      translate: DeathAttackMessage.fall,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackFallingBlock(): RawMessage {
+    return {
+      translate: DeathAttackMessage.fallingBlock,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackFireball(): RawMessage {
+    return {
+      translate: DeathAttackMessage.fireball,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackFireballItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.fireballItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackFireworks(): RawMessage {
+    return {
+      translate: DeathAttackMessage.fireworks,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackFlyIntoWall(): RawMessage {
+    return {
+      translate: DeathAttackMessage.flyIntoWall,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackGeneric(): RawMessage {
+    return {
+      translate: DeathAttackMessage.generic,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackIndirectMagic(): RawMessage {
+    return {
+      translate: DeathAttackMessage.indirectMagic,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackIndirectMagicItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.indirectMagicItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackInFire(): RawMessage {
+    return {
+      translate: DeathAttackMessage.inFire,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackInFirePlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.inFirePlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackInWall(): RawMessage {
+    return {
+      translate: DeathAttackMessage.inWall,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackLava(): RawMessage {
+    return {
+      translate: DeathAttackMessage.lava,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackLavaPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.lavaPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackLightningBolt(): RawMessage {
+    return {
+      translate: DeathAttackMessage.lightningBolt,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackMagic(): RawMessage {
+    return {
+      translate: DeathAttackMessage.magic,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackMagma(): RawMessage {
+    return {
+      translate: DeathAttackMessage.magma,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackMagmaPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.magmaPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackMob(): RawMessage {
+    return {
+      translate: DeathAttackMessage.mob,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackMobItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.mobItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackOnFire(): RawMessage {
+    return {
+      translate: DeathAttackMessage.onFire,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackOnFirePlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.onFirePlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackOutOfWorld(): RawMessage {
+    return {
+      translate: DeathAttackMessage.outOfWorld,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.player,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackPlayerItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.playerItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackSpit(): RawMessage {
+    return {
+      translate: DeathAttackMessage.spit,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackStarve(): RawMessage {
+    return {
+      translate: DeathAttackMessage.starve,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackSweetBerry(): RawMessage {
+    return {
+      translate: DeathAttackMessage.sweetBerry,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackThorns(): RawMessage {
+    return {
+      translate: DeathAttackMessage.thorns,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackThrown(): RawMessage {
+    return {
+      translate: DeathAttackMessage.thrown,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackThrownItem(): RawMessage {
+    return {
+      translate: DeathAttackMessage.thrownItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  attackTrident(): RawMessage {
+    return {
+      translate: DeathAttackMessage.trident,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackWither(): RawMessage {
+    return {
+      translate: DeathAttackMessage.wither,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackFreeze(): RawMessage {
+    return {
+      translate: DeathAttackMessage.freeze,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackSonicBoom(): RawMessage {
+    return {
+      translate: DeathAttackMessage.sonicBoom,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackSonicBoomPlayer(): RawMessage {
+    return {
+      translate: DeathAttackMessage.sonicBoomPlayer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  attackStalactite(): RawMessage {
+    return {
+      translate: DeathAttackMessage.stalactite,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  attackStalagmite(): RawMessage {
+    return {
+      translate: DeathAttackMessage.stalagmite,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  fellAccidentGeneric(): RawMessage {
+    return {
+      translate: DeathFellMessage.accidentGeneric,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  fellAccidentLadder(): RawMessage {
+    return {
+      translate: DeathFellMessage.accidentLadder,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  fellAccidentVines(): RawMessage {
+    return {
+      translate: DeathFellMessage.accidentVines,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  fellAccidentWater(): RawMessage {
+    return {
+      translate: DeathFellMessage.accidentWater,
+      with: rawMessageTranslator(this.deadEntity),
+    };
+  }
+  fellAssist(): RawMessage {
+    return {
+      translate: DeathFellMessage.assist,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  fellAssistItem(): RawMessage {
+    return {
+      translate: DeathFellMessage.assistItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  fellFinish(): RawMessage {
+    return {
+      translate: DeathFellMessage.finish,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+    };
+  }
+  fellFinishItem(): RawMessage {
+    return {
+      translate: DeathFellMessage.finishItem,
+      with: rawMessageTranslator(
+        this.deadEntity,
+        this.damagingEntity,
+        this.damagingItem
+      ),
+    };
+  }
+  fellKiller(): RawMessage {
+    return {
+      translate: DeathFellMessage.killer,
+      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
     };
   }
 }
