@@ -15,11 +15,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      #    - name: Install dependencies
+
+      - name: Install Dependencies
+        run: |
+          npm install typescript -g
+          npm install
 
       - name: Compile 💻
-        working-directory: ./resources
-        run: ./ModifyJSON.bat
+        run: |
+          tsc --noEmit
+          npm run build
 
   json-validation:
     runs-on: ubuntu-latest

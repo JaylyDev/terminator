@@ -1,5 +1,0 @@
-message.entity.respawn.generic=, men de respawned!
-entity.entity:terminator<>.name=Terminator
-entity.entity:dummy.name=Dummy.
-entity.entity:terminator.name=Terminator
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator.

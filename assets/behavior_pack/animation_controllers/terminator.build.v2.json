@@ -1,0 +1,116 @@
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
+
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.terminator.build.forward": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [{ "running_state": "(1.0)" }],
+          "on_entry": [
+            /*********************************
+            +*       north = yRot(180)       *
+            +*        east = yRot(270)       *
+            +*       south = yRot(0)         *
+            +*        west = yRot(90)        *
+            +********************************/
+            "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 135;"
+          ]
+        },
+        "running_state": {
+          "transitions": [
+            {
+              "forward.north": "(q.head_y_rotation(0) >= (v.direction_north - 33)) && (q.head_y_rotation(0) <= (v.direction_north + 33)) && q.has_target"
+            },
+            {
+              "forward.east": "(q.head_y_rotation(0) >= (v.direction_east - 33)) && (q.head_y_rotation(0) <= (v.direction_east + 33)) && q.has_target"
+            },
+            {
+              "forward.south": "(q.head_y_rotation(0) >= (v.direction_south - 33)) && (q.head_y_rotation(0) <= (v.direction_south + 33)) && q.has_target"
+            },
+            {
+              "forward.west": "(q.head_y_rotation(0) >= (v.direction_west - 33)) && (q.head_y_rotation(0) <= (v.direction_west + 33)) && q.has_target"
+            },
+            {
+              "forward.northeast": "(q.head_y_rotation(0) >= (v.direction_northeast - 11)) && (q.head_y_rotation(0) <= (v.direction_northeast + 11)) && q.has_target"
+            },
+            {
+              "forward.southeast": "(q.head_y_rotation(0) >= (v.direction_southeast - 11)) && (q.head_y_rotation(0) <= (v.direction_southeast + 11)) && q.has_target"
+            },
+            {
+              "forward.southwest": "(q.head_y_rotation(0) >= (v.direction_southwest - 11)) && (q.head_y_rotation(0) <= (v.direction_southwest + 11)) && q.has_target"
+            },
+            {
+              "forward.northwest": "(q.head_y_rotation(0) >= (v.direction_northwest - 11)) && (q.head_y_rotation(0) <= (v.direction_northwest + 11)) && q.has_target"
+            }
+          ],
+          "on_entry": [
+            "v.direction_north = 180; v.direction_northeast = 225; v.direction_east = 270; v.direction_southeast = 315; v.direction_south = 0; v.direction_southwest = 45; v.direction_west = 90; v.direction_northwest = 135;"
+          ]
+        },
+        "forward.north": {
+          // yRot(147, 213),  z -= 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_north"]
+        },
+        "forward.northeast": {
+          // yRot(214, 236), z -= 1 && x += 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_northeast"]
+        },
+        "forward.east": {
+          // yRot(237, 303), x += 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_east"]
+        },
+        "forward.southeast": {
+          // yRot(237, 303), x += 1 && z += 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_southeast"]
+        },
+        "forward.south": {
+          // yRot(-33, 33), z += 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_south"]
+        },
+        "forward.southwest": {
+          // yRot(-33, 33), z += 1 && x -= 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_southwest"]
+        },
+        "forward.west": {
+          // yRot(67, 123), x -= 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_west"]
+        },
+        "forward.northwest": {
+          // yRot(-33, 33), z -= 1 && x -= 1
+          "transitions": [{ "default_state": "q.is_alive" }],
+          "on_entry": ["/scriptevent terminator:forward_northwest"]
+        }
+      }
+    },
+    "controller.animation.terminator.build.vertical": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": { "transitions": [{ "running_state": "(1.0)" }] },
+        "running_state": {
+          "transitions": [
+            { "vertical.up": "q.has_target && q.head_x_rotation(0) < -20" },
+            { "vertical.down": "q.has_target && q.head_x_rotation(0) > 20" }
+          ]
+        },
+        "vertical.up": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:vertical_up"]
+        },
+        "vertical.down": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:vertical_down"]
+        }
+      }
+    }
+  }
+}

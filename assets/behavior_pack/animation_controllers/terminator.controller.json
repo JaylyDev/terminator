@@ -1,0 +1,88 @@
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
+
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.terminator.is_sitting": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            {
+              "sitting_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            },
+            {
+              "non_sitting_state": "!(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            }
+          ]
+        },
+        "sitting_state": {
+          "on_entry": ["@s terminator:set_sitting_enabled"],
+          "transitions": [
+            {
+              "non_sitting_state": "!(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            }
+          ]
+        },
+        "non_sitting_state": {
+          "on_entry": ["@s terminator:set_sitting_disabled"],
+          "transitions": [
+            {
+              "sitting_state": "(q.is_sitting > 0.0 || q.is_riding > 0.0 || q.sit_amount > 0.0)"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.terminator.shield": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            {
+              "running_state": "q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
+            },
+            { "default_state": "(1.0)" }
+          ],
+          "on_entry": [
+            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.shield/detect_state\"}]}"
+          ],
+          "on_exit": ["v.shield_cooldown = 5; v.shield_time = q.time_stamp;"]
+        },
+        "running_state": {
+          "transitions": [
+            {
+              "default_state": "!q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
+            },
+            {
+              "activate_shield": "q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time == 0.0"
+            }
+          ]
+        },
+        "activate_shield": {
+          "transitions": [
+            {
+              "default_state": "!q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
+            },
+            {
+              "deactivate_shield": "(q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time > 0.0) || (q.property('terminator:is_using_shield') && q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield'))"
+            }
+          ],
+          "on_entry": ["@s terminator:activate_shield"]
+        },
+        "deactivate_shield": {
+          "transitions": [
+            {
+              "default_state": "(q.time_stamp - v.shield_time) > v.shield_cooldown"
+            }
+          ],
+          "on_entry": [
+            "v.shield_cooldown = 5; v.shield_time = q.time_stamp;",
+            "@s terminator:deactivate_shield"
+          ]
+        }
+      }
+    }
+  }
+}

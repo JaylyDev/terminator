@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
     "module": "es2020",
-    "target": "es2020",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noImplicitAny": true
+    "target": "es2021",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "outDir": "./assets/behavior_pack/scripts",
+    "moduleResolution": "node"
   },
-  "include": ["./data/behavior_pack/scripts/**/*.js"]
+  "include": ["src"]
 }

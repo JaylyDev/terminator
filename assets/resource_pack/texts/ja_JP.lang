@@ -1,0 +1,8 @@
+message.entity.respawn.generic=しかし、彼らは再現しました！
+item.spawn_egg.entity.entity:terminator.name=スポーンターミネーター
+entity.player.name=プレーヤー
+entity.entity:terminator<>.name=ターミネーター
+entity.entity:dummy.name=ダミー
+entity.entity:terminator.name=ターミネーター
+pack.name=ターミネーター [リソースパック]
+pack.description=ゲームに勝つのを妨げるロボット。 Jayly によって作成されました - https://jaylydev.github.io/posts/terminator/

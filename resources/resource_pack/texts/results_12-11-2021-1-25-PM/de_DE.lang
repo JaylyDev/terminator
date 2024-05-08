@@ -1,5 +1,0 @@
-entity.entity:dummy.name=Ficticio
-entity.entity:terminator.name=Terminator
-item.spawn_egg.entity.entity:terminator.name=Terminador de engendro
-entity.entity:terminator<>.name=Terminator
-message.entity.respawn.generic=, ¡pero reescribieron!

@@ -1,5 +1,0 @@
-entity.entity:dummy.name=Манекен
-entity.entity:terminator.name=Термінатор
-message.entity.respawn.generic=, але вони відродилися!
-item.spawn_egg.entity.entity:terminator.name=Термінатор Spawn
-entity.entity:terminator<>.name=Термінатор

@@ -1,0 +1,28 @@
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
+
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.terminator": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.steve",
+            "Texture.alex",
+            "Texture.steve_xmas",
+            "Texture.alex_xmas",
+            "Texture.custom",
+            "Texture.customSlim"
+          ]
+        },
+        "geometries": {
+          "Array.geos": ["Geometry.default", "Geometry.slim"]
+        }
+      },
+      "geometry": "((query.variant == 0) || (query.variant == 2) || (query.variant == 4)) ? Array.geos[0] : Array.geos[1]",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.skins[query.variant]"]
+    }
+  }
+}

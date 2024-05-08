@@ -1,0 +1,8 @@
+entity.entity:dummy.name=Manichino
+message.entity.respawn.generic=, ma sono ripawn!
+entity.player.name=Giocatore
+entity.entity:terminator.name=Terminator.
+entity.entity:terminator<>.name=Terminator.
+item.spawn_egg.entity.entity:terminator.name=Terminator di spawn.
+pack.name=Terminator [Pacchetto risorse]
+pack.description=Un robot che ti impedisce di finire il gioco. Realizzato da Jayly - https://jaylydev.github.io/posts/terminator/

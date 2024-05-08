@@ -1,0 +1,51 @@
+// Copyright (c) JaylyMC.
+// Licensed under the GPL-3.0 License.
+{
+  "format_version": 2,
+  "header": {
+    "name": "pack.name",
+    "description": "pack.description",
+    "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
+    "version": [2, 0, 0],
+    "min_engine_version": [1, 20, 70]
+  },
+  "modules": [
+    {
+      "description": "pack.description",
+      "type": "data",
+      "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
+      "version": [2, 0, 0]
+    },
+    {
+      "description": "",
+      "uuid": "239c134f-67bf-4738-9bcc-8c69d31b1f72",
+      "version": [1, 0, 0],
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      // Terminator resource pack
+      "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
+      "version": [2, 0, 0]
+    },
+    {
+      // Minecraft native module - needed to use the "@minecraft/server" module
+      "module_name": "@minecraft/server",
+      "version": "1.9.0"
+    },
+    {
+      // Minecraft UI native module - needed to use the "@minecraft/server-ui" module
+      "module_name": "@minecraft/server-ui",
+      "version": "1.1.0"
+    }
+  ],
+  "metadata": {
+    "product_type": "addon",
+    "authors": ["JaylyMC"],
+    "license": "LICENSE.txt",
+    "url": "https://jaylydev.github.io/posts/terminator/"
+  }
+}

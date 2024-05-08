@@ -1,5 +1,0 @@
-entity.entity:terminator.name=Terminator.
-item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.
-entity.entity:terminator<>.name=Terminator.
-entity.entity:dummy.name=Atrapa
-message.entity.respawn.generic=, ale odprowadzali!
