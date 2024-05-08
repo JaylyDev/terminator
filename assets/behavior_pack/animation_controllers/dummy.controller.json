@@ -89,13 +89,13 @@
         "execute6": {
           "transitions": [
             {
-              "execute7_steve": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 0"
+              "execute7_steve": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 1"
             },
             {
-              "execute7_alex": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 2"
+              "execute7_alex": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 3"
             },
             {
-              "execute7_custom": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 3"
+              "execute7_custom": "((q.time_stamp - v.dummy_time) >= v.dummy_duration) && q.property('dummy:task_type') == 4"
             }
           ],
           "on_entry": ["v.dummy_time = q.time_stamp; v.dummy_duration = 100;"],

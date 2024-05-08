@@ -2,7 +2,7 @@
 // Licensed under the GPL-3.0 License.
 
 {
-  "format_version": "1.20.80",
+  "format_version": "1.20.70",
   "minecraft:entity": {
     "description": {
       "identifier": "entity:dummy",
@@ -11,9 +11,9 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          { "dummy.escape_pathfind": "q.property('dummy:task_type') == 1" },
+          { "dummy.escape_pathfind": "q.property('dummy:task_type') == 2" },
           {
-            "dummy.spawn_terminator": "q.property('dummy:task_type') == 0 || q.property('dummy:task_type') == 2 || q.property('dummy:task_type') == 3"
+            "dummy.spawn_terminator": "q.property('dummy:task_type') == 1 || q.property('dummy:task_type') == 3 || q.property('dummy:task_type') == 4"
           }
         ]
       },
@@ -23,8 +23,9 @@
       },
       "properties": {
         "dummy:task_type": {
-          "range": [0, 3],
-          "type": "int"
+          "range": [0, 4],
+          "type": "int",
+          "default": 0
         }
       }
     },
@@ -34,7 +35,6 @@
           "duration": 0.1,
           "attack_time": 0.1,
           "cooldown_time": 0.0,
-          "knockback_strength": 2,
           "knockback_damage": 0,
           "knockback_range": 6,
           "knockback_horizontal_strength": 2,
@@ -78,22 +78,25 @@
       },
       "dummy:detect_terminator": {
         "minecraft:entity_sensor": {
-          "event_filters": {
-            "all_of": [
-              {
-                "test": "is_family",
-                "subject": "other",
-                "operator": "equals",
-                "value": "terminator"
-              }
-            ]
-          },
-          "minimum_count": 1,
-          "maximum_count": 32767,
-          "relative_range": true,
-          "require_all": false,
-          "sensor_range": 5,
-          "event": "dummy:request_despawn"
+          "subsensors": [
+            {
+              "event_filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "equals",
+                    "value": "terminator"
+                  }
+                ]
+              },
+              "minimum_count": 1,
+              "maximum_count": 32767,
+              "range": [10, 10],
+              "require_all": true,
+              "event": "dummy:request_despawn"
+            }
+          ]
         }
       },
       "dummy:despawn": {
@@ -128,18 +131,6 @@
         "width": 0.0001,
         "height": 0.0001
       },
-      "minecraft:environment_sensor": {
-        "triggers": [
-          {
-            "filters": {
-              "test": "has_component",
-              "subject": "self",
-              "value": "minecraft:entity_sensor"
-            },
-            "event": "dummy:sensor_activated"
-          }
-        ]
-      },
       "minecraft:tick_world": {
         "never_despawn": true,
         "radius": 4
@@ -163,22 +154,22 @@
       },
       "dummy:request_spawning_steve": {
         "set_property": {
-          "dummy:task_type": 0
+          "dummy:task_type": 1
         }
       },
       "dummy:request_pathfind": {
         "set_property": {
-          "dummy:task_type": 1
+          "dummy:task_type": 2
         }
       },
       "dummy:request_spawning_alex": {
         "set_property": {
-          "dummy:task_type": 2
+          "dummy:task_type": 3
         }
       },
       "dummy:request_spawning_custom": {
         "set_property": {
-          "dummy:task_type": 3
+          "dummy:task_type": 4
         }
       },
       "dummy:create_terminator_target": {
@@ -196,13 +187,6 @@
         "queue_command": {
           "command": [
             "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
-          ]
-        }
-      },
-      "dummy:sensor_activated": {
-        "queue_command": {
-          "command": [
-            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:sensor_activated\"}]}"
           ]
         }
       }

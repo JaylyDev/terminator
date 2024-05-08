@@ -66,7 +66,7 @@
               "default_state": "!q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield')"
             },
             {
-              "deactivate_shield": "(q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time > 0.0) || (q.mark_variant == 1 && q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield'))"
+              "deactivate_shield": "(q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield') && variable.attack_time > 0.0) || (q.property('terminator:is_using_shield') && q.is_item_name_any('slot.weapon.offhand', 0, 'minecraft:shield'))"
             }
           ],
           "on_entry": ["@s terminator:activate_shield"]

@@ -2,7 +2,7 @@
 // Licensed under the GPL-3.0 License.
 
 {
-  "format_version": "1.20.80",
+  "format_version": "1.20.70",
   "minecraft:entity": {
     "description": {
       "identifier": "entity:terminator",
@@ -26,6 +26,11 @@
       "properties": {
         "terminator:is_sitting": {
           "client_sync": false,
+          "type": "bool",
+          "default": false
+        },
+        "terminator:is_using_shield": {
+          "client_sync": true,
           "type": "bool",
           "default": false
         }
@@ -594,7 +599,12 @@
               "filters": {
                 "all_of": [
                   { "test": "is_family", "subject": "other", "value": "dummy" },
-                  { "test": "is_mark_variant", "subject": "other", "value": 2 }
+                  {
+                    "test": "int_property",
+                    "subject": "other",
+                    "domain": "dummy:task_type",
+                    "value": 2
+                  }
                 ]
               },
               "max_dist": 2048,
@@ -608,18 +618,26 @@
           "speed_multiplier": 1.0
         },
         "minecraft:entity_sensor": {
-          "event_filters": {
-            "all_of": [
-              { "test": "is_family", "subject": "other", "value": "dummy" },
-              { "test": "is_mark_variant", "subject": "other", "value": 2 }
-            ]
-          },
-          "minimum_count": 1,
-          "maximum_count": 32767,
-          "relative_range": true,
-          "require_all": false,
-          "sensor_range": 5,
-          "event": "terminator:remove_escape"
+          "subsensors": [
+            {
+              "event_filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "dummy" },
+                  {
+                    "test": "int_property",
+                    "subject": "other",
+                    "domain": "dummy:task_type",
+                    "value": 2
+                  }
+                ]
+              },
+              "minimum_count": 1,
+              "maximum_count": 32767,
+              "range": [10, 10],
+              "require_all": true,
+              "event": "terminator:remove_escape"
+            }
+          ]
         }
       },
       "terminator:find_end_portal": {
@@ -1029,14 +1047,6 @@
             "event": "terminator:disable_shield",
             "target": "self"
           }
-        },
-        "minecraft:mark_variant": {
-          "value": 1
-        }
-      },
-      "terminator:set_default_varient": {
-        "minecraft:mark_variant": {
-          "value": 0
         }
       },
       "minecraft:crossbow_ranged_unit": {
@@ -2566,7 +2576,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2"
@@ -3078,7 +3087,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
@@ -3093,7 +3101,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
@@ -3108,7 +3115,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
@@ -3140,13 +3146,16 @@
         "queue_command": {
           "command": ["playsound item.shield.block @a ~~~"]
         },
+        "set_property": {
+          "terminator:is_using_shield": true
+        },
         "add": {
           "component_groups": ["shield:on_use"]
         }
       },
       "terminator:disable_shield": {
-        "add": {
-          "component_groups": ["terminator:set_default_varient"]
+        "set_property": {
+          "terminator:is_using_shield": false
         },
         "remove": {
           "component_groups": ["shield:on_use"]
@@ -3658,7 +3667,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
@@ -3685,7 +3693,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
@@ -3712,7 +3719,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:set_default_varient",
             "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",

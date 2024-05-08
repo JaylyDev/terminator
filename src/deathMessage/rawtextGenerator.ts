@@ -22,11 +22,9 @@ function rawMessageTranslator(
   if (damagingItem)
     ids.push(`item.${damagingItem.typeId.replace("minecraft:", "")}.name`);
   return {
-    with: {
-      rawtext: ids.map((id) => ({
-        translate: id,
-      })),
-    },
+    rawtext: ids.map((id) => ({
+      translate: id,
+    })),
   };
 }
 
@@ -43,8 +41,8 @@ export class DeathMessageRawText {
     } else if (damagingEntity instanceof Entity) {
       const inventory = damagingEntity.getComponent(
         EntityInventoryComponent.componentId
-      ) as EntityInventoryComponent;
-      this.damagingItem = inventory.container.getItem(0);
+      ) as EntityInventoryComponent | undefined;
+      if (inventory) this.damagingItem = inventory.container.getItem(0);
     }
   }
   attackAnvil(): RawMessage {

@@ -7,7 +7,7 @@
     "description": "pack.description",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
     "version": [2, 0, 0],
-    "min_engine_version": [1, 20, 80]
+    "min_engine_version": [1, 20, 70]
   },
   "modules": [
     {
@@ -32,11 +32,12 @@
       "version": [2, 0, 0]
     },
     {
-      // Minecraft native module - needed to use the "mojang-minecraft" module
+      // Minecraft native module - needed to use the "@minecraft/server" module
       "module_name": "@minecraft/server",
-      "version": "1.10.0"
+      "version": "1.9.0"
     },
     {
+      // Minecraft UI native module - needed to use the "@minecraft/server-ui" module
       "module_name": "@minecraft/server-ui",
       "version": "1.1.0"
     }
