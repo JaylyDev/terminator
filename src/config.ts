@@ -24,4 +24,4 @@ export const UnbreakableBlocks: MinecraftBlockTypes[] = [
 export const PlayerJumpImpulse: Vector3 = { x: 0, y: 0.5, z: 0 };
 export const PlayerJumpCooldown = TicksPerSecond / 2;
 
-export const debugEnabled = true;
+export const debugEnabled = false;
