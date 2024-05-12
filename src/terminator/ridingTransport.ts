@@ -27,7 +27,10 @@ system.runInterval(() => {
       const rideDuration = Math.floor(Math.random() * 10 + 10) * TicksPerSecond;
 
       rideableCooldown = rideDuration;
-      terminator.setDynamicProperty("rideableCooldown", rideDuration);
+      terminator.setDynamicProperty(
+        "terminator:rideable_cooldown",
+        rideDuration
+      );
     }
     // If the rideable cooldown is 0 and terminator is sitting, then leave the transport they're riding in
     // Note: Rideable component is not released to stable, kill the transport entity
@@ -60,7 +63,10 @@ system.runInterval(() => {
     }
     if (rideableCooldown >= 0) {
       rideableCooldown--;
-      terminator.setDynamicProperty("rideableCooldown", rideableCooldown);
+      terminator.setDynamicProperty(
+        "terminator:rideable_cooldown",
+        rideableCooldown
+      );
     }
   }
 });

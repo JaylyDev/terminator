@@ -6,7 +6,11 @@ import {
   system,
 } from "@minecraft/server";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
-import { PlayerJumpImpulse, UnbreakableBlocks } from "../config";
+import {
+  PlayerJumpCooldown,
+  PlayerJumpImpulse,
+  UnbreakableBlocks,
+} from "../config";
 
 export enum TerminatorBuildVerticallyDirection {
   Up = "terminator:vertical_up",
@@ -35,10 +39,10 @@ system.afterEvents.scriptEventReceive.subscribe(
 
     // Only bridge up or down if player is within 8 x 384 x 8 blocks from terminator
     const from = new Vector3Builder(terminator.location).subtract(size);
-    from.y = -64;
+    from.y = terminator.dimension.heightRange.min;
 
     const to = new Vector3Builder(terminator.location).add(size);
-    to.y = 320;
+    to.y = terminator.dimension.heightRange.max;
     const playersWithinRange = terminator.dimension
       .getPlayers({
         location: terminator.location,
@@ -62,17 +66,29 @@ system.afterEvents.scriptEventReceive.subscribe(
         blockAbove.setPermutation(
           BlockPermutation.resolve(MinecraftBlockTypes.Air)
         );
-      terminator.applyImpulse(PlayerJumpImpulse);
+      const cannotJumpUntil =
+        (terminator.getDynamicProperty(
+          "terminator:cannot_jump_until"
+        ) as number) ?? 0;
 
-      system.runTimeout(() => {
-        const block = terminator.dimension
-          .getBlock(terminator.location)
-          .below();
-        block.setPermutation(buildingBlock);
-        playersWithinRange.forEach((player) =>
-          player.playSound("dig.stone", { location: block.location })
+      if (cannotJumpUntil <= system.currentTick) {
+        terminator.applyImpulse(PlayerJumpImpulse);
+
+        terminator.setDynamicProperty(
+          "terminator:cannot_jump_until",
+          system.currentTick + PlayerJumpCooldown
         );
-      }, 5);
+
+        system.runTimeout(() => {
+          const block = terminator.dimension
+            .getBlock(terminator.location)
+            .below();
+          block.setPermutation(buildingBlock);
+          playersWithinRange.forEach((player) =>
+            player.playSound("dig.stone", { location: block.location })
+          );
+        }, 5);
+      }
     } else if (event.id === TerminatorBuildVerticallyDirection.Down) {
       const block = terminator.dimension.getBlock(terminator.location).below();
       if (UnbreakableBlocks.some((id) => block.permutation.matches(id))) return;

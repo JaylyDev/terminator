@@ -1,4 +1,9 @@
-import { BlockPermutation, ScriptEventSource, system } from "@minecraft/server";
+import {
+  BlockPermutation,
+  ScriptEventSource,
+  system,
+  world,
+} from "@minecraft/server";
 import { Vector3Builder } from "@minecraft/math";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
@@ -42,6 +47,26 @@ export enum TerminatorBuildDirection {
   SouthWest = "terminator:forward_south_west",
   SouthEast = "terminator:forward_south_east",
   NorthWest = "terminator:forward_north_west",
+}
+
+/**
+ * Unfortuantly, Minecraft wasn't implemented well with directions.
+ * Y-rotation varies from -180° (facing due north) to -90° (facing due east) to 0° (facing due south) to +90° (facing due west) to +180° (facing due north again).
+ */
+export enum DirectionDegrees {
+  North = -180,
+  East = -90,
+  South = 0,
+  West = 90,
+  NorthEast = -135,
+  SouthWest = 135,
+  SouthEast = 45,
+  NorthWest = -45,
+}
+
+export enum DegreeRange {
+  Azimuth = 33,
+  Intercardinal = 11,
 }
 
 const bridgeBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
@@ -150,3 +175,80 @@ system.afterEvents.scriptEventReceive.subscribe(
     namespaces: ["terminator"],
   }
 );
+
+/**
+ * Minecraft only allows degree range of [-180, 180] for y-rotation.
+ */
+const fixDegreeY = (degreeY: number) => {
+  if (degreeY > 180) return degreeY - 360;
+  if (degreeY < -180) return degreeY + 360;
+};
+
+system.runInterval(() => {
+  for (const terminator of world
+    .getDimension("overworld")
+    .getEntities({ type: "entity:terminator" })) {
+    const hasTarget = terminator.getProperty(
+      "terminator:has_target"
+    ) as boolean;
+    if (!hasTarget) continue;
+
+    const rotation = terminator.getRotation();
+    // North
+    if (
+      rotation.y >= fixDegreeY(DirectionDegrees.North - DegreeRange.Azimuth) &&
+      rotation.y <= DirectionDegrees.North + DegreeRange.Azimuth
+    )
+      terminator.runCommand(`scriptevent ${TerminatorBuildDirection.North}`);
+    // West
+    else if (
+      rotation.y >= DirectionDegrees.West - DegreeRange.Azimuth &&
+      rotation.y <= DirectionDegrees.West + DegreeRange.Azimuth
+    )
+      terminator.runCommand(`scriptevent ${TerminatorBuildDirection.West}`);
+    // East
+    else if (
+      rotation.y >= DirectionDegrees.East - DegreeRange.Azimuth &&
+      rotation.y <= DirectionDegrees.East + DegreeRange.Azimuth
+    )
+      terminator.runCommand(`scriptevent ${TerminatorBuildDirection.East}`);
+    // South
+    else if (
+      rotation.y >= DirectionDegrees.South - DegreeRange.Azimuth &&
+      rotation.y <= DirectionDegrees.South + DegreeRange.Azimuth
+    )
+      terminator.runCommand(`scriptevent ${TerminatorBuildDirection.South}`);
+    // NorthEast
+    else if (
+      rotation.y >= DirectionDegrees.NorthEast - DegreeRange.Intercardinal &&
+      rotation.y <= DirectionDegrees.NorthEast + DegreeRange.Intercardinal
+    )
+      terminator.runCommand(
+        `scriptevent ${TerminatorBuildDirection.NorthEast}`
+      );
+    // SouthWest
+    else if (
+      rotation.y >= DirectionDegrees.SouthWest - DegreeRange.Intercardinal &&
+      rotation.y <= DirectionDegrees.SouthWest + DegreeRange.Intercardinal
+    )
+      terminator.runCommand(
+        `scriptevent ${TerminatorBuildDirection.SouthWest}`
+      );
+    // SouthEast
+    else if (
+      rotation.y >= DirectionDegrees.SouthEast - DegreeRange.Intercardinal &&
+      rotation.y <= DirectionDegrees.SouthEast + DegreeRange.Intercardinal
+    )
+      terminator.runCommand(
+        `scriptevent ${TerminatorBuildDirection.SouthEast}`
+      );
+    // NorthWest
+    else if (
+      rotation.y >= DirectionDegrees.NorthWest - DegreeRange.Intercardinal &&
+      rotation.y <= DirectionDegrees.NorthWest + DegreeRange.Intercardinal
+    )
+      terminator.runCommand(
+        `scriptevent ${TerminatorBuildDirection.NorthWest}`
+      );
+  }
+});

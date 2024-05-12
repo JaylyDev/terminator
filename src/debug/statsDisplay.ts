@@ -11,31 +11,26 @@ const healthObjective =
 const overworld = world.getDimension("overworld");
 let runId: number | undefined;
 
-system.afterEvents.scriptEventReceive.subscribe(
-  (event) => {
-    if (event.id === "terminator:health_debug" && event.message === "true") {
-      world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, {
-        objective: healthObjective,
+export function onHealthDebug(enabled: boolean) {
+  if (enabled) {
+    world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, {
+      objective: healthObjective,
+    });
+    runId = system.runInterval(() => {
+      const terminators = overworld.getEntities({
+        type: "entity:terminator",
       });
-      runId = system.runInterval(() => {
-        const terminators = overworld.getEntities({
-          type: "entity:terminator",
-        });
-        for (const terminator of terminators) {
-          const health = terminator.getComponent(
-            EntityHealthComponent.componentId
-          ) as EntityHealthComponent;
-          healthObjective.setScore(terminator, health.currentValue);
-        }
-      });
-    } else if (
-      event.id === "terminator:health_debug" &&
-      event.message === "false"
-    ) {
-      world.scoreboard.clearObjectiveAtDisplaySlot(DisplaySlotId.Sidebar);
-      system.clearRun(runId);
-      runId = undefined;
-    }
-  },
-  { namespaces: ["terminator"] }
-);
+      for (const terminator of terminators) {
+        const health = terminator.getComponent(
+          EntityHealthComponent.componentId
+        ) as EntityHealthComponent;
+        healthObjective.setScore(terminator, health.currentValue);
+      }
+    });
+  }
+  if (!enabled && runId) {
+    world.scoreboard.clearObjectiveAtDisplaySlot(DisplaySlotId.Sidebar);
+    system.clearRun(runId);
+    runId = undefined;
+  }
+}

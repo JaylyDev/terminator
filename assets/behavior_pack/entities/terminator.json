@@ -13,18 +13,28 @@
         "animate": [
           "terminator.is_sitting",
           "terminator.shield",
-          "terminator.build.forward",
-          "terminator.build.vertical"
+          "terminator.build.vertical",
+          "terminator.has_target"
         ]
       },
       "animations": {
         "terminator.is_sitting": "controller.animation.terminator.is_sitting",
         "terminator.shield": "controller.animation.terminator.shield",
-        "terminator.build.forward": "controller.animation.terminator.build.forward",
-        "terminator.build.vertical": "controller.animation.terminator.build.vertical"
+        "terminator.build.vertical": "controller.animation.terminator.build.vertical",
+        "terminator.has_target": "controller.animation.terminator.has_target"
       },
       "properties": {
         "terminator:is_sitting": {
+          "client_sync": false,
+          "type": "bool",
+          "default": false
+        },
+        "terminator:has_target": {
+          "client_sync": false,
+          "type": "bool",
+          "default": false
+        },
+        "terminator:snowball_attack": {
           "client_sync": false,
           "type": "bool",
           "default": false
@@ -89,29 +99,30 @@
           "triggers": [
             {
               "filters": {
-                "all_of": [
-                  {
-                    "test": "is_underwater",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": true
-                  },
+                "any_of": [
                   {
                     "test": "has_equipment",
                     "subject": "self",
                     "operator": "!=",
-                    "value": "minecraft:trident"
+                    "value": "minecraft:snowball"
+                  },
+                  {
+                    "all_of": [
+                      {
+                        "test": "is_underwater",
+                        "subject": "self",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "self",
+                        "operator": "!=",
+                        "value": "minecraft:trident"
+                      }
+                    ]
                   }
                 ]
-              },
-              "event": "minecraft:melee_mode"
-            },
-            {
-              "filters": {
-                "test": "has_equipment",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:snowball"
               },
               "event": "minecraft:melee_mode"
             },
@@ -351,7 +362,9 @@
             "netherrack",
             "end_stone",
             "honey_block",
-            "candle"
+            "candle",
+            // 1.20 blocks
+            "powder_snow"
           ]
         }
       },
@@ -399,29 +412,30 @@
           "triggers": [
             {
               "filters": {
-                "all_of": [
+                "any_of": [
                   {
-                    "test": "is_underwater",
+                    "test": "has_ranged_weapon",
                     "subject": "self",
                     "operator": "==",
-                    "value": true
+                    "value": false
                   },
                   {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
+                    "all_of": [
+                      {
+                        "test": "is_underwater",
+                        "subject": "self",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "self",
+                        "operator": "!=",
+                        "value": "minecraft:trident"
+                      }
+                    ]
                   }
                 ]
-              },
-              "event": "minecraft:melee_mode"
-            },
-            {
-              "filters": {
-                "test": "has_ranged_weapon",
-                "subject": "self",
-                "operator": "==",
-                "value": false
               },
               "event": "minecraft:melee_mode"
             },
@@ -607,7 +621,7 @@
                   }
                 ]
               },
-              "max_dist": 2048,
+              "max_dist": 1024,
               "must_see": false
             }
           ]
@@ -734,7 +748,7 @@
                   }
                 ]
               },
-              "max_dist": 2048,
+              "max_dist": 1024,
               "must_see": false
             },
             {
@@ -1198,37 +1212,38 @@
           "triggers": [
             {
               "filters": {
-                "all_of": [
+                "any_of": [
                   {
-                    "test": "is_underwater",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": true
+                    "all_of": [
+                      {
+                        "test": "is_underwater",
+                        "subject": "self",
+                        "operator": "==",
+                        "value": true
+                      },
+                      {
+                        "test": "has_equipment",
+                        "subject": "self",
+                        "operator": "!=",
+                        "value": "minecraft:trident"
+                      }
+                    ]
                   },
                   {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
-                  }
-                ]
-              },
-              "event": "minecraft:melee_mode"
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_equipment",
-                    "subject": "self",
-                    "operator": "!=",
-                    "value": "minecraft:trident"
-                  },
-                  {
-                    "test": "has_ranged_weapon",
-                    "subject": "self",
-                    "operator": "==",
-                    "value": false
+                    "all_of": [
+                      {
+                        "test": "has_equipment",
+                        "subject": "self",
+                        "operator": "!=",
+                        "value": "minecraft:trident"
+                      },
+                      {
+                        "test": "has_ranged_weapon",
+                        "subject": "self",
+                        "operator": "==",
+                        "value": false
+                      }
+                    ]
                   }
                 ]
               },
@@ -3039,7 +3054,7 @@
             },
             "queue_command": {
               "command": [
-                "tellraw @a {\"rawtext\":[{\"translate\":\"multiplayer.player.left\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}"
+                "tellraw @a {\"rawtext\":[{\"text\":\"§e\"},{\"translate\":\"multiplayer.player.left\",\"with\":{\"rawtext\":[{\"selector\":\"@s\"}]}}]}"
               ] // remove lighting bolt and add left mesg
             }
           }
@@ -3255,6 +3270,9 @@
             "got_out_of_powder_snow_environment_sensor",
             "minecraft:trident_mode_switcher"
           ]
+        },
+        "set_property": {
+          "terminator:snowball_attack": true
         },
         "add": {
           "component_groups": ["minecraft:snowball_ranged_attack"]
@@ -3734,6 +3752,16 @@
       "terminator:set_sitting_disabled": {
         "set_property": {
           "terminator:is_sitting": false
+        }
+      },
+      "terminator:set_has_target": {
+        "set_property": {
+          "terminator:has_target": true
+        }
+      },
+      "terminator:remove_target": {
+        "set_property": {
+          "terminator:has_target": false
         }
       }
     }

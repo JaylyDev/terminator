@@ -83,6 +83,57 @@
           ]
         }
       }
+    },
+    "controller.animation.terminator.has_target": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [
+            {
+              "has_target": "query.has_target"
+            },
+            {
+              "no_target": "!query.has_target"
+            }
+          ]
+        },
+        "has_target": {
+          "on_entry": ["@s terminator:set_has_target"],
+          "transitions": [
+            {
+              "no_target": "!query.has_target"
+            }
+          ]
+        },
+        "no_target": {
+          "on_entry": ["@s terminator:remove_target"],
+          "transitions": [
+            {
+              "has_target": "query.has_target"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.terminator.build.vertical": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": { "transitions": [{ "running_state": "(1.0)" }] },
+        "running_state": {
+          "transitions": [
+            { "vertical.up": "q.has_target && q.head_x_rotation(0) < -20" },
+            { "vertical.down": "q.has_target && q.head_x_rotation(0) > 20" }
+          ]
+        },
+        "vertical.up": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:vertical_up"]
+        },
+        "vertical.down": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:vertical_down"]
+        }
+      }
     }
   }
 }
