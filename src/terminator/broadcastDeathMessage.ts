@@ -5,14 +5,14 @@ import {
   Player,
   world,
 } from "@minecraft/server";
-import { DeathMessageRawText } from "../deathMessage/rawTextGenerator";
+import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import {
   MinecraftBlockTypes,
   MinecraftEntityTypes,
 } from "@minecraft/vanilla-data";
 import { debugEnabled } from "../config";
-import { getDamagingBlock } from "../deathMessage/damageBlock";
-import { entityTriedEscapeDeathFrom } from "../deathMessage/escapeDeathDetector";
+import { getDamagingBlock } from "../death-message/damageBlock";
+import { entityTriedEscapeDeathFrom } from "../death-message/escapeDeathDetector";
 import { terminatorDie } from "../terminator-events/onTerminatorDie";
 
 const sendDeathMessageFall = (

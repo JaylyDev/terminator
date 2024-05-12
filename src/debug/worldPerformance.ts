@@ -50,9 +50,11 @@ tick.subscribe((event) => {
   }).length;
 
   for (const player of world.getAllPlayers()) {
+    const rotation = player.getRotation();
     player.onScreenDisplay.setActionBar(
       `Server TPS: ${(1 / event.deltaTime).toFixed(2)}
-Terminator Count: ${terminatorsCount}`
+Terminator Count: ${terminatorsCount}
+Rotation: (${rotation.x.toFixed(1)}, ${rotation.y.toFixed(1)})`
     );
   }
 });
