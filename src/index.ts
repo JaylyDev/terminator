@@ -8,6 +8,7 @@ import "./terminator/buildVertical";
 import "./terminator/ridingTransport";
 import "./terminator/broadcastDeathMessage";
 import "./terminator/suffocation";
+import "./terminator/rangedAttack";
 import "./commands/index";
 
 // Debug Features

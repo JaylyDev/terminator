@@ -98,7 +98,7 @@
           ]
         },
         "has_target": {
-          "on_entry": ["@s terminator:set_sitting_enabled"],
+          "on_entry": ["@s terminator:set_has_target"],
           "transitions": [
             {
               "no_target": "!query.has_target"
@@ -106,7 +106,7 @@
           ]
         },
         "no_target": {
-          "on_entry": ["@s terminator:set_sitting_disabled"],
+          "on_entry": ["@s terminator:remove_target"],
           "transitions": [
             {
               "has_target": "query.has_target"

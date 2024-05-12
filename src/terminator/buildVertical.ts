@@ -39,10 +39,10 @@ system.afterEvents.scriptEventReceive.subscribe(
 
     // Only bridge up or down if player is within 8 x 384 x 8 blocks from terminator
     const from = new Vector3Builder(terminator.location).subtract(size);
-    from.y = -64;
+    from.y = terminator.dimension.heightRange.min;
 
     const to = new Vector3Builder(terminator.location).add(size);
-    to.y = 320;
+    to.y = terminator.dimension.heightRange.max;
     const playersWithinRange = terminator.dimension
       .getPlayers({
         location: terminator.location,
@@ -66,9 +66,11 @@ system.afterEvents.scriptEventReceive.subscribe(
         blockAbove.setPermutation(
           BlockPermutation.resolve(MinecraftBlockTypes.Air)
         );
-      const cannotJumpUntil = terminator.getDynamicProperty(
-        "terminator:cannot_jump_until"
-      ) as number | undefined;
+      const cannotJumpUntil =
+        (terminator.getDynamicProperty(
+          "terminator:cannot_jump_until"
+        ) as number) ?? 0;
+
       if (cannotJumpUntil <= system.currentTick) {
         terminator.applyImpulse(PlayerJumpImpulse);
 

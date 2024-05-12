@@ -27,9 +27,10 @@ terminatorSuffocate.subscribe((event) => {
         player.playSound("dig.stone", { location: block.location })
       );
 
-    const cannotJumpUntil = hurtEntity.getDynamicProperty(
-      "terminator:cannot_jump_until"
-    ) as number | undefined;
+    const cannotJumpUntil =
+      (hurtEntity.getDynamicProperty(
+        "terminator:cannot_jump_until"
+      ) as number) ?? 0;
     if (cannotJumpUntil <= system.currentTick) {
       hurtEntity.applyImpulse(PlayerJumpImpulse);
 
