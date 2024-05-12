@@ -1,12 +1,62 @@
-import { EntityDamageCause, Player, world } from "@minecraft/server";
-import { terminatorDie } from "../terminator-events/onTerminatorDie";
+import {
+  Entity,
+  EntityDamageCause,
+  EntityDieAfterEvent,
+  Player,
+  world,
+} from "@minecraft/server";
 import { DeathMessageRawText } from "../deathMessage/rawTextGenerator";
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import {
+  MinecraftBlockTypes,
+  MinecraftEntityTypes,
+} from "@minecraft/vanilla-data";
+import { debugEnabled } from "../config";
+import { getDamagingBlock } from "../deathMessage/damageBlock";
+import { entityTriedEscapeDeathFrom } from "../deathMessage/escapeDeathDetector";
+import { terminatorDie } from "../terminator-events/onTerminatorDie";
 
-// Sends a death message to the world when a terminator dies
-terminatorDie.subscribe(({ damageSource, deadEntity }) => {
+const sendDeathMessageFall = (
+  rawTextGenerator: DeathMessageRawText,
+  entity: Entity
+) => {
+  const velocity = entity.getVelocity();
+  if (velocity.y > -0.3) world.sendMessage(rawTextGenerator.attackFall());
+  else world.sendMessage(rawTextGenerator.fellAccidentGeneric());
+};
+
+const sendDeathMessageContact = (
+  rawTextGenerator: DeathMessageRawText,
+  deadEntity: Entity,
+  damagingEntity: Entity | undefined
+) => {
+  const block = getDamagingBlock(deadEntity);
+  const huntEntity = entityTriedEscapeDeathFrom(deadEntity);
+
+  if (damagingEntity) world.sendMessage(rawTextGenerator.attackMob());
+  else if (block === MinecraftBlockTypes.Cactus && huntEntity)
+    world.sendMessage(rawTextGenerator.attackCactusPlayer());
+  else if (block === MinecraftBlockTypes.Cactus)
+    world.sendMessage(rawTextGenerator.attackCactus());
+  else if (block === MinecraftBlockTypes.SweetBerryBush)
+    world.sendMessage(rawTextGenerator.attackSweetBerry());
+  else world.sendMessage(rawTextGenerator.attackGeneric());
+};
+/**
+ * Sends a death message to the world when a terminator dies
+ */
+const sendDeathMessageCallback = ({
+  damageSource,
+  deadEntity,
+}: EntityDieAfterEvent) => {
   const { cause, damagingEntity } = damageSource;
   const rawTextGenerator = new DeathMessageRawText(deadEntity, damagingEntity);
+  // debug
+  if (debugEnabled) {
+    console.warn(
+      `DeadEntity: ${deadEntity.typeId} | DamagingEntity: ${damagingEntity?.typeId} | DamagingProjectile: ${damageSource.damagingProjectile?.typeId} | Cause: ${cause}`
+    );
+  }
+  // Sends a death message based on the cause of the death
   switch (cause) {
     case EntityDamageCause.anvil:
       world.sendMessage(rawTextGenerator.attackAnvil());
@@ -18,11 +68,12 @@ terminatorDie.subscribe(({ damageSource, deadEntity }) => {
       world.sendMessage(rawTextGenerator.attackInFire());
       break;
     case EntityDamageCause.contact:
-      if (damagingEntity) world.sendMessage(rawTextGenerator.attackMob());
-      else world.sendMessage(rawTextGenerator.attackCactus());
+      sendDeathMessageContact(rawTextGenerator, deadEntity, damagingEntity);
       break;
     case EntityDamageCause.drowning:
-      world.sendMessage(rawTextGenerator.attackDrown());
+      if (entityTriedEscapeDeathFrom(deadEntity))
+        world.sendMessage(rawTextGenerator.attackDrownPlayer());
+      else world.sendMessage(rawTextGenerator.attackDrown());
       break;
     case EntityDamageCause.entityAttack:
       if (damagingEntity instanceof Player) {
@@ -41,7 +92,7 @@ terminatorDie.subscribe(({ damageSource, deadEntity }) => {
       else world.sendMessage(rawTextGenerator.attackExplosion());
       break;
     case EntityDamageCause.fall:
-      world.sendMessage(rawTextGenerator.attackFall());
+      sendDeathMessageFall(rawTextGenerator, deadEntity);
       break;
     case EntityDamageCause.fallingBlock:
       world.sendMessage(rawTextGenerator.attackFallingBlock());
@@ -62,7 +113,9 @@ terminatorDie.subscribe(({ damageSource, deadEntity }) => {
       world.sendMessage(rawTextGenerator.attackFreeze());
       break;
     case EntityDamageCause.lava:
-      world.sendMessage(rawTextGenerator.attackLava());
+      if (entityTriedEscapeDeathFrom(deadEntity))
+        world.sendMessage(rawTextGenerator.attackLavaPlayer());
+      else world.sendMessage(rawTextGenerator.attackLava());
       break;
     case EntityDamageCause.lightning:
       world.sendMessage(rawTextGenerator.attackLightningBolt());
@@ -99,7 +152,9 @@ terminatorDie.subscribe(({ damageSource, deadEntity }) => {
       else world.sendMessage(rawTextGenerator.attackThrown());
       break;
     case EntityDamageCause.sonicBoom:
-      world.sendMessage(rawTextGenerator.attackSonicBoom());
+      if (entityTriedEscapeDeathFrom(deadEntity))
+        world.sendMessage(rawTextGenerator.attackSonicBoomPlayer());
+      else world.sendMessage(rawTextGenerator.attackSonicBoom());
       break;
     case EntityDamageCause.soulCampfire:
       world.sendMessage(rawTextGenerator.attackInFire());
@@ -138,4 +193,6 @@ terminatorDie.subscribe(({ damageSource, deadEntity }) => {
       world.sendMessage(rawTextGenerator.attackGeneric());
       break;
   }
-});
+};
+
+terminatorDie.subscribe(sendDeathMessageCallback);

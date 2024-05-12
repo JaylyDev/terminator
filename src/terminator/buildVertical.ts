@@ -6,7 +6,11 @@ import {
   system,
 } from "@minecraft/server";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
-import { PlayerJumpImpulse, UnbreakableBlocks } from "../config";
+import {
+  PlayerJumpCooldown,
+  PlayerJumpImpulse,
+  UnbreakableBlocks,
+} from "../config";
 
 export enum TerminatorBuildVerticallyDirection {
   Up = "terminator:vertical_up",
@@ -62,17 +66,27 @@ system.afterEvents.scriptEventReceive.subscribe(
         blockAbove.setPermutation(
           BlockPermutation.resolve(MinecraftBlockTypes.Air)
         );
-      terminator.applyImpulse(PlayerJumpImpulse);
+      const cannotJumpUntil = terminator.getDynamicProperty(
+        "terminator:cannot_jump_until"
+      ) as number | undefined;
+      if (cannotJumpUntil <= system.currentTick) {
+        terminator.applyImpulse(PlayerJumpImpulse);
 
-      system.runTimeout(() => {
-        const block = terminator.dimension
-          .getBlock(terminator.location)
-          .below();
-        block.setPermutation(buildingBlock);
-        playersWithinRange.forEach((player) =>
-          player.playSound("dig.stone", { location: block.location })
+        terminator.setDynamicProperty(
+          "terminator:cannot_jump_until",
+          system.currentTick + PlayerJumpCooldown
         );
-      }, 5);
+
+        system.runTimeout(() => {
+          const block = terminator.dimension
+            .getBlock(terminator.location)
+            .below();
+          block.setPermutation(buildingBlock);
+          playersWithinRange.forEach((player) =>
+            player.playSound("dig.stone", { location: block.location })
+          );
+        }, 5);
+      }
     } else if (event.id === TerminatorBuildVerticallyDirection.Down) {
       const block = terminator.dimension.getBlock(terminator.location).below();
       if (UnbreakableBlocks.some((id) => block.permutation.matches(id))) return;

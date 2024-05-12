@@ -8,28 +8,46 @@ import {
   RawMessage,
 } from "@minecraft/server";
 import { DeathAttackMessage, DeathFellMessage } from "./languageKeys";
+import { entityTriedEscapeDeathFrom } from "./escapeDeathDetector";
 
 function rawMessageTranslator(
   deadEntity: Entity,
   damagingEntity?: Entity,
   damagingItem?: ItemStack
 ): RawMessage {
-  const ids: string[] = [
-    `entity.${deadEntity.typeId.replace("minecraft:", "")}.name`,
-  ];
+  const deadEntityRawMessage: RawMessage = {};
+  // Get the name of the dead entity, if fails it will either be '' or throw an error, alternate solution is to use translate
+  try {
+    const nameTag = deadEntity.nameTag;
+    if (!nameTag) throw new Error("Entity::nameTag is not set");
+    deadEntityRawMessage.text = deadEntity.nameTag;
+  } catch {
+    deadEntityRawMessage.translate = `entity.${deadEntity.typeId.replace(
+      "minecraft:",
+      ""
+    )}.name`;
+  }
+
+  const ids: RawMessage[] = [deadEntityRawMessage];
   if (damagingEntity)
-    ids.push(`entity.${damagingEntity.typeId.replace("minecraft:", "")}.name`);
+    ids.push({
+      translate: `entity.${damagingEntity.typeId.replace(
+        "minecraft:",
+        ""
+      )}.name`,
+    });
   if (damagingItem)
-    ids.push(`item.${damagingItem.typeId.replace("minecraft:", "")}.name`);
+    ids.push({
+      translate: `item.${damagingItem.typeId.replace("minecraft:", "")}.name`,
+    });
   return {
-    rawtext: ids.map((id) => ({
-      translate: id,
-    })),
+    rawtext: ids,
   };
 }
 
 export class DeathMessageRawText {
   public damagingItem?: ItemStack;
+  public huntingEntity?: Entity;
 
   constructor(public deadEntity: Entity, public damagingEntity?: Entity) {
     // Get the item damaging entity is holding when killing the entity
@@ -44,6 +62,8 @@ export class DeathMessageRawText {
       ) as EntityInventoryComponent | undefined;
       if (inventory) this.damagingItem = inventory.container.getItem(0);
     }
+    // Get the entity trying to escape the death
+    this.huntingEntity = entityTriedEscapeDeathFrom(deadEntity);
   }
   attackAnvil(): RawMessage {
     return {
@@ -82,7 +102,7 @@ export class DeathMessageRawText {
   attackCactusPlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.cactusPlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackDrown(): RawMessage {
@@ -94,7 +114,7 @@ export class DeathMessageRawText {
   attackDrownPlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.drownPlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackExplosion(): RawMessage {
@@ -186,7 +206,7 @@ export class DeathMessageRawText {
   attackInFirePlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.inFirePlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackInWall(): RawMessage {
@@ -204,7 +224,7 @@ export class DeathMessageRawText {
   attackLavaPlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.lavaPlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackLightningBolt(): RawMessage {
@@ -228,7 +248,7 @@ export class DeathMessageRawText {
   attackMagmaPlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.magmaPlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackMob(): RawMessage {
@@ -256,7 +276,7 @@ export class DeathMessageRawText {
   attackOnFirePlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.onFirePlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackOutOfWorld(): RawMessage {
@@ -348,7 +368,7 @@ export class DeathMessageRawText {
   attackSonicBoomPlayer(): RawMessage {
     return {
       translate: DeathAttackMessage.sonicBoomPlayer,
-      with: rawMessageTranslator(this.deadEntity, this.damagingEntity),
+      with: rawMessageTranslator(this.deadEntity, this.huntingEntity),
     };
   }
   attackStalactite(): RawMessage {

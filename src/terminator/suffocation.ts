@@ -1,6 +1,10 @@
-import { BlockPermutation } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 import { terminatorSuffocate } from "../terminator-events/onTerminatorSuffocate";
-import { PlayerJumpImpulse, UnbreakableBlocks } from "../config";
+import {
+  PlayerJumpCooldown,
+  PlayerJumpImpulse,
+  UnbreakableBlocks,
+} from "../config";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
 terminatorSuffocate.subscribe((event) => {
@@ -23,7 +27,17 @@ terminatorSuffocate.subscribe((event) => {
         player.playSound("dig.stone", { location: block.location })
       );
 
-    hurtEntity.applyImpulse(PlayerJumpImpulse);
+    const cannotJumpUntil = hurtEntity.getDynamicProperty(
+      "terminator:cannot_jump_until"
+    ) as number | undefined;
+    if (cannotJumpUntil <= system.currentTick) {
+      hurtEntity.applyImpulse(PlayerJumpImpulse);
+
+      hurtEntity.setDynamicProperty(
+        "terminator:cannot_jump_until",
+        system.currentTick + PlayerJumpCooldown
+      );
+    }
 
     // If neccessary place block above
     if (block.permutation.matches(MinecraftBlockTypes.Air)) {
