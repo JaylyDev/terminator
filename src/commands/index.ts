@@ -89,81 +89,87 @@ type TerminatorSpawnFormValues = [
   boolean
 ];
 
+const getDefaultSpawnOptions = (player: Player): TerminatorInputParam => ({
+  nametag: "Terminator",
+  customskin: false,
+  bossbar: false,
+  invulnerable: false,
+  deathevent: true,
+  physics: true,
+  regeneration: true,
+  respawn: true,
+  breedable: false,
+  coords: player.location,
+  dimension: player.dimension,
+  skinmodel: TerminatorSkinModel.Steve,
+});
+
+export function showSpawnTerminatorForm(player: Player) {
+  const spawnOptions: TerminatorInputParam = getDefaultSpawnOptions(player);
+  const form = generateModalForm(spawnOptions);
+  form
+    .show(player)
+    .then((result) => {
+      if (result.canceled) return;
+      const [
+        nameTag,
+        locationString,
+        dimensionIndex,
+        skinModelIndex,
+        customSkin,
+        bossbar,
+        invulnerable,
+        deathEvent,
+        physics,
+        regeneration,
+        respawn,
+        breedable,
+      ] = result.formValues as TerminatorSpawnFormValues;
+      let dimension = world.getDimension("overworld");
+      let skinmodel: TerminatorSkinModel = TerminatorSkinModel.Steve;
+      switch (dimensionIndex) {
+        case 0:
+          dimension = world.getDimension("overworld");
+          break;
+        case 1:
+          dimension = world.getDimension("nether");
+          break;
+        case 2:
+          dimension = world.getDimension("the_end");
+          break;
+      }
+      switch (skinModelIndex) {
+        case 0:
+          skinmodel = TerminatorSkinModel.Steve;
+          break;
+        case 1:
+          skinmodel = TerminatorSkinModel.Alex;
+          break;
+      }
+
+      const jsonInput: TerminatorInputParam = {
+        nametag: nameTag,
+        customskin: customSkin,
+        bossbar: bossbar,
+        invulnerable: invulnerable,
+        deathevent: deathEvent,
+        physics: physics,
+        regeneration: regeneration,
+        respawn: respawn,
+        breedable: breedable,
+        coords: parseCoordinates(locationString, player.location),
+        dimension,
+        skinmodel,
+      };
+      spawnTerminator(jsonInput);
+    })
+    .catch((error) => console.error(error + "\n" + error.stack));
+}
+
 system.afterEvents.scriptEventReceive.subscribe(
   ({ id, sourceEntity }) => {
     if (id == "terminator:spawn" && sourceEntity instanceof Player) {
-      const default_nbt: TerminatorInputParam = {
-        nametag: "Terminator",
-        customskin: false,
-        bossbar: false,
-        invulnerable: false,
-        deathevent: true,
-        physics: true,
-        regeneration: true,
-        respawn: true,
-        breedable: false,
-        coords: sourceEntity.location,
-        dimension: sourceEntity.dimension,
-        skinmodel: TerminatorSkinModel.Steve,
-      };
-      const form = generateModalForm(default_nbt);
-      form
-        .show(sourceEntity)
-        .then((result) => {
-          if (result.canceled) return;
-          const [
-            nameTag,
-            locationString,
-            dimensionIndex,
-            skinModelIndex,
-            customSkin,
-            bossbar,
-            invulnerable,
-            deathEvent,
-            physics,
-            regeneration,
-            respawn,
-            breedable,
-          ] = result.formValues as TerminatorSpawnFormValues;
-          let dimension = world.getDimension("overworld");
-          let skinmodel: TerminatorSkinModel = TerminatorSkinModel.Steve;
-          switch (dimensionIndex) {
-            case 0:
-              dimension = world.getDimension("overworld");
-              break;
-            case 1:
-              dimension = world.getDimension("nether");
-              break;
-            case 2:
-              dimension = world.getDimension("the_end");
-              break;
-          }
-          switch (skinModelIndex) {
-            case 0:
-              skinmodel = TerminatorSkinModel.Steve;
-              break;
-            case 1:
-              skinmodel = TerminatorSkinModel.Alex;
-              break;
-          }
-
-          const jsonInput: TerminatorInputParam = {
-            nametag: nameTag,
-            customskin: customSkin,
-            bossbar: bossbar,
-            invulnerable: invulnerable,
-            deathevent: deathEvent,
-            physics: physics,
-            regeneration: regeneration,
-            respawn: respawn,
-            breedable: breedable,
-            coords: parseCoordinates(locationString, sourceEntity.location),
-            dimension,
-            skinmodel,
-          };
-          spawnTerminator(jsonInput);
-        })
-        .catch((error) => console.error(error + "\n" + error.stack));
+      showSpawnTerminatorForm(sourceEntity);
     }
   },
   { namespaces: ["terminator"] }

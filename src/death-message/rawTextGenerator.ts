@@ -29,7 +29,11 @@ function rawMessageTranslator(
   }
 
   const ids: RawMessage[] = [deadEntityRawMessage];
-  if (damagingEntity)
+  if (damagingEntity.nameTag)
+    ids.push({
+      text: damagingEntity.nameTag,
+    });
+  else
     ids.push({
       translate: `entity.${damagingEntity.typeId.replace(
         "minecraft:",

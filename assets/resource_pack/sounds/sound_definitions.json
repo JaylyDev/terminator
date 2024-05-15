@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "item.guide_book.page_turn": {
+      "__use_legacy_max_distance": true,
+      "category": "ui",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/item/book/open_flip1",
+          "volume": 2
+        }
+      ]
+    },
+    "mob.terminator.spawn": {
+      "__use_legacy_max_distance": true,
+      "category": "ui",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "name": "sounds/mob/terminator/spawn",
+          "volume": 2
+        }
+      ]
+    }
+  }
+}

@@ -10,6 +10,7 @@ import "./terminator/broadcastDeathMessage";
 import "./terminator/suffocation";
 import "./terminator/rangedAttack";
 import "./commands/index";
+import "./guide/index";
 
 // Debug Features
 if (debugEnabled) {
