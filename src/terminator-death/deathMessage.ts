@@ -131,19 +131,19 @@ export const sendDeathMessageCallback = ({
       break;
     case EntityDamageCause.projectile:
       // Arrow
-      if (damagingEntity.typeId === MinecraftEntityTypes.Arrow) {
+      if (damagingEntity?.typeId === MinecraftEntityTypes.Arrow) {
         if (rawTextGenerator.damagingItem)
           world.sendMessage(rawTextGenerator.attackArrowItem());
         else world.sendMessage(rawTextGenerator.attackArrow());
       }
       // Fireball
-      else if (damagingEntity.typeId === MinecraftEntityTypes.Fireball) {
+      else if (damagingEntity?.typeId === MinecraftEntityTypes.Fireball) {
         if (rawTextGenerator.damagingItem)
           world.sendMessage(rawTextGenerator.attackFireballItem());
         else world.sendMessage(rawTextGenerator.attackFireball());
       }
       // Thrown trident
-      else if (damagingEntity.typeId === MinecraftEntityTypes.ThrownTrident)
+      else if (damagingEntity?.typeId === MinecraftEntityTypes.ThrownTrident)
         world.sendMessage(rawTextGenerator.attackTrident());
       // Any projectiles
       else if (rawTextGenerator.damagingItem)

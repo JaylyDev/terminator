@@ -17,6 +17,7 @@ export function getDamagingBlock(hurtEntity: Entity) {
   // Get the blocks from player surroundings to detect if the player have contact with cactus or sweet berry bush
   const location = hurtEntity.location;
   const block = hurtEntity.dimension.getBlock(location);
+  if (!block) return;
   const blockAbove = block.above();
   const blockBelow = block.below();
   const blockNorth = block.north();
@@ -49,6 +50,7 @@ export function getDamagingBlock(hurtEntity: Entity) {
   ];
   // Check if the player have contact with cactus or sweet berry bush
   for (const block of blocks) {
+    if (!block) continue;
     if (block.permutation.matches(MinecraftBlockTypes.Cactus))
       return MinecraftBlockTypes.Cactus;
     else if (block.permutation.matches(MinecraftBlockTypes.SweetBerryBush))

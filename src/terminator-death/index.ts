@@ -58,12 +58,15 @@ terminatorDie.subscribe((event) => {
       "entity:terminator",
       deadEntity.location
     );
+    terminator.triggerEvent("terminator:disable_respawn");
     if (isSteveVariant)
-      terminator.triggerEvent("terminator:disable_respawn_event_steve");
+      terminator.triggerEvent("terminator:switch_skin_to_steve");
     else if (isAlexVariant)
-      terminator.triggerEvent("terminator:disable_respawn_event_alex");
-    else if (isCustomVariant)
-      terminator.triggerEvent("terminator:disable_respawn_event_custom");
+      terminator.triggerEvent("terminator:switch_skin_to_alex");
+    else if (variant.value === TerminatorVariant.Custom)
+      terminator.triggerEvent("terminator:enable_custom_skin");
+    else if (variant.value === TerminatorVariant.CustomSlim)
+      terminator.triggerEvent("terminator:enable_customSlim_skin");
   }
   // Third Death
   else {
@@ -71,8 +74,7 @@ terminatorDie.subscribe((event) => {
     world.sendMessage({
       rawtext: [
         { text: MinecraftColor.yellow },
-        { translate: "multiplayer.player.left" },
-        { with: [deadEntity.nameTag] },
+        { translate: "multiplayer.player.left", with: [deadEntity.nameTag] },
       ],
     });
   }

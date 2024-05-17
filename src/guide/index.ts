@@ -47,6 +47,7 @@ world.afterEvents.playerSpawn.subscribe(({ initialSpawn, player }) => {
   const inventory = player.getComponent(
     "inventory"
   ) as EntityInventoryComponent;
+  if (!inventory.container) return;
   inventory.container.setItem(0, TerminatorGuideBook);
   player.setDynamicProperty("terminator:guide_received", true);
 });

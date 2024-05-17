@@ -363,8 +363,8 @@
             "end_stone",
             "honey_block",
             "candle",
-            // 1.20 blocks
-            "powder_snow"
+            // 1.18 blocks
+            "deepslate"
           ]
         }
       },

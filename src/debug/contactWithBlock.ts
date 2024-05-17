@@ -25,6 +25,7 @@ world.afterEvents.entityHurt.subscribe((event) => {
   // Get the blocks from player surroundings to detect if the player have contact with cactus or sweet berry bush
   const location = hurtEntity.location;
   const block = hurtEntity.dimension.getBlock(location);
+  if (!block) return;
   const blockAbove = block.above();
   const blockBelow = block.below();
   const blockNorth = block.north();
@@ -57,13 +58,10 @@ world.afterEvents.entityHurt.subscribe((event) => {
   ];
   // Check if the player have contact with cactus or sweet berry bush
   for (const block of blocks) {
-    if (block.permutation.matches(MinecraftBlockTypes.Cactus)) {
-      hurtEntity.sendMessage(`You have contact with cactus`);
-      return;
-    }
-    if (block.permutation.matches(MinecraftBlockTypes.SweetBerryBush)) {
-      hurtEntity.sendMessage(`You have contact with sweet berry bush`);
-      return;
-    }
+    if (!block) continue;
+    if (block.permutation.matches(MinecraftBlockTypes.Cactus))
+      return MinecraftBlockTypes.Cactus;
+    else if (block.permutation.matches(MinecraftBlockTypes.SweetBerryBush))
+      return MinecraftBlockTypes.SweetBerryBush;
   }
 });

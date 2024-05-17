@@ -76,7 +76,7 @@ system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
     if (
       event.sourceType !== ScriptEventSource.Entity ||
-      event.sourceEntity.typeId !== "entity:terminator"
+      event.sourceEntity?.typeId !== "entity:terminator"
     )
       return;
 
@@ -84,7 +84,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     if (event.id === TerminatorBuildDirection.North) {
       const block = event.sourceEntity.dimension.getBlock(
         location.add(BridgeDirection.North)
-      );
+      )!;
       const permutation = block.permutation;
       if (
         permutation.matches(MinecraftBlockTypes.Air) ||
@@ -94,7 +94,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     } else if (event.id === TerminatorBuildDirection.West) {
       const block = event.sourceEntity.dimension.getBlock(
         location.add(BridgeDirection.West)
-      );
+      )!;
       const permutation = block.permutation;
       if (
         permutation.matches(MinecraftBlockTypes.Air) ||
@@ -104,7 +104,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     } else if (event.id === TerminatorBuildDirection.East) {
       const block = event.sourceEntity.dimension.getBlock(
         location.add(BridgeDirection.East)
-      );
+      )!;
       const permutation = block.permutation;
       if (
         permutation.matches(MinecraftBlockTypes.Air) ||
@@ -114,7 +114,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     } else if (event.id === TerminatorBuildDirection.South) {
       const block = event.sourceEntity.dimension.getBlock(
         location.add(BridgeDirection.South)
-      );
+      )!;
       const permutation = block.permutation;
       if (
         permutation.matches(MinecraftBlockTypes.Air) ||
@@ -125,7 +125,7 @@ system.afterEvents.scriptEventReceive.subscribe(
       for (const direction of BridgeDirection.NorthEast) {
         const block = event.sourceEntity.dimension.getBlock(
           location.add(direction)
-        );
+        )!;
         const permutation = block.permutation;
         if (
           permutation.matches(MinecraftBlockTypes.Air) ||
@@ -137,7 +137,7 @@ system.afterEvents.scriptEventReceive.subscribe(
       for (const direction of BridgeDirection.SouthWest) {
         const block = event.sourceEntity.dimension.getBlock(
           location.add(direction)
-        );
+        )!;
         const permutation = block.permutation;
         if (
           permutation.matches(MinecraftBlockTypes.Air) ||
@@ -149,7 +149,7 @@ system.afterEvents.scriptEventReceive.subscribe(
       for (const direction of BridgeDirection.SouthEast) {
         const block = event.sourceEntity.dimension.getBlock(
           location.add(direction)
-        );
+        )!;
         const permutation = block.permutation;
         if (
           permutation.matches(MinecraftBlockTypes.Air) ||
@@ -161,7 +161,7 @@ system.afterEvents.scriptEventReceive.subscribe(
       for (const direction of BridgeDirection.NorthWest) {
         const block = event.sourceEntity.dimension.getBlock(
           location.add(direction)
-        );
+        )!;
         const permutation = block.permutation;
         if (
           permutation.matches(MinecraftBlockTypes.Air) ||
@@ -182,6 +182,7 @@ system.afterEvents.scriptEventReceive.subscribe(
 const fixDegreeY = (degreeY: number) => {
   if (degreeY > 180) return degreeY - 360;
   if (degreeY < -180) return degreeY + 360;
+  throw new RangeError("Invalid degree range. Accept [-180");
 };
 
 system.runInterval(() => {

@@ -29,11 +29,11 @@ function rawMessageTranslator(
   }
 
   const ids: RawMessage[] = [deadEntityRawMessage];
-  if (damagingEntity.nameTag)
+  if (damagingEntity && damagingEntity.nameTag)
     ids.push({
       text: damagingEntity.nameTag,
     });
-  else
+  else if (damagingEntity)
     ids.push({
       translate: `entity.${damagingEntity.typeId.replace(
         "minecraft:",
@@ -64,7 +64,8 @@ export class DeathMessageRawText {
       const inventory = damagingEntity.getComponent(
         EntityInventoryComponent.componentId
       ) as EntityInventoryComponent | undefined;
-      if (inventory) this.damagingItem = inventory.container.getItem(0);
+      if (inventory?.container)
+        this.damagingItem = inventory.container.getItem(0);
     }
     // Get the entity trying to escape the death
     this.huntingEntity = entityTriedEscapeDeathFrom(deadEntity);
