@@ -5,15 +5,14 @@ import {
   Player,
   world,
 } from "@minecraft/server";
-import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import {
   MinecraftBlockTypes,
   MinecraftEntityTypes,
 } from "@minecraft/vanilla-data";
 import { debugEnabled } from "../config";
 import { getDamagingBlock } from "../death-message/damageBlock";
+import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import { entityTriedEscapeDeathFrom } from "../death-message/escapeDeathDetector";
-import { terminatorDie } from "../terminator-events/onTerminatorDie";
 
 const sendDeathMessageFall = (
   rawTextGenerator: DeathMessageRawText,
@@ -44,7 +43,7 @@ const sendDeathMessageContact = (
 /**
  * Sends a death message to the world when a terminator dies
  */
-const sendDeathMessageCallback = ({
+export const sendDeathMessageCallback = ({
   damageSource,
   deadEntity,
 }: EntityDieAfterEvent) => {
@@ -194,5 +193,3 @@ const sendDeathMessageCallback = ({
       break;
   }
 };
-
-terminatorDie.subscribe(sendDeathMessageCallback);

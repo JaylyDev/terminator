@@ -6,7 +6,7 @@ import "./terminator/christmasTheme";
 import "./terminator/buildForward";
 import "./terminator/buildVertical";
 import "./terminator/ridingTransport";
-import "./terminator/broadcastDeathMessage";
+import "./terminator-death/index";
 import "./terminator/suffocation";
 import "./terminator/rangedAttack";
 import "./commands/index";
