@@ -22,13 +22,16 @@ terminatorSpawn.subscribe(({ entity }) => {
 
 // broadcast to world
 terminatorSpawn.subscribe(({ entity }) => {
-  const rawtext: RawText = {
-    rawtext: [
-      { text: MinecraftColor.yellow },
-      { translate: "multiplayer.player.joined", with: [entity.nameTag] },
-    ],
-  };
-  world.sendMessage(rawtext);
+  system.runTimeout(() => {
+    const rawtext: RawText = {
+      rawtext: [
+        { text: MinecraftColor.yellow },
+        { translate: "multiplayer.player.joined", with: [entity.nameTag] },
+      ],
+    };
+    world.sendMessage(rawtext);
+    world.playSound("mob.terminator.spawn", entity.location);
+  }, 2);
 });
 
 // detect when terminator's health is below 20hp (max 60hp)

@@ -11,7 +11,9 @@ terminatorSuffocate.subscribe((event) => {
   const { hurtEntity } = event;
   const rotation = hurtEntity.getRotation();
   const block = hurtEntity.dimension.getBlock(hurtEntity.location);
+  if (!block) return;
   const blockAbove = block.above();
+  if (!blockAbove) return;
   if (UnbreakableBlocks.some((id) => blockAbove.permutation.matches(id)))
     return;
 

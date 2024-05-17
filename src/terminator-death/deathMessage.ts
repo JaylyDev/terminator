@@ -5,15 +5,14 @@ import {
   Player,
   world,
 } from "@minecraft/server";
-import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import {
   MinecraftBlockTypes,
   MinecraftEntityTypes,
 } from "@minecraft/vanilla-data";
 import { debugEnabled } from "../config";
 import { getDamagingBlock } from "../death-message/damageBlock";
+import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import { entityTriedEscapeDeathFrom } from "../death-message/escapeDeathDetector";
-import { terminatorDie } from "../terminator-events/onTerminatorDie";
 
 const sendDeathMessageFall = (
   rawTextGenerator: DeathMessageRawText,
@@ -44,7 +43,7 @@ const sendDeathMessageContact = (
 /**
  * Sends a death message to the world when a terminator dies
  */
-const sendDeathMessageCallback = ({
+export const sendDeathMessageCallback = ({
   damageSource,
   deadEntity,
 }: EntityDieAfterEvent) => {
@@ -132,19 +131,19 @@ const sendDeathMessageCallback = ({
       break;
     case EntityDamageCause.projectile:
       // Arrow
-      if (damagingEntity.typeId === MinecraftEntityTypes.Arrow) {
+      if (damagingEntity?.typeId === MinecraftEntityTypes.Arrow) {
         if (rawTextGenerator.damagingItem)
           world.sendMessage(rawTextGenerator.attackArrowItem());
         else world.sendMessage(rawTextGenerator.attackArrow());
       }
       // Fireball
-      else if (damagingEntity.typeId === MinecraftEntityTypes.Fireball) {
+      else if (damagingEntity?.typeId === MinecraftEntityTypes.Fireball) {
         if (rawTextGenerator.damagingItem)
           world.sendMessage(rawTextGenerator.attackFireballItem());
         else world.sendMessage(rawTextGenerator.attackFireball());
       }
       // Thrown trident
-      else if (damagingEntity.typeId === MinecraftEntityTypes.ThrownTrident)
+      else if (damagingEntity?.typeId === MinecraftEntityTypes.ThrownTrident)
         world.sendMessage(rawTextGenerator.attackTrident());
       // Any projectiles
       else if (rawTextGenerator.damagingItem)
@@ -194,5 +193,3 @@ const sendDeathMessageCallback = ({
       break;
   }
 };
-
-terminatorDie.subscribe(sendDeathMessageCallback);

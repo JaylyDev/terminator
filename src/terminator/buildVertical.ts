@@ -32,6 +32,7 @@ system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
     const terminator = event.sourceEntity;
     if (
+      !terminator ||
       event.sourceType !== ScriptEventSource.Entity ||
       terminator.typeId !== "entity:terminator"
     )
@@ -61,7 +62,8 @@ system.afterEvents.scriptEventReceive.subscribe(
     if (event.id === TerminatorBuildVerticallyDirection.Up) {
       const blockAbove = terminator.dimension
         .getBlock(terminator.location)
-        .above(2);
+        ?.above(2);
+      if (!blockAbove) return;
       if (!UnbreakableBlocks.some((id) => blockAbove.permutation.matches(id)))
         blockAbove.setPermutation(
           BlockPermutation.resolve(MinecraftBlockTypes.Air)
@@ -82,7 +84,8 @@ system.afterEvents.scriptEventReceive.subscribe(
         system.runTimeout(() => {
           const block = terminator.dimension
             .getBlock(terminator.location)
-            .below();
+            ?.below();
+          if (!block) return;
           block.setPermutation(buildingBlock);
           playersWithinRange.forEach((player) =>
             player.playSound("dig.stone", { location: block.location })
@@ -90,7 +93,8 @@ system.afterEvents.scriptEventReceive.subscribe(
         }, 5);
       }
     } else if (event.id === TerminatorBuildVerticallyDirection.Down) {
-      const block = terminator.dimension.getBlock(terminator.location).below();
+      const block = terminator.dimension.getBlock(terminator.location)?.below();
+      if (!block) return;
       if (UnbreakableBlocks.some((id) => block.permutation.matches(id))) return;
       block.setPermutation(BlockPermutation.resolve(MinecraftBlockTypes.Air));
       playersWithinRange.forEach((player) =>
