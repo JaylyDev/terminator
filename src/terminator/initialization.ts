@@ -37,9 +37,10 @@ terminatorSpawn.subscribe(({ entity }) => {
 // detect when terminator's health is below 20hp (max 60hp)
 terminatorSpawn.subscribe(({ entity }) => {
   const health = entity.getComponent("health") as EntityHealthComponent;
+  let triggered = false;
 
   const id = system.runInterval(() => {
-    if (!health.isValid()) {
+    if (!health.isValid() || triggered) {
       system.clearRun(id);
       return;
     }
@@ -47,12 +48,6 @@ terminatorSpawn.subscribe(({ entity }) => {
       health.currentValue < 20 &&
       !entity.hasTag("terminatorNoRegeneration")
     ) {
-      // "/effect @s[tag=!terminatorNoRegeneration] regeneration 6 4 false",
-      // "/effect @s[tag=!terminatorNoRegeneration] absorption 24 3 false",
-      // "/effect @s[tag=!terminatorNoRegeneration] resistance 60 0 false",
-      // "/effect @s[tag=!terminatorNoRegeneration] fire_resistance 60 0 false",
-      // "/event entity @s[tag=!terminatorNoRegeneration] terminator:escape"
-
       entity.addEffect(MinecraftEffectTypes.Regeneration, 6 * TicksPerSecond, {
         amplifier: 4,
         showParticles: false,
@@ -73,7 +68,16 @@ terminatorSpawn.subscribe(({ entity }) => {
           showParticles: false,
         }
       );
+
+      const dummyEntity = entity.dimension.spawnEntity(
+        "entity:dummy",
+        entity.location
+      );
+      dummyEntity.runCommand("spreadplayers ~ ~ 32 48 @s");
+      dummyEntity.triggerEvent("dummy:request_pathfind");
+
       entity.triggerEvent("terminator:escape");
+      triggered = true;
     }
   });
 });

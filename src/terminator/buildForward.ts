@@ -76,7 +76,8 @@ system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
     if (
       event.sourceType !== ScriptEventSource.Entity ||
-      event.sourceEntity?.typeId !== "entity:terminator"
+      event.sourceEntity?.typeId !== "entity:terminator" ||
+      !event.id.startsWith("terminator:forward")
     )
       return;
 
@@ -182,7 +183,7 @@ system.afterEvents.scriptEventReceive.subscribe(
 const fixDegreeY = (degreeY: number) => {
   if (degreeY > 180) return degreeY - 360;
   if (degreeY < -180) return degreeY + 360;
-  throw new RangeError("Invalid degree range. Accept [-180");
+  throw new RangeError("The degreeY must be within the bounds [-180, 180]");
 };
 
 system.runInterval(() => {
