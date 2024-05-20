@@ -1,4 +1,4 @@
-import { Vector3Builder } from "@minecraft/math";
+import { Vector2Builder, Vector3Builder } from "@minecraft/math";
 import {
   BlockPermutation,
   BlockRaycastHit,
@@ -27,6 +27,7 @@ import {
 import {
   PlayerJumpCooldown,
   PlayerJumpImpulse,
+  ReplaceableBlocks,
   UnbreakableBlocks,
 } from "../config";
 import { MinecraftColor } from "../minecraft-color";
@@ -157,24 +158,24 @@ export class TerminatorEntity implements Entity {
   ): EntityRaycastHit[] {
     return this.terminator.getEntitiesFromViewDirection(options);
   }
-  getHeadLocation(): Vector3 {
+  getHeadLocation(): Vector3Builder {
     const response = this.terminator.getHeadLocation();
     return new Vector3Builder(response);
   }
   getProperty(identifier: string): boolean | number | string | undefined {
     return this.terminator.getProperty(identifier);
   }
-  getRotation(): Vector2 {
-    return this.terminator.getRotation();
+  getRotation(): Vector2Builder {
+    return new Vector2Builder(this.terminator.getRotation());
   }
   getTags(): string[] {
     return this.terminator.getTags();
   }
-  getVelocity(): Vector3 {
+  getVelocity(): Vector3Builder {
     const response = this.terminator.getVelocity();
     return new Vector3Builder(response);
   }
-  getViewDirection(): Vector3 {
+  getViewDirection(): Vector3Builder {
     const response = this.terminator.getViewDirection();
     return new Vector3Builder(response);
   }
@@ -240,15 +241,6 @@ export class TerminatorEntity implements Entity {
   }
   /**
    * @remarks
-   * Rotation of the head across pitch and yaw angles.
-   *
-   * @throws This property can throw when used.
-   */
-  get headRotation(): Vector2 {
-    return this.getRotation();
-  }
-  /**
-   * @remarks
    * Returns whether the terminator is sprinting.
    */
   get isSprinting(): boolean {
@@ -279,7 +271,8 @@ export class TerminatorEntity implements Entity {
   }
   placeBlock(blockLocation: Vector3, permutation: BlockPermutation): boolean {
     const block = this.dimension.getBlock(blockLocation);
-    if (!block) return false;
+    const entities = this.dimension.getEntitiesAtBlockLocation(blockLocation);
+    if (!block || entities.length > 0 || !(block.isAir || block.isLiquid) || !ReplaceableBlocks.some((id) => block.permutation.matches(id))) return false;
     block.setPermutation(permutation);
     world.playSound("dig.stone", block.location, {
       pitch: Math.random() * 0.2 + 0.8,
@@ -351,7 +344,7 @@ export class TerminatorEntity implements Entity {
     const cannotJumpUntil =
       (this.getDynamicProperty("terminator:cannot_jump_until") as number) ?? 0;
 
-    if (cannotJumpUntil <= system.currentTick) {
+    if (cannotJumpUntil <= system.currentTick && this.isOnGround) {
       this.applyImpulse(PlayerJumpImpulse);
 
       this.setDynamicProperty(

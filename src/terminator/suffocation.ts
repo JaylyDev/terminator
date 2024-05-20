@@ -1,69 +1,33 @@
-import { BlockPermutation, system } from "@minecraft/server";
+import { BlockPermutation } from "@minecraft/server";
 import { terminatorSuffocate } from "../terminator-events/onTerminatorSuffocate";
-import {
-  PlayerJumpCooldown,
-  PlayerJumpImpulse,
-  UnbreakableBlocks,
-} from "../config";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { TerminatorEntity } from "./terminator";
+import { VECTOR3_DOWN, VECTOR3_UP, Vector3Builder } from "@minecraft/math";
 
-terminatorSuffocate.subscribe((event) => {
-  const { hurtEntity } = event;
-  const rotation = hurtEntity.getRotation();
-  const block = hurtEntity.dimension.getBlock(hurtEntity.location);
-  if (!block) return;
-  const blockAbove = block.above();
-  if (!blockAbove) return;
-  if (UnbreakableBlocks.some((id) => blockAbove.permutation.matches(id)))
-    return;
+const buildingBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
+
+terminatorSuffocate.subscribe(({ hurtEntity }) => {
+  const terminator = new TerminatorEntity(hurtEntity);
+  const rotation = terminator.getRotation();
+  const location = new Vector3Builder(terminator.location);
+  const block = terminator.dimension.getBlock(location);
 
   // vertical.up
   if (rotation.x < -20) {
     // Break block
-    blockAbove.setPermutation(
-      BlockPermutation.resolve(MinecraftBlockTypes.Air)
-    );
-    hurtEntity.dimension
-      .getPlayers({ minDistance: 0 })
-      .forEach((player) =>
-        player.playSound("dig.stone", { location: block.location })
-      );
-
-    const cannotJumpUntil =
-      (hurtEntity.getDynamicProperty(
-        "terminator:cannot_jump_until"
-      ) as number) ?? 0;
-    if (cannotJumpUntil <= system.currentTick) {
-      hurtEntity.applyImpulse(PlayerJumpImpulse);
-
-      hurtEntity.setDynamicProperty(
-        "terminator:cannot_jump_until",
-        system.currentTick + PlayerJumpCooldown
-      );
-    }
+    terminator.breakBlock(location.add(VECTOR3_UP));
+    terminator.jump();
 
     // If neccessary place block above
-    if (block.permutation.matches(MinecraftBlockTypes.Air)) {
-      block.setPermutation(
-        BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone)
-      );
+    if (block && block.permutation.matches(MinecraftBlockTypes.Air)) {
+      terminator.placeBlock(location, buildingBlock);
     }
-    hurtEntity.dimension
-      .getPlayers({ minDistance: 0 })
-      .forEach((player) =>
-        player.playSound("dig.stone", { location: block.location })
-      );
   }
   // vertical.down
   else if (rotation.x > 20) {
     // Break block
-    blockAbove.setPermutation(
-      BlockPermutation.resolve(MinecraftBlockTypes.Air)
-    );
-    hurtEntity.dimension
-      .getPlayers({ minDistance: 0 })
-      .forEach((player) =>
-        player.playSound("dig.stone", { location: block.location })
-      );
+    terminator.breakBlock(location.add(VECTOR3_UP));
+    terminator.breakBlock(location.add(VECTOR3_DOWN));
+    terminator.breakBlock(location.add(VECTOR3_DOWN));
   }
 });

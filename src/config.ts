@@ -21,6 +21,21 @@ export const UnbreakableBlocks: MinecraftBlockTypes[] = [
   MinecraftBlockTypes.Air,
 ];
 
+export const ReplaceableBlocks: MinecraftBlockTypes[] = [
+  MinecraftBlockTypes.Air,
+  MinecraftBlockTypes.Tallgrass,
+  MinecraftBlockTypes.Seagrass,
+  MinecraftBlockTypes.Deadbush,
+  MinecraftBlockTypes.Vine,
+  MinecraftBlockTypes.GlowLichen,
+  MinecraftBlockTypes.WarpedRoots,
+  MinecraftBlockTypes.CrimsonRoots,
+  MinecraftBlockTypes.Water,
+  MinecraftBlockTypes.Lava,
+  MinecraftBlockTypes.FlowingLava,
+  MinecraftBlockTypes.FlowingWater,
+];
+
 export const PlayerJumpImpulse: Vector3 = { x: 0, y: 0.5, z: 0 };
 export const PlayerJumpCooldown = TicksPerSecond / 2;
 

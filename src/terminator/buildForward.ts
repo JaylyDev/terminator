@@ -6,6 +6,7 @@ import {
 } from "@minecraft/server";
 import { Vector3Builder } from "@minecraft/math";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { TerminatorEntity } from "./terminator";
 
 class BridgeDirection {
   private constructor() {
@@ -16,25 +17,25 @@ class BridgeDirection {
     return new Vector3Builder(0, -1, -1);
   }
   public static get West() {
-    return new Vector3Builder(0, -1, -1);
+    return new Vector3Builder(-1, -1, 0);
   }
   public static get East() {
     return new Vector3Builder(1, -1, 0);
   }
   public static get South() {
-    return new Vector3Builder(-1, -1, 0);
+    return new Vector3Builder(0, -1, 1);
   }
   public static get NorthEast() {
-    return [new Vector3Builder(0, -1, -1), new Vector3Builder(1, -1, -1)];
+    return [this.North, this.West];
   }
   public static get SouthWest() {
-    return [new Vector3Builder(0, -1, 1), new Vector3Builder(-1, -1, 1)];
+    return [this.South, this.West];
   }
   public static get SouthEast() {
-    return [new Vector3Builder(1, -1, 1), new Vector3Builder(1, -1, 0)];
+    return [this.South, this.East];
   }
   public static get NorthWest() {
-    return [new Vector3Builder(0, -1, 1), new Vector3Builder(-1, -1, 1)];
+    return [this.North, this.West];
   }
 }
 
@@ -81,95 +82,44 @@ system.afterEvents.scriptEventReceive.subscribe(
     )
       return;
 
-    const location = new Vector3Builder(event.sourceEntity.location);
-    if (event.id === TerminatorBuildDirection.North) {
-      const block = event.sourceEntity.dimension.getBlock(
-        location.add(BridgeDirection.North)
-      )!;
-      const permutation = block.permutation;
-      if (
-        permutation.matches(MinecraftBlockTypes.Air) ||
-        permutation.matches(MinecraftBlockTypes.Tallgrass)
-      )
-        block.setPermutation(bridgeBlock);
-    } else if (event.id === TerminatorBuildDirection.West) {
-      const block = event.sourceEntity.dimension.getBlock(
-        location.add(BridgeDirection.West)
-      )!;
-      const permutation = block.permutation;
-      if (
-        permutation.matches(MinecraftBlockTypes.Air) ||
-        permutation.matches(MinecraftBlockTypes.Tallgrass)
-      )
-        block.setPermutation(bridgeBlock);
-    } else if (event.id === TerminatorBuildDirection.East) {
-      const block = event.sourceEntity.dimension.getBlock(
-        location.add(BridgeDirection.East)
-      )!;
-      const permutation = block.permutation;
-      if (
-        permutation.matches(MinecraftBlockTypes.Air) ||
-        permutation.matches(MinecraftBlockTypes.Tallgrass)
-      )
-        block.setPermutation(bridgeBlock);
-    } else if (event.id === TerminatorBuildDirection.South) {
-      const block = event.sourceEntity.dimension.getBlock(
-        location.add(BridgeDirection.South)
-      )!;
-      const permutation = block.permutation;
-      if (
-        permutation.matches(MinecraftBlockTypes.Air) ||
-        permutation.matches(MinecraftBlockTypes.Tallgrass)
-      )
-        block.setPermutation(bridgeBlock);
-    } else if (event.id === TerminatorBuildDirection.NorthEast) {
-      for (const direction of BridgeDirection.NorthEast) {
-        const block = event.sourceEntity.dimension.getBlock(
-          location.add(direction)
-        )!;
-        const permutation = block.permutation;
-        if (
-          permutation.matches(MinecraftBlockTypes.Air) ||
-          permutation.matches(MinecraftBlockTypes.Tallgrass)
-        )
-          block.setPermutation(bridgeBlock);
-      }
-    } else if (event.id === TerminatorBuildDirection.SouthWest) {
-      for (const direction of BridgeDirection.SouthWest) {
-        const block = event.sourceEntity.dimension.getBlock(
-          location.add(direction)
-        )!;
-        const permutation = block.permutation;
-        if (
-          permutation.matches(MinecraftBlockTypes.Air) ||
-          permutation.matches(MinecraftBlockTypes.Tallgrass)
-        )
-          block.setPermutation(bridgeBlock);
-      }
-    } else if (event.id === TerminatorBuildDirection.SouthEast) {
-      for (const direction of BridgeDirection.SouthEast) {
-        const block = event.sourceEntity.dimension.getBlock(
-          location.add(direction)
-        )!;
-        const permutation = block.permutation;
-        if (
-          permutation.matches(MinecraftBlockTypes.Air) ||
-          permutation.matches(MinecraftBlockTypes.Tallgrass)
-        )
-          block.setPermutation(bridgeBlock);
-      }
-    } else if (event.id === TerminatorBuildDirection.NorthWest) {
-      for (const direction of BridgeDirection.NorthWest) {
-        const block = event.sourceEntity.dimension.getBlock(
-          location.add(direction)
-        )!;
-        const permutation = block.permutation;
-        if (
-          permutation.matches(MinecraftBlockTypes.Air) ||
-          permutation.matches(MinecraftBlockTypes.Tallgrass)
-        )
-          block.setPermutation(bridgeBlock);
-      }
+    const terminator = new TerminatorEntity(event.sourceEntity);
+    const location = terminator.location;
+    switch (event.id) {
+      case TerminatorBuildDirection.North:
+        terminator.placeBlock(location.add(BridgeDirection.North), bridgeBlock)
+        break;
+      case TerminatorBuildDirection.West:
+        terminator.placeBlock(location.add(BridgeDirection.West), bridgeBlock)
+        break;
+      case TerminatorBuildDirection.East:
+        terminator.placeBlock(location.add(BridgeDirection.East), bridgeBlock)
+        break;
+      case TerminatorBuildDirection.South:
+        terminator.placeBlock(location.add(BridgeDirection.South), bridgeBlock)
+        break;
+      case TerminatorBuildDirection.NorthEast:
+        for (const direction of BridgeDirection.NorthEast) {
+          terminator.placeBlock(location.add(direction), bridgeBlock);
+        }
+        break;
+      case TerminatorBuildDirection.SouthWest:
+        for (const direction of BridgeDirection.SouthWest) {
+          terminator.placeBlock(location.add(direction), bridgeBlock);
+        }
+        break;
+      case TerminatorBuildDirection.SouthEast:
+        for (const direction of BridgeDirection.SouthEast) {
+          terminator.placeBlock(location.add(direction), bridgeBlock);
+        }
+        break;
+      case TerminatorBuildDirection.NorthWest:
+        for (const direction of BridgeDirection.NorthWest) {
+          terminator.placeBlock(location.add(direction), bridgeBlock);
+        }
+        break;
+    
+      default:
+        break;
     }
   },
   {
@@ -178,7 +128,7 @@ system.afterEvents.scriptEventReceive.subscribe(
 );
 
 /**
- * Minecraft only allows degree range of [-180, 180] for y-rotation.
+ * Minecraft only allows degree range of [-180, 180] for head rotation y.
  */
 const fixDegreeY = (degreeY: number) => {
   if (degreeY > 180) return degreeY - 360;
