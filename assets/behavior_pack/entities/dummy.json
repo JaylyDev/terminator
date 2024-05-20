@@ -90,7 +90,7 @@
               },
               "minimum_count": 1,
               "maximum_count": 32767,
-              "sensor_range": 10,
+              "range": [10, 10],
               "require_all": true,
               "event": "dummy:request_despawn"
             }
