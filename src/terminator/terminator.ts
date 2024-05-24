@@ -265,14 +265,22 @@ export class TerminatorEntity implements Entity {
     if (!block || UnbreakableBlocks.some((id) => block.permutation.matches(id)))
       return false;
     const result = this.dimension.runCommand(
-      `setblock ${blockLocation.x} ${blockLocation.y} ${blockLocation.z} air`
+      `setblock ${blockLocation.x} ${blockLocation.y} ${blockLocation.z} air destroy`
     );
     return result.successCount === 1;
   }
   placeBlock(blockLocation: Vector3, permutation: BlockPermutation): boolean {
     const block = this.dimension.getBlock(blockLocation);
-    const entities = this.dimension.getEntitiesAtBlockLocation(blockLocation);
-    if (!block || entities.length > 0 || !(block.isAir || block.isLiquid) || !ReplaceableBlocks.some((id) => block.permutation.matches(id))) return false;
+    const entities = this.dimension
+      .getEntitiesAtBlockLocation(blockLocation)
+      .filter((entity) => entity !== this.terminator);
+    if (
+      !block ||
+      entities.length > 0 ||
+      !(block.isAir || block.isLiquid) ||
+      !ReplaceableBlocks.some((id) => block.permutation.matches(id))
+    )
+      return false;
     block.setPermutation(permutation);
     world.playSound("dig.stone", block.location, {
       pitch: Math.random() * 0.2 + 0.8,

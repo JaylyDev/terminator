@@ -12,10 +12,11 @@ terminatorSuffocate.subscribe(({ hurtEntity }) => {
   const location = new Vector3Builder(terminator.location);
   const block = terminator.dimension.getBlock(location);
 
+  // Break the block terminator is suffocating from, no matter what.
+  terminator.breakBlock(location.add(VECTOR3_UP));
+
   // vertical.up
   if (rotation.x < -20) {
-    // Break block
-    terminator.breakBlock(location.add(VECTOR3_UP));
     terminator.jump();
 
     // If neccessary place block above
@@ -25,8 +26,6 @@ terminatorSuffocate.subscribe(({ hurtEntity }) => {
   }
   // vertical.down
   else if (rotation.x > 20) {
-    // Break block
-    terminator.breakBlock(location.add(VECTOR3_UP));
     terminator.breakBlock(location.add(VECTOR3_DOWN));
     terminator.breakBlock(location.add(VECTOR3_DOWN));
   }

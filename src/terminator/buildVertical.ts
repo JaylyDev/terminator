@@ -97,7 +97,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     // Build up
     if (
       event.id === TerminatorBuildVerticallyDirection.Up &&
-      displacement.y > 0
+      displacement.y > 1
     ) {
       terminator.breakBlock(
         Vector3Utils.add(location, new Vector3Builder(VECTOR3_UP).scale(2))
@@ -113,7 +113,7 @@ system.afterEvents.scriptEventReceive.subscribe(
     // Dig down
     else if (
       event.id === TerminatorBuildVerticallyDirection.Down &&
-      displacement.y < 0
+      displacement.y < -1
     ) {
       terminator.breakBlock(Vector3Utils.add(location, VECTOR3_DOWN));
     }

@@ -14,14 +14,16 @@
           "terminator.is_sitting",
           "terminator.shield",
           "terminator.build.vertical",
-          "terminator.has_target"
+          "terminator.has_target",
+          "terminator.build.forward"
         ]
       },
       "animations": {
         "terminator.is_sitting": "controller.animation.terminator.is_sitting",
         "terminator.shield": "controller.animation.terminator.shield",
         "terminator.build.vertical": "controller.animation.terminator.build.vertical",
-        "terminator.has_target": "controller.animation.terminator.has_target"
+        "terminator.has_target": "controller.animation.terminator.has_target",
+        "terminator.build.forward": "controller.animation.terminator.build.forward"
       },
       "properties": {
         "terminator:is_sitting": {
