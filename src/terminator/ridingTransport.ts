@@ -15,7 +15,7 @@ system.runInterval(() => {
 
   for (const terminator of terminators) {
     let rideableCooldown: number =
-      (terminator.getDynamicProperty("rideableCooldown") as
+      (terminator.getDynamicProperty("terminator:rideable_cooldown") as
         | number
         | undefined) || -1;
     const isSitting = terminator.getProperty(
