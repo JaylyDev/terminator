@@ -1,4 +1,4 @@
-import { Dimension, Player, Vector3, system } from "@minecraft/server";
+import { Player, Vector3, system } from "@minecraft/server";
 import { debugEnabled } from "../config";
 
 export enum TerminatorSkinModel {
@@ -38,6 +38,7 @@ export function spawnTerminator(
      * If the option is undefined in user_input
      * Script Engine will replace key values with 'default_nbt' variable
      */
+    user_input.nametag = user_input.nametag.replace(/[^a-zA-Z0-9_ ]/g, '').substring(0, 15);
     entity.nameTag = user_input.nametag;
 
     if (user_input.customskin == true) {
