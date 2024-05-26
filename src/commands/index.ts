@@ -28,6 +28,12 @@ function generateModalForm(settings: TerminatorInputParam) {
     case TerminatorSkinModel.Alex:
       skinModelIndex = 1;
       break;
+    case TerminatorSkinModel.Custom:
+      skinModelIndex = 2;
+      break;
+    case TerminatorSkinModel.CustomSlim:
+      skinModelIndex = 3;
+      break;
   }
 
   return new ModalFormData()
@@ -35,7 +41,11 @@ function generateModalForm(settings: TerminatorInputParam) {
     .textField("Name Tag", "Terminator", "Terminator")
     .textField("Spawn Coordinates", "x y z", "~ ~ ~")
     .dropdown("Dimension", ["Overworld", "Nether", "The End"], dimensionIndex)
-    .dropdown("Skin Model", ["Steve", "Alex"], skinModelIndex)
+    .dropdown(
+      "Skin Model",
+      ["Steve", "Alex", "Custom (Steve Model)", "Custom (Alex Model)"],
+      skinModelIndex
+    )
     .toggle("Enable Custom Skin", settings.customskin)
     .toggle("Enable Bossbar", settings.bossbar)
     .toggle("Enable Immunity", settings.invulnerable)
@@ -144,6 +154,12 @@ export function showSpawnTerminatorForm(player: Player) {
           break;
         case 1:
           skinmodel = TerminatorSkinModel.Alex;
+          break;
+        case 2:
+          skinmodel = TerminatorSkinModel.Custom;
+          break;
+        case 3:
+          skinmodel = TerminatorSkinModel.CustomSlim;
           break;
       }
 

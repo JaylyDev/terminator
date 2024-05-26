@@ -3,6 +3,8 @@ import { Dimension, Vector3, system } from "@minecraft/server";
 export enum TerminatorSkinModel {
   Steve = "steve",
   Alex = "alex",
+  Custom = "custom",
+  CustomSlim = "custom_slim",
 }
 
 export interface TerminatorInputParam {
@@ -59,7 +61,11 @@ export function spawnTerminator(user_input: TerminatorInputParam) {
     if (user_input.respawn == false) {
       entity.triggerEvent("terminator:disable_respawn");
     }
-    if (user_input.skinmodel == "alex") {
+    if (user_input.skinmodel == TerminatorSkinModel.Alex) {
+      entity.triggerEvent("terminator:switch_skin_to_alex");
+    } else if (user_input.skinmodel == TerminatorSkinModel.Custom) {
+      entity.triggerEvent("terminator:enable_custom_skin");
+    } else if (user_input.skinmodel == TerminatorSkinModel.CustomSlim) {
       entity.triggerEvent("terminator:enable_customSlim_skin");
     }
 
