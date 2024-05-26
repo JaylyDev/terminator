@@ -1,21 +1,26 @@
-import { Vector3Builder } from "@minecraft/math";
+import {
+  VECTOR3_DOWN,
+  VECTOR3_UP,
+  Vector3Builder,
+  Vector3Utils,
+} from "@minecraft/math";
 import {
   BlockPermutation,
+  Entity,
   ScriptEventSource,
   Vector3,
   system,
 } from "@minecraft/server";
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
-import {
-  PlayerJumpCooldown,
-  PlayerJumpImpulse,
-  UnbreakableBlocks,
-} from "../config";
+import { TerminatorEntity } from "./terminator";
 
 export enum TerminatorBuildVerticallyDirection {
   Up = "terminator:vertical_up",
   Down = "terminator:vertical_down",
 }
+
+const size: Vector3 = { x: 4, y: 4, z: 4 };
+const buildingBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
 
 function BlockVolumeIsInside(pos: Vector3, from: Vector3, to: Vector3) {
   const { x, y, z } = pos;
@@ -25,81 +30,92 @@ function BlockVolumeIsInside(pos: Vector3, from: Vector3, to: Vector3) {
   return x >= x1 && x <= x2 && y >= y1 && y <= y2 && z >= z1 && z <= z2;
 }
 
-const size: Vector3 = { x: 4, y: 4, z: 4 };
-const buildingBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
+/**
+ * Determine the nearest target and return displacement between terminator in Vector3 form
+ */
+function nearestTargetDisplacement(
+  targets: Entity[],
+  terminator: Entity
+): Vector3 {
+  // Sort targets list by distance to terminator
+  const sortedTargets = targets.sort((a, b) => {
+    return (
+      Vector3Utils.distance(a.location, terminator.location) -
+      Vector3Utils.distance(b.location, terminator.location)
+    );
+  });
+  const dummyEntity = sortedTargets.find(
+    (entity) => entity.typeId === "entity:dummy"
+  );
+  const target = dummyEntity ?? sortedTargets[0];
+  return Vector3Utils.subtract(target.location, terminator.location);
+}
 
 system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
-    const terminator = event.sourceEntity;
     if (
-      !terminator ||
+      !event.sourceEntity ||
       event.sourceType !== ScriptEventSource.Entity ||
-      terminator.typeId !== "entity:terminator"
+      event.sourceEntity.typeId !== "entity:terminator" ||
+      !event.id.startsWith("terminator:vertical")
     )
       return;
 
+    const terminator = new TerminatorEntity(event.sourceEntity);
+    const { location, dimension } = terminator;
     // Only bridge up or down if player is within 8 x 384 x 8 blocks from terminator
-    const from = new Vector3Builder(terminator.location).subtract(size);
-    from.y = terminator.dimension.heightRange.min;
+    const from = new Vector3Builder(location).subtract(size);
+    from.y = dimension.heightRange.min;
 
-    const to = new Vector3Builder(terminator.location).add(size);
-    to.y = terminator.dimension.heightRange.max;
-    const playersWithinRange = terminator.dimension
+    const to = new Vector3Builder(location).add(size);
+    to.y = dimension.heightRange.max;
+    const playersWithinRange = dimension
       .getPlayers({
-        location: terminator.location,
+        location: location,
         minDistance: 0,
       })
       .filter((player) => BlockVolumeIsInside(player.location, from, to));
-    const dummiesWithinRange = terminator.dimension
+    const dummiesWithinRange = dimension
       .getEntities({
         type: "entity:dummy",
-        location: terminator.location,
+        location: location,
         minDistance: 0,
       })
-      .some((dummy) => BlockVolumeIsInside(dummy.location, from, to));
-
-    if (playersWithinRange.length <= 0 && !dummiesWithinRange) return;
-    if (event.id === TerminatorBuildVerticallyDirection.Up) {
-      const blockAbove = terminator.dimension
-        .getBlock(terminator.location)
-        ?.above(2);
-      if (!blockAbove) return;
-      if (!UnbreakableBlocks.some((id) => blockAbove.permutation.matches(id)))
-        blockAbove.setPermutation(
-          BlockPermutation.resolve(MinecraftBlockTypes.Air)
-        );
-      const cannotJumpUntil =
-        (terminator.getDynamicProperty(
-          "terminator:cannot_jump_until"
-        ) as number) ?? 0;
-
-      if (cannotJumpUntil <= system.currentTick) {
-        terminator.applyImpulse(PlayerJumpImpulse);
-
-        terminator.setDynamicProperty(
-          "terminator:cannot_jump_until",
-          system.currentTick + PlayerJumpCooldown
-        );
-
-        system.runTimeout(() => {
-          const block = terminator.dimension
-            .getBlock(terminator.location)
-            ?.below();
-          if (!block) return;
-          block.setPermutation(buildingBlock);
-          playersWithinRange.forEach((player) =>
-            player.playSound("dig.stone", { location: block.location })
-          );
-        }, 5);
-      }
-    } else if (event.id === TerminatorBuildVerticallyDirection.Down) {
-      const block = terminator.dimension.getBlock(terminator.location)?.below();
-      if (!block) return;
-      if (UnbreakableBlocks.some((id) => block.permutation.matches(id))) return;
-      block.setPermutation(BlockPermutation.resolve(MinecraftBlockTypes.Air));
-      playersWithinRange.forEach((player) =>
-        player.playSound("dig.stone", { location: block.location })
+      .filter(
+        (dummy) =>
+          BlockVolumeIsInside(dummy.location, from, to) &&
+          dummy.getProperty("dummy:task_type") === 2
       );
+
+    if (playersWithinRange.length <= 0 && dummiesWithinRange.length <= 0)
+      return;
+    const displacement = nearestTargetDisplacement(
+      [...playersWithinRange, ...dummiesWithinRange],
+      terminator
+    );
+
+    // Build up
+    if (
+      event.id === TerminatorBuildVerticallyDirection.Up &&
+      displacement.y > 1
+    ) {
+      terminator.breakBlock(
+        Vector3Utils.add(location, new Vector3Builder(VECTOR3_UP).scale(2))
+      );
+
+      const jumped = terminator.jump();
+
+      if (jumped)
+        system.runTimeout(() => {
+          terminator.placeBlock(location, buildingBlock);
+        }, 5);
+    }
+    // Dig down
+    else if (
+      event.id === TerminatorBuildVerticallyDirection.Down &&
+      displacement.y < -1
+    ) {
+      terminator.breakBlock(Vector3Utils.add(location, VECTOR3_DOWN));
     }
   },
   {

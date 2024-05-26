@@ -42,7 +42,7 @@ export function spawnTerminator(user_input: TerminatorInputParam) {
       entity.triggerEvent("terminator:enable_bossbar");
     }
     if (user_input.deathevent == false) {
-      entity.triggerEvent("terminator:disable_respawn_event");
+      entity.addTag("disablerespawnevent");
     }
     if (user_input.invulnerable == true) {
       entity.triggerEvent("terminator:enable_invulnerable");

@@ -11,14 +11,12 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
-          { "dummy.escape_pathfind": "q.property('dummy:task_type') == 2" },
           {
             "dummy.spawn_terminator": "q.property('dummy:task_type') == 1 || q.property('dummy:task_type') == 3 || q.property('dummy:task_type') == 4"
           }
         ]
       },
       "animations": {
-        "dummy.escape_pathfind": "controller.animation.dummy.escape_pathfind",
         "dummy.spawn_terminator": "controller.animation.dummy.spawn_terminator"
       },
       "properties": {
@@ -160,6 +158,9 @@
       "dummy:request_pathfind": {
         "set_property": {
           "dummy:task_type": 2
+        },
+        "add": {
+          "component_groups": ["dummy:detect_terminator"]
         }
       },
       "dummy:request_spawning_alex": {
@@ -170,14 +171,6 @@
       "dummy:request_spawning_custom": {
         "set_property": {
           "dummy:task_type": 4
-        }
-      },
-      "dummy:create_terminator_target": {
-        "add": {
-          "component_groups": ["dummy:detect_terminator"]
-        },
-        "queue_command": {
-          "command": ["spreadplayers ~ ~ 32 48 @s"]
         }
       },
       "dummy:request_despawn": {
