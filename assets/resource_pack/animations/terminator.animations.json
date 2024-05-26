@@ -4,31 +4,6 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.terminator.look_at_target": {
-      "loop": true,
-      "bones": {
-        "head": {
-          "relative_to": {
-            "rotation": "entity"
-          },
-          "rotation": [
-            "q.target_x_rotation - this",
-            "q.target_y_rotation - this",
-            0.0
-          ]
-        },
-        "hat": {
-          "relative_to": {
-            "rotation": "entity"
-          },
-          "rotation": [
-            "q.target_x_rotation - this",
-            "q.target_y_rotation - this",
-            0.0
-          ]
-        }
-      }
-    },
     "animation.terminator.sitting": {
       "loop": true,
       "bones": {
@@ -40,7 +15,7 @@
     "animation.humanoid.charging.v1.0": {
       "loop": true,
       "bones": {
-        "rightarm": {
+        "rightArm": {
           "rotation": ["22.5 * variable.charge_amount - this", "-this", 0.0]
         }
       }
@@ -48,10 +23,10 @@
     "animation.terminator.shield_block_main_hand": {
       "loop": true,
       "bones": {
-        "rightarm": {
+        "rightArm": {
           "rotation": [-20.0, -30.0, -25.0]
         },
-        "rightitem": {
+        "rightItem": {
           "position": [-1.0, -3.0, 0.0],
           "rotation": [0.0, -60.0, -45.0]
         }
@@ -60,12 +35,29 @@
     "animation.terminator.shield_block_off_hand": {
       "loop": true,
       "bones": {
-        "leftarm": {
+        "leftArm": {
           "rotation": [-20.0, 20.0, 20.0]
         },
-        "leftitem": {
+        "leftItem": {
           "position": [1.0, -3.0, 0.0],
           "rotation": [0.0, 70.0, 65.0]
+        }
+      }
+    },
+    "animation.terminator.cape": {
+      "loop": true,
+      "bones": {
+        "cape": {
+          "position": [
+            0.0,
+            "query.get_root_locator_offset('armor_offset.default_neck', 1)",
+            0.0
+          ],
+          "rotation": [
+            "math.lerp(0.0, -126.0, query.is_moving) - 6.0",
+            0.0,
+            0.0
+          ]
         }
       }
     }
