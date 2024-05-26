@@ -11,18 +11,25 @@ import { MinecraftColor } from "../minecraft-color";
 
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
-  const terminatorPopulation = world
-    .getDimension("overworld")
-    .getEntities({ type: "entity:terminator" }).length;
-
-  if (terminatorPopulation > 1)
-    entity.nameTag = `Terminator (${terminatorPopulation - 1})`;
-  else entity.nameTag = "Terminator";
-});
-
-// broadcast to world
-terminatorSpawn.subscribe(({ entity }) => {
   system.runTimeout(() => {
+    const nameTag = entity.nameTag ?? "Terminator";
+    const terminators = entity.dimension.getEntities({
+      type: "entity:terminator",
+    });
+    // Check if existing terminator has the same nameTag, if there one set the entity nameTag to "[name] (1)"
+    // If there's more than one with the same name, increment the index
+    if (terminators.some((entity) => entity.nameTag === nameTag)) {
+      const nameTagRegex = new RegExp(`^${nameTag} \\(\\d+\\)$`);
+      const terminatorsWithSameName = terminators.filter(
+        (terminator) =>
+          (terminator.nameTag === nameTag && terminator !== entity) ||
+          nameTagRegex.test(terminator.nameTag)
+      );
+      if (terminatorsWithSameName.length > 0)
+        entity.nameTag = `${nameTag} (${terminatorsWithSameName.length})`;
+      else entity.nameTag = nameTag;
+    }
+    // broadcast to world
     const rawtext: RawText = {
       rawtext: [
         { text: MinecraftColor.yellow },

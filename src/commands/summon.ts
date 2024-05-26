@@ -1,4 +1,5 @@
-import { Dimension, Vector3, system } from "@minecraft/server";
+import { Dimension, Player, Vector3, system } from "@minecraft/server";
+import { debugEnabled } from "../config";
 
 export enum TerminatorSkinModel {
   Steve = "steve",
@@ -18,13 +19,15 @@ export interface TerminatorInputParam {
   respawn: boolean;
   breedable: boolean;
   coords: Vector3;
-  dimension: Dimension;
   skinmodel: TerminatorSkinModel;
 }
 
-export function spawnTerminator(user_input: TerminatorInputParam) {
+export function spawnTerminator(
+  user_input: TerminatorInputParam,
+  sourcePlayer: Player
+) {
   // target: string, user_input: object
-  const entity = user_input.dimension.spawnEntity(
+  const entity = sourcePlayer.dimension.spawnEntity(
     "entity:terminator",
     user_input.coords
   );
@@ -69,6 +72,11 @@ export function spawnTerminator(user_input: TerminatorInputParam) {
       entity.triggerEvent("terminator:enable_customSlim_skin");
     }
 
-    console.log("User input: " + JSON.stringify(user_input));
+    const userInputString = JSON.stringify(user_input);
+    if (debugEnabled) console.log("User input: " + userInputString);
+    sourcePlayer.setDynamicProperty(
+      "terminator:spawn_options",
+      userInputString
+    );
   }, 2);
 }

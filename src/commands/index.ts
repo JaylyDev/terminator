@@ -1,26 +1,14 @@
-import { world, system, Player, Vector3 } from "@minecraft/server";
+import { system, Player, Vector3 } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
-import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
 import {
   spawnTerminator,
   TerminatorInputParam,
   TerminatorSkinModel,
 } from "./summon.js";
+import { debugEnabled } from "../config.js";
 
 function generateModalForm(settings: TerminatorInputParam) {
-  let dimensionIndex = 0;
   let skinModelIndex = 0;
-  switch (settings.dimension.id) {
-    case MinecraftDimensionTypes.Overworld:
-      dimensionIndex = 0;
-      break;
-    case MinecraftDimensionTypes.Nether:
-      dimensionIndex = 1;
-      break;
-    case MinecraftDimensionTypes.TheEnd:
-      dimensionIndex = 2;
-      break;
-  }
   switch (settings.skinmodel) {
     case TerminatorSkinModel.Steve:
       skinModelIndex = 0;
@@ -38,9 +26,8 @@ function generateModalForm(settings: TerminatorInputParam) {
 
   return new ModalFormData()
     .title("Spawn Terminator")
-    .textField("Name Tag", "Terminator", "Terminator")
+    .textField("Name Tag", settings.nametag, settings.nametag)
     .textField("Spawn Coordinates", "x y z", "~ ~ ~")
-    .dropdown("Dimension", ["Overworld", "Nether", "The End"], dimensionIndex)
     .dropdown(
       "Skin Model",
       ["Steve", "Alex", "Custom (Steve Model)", "Custom (Alex Model)"],
@@ -85,18 +72,17 @@ function parseCoordinates(paramString: string, playerLocation: Vector3) {
 }
 
 type TerminatorSpawnFormValues = [
-  string,
-  string,
-  number,
-  number,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean,
-  boolean
+  string, // nameTag
+  string, // locationString
+  number, // skinModelIndex
+  boolean, // customSkin
+  boolean, // bossbar
+  boolean, // invulnerable
+  boolean, // deathEvent
+  boolean, // physics
+  boolean, // regeneration
+  boolean, // respawn
+  boolean // breedable
 ];
 
 const getDefaultSpawnOptions = (player: Player): TerminatorInputParam => ({
@@ -110,12 +96,25 @@ const getDefaultSpawnOptions = (player: Player): TerminatorInputParam => ({
   respawn: true,
   breedable: false,
   coords: player.location,
-  dimension: player.dimension,
   skinmodel: TerminatorSkinModel.Steve,
 });
 
+function getPlayerSpawnOptions(player: Player): TerminatorInputParam {
+  const playerOptionString = player.getDynamicProperty(
+    "terminator:spawn_options"
+  ) as string | undefined;
+  console.warn(playerOptionString);
+  if (!playerOptionString) return getDefaultSpawnOptions(player);
+  try {
+    return JSON.parse(playerOptionString);
+  } catch (error) {
+    if (debugEnabled) console.error(error);
+    return getDefaultSpawnOptions(player);
+  }
+}
+
 export function showSpawnTerminatorForm(player: Player) {
-  const spawnOptions: TerminatorInputParam = getDefaultSpawnOptions(player);
+  const spawnOptions = getPlayerSpawnOptions(player);
   const form = generateModalForm(spawnOptions);
   form
     .show(player)
@@ -124,7 +123,6 @@ export function showSpawnTerminatorForm(player: Player) {
       const [
         nameTag,
         locationString,
-        dimensionIndex,
         skinModelIndex,
         customSkin,
         bossbar,
@@ -135,19 +133,7 @@ export function showSpawnTerminatorForm(player: Player) {
         respawn,
         breedable,
       ] = result.formValues as TerminatorSpawnFormValues;
-      let dimension = world.getDimension("overworld");
       let skinmodel: TerminatorSkinModel = TerminatorSkinModel.Steve;
-      switch (dimensionIndex) {
-        case 0:
-          dimension = world.getDimension("overworld");
-          break;
-        case 1:
-          dimension = world.getDimension("nether");
-          break;
-        case 2:
-          dimension = world.getDimension("the_end");
-          break;
-      }
       switch (skinModelIndex) {
         case 0:
           skinmodel = TerminatorSkinModel.Steve;
@@ -174,10 +160,9 @@ export function showSpawnTerminatorForm(player: Player) {
         respawn: respawn,
         breedable: breedable,
         coords: parseCoordinates(locationString, player.location),
-        dimension,
         skinmodel,
       };
-      spawnTerminator(jsonInput);
+      spawnTerminator(jsonInput, player);
     })
     .catch((error) => console.error(error + "\n" + error.stack));
 }
