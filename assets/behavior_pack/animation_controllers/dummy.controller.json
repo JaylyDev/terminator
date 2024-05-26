@@ -4,14 +4,6 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.dummy.escape_pathfind": {
-      "initial_state": "default_state",
-      "states": {
-        "default_state": {
-          "on_entry": ["@s dummy:create_terminator_target"]
-        }
-      }
-    },
     "controller.animation.dummy.spawn_terminator": {
       "initial_state": "variable_setup",
       "states": {

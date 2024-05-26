@@ -42,7 +42,7 @@
           "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
           "variable.terminator_variant = q.variant;",
           "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
-          "variable.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / variable.gliding_speed_value) * 28.65;",
           "variable.hand_bob = q.life_time < 0.01 ? 0.0 : variable.hand_bob + ((q.is_on_ground && q.is_alive ? math.clamp(math.sqrt(math.pow(q.position_delta(0), 2.0) + math.pow(q.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;"
         ],
         "animate": [

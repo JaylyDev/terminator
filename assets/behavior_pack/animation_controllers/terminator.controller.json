@@ -115,11 +115,102 @@
         }
       }
     },
+    "controller.animation.terminator.build.forward": {
+      "initial_state": "default_state",
+      "states": {
+        "default_state": {
+          "transitions": [{ "running_state": "(1.0)" }],
+          "on_entry": [
+            "temp.degree_range_azimuth = 33;",
+            "temp.degree_range_intercardinal = 11;",
+            "temp.direction_north = 0;",
+            "temp.direction_east = 90;",
+            "temp.direction_south = -180;",
+            "temp.direction_west = -90;",
+            "temp.direction_north_east = 45;",
+            "temp.direction_south_east = 135;",
+            "temp.direction_south_west = -135;",
+            "temp.direction_north_west = -45;"
+          ]
+        },
+        "running_state": {
+          "transitions": [
+            {
+              "forward.north": "query.head_y_rotation(0) >= (temp.direction_north - temp.degree_range_azimuth) && query.head_y_rotation(0) <= (temp.direction_north + temp.degree_range_azimuth)"
+            },
+            {
+              "forward.east": "query.head_y_rotation(0) >= (temp.direction_east - temp.degree_range_azimuth) && query.head_y_rotation(0) <= (temp.direction_east + temp.degree_range_azimuth)"
+            },
+            {
+              "forward.south": "(query.head_y_rotation(0) >= (180 - temp.degree_range_azimuth) && query.head_y_rotation(0) < 180) || (query.head_y_rotation(0) > temp.direction_south && query.head_y_rotation(0) < (temp.direction_south + temp.degree_range_azimuth))"
+            },
+            {
+              "forward.west": "query.head_y_rotation(0) >= (temp.direction_west - temp.degree_range_azimuth) && query.head_y_rotation(0) <= (temp.direction_west + temp.degree_range_azimuth)"
+            },
+            {
+              "forward.north_east": "query.head_y_rotation(0) >= (temp.direction_north_east - temp.degree_range_intercardinal) && query.head_y_rotation(0) <= (temp.direction_north_east + temp.degree_range_intercardinal)"
+            },
+            {
+              "forward.south_east": "query.head_y_rotation(0) >= (temp.direction_south_east - temp.degree_range_intercardinal) && query.head_y_rotation(0) <= (temp.direction_south_east + temp.degree_range_intercardinal)"
+            },
+            {
+              "forward.south_west": "query.head_y_rotation(0) >= (temp.direction_south_west - temp.degree_range_intercardinal) && query.head_y_rotation(0) <= (temp.direction_south_west + temp.degree_range_intercardinal)"
+            },
+            {
+              "forward.north_west": "query.head_y_rotation(0) >= (temp.direction_north_west - temp.degree_range_intercardinal) && query.head_y_rotation(0) <= (temp.direction_north_west + temp.degree_range_intercardinal)"
+            }
+          ],
+          "on_entry": [
+            "temp.degree_range_azimuth = 33;",
+            "temp.degree_range_intercardinal = 11;",
+            "temp.direction_north = 0;",
+            "temp.direction_east = 90;",
+            "temp.direction_south = -180;",
+            "temp.direction_west = -90;",
+            "temp.direction_north_east = 45;",
+            "temp.direction_south_east = 135;",
+            "temp.direction_south_west = -135;",
+            "temp.direction_north_west = -45;"
+          ]
+        },
+        "forward.north": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_north"]
+        },
+        "forward.east": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_east"]
+        },
+        "forward.south": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_south"]
+        },
+        "forward.west": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_west"]
+        },
+        "forward.north_east": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_north_east"]
+        },
+        "forward.south_east": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_south_east"]
+        },
+        "forward.south_west": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_south_west"]
+        },
+        "forward.north_west": {
+          "transitions": [{ "default_state": "(1.0)" }],
+          "on_entry": ["/scriptevent terminator:forward_north_west"]
+        }
+      }
+    },
     "controller.animation.terminator.build.vertical": {
       "initial_state": "default_state",
       "states": {
-        "default_state": { "transitions": [{ "running_state": "(1.0)" }] },
-        "running_state": {
+        "default_state": {
           "transitions": [
             { "vertical.up": "q.has_target && q.head_x_rotation(0) < -20" },
             { "vertical.down": "q.has_target && q.head_x_rotation(0) > 20" }

@@ -1,14 +1,22 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.terminator.cape" : {
-			"loop" : true,
-			"bones" : {
-				"cape" : {
-					"position" : [ 0.0, "query.get_root_locator_offset('armor_offset.default_neck', 1)", 0.0 ],
-					"rotation" : [ "math.lerp(0.0, -126.0, query.is_moving) - 6.0", 0.0, 0.0 ]
-				}
-			}
-		}
+    "animation.terminator.cape": {
+      "loop": true,
+      "bones": {
+        "cape": {
+          "position": [
+            0.0,
+            "query.get_root_locator_offset('armor_offset.default_neck', 1)",
+            0.0
+          ],
+          "rotation": [
+            "math.lerp(0.0, -126.0, query.ground_speed / 10) - 6.0",
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
   }
 }
