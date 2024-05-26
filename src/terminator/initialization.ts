@@ -12,7 +12,8 @@ import { MinecraftColor } from "../minecraft-color";
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
   system.runTimeout(() => {
-    const nameTag = entity.nameTag ?? "Terminator";
+    const nameTag = entity.nameTag || "Terminator";
+    entity.nameTag = nameTag;
     const terminators = entity.dimension.getEntities({
       type: "entity:terminator",
     });
@@ -27,8 +28,8 @@ terminatorSpawn.subscribe(({ entity }) => {
       );
       if (terminatorsWithSameName.length > 0)
         entity.nameTag = `${nameTag} (${terminatorsWithSameName.length})`;
-      else entity.nameTag = nameTag;
     }
+    
     // broadcast to world
     const rawtext: RawText = {
       rawtext: [
