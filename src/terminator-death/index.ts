@@ -6,6 +6,7 @@ import {
 import { terminatorDie } from "../terminator-events/onTerminatorDie";
 import { sendDeathMessageCallback } from "./deathMessage";
 import { MinecraftColor } from "../minecraft-color";
+import { dropEntityInventory } from "./dropInventory";
 
 enum TerminatorVariant {
   SteveDefault = 0,
@@ -33,6 +34,8 @@ terminatorDie.subscribe((event) => {
   const isCustomVariant =
     variant.value === TerminatorVariant.Custom ||
     variant.value === TerminatorVariant.CustomSlim;
+
+  dropEntityInventory(deadEntity);
 
   // First Death
   if (allowRespawn && triggerRespawnEvent && cause !== EntityDamageCause.void) {

@@ -1,8 +1,11 @@
-import { Dimension, Vector3, system } from "@minecraft/server";
+import { Player, Vector3, system } from "@minecraft/server";
+import { debugEnabled } from "../config";
 
 export enum TerminatorSkinModel {
   Steve = "steve",
   Alex = "alex",
+  Custom = "custom",
+  CustomSlim = "custom_slim",
 }
 
 export interface TerminatorInputParam {
@@ -16,13 +19,15 @@ export interface TerminatorInputParam {
   respawn: boolean;
   breedable: boolean;
   coords: Vector3;
-  dimension: Dimension;
   skinmodel: TerminatorSkinModel;
 }
 
-export function spawnTerminator(user_input: TerminatorInputParam) {
+export function spawnTerminator(
+  user_input: TerminatorInputParam,
+  sourcePlayer: Player
+) {
   // target: string, user_input: object
-  const entity = user_input.dimension.spawnEntity(
+  const entity = sourcePlayer.dimension.spawnEntity(
     "entity:terminator",
     user_input.coords
   );
@@ -33,6 +38,7 @@ export function spawnTerminator(user_input: TerminatorInputParam) {
      * If the option is undefined in user_input
      * Script Engine will replace key values with 'default_nbt' variable
      */
+    user_input.nametag = user_input.nametag.replace(/[^a-zA-Z0-9_ ]/g, '').substring(0, 15);
     entity.nameTag = user_input.nametag;
 
     if (user_input.customskin == true) {
@@ -59,10 +65,19 @@ export function spawnTerminator(user_input: TerminatorInputParam) {
     if (user_input.respawn == false) {
       entity.triggerEvent("terminator:disable_respawn");
     }
-    if (user_input.skinmodel == "alex") {
+    if (user_input.skinmodel == TerminatorSkinModel.Alex) {
+      entity.triggerEvent("terminator:switch_skin_to_alex");
+    } else if (user_input.skinmodel == TerminatorSkinModel.Custom) {
+      entity.triggerEvent("terminator:enable_custom_skin");
+    } else if (user_input.skinmodel == TerminatorSkinModel.CustomSlim) {
       entity.triggerEvent("terminator:enable_customSlim_skin");
     }
 
-    console.log("User input: " + JSON.stringify(user_input));
+    const userInputString = JSON.stringify(user_input);
+    if (debugEnabled) console.log("User input: " + userInputString);
+    sourcePlayer.setDynamicProperty(
+      "terminator:spawn_options",
+      userInputString
+    );
   }, 2);
 }
