@@ -103,7 +103,6 @@ function getPlayerSpawnOptions(player: Player): TerminatorInputParam {
   const playerOptionString = player.getDynamicProperty(
     "terminator:spawn_options"
   ) as string | undefined;
-  console.warn(playerOptionString);
   if (!playerOptionString) return getDefaultSpawnOptions(player);
   try {
     return JSON.parse(playerOptionString);
