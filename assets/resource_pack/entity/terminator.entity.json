@@ -22,8 +22,17 @@
         "alex_xmas": "textures/entity/terminator/alex_xmas",
         "custom": "textures/entity/steve",
         "customSlim": "textures/entity/alex",
-        "cape_default": "textures/entity/cape_invisible",
-        "cape": "textures/entity/cape_custom"
+        "cape": "textures/entity/cape_invisible",
+        "cape_15th_anniv": "textures/entity/cape_15th_anniv",
+        "cape_cherry": "textures/entity/cape_cherry",
+        "cape_founder": "textures/entity/cape_founder",
+        "cape_migrator": "textures/entity/cape_migrator",
+        "cape_mojang_new": "textures/entity/cape_mojang_new",
+        "cape_pan": "textures/entity/cape_pan",
+        "cape_pride": "textures/entity/cape_pride",
+        "cape_tiktok": "textures/entity/cape_tiktok",
+        "cape_twitch": "textures/entity/cape_twitch",
+        "cape_vanilla": "textures/entity/cape_vanilla"
       },
       "geometry": {
         "default": "geometry.terminator",
@@ -127,7 +136,7 @@
       },
       "render_controllers": [
         "controller.render.terminator",
-        "controller.render.player.cape"
+        "controller.render.terminator.cape"
       ],
       "enable_attachables": true
     }

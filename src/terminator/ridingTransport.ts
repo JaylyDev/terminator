@@ -2,19 +2,16 @@ import { ItemStack, TicksPerSecond, system, world } from "@minecraft/server";
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
 const overworld = world.getDimension("overworld");
+const rideableTransports = [
+  MinecraftEntityTypes.Minecart,
+  MinecraftEntityTypes.ChestBoat,
+  MinecraftEntityTypes.Boat,
+];
 
 // Replacement of controller.animation.terminator.sitting
 system.runInterval(() => {
   const terminators = overworld.getEntities({ type: "entity:terminator" });
   if (terminators.length === 0) return;
-
-  const boats = overworld.getEntities({ type: MinecraftEntityTypes.Boat });
-  const chestBoats = overworld.getEntities({
-    type: MinecraftEntityTypes.ChestBoat,
-  });
-  const minecarts = overworld.getEntities({
-    type: MinecraftEntityTypes.Minecart,
-  });
 
   for (const terminator of terminators) {
     let rideableCooldown = terminator.getDynamicProperty(
@@ -40,29 +37,11 @@ system.runInterval(() => {
     // If the rideable cooldown is 0 and terminator is sitting, then leave the transport they're riding in
     // Note: Rideable component is not released to stable, kill the transport entity
     else if (rideableCooldown === 0) {
-      const nearbyBoats = boats.filter(
-        (boat) =>
-          boat.matches({ maxDistance: 1, location: terminator.location }) &&
-          boat.dimension === terminator.dimension
+      const nearbyTransport = terminator.dimension.getEntitiesAtBlockLocation(
+        terminator.location
       );
-      const nearbyChestBoats = chestBoats.filter(
-        (chestBoat) =>
-          chestBoat.matches({
-            maxDistance: 1,
-            location: terminator.location,
-          }) && chestBoat.dimension === terminator.dimension
-      );
-      const nearbyMinecarts = minecarts.filter(
-        (minecart) =>
-          minecart.matches({ maxDistance: 1, location: terminator.location }) &&
-          minecart.dimension === terminator.dimension
-      );
-      const nearbyTransport = [
-        ...nearbyBoats,
-        ...nearbyChestBoats,
-        ...nearbyMinecarts,
-      ];
       for (const transport of nearbyTransport) {
+        if (rideableTransports.some((id) => transport.typeId !== id)) continue;
         transport.dimension.spawnItem(
           new ItemStack(transport.typeId, 1),
           transport.location

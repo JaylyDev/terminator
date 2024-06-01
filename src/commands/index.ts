@@ -6,6 +6,7 @@ import {
   TerminatorSkinModel,
 } from "./summon.js";
 import { debugEnabled } from "../config.js";
+import { CapeVariant, CapeVariants } from "../terminator/capeVariant.js";
 
 function generateModalForm(settings: TerminatorInputParam) {
   let skinModelIndex = 0;
@@ -40,7 +41,8 @@ function generateModalForm(settings: TerminatorInputParam) {
     .toggle("Enable Physics", settings.physics)
     .toggle("Enable Regeneration", settings.regeneration)
     .toggle("Enable Respawn", settings.respawn)
-    .toggle("Enable Breedability", settings.breedable);
+    .toggle("Enable Breedability", settings.breedable)
+    .dropdown("Cape", CapeVariants, settings.cape);
 }
 
 /**
@@ -82,7 +84,8 @@ type TerminatorSpawnFormValues = [
   boolean, // physics
   boolean, // regeneration
   boolean, // respawn
-  boolean // breedable
+  boolean, // breedable
+  number // cape
 ];
 
 const getDefaultSpawnOptions = (player: Player): TerminatorInputParam => ({
@@ -97,6 +100,7 @@ const getDefaultSpawnOptions = (player: Player): TerminatorInputParam => ({
   breedable: false,
   coords: player.location,
   skinmodel: TerminatorSkinModel.Steve,
+  cape: CapeVariant.None,
 });
 
 function getPlayerSpawnOptions(player: Player): TerminatorInputParam {
@@ -131,6 +135,7 @@ export function showSpawnTerminatorForm(player: Player) {
         regeneration,
         respawn,
         breedable,
+        cape,
       ] = result.formValues as TerminatorSpawnFormValues;
       let skinmodel: TerminatorSkinModel = TerminatorSkinModel.Steve;
       switch (skinModelIndex) {
@@ -159,7 +164,8 @@ export function showSpawnTerminatorForm(player: Player) {
         respawn: respawn,
         breedable: breedable,
         coords: parseCoordinates(locationString, player.location),
-        skinmodel,
+        skinmodel: skinmodel,
+        cape: cape,
       };
       spawnTerminator(jsonInput, player);
     })

@@ -45,6 +45,12 @@
           "client_sync": true,
           "type": "bool",
           "default": false
+        },
+        "terminator:cape": {
+          "client_sync": true,
+          "type": "int",
+          "default": 0,
+          "range": [0, 10]
         }
       }
     },
@@ -2594,6 +2600,9 @@
             "minecraft:melee_attack",
             "terminator:break_blocks.v2"
           ]
+        },
+        "set_property": {
+          "terminator:cape": "math.random_integer(0, 10)"
         }
       },
       "minecraft:gain_bad_omen": {

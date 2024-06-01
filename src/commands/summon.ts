@@ -1,5 +1,6 @@
 import { Player, Vector3, system } from "@minecraft/server";
 import { debugEnabled } from "../config";
+import { CapeVariant } from "../terminator/capeVariant";
 
 export enum TerminatorSkinModel {
   Steve = "steve",
@@ -20,6 +21,7 @@ export interface TerminatorInputParam {
   breedable: boolean;
   coords: Vector3;
   skinmodel: TerminatorSkinModel;
+  cape: CapeVariant;
 }
 
 export function spawnTerminator(
@@ -38,7 +40,9 @@ export function spawnTerminator(
      * If the option is undefined in user_input
      * Script Engine will replace key values with 'default_nbt' variable
      */
-    user_input.nametag = user_input.nametag.replace(/[^a-zA-Z0-9_ ]/g, '').substring(0, 15);
+    user_input.nametag = user_input.nametag
+      .replace(/[^a-zA-Z0-9_ ]/g, "")
+      .substring(0, 15);
     entity.nameTag = user_input.nametag;
 
     if (user_input.customskin == true) {
@@ -71,6 +75,9 @@ export function spawnTerminator(
       entity.triggerEvent("terminator:enable_custom_skin");
     } else if (user_input.skinmodel == TerminatorSkinModel.CustomSlim) {
       entity.triggerEvent("terminator:enable_customSlim_skin");
+    }
+    if (user_input.cape !== 0) {
+      entity.setProperty("terminator:cape", user_input.cape);
     }
 
     const userInputString = JSON.stringify(user_input);

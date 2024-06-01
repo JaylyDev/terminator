@@ -9,8 +9,18 @@
       },
       "textures": {
         "default": "textures/models/armor/elytra",
-        "cape": "textures/cape_custom",
-        "enchanted": "textures/misc/enchanted_item_glint"
+        "enchanted": "textures/misc/enchanted_item_glint",
+        "cape": "textures/entity/cape_invisible",
+        "cape_15th_anniv": "textures/entity/cape_15th_anniv",
+        "cape_cherry": "textures/entity/cape_cherry",
+        "cape_founder": "textures/entity/cape_founder",
+        "cape_migrator": "textures/entity/cape_migrator",
+        "cape_mojang_new": "textures/entity/cape_mojang_new",
+        "cape_pan": "textures/entity/cape_pan",
+        "cape_pride": "textures/entity/cape_pride",
+        "cape_tiktok": "textures/entity/cape_tiktok",
+        "cape_twitch": "textures/entity/cape_twitch",
+        "cape_vanilla": "textures/entity/cape_vanilla"
       },
       "geometry": {
         "default": "geometry.elytra"
@@ -25,11 +35,9 @@
       },
       "scripts": {
         "parent_setup": "variable.chest_layer_visible = 0.0;",
-        "animate": [
-          "default_controller"
-        ]
+        "animate": ["default_controller"]
       },
-      "render_controllers": [ "controller.render.elytra" ]
+      "render_controllers": ["controller.render.terminator.elytra"]
     }
   }
 }
