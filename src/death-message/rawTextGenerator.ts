@@ -29,7 +29,7 @@ function rawMessageTranslator(
   }
 
   const ids: RawMessage[] = [deadEntityRawMessage];
-  if (damagingEntity && damagingEntity.nameTag)
+  if (damagingEntity?.isValid() && damagingEntity.nameTag)
     ids.push({
       text: damagingEntity.nameTag,
     });

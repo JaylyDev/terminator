@@ -8,6 +8,9 @@ import {
 import { terminatorSpawn } from "../terminator-events/onTerminatorSpawn";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
 import { MinecraftColor } from "../minecraft-color";
+import { TerminatorEntity } from "./terminator";
+import { getSpreadLocation } from "../dummyEntity/spreadDummies";
+import { debugEnabled } from "../config";
 
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
@@ -29,7 +32,7 @@ terminatorSpawn.subscribe(({ entity }) => {
       if (terminatorsWithSameName.length > 0)
         entity.nameTag = `${nameTag} (${terminatorsWithSameName.length})`;
     }
-    
+
     // broadcast to world
     const rawtext: RawText = {
       rawtext: [
@@ -77,14 +80,19 @@ terminatorSpawn.subscribe(({ entity }) => {
         }
       );
 
-      const dummyEntity = entity.dimension.spawnEntity(
-        "entity:dummy",
-        entity.location
+      // Trigger terminator to pathfind to a random location within 32-48 block radius
+      const terminator = new TerminatorEntity(entity);
+      const locationOffsetXZ = {
+        x: Math.floor(Math.random() * 32 - 17 + terminator.location.x),
+        z: Math.floor(Math.random() * 32 - 17 + terminator.location.z),
+      };
+      const locationOffset = getSpreadLocation(
+        locationOffsetXZ,
+        entity.dimension
       );
-      dummyEntity.runCommand("spreadplayers ~ ~ 32 48 @s");
-      dummyEntity.triggerEvent("dummy:request_pathfind");
+      if (debugEnabled) terminator.chat(`I'm going to ${locationOffset.x}, ${locationOffset.y}, ${locationOffset.z}!`);
+      terminator.navigateToLocation(locationOffset);
 
-      entity.triggerEvent("terminator:escape");
       triggered = true;
     }
   });

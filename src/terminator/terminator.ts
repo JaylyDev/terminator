@@ -378,6 +378,7 @@ export class TerminatorEntity implements Entity {
   navigateToLocation(location: Vector3): void {
     const dummyEntity = this.dimension.spawnEntity("entity:dummy", location);
     dummyEntity.triggerEvent("dummy:request_pathfind");
+    dummyEntity.setDynamicProperty("terminator:navigator", this.id);
     this.triggerEvent("terminator:escape");
   }
 }

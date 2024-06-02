@@ -638,28 +638,6 @@
           "priority": 1,
           "track_target": true,
           "speed_multiplier": 1.0
-        },
-        "minecraft:entity_sensor": {
-          "subsensors": [
-            {
-              "event_filters": {
-                "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "dummy" },
-                  {
-                    "test": "int_property",
-                    "subject": "other",
-                    "domain": "dummy:task_type",
-                    "value": 2
-                  }
-                ]
-              },
-              "minimum_count": 1,
-              "maximum_count": 32767,
-              "range": [10, 10],
-              "require_all": true,
-              "event": "terminator:remove_escape"
-            }
-          ]
         }
       },
       "terminator:find_end_portal": {

@@ -11,6 +11,7 @@ import "./terminator/suffocation";
 import "./terminator/rangedAttack";
 import "./commands/index";
 import "./guide/index";
+import "./dummyEntity/navigationDetect";
 
 // Debug Features
 if (debugEnabled) {
