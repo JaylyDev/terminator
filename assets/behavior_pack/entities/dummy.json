@@ -121,26 +121,6 @@
         "add": {
           "component_groups": ["dummy:force_spawn_entity"]
         }
-      },
-      "dummy:request_spawning_steve": {
-        "set_property": {
-          "dummy:task_type": 1
-        }
-      },
-      "dummy:request_pathfind": {
-        "set_property": {
-          "dummy:task_type": 2
-        }
-      },
-      "dummy:request_spawning_alex": {
-        "set_property": {
-          "dummy:task_type": 3
-        }
-      },
-      "dummy:request_spawning_custom": {
-        "set_property": {
-          "dummy:task_type": 4
-        }
       }
     }
   }

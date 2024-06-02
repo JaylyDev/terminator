@@ -1,5 +1,7 @@
 import { Entity, system, world } from "@minecraft/server";
 import { terminatorDie } from "../terminator-events/onTerminatorDie";
+import { debugEnabled } from "../config";
+import { Vector3Utils } from "@minecraft/math";
 
 const overworld = world.getDimension("overworld");
 
@@ -20,6 +22,12 @@ system.runInterval(() => {
         maxDistance: 8,
       })
     ) {
+      if (debugEnabled)
+        console.warn(
+          `Terminator navigated to location (${Vector3Utils.toString(
+            dummyEntity.location
+          )})`
+        );
       dummyEntity.remove();
       terminator.triggerEvent("terminator:remove_escape");
     }
@@ -35,4 +43,6 @@ terminatorDie.subscribe(({ deadEntity }) => {
         entity.getDynamicProperty("terminator:navigator") === deadEntity.id
     );
   dummyEntity?.remove();
+  if (debugEnabled)
+    console.warn(`Terminator (id: ${deadEntity.id}) died during navigation.`);
 });

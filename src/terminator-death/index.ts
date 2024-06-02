@@ -7,6 +7,7 @@ import { terminatorDie } from "../terminator-events/onTerminatorDie";
 import { sendDeathMessageCallback } from "./deathMessage";
 import { MinecraftColor } from "../minecraft-color";
 import { dropEntityInventory } from "./dropInventory";
+import { TaskType } from "../dummyEntity/dummyEntity";
 
 enum TerminatorVariant {
   SteveDefault = 0,
@@ -44,12 +45,17 @@ terminatorDie.subscribe((event) => {
       deadEntity.location
     );
     dummyEntity.runCommand("fog @a remove respawn_lore");
+    dummyEntity.setDynamicProperty("dummy:spawn_location", deadEntity.location);
+    dummyEntity.setDynamicProperty(
+      "dummy:spawn_dimension",
+      deadEntity.dimension.id
+    );
     if (isSteveVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_steve");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnSteve);
     else if (isAlexVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_alex");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnAlex);
     else if (isCustomVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_custom");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnCustom);
   }
   // Second Death
   else if (

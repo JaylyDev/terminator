@@ -17,10 +17,9 @@ export function onHealthDebug(enabled: boolean) {
       objective: healthObjective,
     });
     runId = system.runInterval(() => {
-      const terminators = overworld.getEntities({
+      for (const terminator of overworld.getEntities({
         type: "entity:terminator",
-      });
-      for (const terminator of terminators) {
+      })) {
         const health = terminator.getComponent(
           EntityHealthComponent.componentId
         ) as EntityHealthComponent;
