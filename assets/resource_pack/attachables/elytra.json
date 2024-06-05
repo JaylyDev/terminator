@@ -37,7 +37,7 @@
         "parent_setup": "variable.chest_layer_visible = 0.0;",
         "animate": ["default_controller"]
       },
-      "render_controllers": ["controller.render.terminator.elytra"]
+      "render_controllers": ["controller.render.elytra"]
     }
   }
 }

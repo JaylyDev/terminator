@@ -1,12 +1,12 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.terminator.elytra": {
+    "controller.render.elytra": {
       "geometry": "Geometry.default",
       "arrays": {
         "textures": {
           "Array.capes": [
-            "Texture.cape",
+            "Texture.default",
             "Texture.cape_15th_anniv",
             "Texture.cape_cherry",
             "Texture.cape_founder",
@@ -24,16 +24,15 @@
         { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }
       ],
       "textures": [
-        "Texture.default",
-        "Array.capes[(query.has_property('terminator:cape') ? query.property('terminator:cape') : 0)]",
+        "query.has_property('terminator:cape') ? Array.capes[query.property('terminator:cape')] : Texture.default",
         "Texture.enchanted"
       ],
       "part_visibility": [
         {
-          "cape": "query.armor_texture_slot(1) == 5 && (query.has_cape || query.property('terminator:cape') != 0)"
+          "cape": "query.armor_texture_slot(1) == 5 && (query.has_property('terminator:cape') ? query.property('terminator:cape') != 0 : query.has_cape)"
         },
         {
-          "default": "query.armor_texture_slot(1) == 5 && (!query.has_cape || query.property('terminator:cape') == 0)"
+          "default": "query.armor_texture_slot(1) == 5 && (query.has_property('terminator:cape') ? query.property('terminator:cape') == 0 : !query.has_cape)"
         }
       ]
     }
