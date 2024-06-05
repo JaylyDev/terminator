@@ -25,16 +25,17 @@ terminatorDie.subscribe((event) => {
   const triggerRespawnEvent = !deadEntity.hasTag("disablerespawnevent");
   const variant = deadEntity.getComponent(
     EntityVariantComponent.componentId
-  ) as EntityVariantComponent;
+  ) as EntityVariantComponent | undefined;
+  const variantValue = variant?.value ?? 0;
   const isSteveVariant =
-    variant.value === TerminatorVariant.SteveDefault ||
-    variant.value === TerminatorVariant.SteveChristmas;
+    variantValue === TerminatorVariant.SteveDefault ||
+    variantValue === TerminatorVariant.SteveChristmas;
   const isAlexVariant =
-    variant.value === TerminatorVariant.AlexDefault ||
-    variant.value === TerminatorVariant.AlexChristmas;
+    variantValue === TerminatorVariant.AlexDefault ||
+    variantValue === TerminatorVariant.AlexChristmas;
   const isCustomVariant =
-    variant.value === TerminatorVariant.Custom ||
-    variant.value === TerminatorVariant.CustomSlim;
+    variantValue === TerminatorVariant.Custom ||
+    variantValue === TerminatorVariant.CustomSlim;
 
   dropEntityInventory(deadEntity);
 
@@ -72,9 +73,9 @@ terminatorDie.subscribe((event) => {
       terminator.triggerEvent("terminator:switch_skin_to_steve");
     else if (isAlexVariant)
       terminator.triggerEvent("terminator:switch_skin_to_alex");
-    else if (variant.value === TerminatorVariant.Custom)
+    else if (variantValue === TerminatorVariant.Custom)
       terminator.triggerEvent("terminator:enable_custom_skin");
-    else if (variant.value === TerminatorVariant.CustomSlim)
+    else if (variantValue === TerminatorVariant.CustomSlim)
       terminator.triggerEvent("terminator:enable_customSlim_skin");
   }
   // Third Death

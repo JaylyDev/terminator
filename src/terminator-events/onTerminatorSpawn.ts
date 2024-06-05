@@ -48,7 +48,6 @@ class TerminatorSpawnAfterEventSignal {
     world.afterEvents.entitySpawn.subscribe((event) => {
       if (
         event.cause === EntityInitializationCause.Loaded ||
-        event.cause === EntityInitializationCause.Event ||
         event.entity.typeId !== "entity:terminator"
       )
         return;

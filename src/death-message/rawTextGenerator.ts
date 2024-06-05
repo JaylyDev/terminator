@@ -28,24 +28,28 @@ function rawMessageTranslator(
     )}.name`;
   }
 
-  const ids: RawMessage[] = [deadEntityRawMessage];
+  const messages: RawMessage[] = [deadEntityRawMessage];
   if (damagingEntity?.isValid() && damagingEntity.nameTag)
-    ids.push({
+    messages.push({
       text: damagingEntity.nameTag,
     });
   else if (damagingEntity)
-    ids.push({
+    messages.push({
       translate: `entity.${damagingEntity.typeId.replace(
         "minecraft:",
         ""
       )}.name`,
     });
-  if (damagingItem)
-    ids.push({
+  if (damagingItem && damagingItem.nameTag)
+    messages.push({
+      text: damagingItem.nameTag,
+    });
+  else if (damagingItem)
+    messages.push({
       translate: `item.${damagingItem.typeId.replace("minecraft:", "")}.name`,
     });
   return {
-    rawtext: ids,
+    rawtext: messages,
   };
 }
 
