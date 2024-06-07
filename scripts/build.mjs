@@ -18,6 +18,7 @@ build({
   minify: false,
   format: "esm",
   external,
+  sourcemap: "external",
 })
   .then(() => {
     console.log("Bundling finished!");
