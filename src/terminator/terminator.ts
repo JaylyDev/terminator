@@ -31,6 +31,7 @@ import {
   UnbreakableBlocks,
 } from "../config";
 import { MinecraftColor } from "../minecraft-color";
+import { TaskType } from "../dummyEntity/dummyEntity";
 
 /**
  * Represents the state of a terminator entity in the world.
@@ -377,7 +378,8 @@ export class TerminatorEntity implements Entity {
    */
   navigateToLocation(location: Vector3): void {
     const dummyEntity = this.dimension.spawnEntity("entity:dummy", location);
-    dummyEntity.triggerEvent("dummy:request_pathfind");
+    dummyEntity.setProperty("dummy:task_type", TaskType.PathFind);
+    dummyEntity.setDynamicProperty("terminator:navigator", this.id);
     this.triggerEvent("terminator:escape");
   }
 }

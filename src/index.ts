@@ -9,8 +9,11 @@ import "./terminator/ridingTransport";
 import "./terminator-death/index";
 import "./terminator/suffocation";
 import "./terminator/rangedAttack";
+import "./terminator/escapeFromDanger";
 import "./commands/index";
 import "./guide/index";
+import "./dummyEntity/navigationDetect";
+import "./dummyEntity/dummyEntity";
 
 // Debug Features
 if (debugEnabled) {

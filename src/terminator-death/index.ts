@@ -7,6 +7,7 @@ import { terminatorDie } from "../terminator-events/onTerminatorDie";
 import { sendDeathMessageCallback } from "./deathMessage";
 import { MinecraftColor } from "../minecraft-color";
 import { dropEntityInventory } from "./dropInventory";
+import { TaskType } from "../dummyEntity/dummyEntity";
 
 enum TerminatorVariant {
   SteveDefault = 0,
@@ -24,16 +25,17 @@ terminatorDie.subscribe((event) => {
   const triggerRespawnEvent = !deadEntity.hasTag("disablerespawnevent");
   const variant = deadEntity.getComponent(
     EntityVariantComponent.componentId
-  ) as EntityVariantComponent;
+  ) as EntityVariantComponent | undefined;
+  const variantValue = variant?.value ?? 0;
   const isSteveVariant =
-    variant.value === TerminatorVariant.SteveDefault ||
-    variant.value === TerminatorVariant.SteveChristmas;
+    variantValue === TerminatorVariant.SteveDefault ||
+    variantValue === TerminatorVariant.SteveChristmas;
   const isAlexVariant =
-    variant.value === TerminatorVariant.AlexDefault ||
-    variant.value === TerminatorVariant.AlexChristmas;
+    variantValue === TerminatorVariant.AlexDefault ||
+    variantValue === TerminatorVariant.AlexChristmas;
   const isCustomVariant =
-    variant.value === TerminatorVariant.Custom ||
-    variant.value === TerminatorVariant.CustomSlim;
+    variantValue === TerminatorVariant.Custom ||
+    variantValue === TerminatorVariant.CustomSlim;
 
   dropEntityInventory(deadEntity);
 
@@ -44,12 +46,17 @@ terminatorDie.subscribe((event) => {
       deadEntity.location
     );
     dummyEntity.runCommand("fog @a remove respawn_lore");
+    dummyEntity.setDynamicProperty("dummy:spawn_location", deadEntity.location);
+    dummyEntity.setDynamicProperty(
+      "dummy:spawn_dimension",
+      deadEntity.dimension.id
+    );
     if (isSteveVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_steve");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnSteve);
     else if (isAlexVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_alex");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnAlex);
     else if (isCustomVariant)
-      dummyEntity.triggerEvent("dummy:request_spawning_custom");
+      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnCustom);
   }
   // Second Death
   else if (
@@ -66,9 +73,9 @@ terminatorDie.subscribe((event) => {
       terminator.triggerEvent("terminator:switch_skin_to_steve");
     else if (isAlexVariant)
       terminator.triggerEvent("terminator:switch_skin_to_alex");
-    else if (variant.value === TerminatorVariant.Custom)
+    else if (variantValue === TerminatorVariant.Custom)
       terminator.triggerEvent("terminator:enable_custom_skin");
-    else if (variant.value === TerminatorVariant.CustomSlim)
+    else if (variantValue === TerminatorVariant.CustomSlim)
       terminator.triggerEvent("terminator:enable_customSlim_skin");
   }
   // Third Death

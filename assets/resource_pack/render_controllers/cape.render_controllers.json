@@ -1,13 +1,28 @@
 {
   "format_version": "1.10.0",
   "render_controllers": {
-    "controller.render.player.cape": {
+    "controller.render.terminator.cape": {
+      "arrays": {
+        "textures": {
+          "Array.capes": [
+            "Texture.cape",
+            "Texture.cape_15th_anniv",
+            "Texture.cape_cherry",
+            "Texture.cape_founder",
+            "Texture.cape_migrator",
+            "Texture.cape_mojang_new",
+            "Texture.cape_pan",
+            "Texture.cape_pride",
+            "Texture.cape_tiktok",
+            "Texture.cape_twitch",
+            "Texture.cape_vanilla"
+          ]
+        }
+      },
       "geometry": "Geometry.cape",
-      "materials": [ { "*": "Material.cape" } ],
-      "textures": [ "Texture.cape" ],
-      "part_visibility": [
-        { "cape": "query.armor_texture_slot(1) != 5" }
-      ]
+      "materials": [{ "*": "Material.cape" }],
+      "textures": ["Array.capes[query.property('terminator:cape')]"],
+      "part_visibility": [{ "cape": "query.armor_texture_slot(1) != 5" }]
     }
   }
 }

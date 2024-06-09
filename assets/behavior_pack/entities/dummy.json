@@ -73,34 +73,6 @@
           "fire_affected_by_griefing": false,
           "max_resistance": 3.40282e38
         }
-      },
-      "dummy:detect_terminator": {
-        "minecraft:entity_sensor": {
-          "subsensors": [
-            {
-              "event_filters": {
-                "all_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "equals",
-                    "value": "terminator"
-                  }
-                ]
-              },
-              "minimum_count": 1,
-              "maximum_count": 32767,
-              "range": [10, 10],
-              "require_all": true,
-              "event": "dummy:request_despawn"
-            }
-          ]
-        }
-      },
-      "dummy:despawn": {
-        "minecraft:instant_despawn": {
-          "remove_child_entities": true
-        }
       }
     },
     "components": {
@@ -148,39 +120,6 @@
       "dummy:spawn_terminator": {
         "add": {
           "component_groups": ["dummy:force_spawn_entity"]
-        }
-      },
-      "dummy:request_spawning_steve": {
-        "set_property": {
-          "dummy:task_type": 1
-        }
-      },
-      "dummy:request_pathfind": {
-        "set_property": {
-          "dummy:task_type": 2
-        },
-        "add": {
-          "component_groups": ["dummy:detect_terminator"]
-        }
-      },
-      "dummy:request_spawning_alex": {
-        "set_property": {
-          "dummy:task_type": 3
-        }
-      },
-      "dummy:request_spawning_custom": {
-        "set_property": {
-          "dummy:task_type": 4
-        }
-      },
-      "dummy:request_despawn": {
-        "add": {
-          "component_groups": ["dummy:despawn"]
-        },
-        "queue_command": {
-          "command": [
-            "tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] dummy:request_despawn\"}]}"
-          ]
         }
       }
     }
