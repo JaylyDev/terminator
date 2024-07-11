@@ -75,6 +75,8 @@ export function spawnTerminator(
       entity.triggerEvent("terminator:enable_custom_skin");
     } else if (user_input.skinmodel == TerminatorSkinModel.CustomSlim) {
       entity.triggerEvent("terminator:enable_customSlim_skin");
+    } else if (user_input.skinmodel == TerminatorSkinModel.Steve) {
+      entity.triggerEvent("terminator:switch_skin_to_steve");
     }
     if (user_input.cape !== 0) {
       entity.setProperty("terminator:cape", user_input.cape);

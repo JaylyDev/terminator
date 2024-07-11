@@ -8,7 +8,7 @@ Created by: JaylyMC
  - MCPEDL: https://mcpedl.com/user/jayly/
  - YouTube: https://youtube.com/jaylymc/
  - Twitter: https://twitter.com/jaylyplays/
- - Discord: https://discord.gg/SuhGvZEXb4/
+ - Discord: https://discord.gg/SuhGvZEXb4
  - GitHub: https://github.com/jaylydev/terminator/
 
 Important:
