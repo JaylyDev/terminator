@@ -3,7 +3,7 @@ import { Entity, TicksPerSecond, system, world } from "@minecraft/server";
 // To send death messages when the player is hurt by a player or mob then die.
 world.afterEvents.entityHurt.subscribe(({ damageSource, hurtEntity }) => {
   const { damagingEntity } = damageSource;
-  if (!damagingEntity) return;
+  if (!damagingEntity || !hurtEntity.isValid()) return;
   hurtEntity.setDynamicProperty(
     "terminator:damaging_entity",
     damagingEntity.id
