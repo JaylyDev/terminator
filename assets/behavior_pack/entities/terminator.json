@@ -2641,7 +2641,10 @@
       },
       "terminator:disable_respawn_event_steve": {
         "queue_command": {
-          "command": ["tag @s add disablerespawnevent"]
+          "command": [
+            "tag @s add disablerespawnevent",
+            "tag @s add has_respawn"
+          ]
         },
         "add": {
           "component_groups": [
@@ -2655,7 +2658,10 @@
       },
       "terminator:disable_respawn_event_alex": {
         "queue_command": {
-          "command": ["tag @s add disablerespawnevent"]
+          "command": [
+            "tag @s add disablerespawnevent",
+            "tag @s add has_respawn"
+          ]
         },
         "add": {
           "component_groups": [
@@ -2669,7 +2675,10 @@
       },
       "terminator:disable_respawn_event_custom": {
         "queue_command": {
-          "command": ["tag @s add disablerespawnevent"]
+          "command": [
+            "tag @s add disablerespawnevent",
+            "tag @s add has_respawn"
+          ]
         },
         "add": {
           "component_groups": [

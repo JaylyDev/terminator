@@ -43,10 +43,10 @@ const sendDeathMessageContact = (
 /**
  * Sends a death message to the world when a terminator dies
  */
-export const sendDeathMessageCallback = ({
+export function sendDeathMessageCallback({
   damageSource,
   deadEntity,
-}: EntityDieAfterEvent) => {
+}: EntityDieAfterEvent) {
   const { cause, damagingEntity } = damageSource;
   const rawTextGenerator = new DeathMessageRawText(deadEntity, damagingEntity);
   // debug
@@ -136,12 +136,14 @@ export const sendDeathMessageCallback = ({
           world.sendMessage(rawTextGenerator.attackArrowItem());
         else world.sendMessage(rawTextGenerator.attackArrow());
       }
+
       // Fireball
       else if (damagingEntity?.typeId === MinecraftEntityTypes.Fireball) {
         if (rawTextGenerator.damagingItem)
           world.sendMessage(rawTextGenerator.attackFireballItem());
         else world.sendMessage(rawTextGenerator.attackFireball());
       }
+
       // Thrown trident
       else if (damagingEntity?.typeId === MinecraftEntityTypes.ThrownTrident)
         world.sendMessage(rawTextGenerator.attackTrident());
@@ -192,4 +194,4 @@ export const sendDeathMessageCallback = ({
       world.sendMessage(rawTextGenerator.attackGeneric());
       break;
   }
-};
+}
