@@ -24,13 +24,28 @@ terminatorSpawn.subscribe(({ entity }) => {
     }
 
     // broadcast to world
-    const rawtext: RawText = {
-      rawtext: [
-        { text: MinecraftColor.yellow },
-        { translate: "multiplayer.player.joined", with: [entity.nameTag] },
-      ],
-    };
-    world.sendMessage(rawtext);
+    const hasRespawn = entity.hasTag("has_respawn");
+    const broadcastMessage = entity.getDynamicProperty(
+      "broadcast_join_message"
+    );
+    if (broadcastMessage === false) return;
+    if (!hasRespawn) {
+      const rawtext: RawText = {
+        rawtext: [
+          { text: MinecraftColor.yellow },
+          { translate: "multiplayer.player.joined", with: [entity.nameTag] },
+        ],
+      };
+      world.sendMessage(rawtext);
+    } else {
+      const rawtext: RawText = {
+        rawtext: [
+          { translate: "death.attack.generic", with: [entity.nameTag] },
+          { translate: "message.entity.respawn.generic" },
+        ],
+      };
+      world.sendMessage(rawtext);
+    }
     world.playSound("mob.terminator.spawn", entity.location);
   }, 2);
 });

@@ -64,10 +64,14 @@ terminatorDie.subscribe((event) => {
     !triggerRespawnEvent &&
     cause !== EntityDamageCause.void
   ) {
+    sendDeathMessageCallback(event);
     const terminator = deadEntity.dimension.spawnEntity(
       "entity:terminator",
       deadEntity.location
     );
+    terminator.nameTag = deadEntity.nameTag;
+    terminator.setDynamicProperty("broadcast_join_message", false);
+
     terminator.triggerEvent("terminator:disable_respawn");
     if (isSteveVariant)
       terminator.triggerEvent("terminator:switch_skin_to_steve");

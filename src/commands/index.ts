@@ -51,9 +51,7 @@ function generateModalForm(settings: TerminatorInputParam) {
  * @returns
  */
 function parseCoordinates(paramString: string, playerLocation: Vector3) {
-  /** @type {string[]} */
   const coordinates: string[] = paramString.split(" ");
-  /** @type {Vector3} */
   const parsedCoordinates: Vector3 = {
     x: 0,
     y: 0,

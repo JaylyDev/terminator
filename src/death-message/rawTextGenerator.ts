@@ -9,6 +9,7 @@ import {
 } from "@minecraft/server";
 import { DeathAttackMessage, DeathFellMessage } from "./languageKeys";
 import { entityTriedEscapeDeathFrom } from "./escapeDeathDetector";
+import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 
 function rawMessageTranslator(
   deadEntity: Entity,
@@ -29,25 +30,38 @@ function rawMessageTranslator(
   }
 
   const messages: RawMessage[] = [deadEntityRawMessage];
-  if (damagingEntity?.isValid() && damagingEntity.nameTag)
+  if (damagingEntity?.isValid() && damagingEntity.nameTag) {
     messages.push({
       text: damagingEntity.nameTag,
     });
-  else if (damagingEntity)
+  } else if (damagingEntity) {
     messages.push({
       translate: `entity.${damagingEntity.typeId.replace(
         "minecraft:",
         ""
       )}.name`,
     });
-  if (damagingItem && damagingItem.nameTag)
+  }
+  if (damagingItem && damagingItem.nameTag) {
     messages.push({
       text: damagingItem.nameTag,
     });
-  else if (damagingItem)
+  }
+  // Check if an item is a tile
+  else if (
+    damagingItem &&
+    Object.values(MinecraftBlockTypes).includes(
+      damagingItem.typeId as MinecraftBlockTypes
+    )
+  ) {
+    messages.push({
+      translate: `tile.${damagingItem.typeId.replace("minecraft:", "")}.name`,
+    });
+  } else if (damagingItem) {
     messages.push({
       translate: `item.${damagingItem.typeId.replace("minecraft:", "")}.name`,
     });
+  }
   return {
     rawtext: messages,
   };
