@@ -1,8 +1,10 @@
 import {
   Entity,
   EntityDamageCause,
+  EntityDamageSource,
   EntityDieAfterEvent,
   Player,
+  RawMessage,
   world,
 } from "@minecraft/server";
 import {
@@ -14,31 +16,31 @@ import { getDamagingBlock } from "../death-message/damageBlock";
 import { DeathMessageRawText } from "../death-message/rawTextGenerator";
 import { entityTriedEscapeDeathFrom } from "../death-message/escapeDeathDetector";
 
-const sendDeathMessageFall = (
+const getDeathMessageFallMessage = (
   rawTextGenerator: DeathMessageRawText,
   entity: Entity
-) => {
+): RawMessage => {
   const velocity = entity.getVelocity();
-  if (velocity.y > -0.3) world.sendMessage(rawTextGenerator.attackFall());
-  else world.sendMessage(rawTextGenerator.fellAccidentGeneric());
+  if (velocity.y > -0.3) return rawTextGenerator.attackFall();
+  else return rawTextGenerator.fellAccidentGeneric();
 };
 
-const sendDeathMessageContact = (
+const getDeathMessageContactMessage = (
   rawTextGenerator: DeathMessageRawText,
   deadEntity: Entity,
   damagingEntity: Entity | undefined
-) => {
+): RawMessage => {
   const block = getDamagingBlock(deadEntity);
   const huntEntity = entityTriedEscapeDeathFrom(deadEntity);
 
-  if (damagingEntity) world.sendMessage(rawTextGenerator.attackMob());
+  if (damagingEntity) return rawTextGenerator.attackMob();
   else if (block === MinecraftBlockTypes.Cactus && huntEntity)
-    world.sendMessage(rawTextGenerator.attackCactusPlayer());
+    return rawTextGenerator.attackCactusPlayer();
   else if (block === MinecraftBlockTypes.Cactus)
-    world.sendMessage(rawTextGenerator.attackCactus());
+    return rawTextGenerator.attackCactus();
   else if (block === MinecraftBlockTypes.SweetBerryBush)
-    world.sendMessage(rawTextGenerator.attackSweetBerry());
-  else world.sendMessage(rawTextGenerator.attackGeneric());
+    return rawTextGenerator.attackSweetBerry();
+  else return rawTextGenerator.attackGeneric();
 };
 /**
  * Sends a death message to the world when a terminator dies
@@ -48,139 +50,123 @@ export function sendDeathMessageCallback({
   deadEntity,
 }: EntityDieAfterEvent) {
   const { cause, damagingEntity } = damageSource;
-  const rawTextGenerator = new DeathMessageRawText(deadEntity, damagingEntity);
+  const message = getDeathMessage(damageSource, deadEntity);
   // debug
   if (debugEnabled) {
     console.warn(
       `DeadEntity: ${deadEntity.typeId} | DamagingEntity: ${damagingEntity?.typeId} | DamagingProjectile: ${damageSource.damagingProjectile?.typeId} | Cause: ${cause}`
     );
   }
+  world.sendMessage(message);
+}
+
+export function getDeathMessage(
+  damageSource: EntityDamageSource,
+  deadEntity: Entity
+): RawMessage {
+  const { cause, damagingEntity } = damageSource;
+  const rawTextGenerator = new DeathMessageRawText(deadEntity, damagingEntity);
+
   // Sends a death message based on the cause of the death
   switch (cause) {
     case EntityDamageCause.anvil:
-      world.sendMessage(rawTextGenerator.attackAnvil());
-      break;
+      return rawTextGenerator.attackAnvil();
     case EntityDamageCause.blockExplosion:
-      world.sendMessage(rawTextGenerator.attackExplosionByBed());
-      break;
+      return rawTextGenerator.attackExplosionByBed();
     case EntityDamageCause.campfire:
-      world.sendMessage(rawTextGenerator.attackInFire());
-      break;
+      return rawTextGenerator.attackInFire();
     case EntityDamageCause.contact:
-      sendDeathMessageContact(rawTextGenerator, deadEntity, damagingEntity);
-      break;
+      return getDeathMessageContactMessage(
+        rawTextGenerator,
+        deadEntity,
+        damagingEntity
+      );
     case EntityDamageCause.drowning:
       if (entityTriedEscapeDeathFrom(deadEntity))
-        world.sendMessage(rawTextGenerator.attackDrownPlayer());
-      else world.sendMessage(rawTextGenerator.attackDrown());
-      break;
+        return rawTextGenerator.attackDrownPlayer();
+      else return rawTextGenerator.attackDrown();
     case EntityDamageCause.entityAttack:
       if (damagingEntity instanceof Player) {
         if (rawTextGenerator.damagingItem)
-          world.sendMessage(rawTextGenerator.attackPlayerItem());
-        else world.sendMessage(rawTextGenerator.attackPlayer());
+          return rawTextGenerator.attackPlayerItem();
+        else return rawTextGenerator.attackPlayer();
       } else {
         if (rawTextGenerator.damagingItem)
-          world.sendMessage(rawTextGenerator.attackMobItem());
-        else world.sendMessage(rawTextGenerator.attackMob());
+          return rawTextGenerator.attackMobItem();
+        else return rawTextGenerator.attackMob();
       }
-      break;
     case EntityDamageCause.entityExplosion:
-      if (damagingEntity)
-        world.sendMessage(rawTextGenerator.attackExplosionPlayer());
-      else world.sendMessage(rawTextGenerator.attackExplosion());
-      break;
+      if (damagingEntity) return rawTextGenerator.attackExplosionPlayer();
+      else return rawTextGenerator.attackExplosion();
     case EntityDamageCause.fall:
-      sendDeathMessageFall(rawTextGenerator, deadEntity);
-      break;
+      return getDeathMessageFallMessage(rawTextGenerator, deadEntity);
     case EntityDamageCause.fallingBlock:
-      world.sendMessage(rawTextGenerator.attackFallingBlock());
-      break;
+      return rawTextGenerator.attackFallingBlock();
     case EntityDamageCause.fire:
-      world.sendMessage(rawTextGenerator.attackInFire());
-      break;
+      return rawTextGenerator.attackInFire();
     case EntityDamageCause.fireTick:
-      world.sendMessage(rawTextGenerator.attackOnFire());
-      break;
+      return rawTextGenerator.attackOnFire();
     case EntityDamageCause.fireworks:
-      world.sendMessage(rawTextGenerator.attackFireworks());
-      break;
+      return rawTextGenerator.attackFireworks();
     case EntityDamageCause.flyIntoWall:
-      world.sendMessage(rawTextGenerator.attackFlyIntoWall());
-      break;
+      return rawTextGenerator.attackFlyIntoWall();
     case EntityDamageCause.freezing:
-      world.sendMessage(rawTextGenerator.attackFreeze());
-      break;
+      return rawTextGenerator.attackFreeze();
     case EntityDamageCause.lava:
       if (entityTriedEscapeDeathFrom(deadEntity))
-        world.sendMessage(rawTextGenerator.attackLavaPlayer());
-      else world.sendMessage(rawTextGenerator.attackLava());
-      break;
+        return rawTextGenerator.attackLavaPlayer();
+      else return rawTextGenerator.attackLava();
     case EntityDamageCause.lightning:
-      world.sendMessage(rawTextGenerator.attackLightningBolt());
-      break;
+      return rawTextGenerator.attackLightningBolt();
     case EntityDamageCause.magic:
       if (damagingEntity && rawTextGenerator.damagingItem)
-        world.sendMessage(rawTextGenerator.attackIndirectMagicItem());
-      else if (damagingEntity)
-        world.sendMessage(rawTextGenerator.attackIndirectMagic());
-      else world.sendMessage(rawTextGenerator.attackMagic());
-      break;
+        return rawTextGenerator.attackIndirectMagicItem();
+      else if (damagingEntity) return rawTextGenerator.attackIndirectMagic();
+      else return rawTextGenerator.attackMagic();
     case EntityDamageCause.magma:
-      world.sendMessage(rawTextGenerator.attackMagma());
-      break;
+      return rawTextGenerator.attackMagma();
     case EntityDamageCause.projectile:
       // Arrow
       if (damagingEntity?.typeId === MinecraftEntityTypes.Arrow) {
         if (rawTextGenerator.damagingItem)
-          world.sendMessage(rawTextGenerator.attackArrowItem());
-        else world.sendMessage(rawTextGenerator.attackArrow());
+          return rawTextGenerator.attackArrowItem();
+        else return rawTextGenerator.attackArrow();
       }
 
       // Fireball
       else if (damagingEntity?.typeId === MinecraftEntityTypes.Fireball) {
         if (rawTextGenerator.damagingItem)
-          world.sendMessage(rawTextGenerator.attackFireballItem());
-        else world.sendMessage(rawTextGenerator.attackFireball());
+          return rawTextGenerator.attackFireballItem();
+        else return rawTextGenerator.attackFireball();
       }
 
       // Thrown trident
       else if (damagingEntity?.typeId === MinecraftEntityTypes.ThrownTrident)
-        world.sendMessage(rawTextGenerator.attackTrident());
+        return rawTextGenerator.attackTrident();
       // Any projectiles
       else if (rawTextGenerator.damagingItem)
-        world.sendMessage(rawTextGenerator.attackThrownItem());
-      else world.sendMessage(rawTextGenerator.attackThrown());
-      break;
+        return rawTextGenerator.attackThrownItem();
+      else return rawTextGenerator.attackThrown();
     case EntityDamageCause.sonicBoom:
       if (entityTriedEscapeDeathFrom(deadEntity))
-        world.sendMessage(rawTextGenerator.attackSonicBoomPlayer());
-      else world.sendMessage(rawTextGenerator.attackSonicBoom());
-      break;
+        return rawTextGenerator.attackSonicBoomPlayer();
+      else return rawTextGenerator.attackSonicBoom();
     case EntityDamageCause.soulCampfire:
-      world.sendMessage(rawTextGenerator.attackInFire());
-      break;
+      return rawTextGenerator.attackInFire();
     case EntityDamageCause.stalactite:
-      world.sendMessage(rawTextGenerator.attackStalactite());
-      break;
+      return rawTextGenerator.attackStalactite();
     case EntityDamageCause.stalagmite:
-      world.sendMessage(rawTextGenerator.attackStalagmite());
-      break;
+      return rawTextGenerator.attackStalagmite();
     case EntityDamageCause.starve:
-      world.sendMessage(rawTextGenerator.attackStarve());
-      break;
+      return rawTextGenerator.attackStarve();
     case EntityDamageCause.suffocation:
-      world.sendMessage(rawTextGenerator.attackInWall());
-      break;
+      return rawTextGenerator.attackInWall();
     case EntityDamageCause.thorns:
-      world.sendMessage(rawTextGenerator.attackThorns());
-      break;
+      return rawTextGenerator.attackThorns();
     case EntityDamageCause.void:
-      world.sendMessage(rawTextGenerator.attackOutOfWorld());
-      break;
+      return rawTextGenerator.attackOutOfWorld();
     case EntityDamageCause.wither:
-      world.sendMessage(rawTextGenerator.attackWither());
-      break;
+      return rawTextGenerator.attackWither();
     // Unused death causes
     case EntityDamageCause.charging:
     case EntityDamageCause.none:
@@ -191,7 +177,6 @@ export function sendDeathMessageCallback({
     case EntityDamageCause.suicide:
     case EntityDamageCause.temperature:
     default:
-      world.sendMessage(rawTextGenerator.attackGeneric());
-      break;
+      return rawTextGenerator.attackGeneric();
   }
 }

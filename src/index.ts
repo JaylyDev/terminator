@@ -14,6 +14,7 @@ import "./commands/index";
 import "./guide/index";
 import "./dummyEntity/navigationDetect";
 import "./dummyEntity/dummyEntity";
+import "./dummyEntity/terminatorRespawn";
 
 // Debug Features
 if (debugEnabled) {

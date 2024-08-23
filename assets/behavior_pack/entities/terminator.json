@@ -2690,6 +2690,23 @@
         },
         "trigger": "terminator:disable_respawn_event_randomize"
       },
+      "terminator:disable_respawn_event_custom_slim": {
+        "queue_command": {
+          "command": [
+            "tag @s add disablerespawnevent",
+            "tag @s add has_respawn"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "terminator:default_attack_target",
+            "minecraft:melee_attack",
+            "terminator:break_blocks.v2",
+            "terminator:customSlim_skin"
+          ]
+        },
+        "trigger": "terminator:disable_respawn_event_randomize"
+      },
       "terminator:spawn_no_respawn_event_special_death_detect": {
         "queue_command": {
           "command": [

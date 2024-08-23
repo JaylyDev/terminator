@@ -19,7 +19,7 @@ export enum TerminatorBuildVerticallyDirection {
   Down = "terminator:vertical_down",
 }
 
-const size: Vector3 = { x: 4, y: 4, z: 4 };
+const size: Vector3 = { x: 8, y: 8, z: 8 };
 const buildingBlock = BlockPermutation.resolve(MinecraftBlockTypes.Cobblestone);
 
 function BlockVolumeIsInside(pos: Vector3, from: Vector3, to: Vector3) {
@@ -105,10 +105,11 @@ system.afterEvents.scriptEventReceive.subscribe(
 
       const jumped = terminator.jump();
 
-      if (jumped)
+      if (jumped) {
         system.runTimeout(() => {
           terminator.placeBlock(location, buildingBlock);
         }, 5);
+      }
     }
     // Dig down
     else if (
