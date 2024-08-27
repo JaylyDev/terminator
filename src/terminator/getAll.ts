@@ -5,7 +5,7 @@ const overworld = world.getDimension("overworld");
 const nether = world.getDimension("nether");
 const theEnd = world.getDimension("the_end");
 const options: EntityQueryOptions = {
-  type: "entity:dummy",
+  type: "entity:terminator",
   minDistance: 0.1,
 };
 
