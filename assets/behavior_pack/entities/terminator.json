@@ -295,8 +295,14 @@
             "jungle_wall_sign",
             "kelp",
             "large_amethyst_bud",
-            "leaves",
-            "leaves2",
+            "acacia_leaves",
+            "birch_leaves",
+            "cherry_leaves",
+            "dark_oak_leaves",
+            "jungle_leaves",
+            "mangrove_leaves",
+            "oak_leaves",
+            "spruce_leaves",
             "lever",
             "lit_pumpkin",
             "lit_redstone_lamp",
@@ -308,7 +314,7 @@
             "powered_comparator",
             "powered_repeater",
             "rail",
-            "red_flower",
+            "poppy",
             "red_mushroom",
             "redstone_torch",
             "redstone_wire",
@@ -360,7 +366,7 @@
             "wheat",
             "wither_rose",
             "wooden_button",
-            "yellow_flower",
+            "dandelion",
             // Following blocks are added since beta 1.2.22
             "dirt",
             "stone",
@@ -638,66 +644,6 @@
           "priority": 1,
           "track_target": true,
           "speed_multiplier": 1.0
-        }
-      },
-      "terminator:find_end_portal": {
-        "minecraft:behavior.move_to_block": {
-          "priority": 1,
-          "tick_interval": 0,
-          "search_range": 1024,
-          "search_height": 384,
-          "start_chance": 100.0,
-          "goal_radius": 1.0,
-          "stay_duration": 1.0,
-          "target_selection_method": "nearest",
-          "target_offset": [0, 0.25, 0],
-          "target_blocks": ["minecraft:end_portal"],
-          "on_reach": [
-            {
-              "event": "terminator:disable_find_end_portal",
-              "target": "self"
-            }
-          ],
-          "on_stay_completed": [
-            {
-              "event": "terminator:disable_find_end_portal",
-              "target": "self"
-            }
-          ]
-        }
-      },
-      "terminator:find_nether_portal": {
-        "minecraft:behavior.move_to_block": {
-          "priority": 1,
-          "tick_interval": 0,
-          "search_range": 512,
-          "search_height": 384,
-          "start_chance": 100.0,
-          "goal_radius": 1.0,
-          "stay_duration": 1.0,
-          "target_selection_method": "nearest",
-          "target_offset": [0, 0.25, 0],
-          "target_blocks": ["minecraft:portal"],
-          "on_reach": [
-            {
-              "event": "terminator:disable_find_nether_portal",
-              "target": "self"
-            }
-          ],
-          "on_stay_completed": [
-            {
-              "event": "terminator:disable_find_nether_portal",
-              "target": "self"
-            }
-          ]
-        },
-        "minecraft:timer": {
-          "looping": true,
-          "time": 180,
-          "time_down_event": {
-            "event": "terminator:make_nether_portal",
-            "target": "self"
-          }
         }
       },
       "terminator:default_attack_target": {
@@ -1158,14 +1104,6 @@
                 "value": "minecraft:behavior.nearest_attackable_target"
               },
               "event": "terminator:fix_default_target"
-            },
-            {
-              "filters": {
-                "test": "in_nether",
-                "subject": "player",
-                "value": true
-              },
-              "event": "terminator:make_nether_portal"
             },
             {
               "filters": {
@@ -1970,31 +1908,199 @@
             "stored_in_inventory": true
           },
           {
-            "item": "minecraft:grass",
+            "item": "minecraft:grass_block",
             "want_amount": 64,
             "surplus_amount": 64,
             "priority": 8,
             "stored_in_inventory": true
           },
           {
-            "item": "minecraft:planks",
+            "item": "minecraft:acacia_planks",
             "want_amount": 64,
             "surplus_amount": 64,
             "priority": 9,
             "stored_in_inventory": true
           },
           {
-            "item": "minecraft:log",
+            "item": "minecraft:bamboo_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:birch_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:cherry_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:crimson_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:dark_oak_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:jungle_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:mangrove_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:oak_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:spruce_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:warped_planks",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 9,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:acacia_log",
             "want_amount": 64,
             "surplus_amount": 64,
             "priority": 10,
             "stored_in_inventory": true
           },
           {
-            "item": "minecraft:log2",
+            "item": "minecraft:birch_log",
             "want_amount": 64,
             "surplus_amount": 64,
-            "priority": 11,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:cherry_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:dark_oak_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:jungle_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:mangrove_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:oak_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:spruce_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_acacia_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_birch_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_cherry_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_dark_oak_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_jungle_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_mangrove_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_oak_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
+            "stored_in_inventory": true
+          },
+          {
+            "item": "minecraft:stripped_spruce_log",
+            "want_amount": 64,
+            "surplus_amount": 64,
+            "priority": 10,
             "stored_in_inventory": true
           },
           {
@@ -2159,6 +2265,18 @@
                   "subject": "other",
                   "operator": "==",
                   "value": "creeper"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "==",
+                  "value": "wither"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "==",
+                  "value": "warden"
                 }
               ]
             },
@@ -2197,7 +2315,8 @@
           "minecraft:big_dripleaf",
           "minecraft:pointed_dripstone",
           "minecraft:soul_fire",
-          "minecraft:item.soul_campfire"
+          "minecraft:soul_campfire",
+          "minecraft:sculk_shrieker"
         ]
       },
       "minecraft:behavior.random_stroll": {
@@ -2260,7 +2379,7 @@
           { "item": "cookie", "heal_amount": 2 },
           { "item": "dried_kelp", "heal_amount": 1 },
           {
-            "item": "appleenchanted",
+            "item": "enchanted_golden_apple",
             "heal_amount": 4,
             "effects": [
               {
@@ -2510,14 +2629,6 @@
               "value": "minecraft:behavior.nearest_attackable_target"
             },
             "event": "terminator:fix_default_target"
-          },
-          {
-            "filters": {
-              "test": "in_nether",
-              "subject": "player",
-              "value": true
-            },
-            "event": "terminator:make_nether_portal"
           },
           {
             "filters": {
@@ -2860,175 +2971,6 @@
       "terminator:remove_suffocate_alert": {
         "queue_command": {
           "command": ["tag @s remove terminatorsuffocate"]
-        }
-      },
-      "terminator:find_portal_to_overworld": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_end"
-            },
-            "add": {
-              "component_groups": ["terminator:find_end_portal"]
-            }
-          },
-          {
-            "filters": {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_end"
-            },
-            "add": {
-              "component_groups": ["terminator:find_end_portal"]
-            }
-          }
-        ]
-      },
-      "terminator:find_portal_to_nether": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_end"
-            },
-            "add": {
-              "component_groups": ["terminator:find_end_portal"]
-            }
-          },
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_biome",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "the_nether"
-                },
-                {
-                  "test": "is_biome",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "the_end"
-                }
-              ]
-            },
-            "add": {
-              "component_groups": ["terminator:find_nether_portal"]
-            }
-          }
-        ]
-      },
-      "terminator:find_portal_to_the_end": {
-        "sequence": [
-          {
-            "filters": {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_nether"
-            },
-            "add": {
-              "component_groups": ["terminator:find_nether_portal"]
-            }
-          },
-          {
-            "filters": {
-              "all_of": [
-                {
-                  "test": "is_biome",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "the_nether"
-                },
-                {
-                  "test": "is_biome",
-                  "subject": "self",
-                  "operator": "!=",
-                  "value": "the_end"
-                }
-              ]
-            },
-            "add": {
-              "component_groups": ["terminator:find_end_portal"]
-            }
-          }
-        ]
-      },
-      "terminator:make_nether_portal": {
-        "filters": {
-          "all_of": [
-            {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "!=",
-              "value": "the_end"
-            }
-          ]
-        },
-        "queue_command": {
-          "command": [
-            "fill ~-1 ~ ~ ~ ~2 ~ air destroy",
-            "setblock ~ ~-1 ~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-1~-1~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~1~~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-2~~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~1~1~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-2~1~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~1~2~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-2~2~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~ ~3 ~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-1~3~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~-1~3~ obsidian",
-            "playsound use.stone @a ~ ~ ~",
-            "setblock ~ ~ ~ fire",
-            "playsound fire.ignite @a ~ ~ ~"
-          ]
-        }
-      },
-      "terminator:disable_find_end_portal": {
-        "filters": {
-          "all_of": [
-            {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_end"
-            }
-          ]
-        },
-        "remove": {
-          "component_groups": ["terminator:find_end_portal"]
-        }
-      },
-      "terminator:disable_find_nether_portal": {
-        "filters": {
-          "all_of": [
-            {
-              "test": "is_biome",
-              "subject": "self",
-              "operator": "==",
-              "value": "the_nether"
-            }
-          ]
-        },
-        "remove": {
-          "component_groups": ["terminator:find_nether_portal"]
         }
       },
       "terminator:disable_respawn": {

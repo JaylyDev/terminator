@@ -15,8 +15,8 @@ import {
 import { getDeathMessage } from "../terminator-death/deathMessage";
 import { TerminatorEntity, TerminatorVariant } from "../terminator/terminator";
 import { UnbreakableBlocks } from "../config";
+import { getAllDummyEntities } from "./getAll";
 
-const overworld = world.getDimension("overworld");
 const EventDuration = {
   SpellEffectStage: 6 * TicksPerSecond,
   WeatherSetupStage: 3 * TicksPerSecond,
@@ -242,14 +242,12 @@ export class TerminatorRespawnEventController {
 }
 
 system.runInterval(() => {
-  for (const dummyEntity of overworld.getEntities({ type: "entity:dummy" })) {
+  for (const dummyEntity of getAllDummyEntities()) {
     const lifeTime = dummyEntity.getDynamicProperty("dummy:life_time");
 
-    if (typeof lifeTime !== "number") continue;
+    if (!dummyEntity.isValid() || typeof lifeTime !== "number") continue;
     else if (lifeTime > LifeTime.SummonStage) {
-      system.run(() => {
-        if (dummyEntity.isValid()) dummyEntity.remove();
-      });
+      dummyEntity.remove();
       continue;
     }
 
@@ -301,7 +299,6 @@ system.runInterval(() => {
 
       terminator.jump();
       system.run(() => {
-        controller.triggerDramaticEffect();
         terminator.dimension.spawnEntity(
           "minecraft:wind_charge_projectile",
           terminator.location

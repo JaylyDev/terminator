@@ -2,11 +2,10 @@ import { Entity, system, world } from "@minecraft/server";
 import { terminatorDie } from "../terminator-events/onTerminatorDie";
 import { debugEnabled } from "../config";
 import { Vector3Utils } from "@minecraft/math";
-
-const overworld = world.getDimension("overworld");
+import { getAllDummyEntities } from "./getAll";
 
 system.runInterval(() => {
-  for (const dummyEntity of overworld.getEntities({ type: "entity:dummy" })) {
+  for (const dummyEntity of getAllDummyEntities()) {
     const navigator = dummyEntity.getDynamicProperty("terminator:navigator") as
       | string
       | undefined;
@@ -36,13 +35,13 @@ system.runInterval(() => {
 
 // remove dummy when terminator dies
 terminatorDie.subscribe(({ deadEntity }) => {
-  const dummyEntity = overworld
-    .getEntities({ type: "entity:dummy" })
-    .find(
-      (entity) =>
-        entity.getDynamicProperty("terminator:navigator") === deadEntity.id
-    );
-  dummyEntity?.remove();
+  for (const dummyEntity of getAllDummyEntities()) {
+    if (
+      dummyEntity.getDynamicProperty("terminator:navigator") === deadEntity.id
+    ) {
+      dummyEntity.remove();
+    }
+  }
   if (debugEnabled)
     console.warn(`Terminator (id: ${deadEntity.id}) died during navigation.`);
 });

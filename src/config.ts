@@ -39,9 +39,13 @@ export const UnbreakableBlocks: string[] = [
   MinecraftBlockTypes.FlowingWater,
   MinecraftBlockTypes.Air,
   MinecraftBlockTypes.Glowingobsidian,
+  MinecraftBlockTypes.Obsidian,
   MinecraftBlockTypes.Netherreactor,
   MinecraftBlockTypes.Allow,
   MinecraftBlockTypes.Deny,
+  MinecraftBlockTypes.Portal,
+  MinecraftBlockTypes.Fire,
+  MinecraftBlockTypes.SoulFire,
 ];
 
 export const ReplaceableBlocks: string[] = [
