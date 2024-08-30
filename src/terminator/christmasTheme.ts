@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { system } from "@minecraft/server";
 import { getAllTerminators } from "./getAll";
 
 system.runInterval(() => {

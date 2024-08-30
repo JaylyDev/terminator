@@ -248,6 +248,9 @@ export class TerminatorEntity implements Entity {
   resetProperty(identifier: string): boolean | number | string {
     return this.terminator.resetProperty(identifier);
   }
+  /**
+   * @deprecated
+   */
   runCommand(commandString: string): CommandResult {
     return this.terminator.runCommand(commandString);
   }
@@ -299,21 +302,18 @@ export class TerminatorEntity implements Entity {
    * Location of the block to interact with.
    * @throws This function can throw errors.
    */
-  breakBlock(blockLocation: Vector3): boolean {
+  breakBlock(blockLocation: Vector3): void {
     const block = this.dimension.getBlock(blockLocation);
-    if (!block || UnbreakableBlocks.some((id) => block.permutation.matches(id)))
-      return false;
-    const result = this.dimension.runCommand(
+    if (!block || UnbreakableBlocks.includes(block.typeId)) return;
+    this.dimension.runCommandAsync(
       `setblock ${blockLocation.x} ${blockLocation.y} ${blockLocation.z} air destroy`
     );
     if (debugEnabled) {
       console.log(
         `Terminator ${this.id} TerminatorEntity.breakBlock at`,
-        new Vector3Builder(blockLocation).toString(),
-        result.successCount === 1
+        new Vector3Builder(blockLocation).toString()
       );
     }
-    return result.successCount === 1;
   }
   placeBlock(blockLocation: Vector3, permutation: BlockPermutation): boolean {
     const block = this.dimension.getBlock(blockLocation);
@@ -324,7 +324,7 @@ export class TerminatorEntity implements Entity {
       !block ||
       entities.length > 0 ||
       !(block.isAir || block.isLiquid) ||
-      !ReplaceableBlocks.some((id) => block.permutation.matches(id))
+      !ReplaceableBlocks.includes(block.typeId)
     )
       return false;
     block.setPermutation(permutation);

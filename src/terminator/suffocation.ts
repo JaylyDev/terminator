@@ -20,7 +20,7 @@ terminatorSuffocate.subscribe(({ hurtEntity }) => {
     terminator.jump();
 
     // If neccessary place block above
-    if (block && block.permutation.matches(MinecraftBlockTypes.Air)) {
+    if (block && block.isAir) {
       terminator.placeBlock(location, buildingBlock);
     }
   }

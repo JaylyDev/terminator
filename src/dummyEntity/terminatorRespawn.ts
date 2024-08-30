@@ -126,7 +126,9 @@ export class TerminatorRespawnEventController {
   }
 
   setupWeather() {
-    this.dummyEntity.runCommand("/fog @a push minecraft:fog_hell respawn_lore");
+    this.dummyEntity.runCommandAsync(
+      "/fog @a push minecraft:fog_hell respawn_lore"
+    );
     this.dummyEntity.dimension.setWeather(
       WeatherType.Thunder,
       LifeTime.SummonStage - LifeTime.WeatherSetupStage
@@ -135,7 +137,7 @@ export class TerminatorRespawnEventController {
   }
 
   triggerDramaticEffect() {
-    this.dummyEntity.runCommand("/summon minecraft:lightning_bolt");
+    this.dummyEntity.runCommandAsync("/summon minecraft:lightning_bolt");
     this.dummyEntity.triggerEvent("dummy:force_roar");
   }
 
@@ -169,37 +171,31 @@ export class TerminatorRespawnEventController {
       causesFire: true,
       source,
     };
-    this.dummyEntity.dimension.createExplosion(
-      this.dummyEntity.location,
-      1000,
-      options
-    );
-    for (let x = 0; x < 5; x++) {
-      for (let y = 0; y < 5; y++) {
-        for (let z = 0; z < 5; z++) {
-          try {
-            const block = this.dummyEntity.dimension.getBlock(
-              Vector3Utils.add(structurePos, { x, y, z })
-            );
-            if (!block) continue;
-            else if (UnbreakableBlocks.includes(block.typeId)) {
-              block.setType("minecraft:air");
+    const dimension = this.dummyEntity.dimension;
+    const location = this.dummyEntity.location;
+    dimension.createExplosion(location, 1000, options);
+
+    // Create explosion
+    system.run(() => {
+      for (let x = 0; x < 5; x++) {
+        for (let y = 0; y < 5; y++) {
+          for (let z = 0; z < 5; z++) {
+            try {
+              const block = dimension.getBlock(
+                Vector3Utils.add(structurePos, { x, y, z })
+              );
+              if (!block) continue;
+              else if (UnbreakableBlocks.includes(block.typeId)) {
+                block.setType("minecraft:air");
+              }
+            } catch (error) {
+              console.log(error);
             }
-          } catch (error) {
-            console.log(error);
           }
         }
       }
-    }
-
-    // Create explosion
-    system.run(() =>
-      this.dummyEntity.dimension.createExplosion(
-        this.dummyEntity.location,
-        10,
-        options
-      )
-    );
+      dimension.createExplosion(location, 10, options);
+    });
   }
 
   triggerEvent() {
@@ -227,7 +223,7 @@ export class TerminatorRespawnEventController {
       deathEvent.deadEntity
     );
 
-    dummyEntity.runCommand("fog @a remove respawn_lore");
+    dummyEntity.runCommandAsync("fog @a remove respawn_lore");
     dummyEntity.setDynamicProperty("dummy:spawn_location", location);
     dummyEntity.setDynamicProperty("dummy:spawn_dimension", dimension.id);
     dummyEntity.setDynamicProperty("dummy:spawn_variant", variant);
