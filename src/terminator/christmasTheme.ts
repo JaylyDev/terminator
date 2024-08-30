@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { system, TicksPerSecond } from "@minecraft/server";
 import { getAllTerminators } from "./getAll";
 
 system.runInterval(() => {
@@ -18,4 +18,4 @@ system.runInterval(() => {
       terminator.triggerEvent("terminator:default_skin");
     }
   }
-});
+}, TicksPerSecond);

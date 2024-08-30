@@ -86,7 +86,7 @@ system.runInterval(() => {
       buildNetherPortal(nether, terminator);
     }
   }
-});
+}, TicksPerSecond);
 
 system.afterEvents.scriptEventReceive.subscribe((event) => {
   if (

@@ -2879,6 +2879,9 @@
             "minecraft:snowball_ranged_attack"
           ]
         },
+        "set_property": {
+          "terminator:snowball_attack": false
+        },
         "add": {
           "component_groups": ["minecraft:melee_attack"]
         }
@@ -2892,6 +2895,9 @@
             "got_out_of_powder_snow_environment_sensor",
             "minecraft:snowball_ranged_attack"
           ]
+        },
+        "set_property": {
+          "terminator:snowball_attack": false
         },
         "add": {
           "component_groups": ["minecraft:crossbow_ranged_unit"]
@@ -2907,6 +2913,9 @@
             "minecraft:snowball_ranged_attack"
           ]
         },
+        "set_property": {
+          "terminator:snowball_attack": false
+        },
         "add": {
           "component_groups": ["minecraft:bow_ranged_attack"]
         }
@@ -2920,6 +2929,9 @@
             "got_out_of_powder_snow_environment_sensor",
             "minecraft:snowball_ranged_attack"
           ]
+        },
+        "set_property": {
+          "terminator:snowball_attack": false
         },
         "add": {
           "component_groups": ["minecraft:trident_mode_switcher"]
