@@ -53,7 +53,7 @@ export function sendDeathMessageCallback({
   const message = getDeathMessage(damageSource, deadEntity);
   // debug
   if (debugEnabled) {
-    console.warn(
+    console.log(
       `DeadEntity: ${deadEntity.typeId} | DamagingEntity: ${damagingEntity?.typeId} | DamagingProjectile: ${damageSource.damagingProjectile?.typeId} | Cause: ${cause}`
     );
   }

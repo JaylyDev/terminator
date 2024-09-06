@@ -21,12 +21,13 @@ system.runInterval(() => {
         maxDistance: 8,
       })
     ) {
-      if (debugEnabled)
+      if (debugEnabled) {
         console.warn(
           `Terminator navigated to location (${Vector3Utils.toString(
             dummyEntity.location
           )})`
         );
+      }
       dummyEntity.remove();
       terminator.triggerEvent("terminator:remove_escape");
     }
@@ -42,6 +43,7 @@ terminatorDie.subscribe(({ deadEntity }) => {
       dummyEntity.remove();
     }
   }
-  if (debugEnabled)
+  if (debugEnabled) {
     console.warn(`Terminator (id: ${deadEntity.id}) died during navigation.`);
+  }
 });
