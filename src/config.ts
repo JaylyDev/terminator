@@ -4,9 +4,28 @@ import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 /**
  * A list of blocks with a blast resistance of 100 which terminators cannot break
  */
-export const UnbreakableBlocks: MinecraftBlockTypes[] = [
+export const UnbreakableBlocks: string[] = [
+  // 1.21.0
+  "minecraft:light_block",
+
+  // 1.21.20
   MinecraftBlockTypes.Barrier,
-  MinecraftBlockTypes.LightBlock,
+  MinecraftBlockTypes.LightBlock0,
+  MinecraftBlockTypes.LightBlock1,
+  MinecraftBlockTypes.LightBlock2,
+  MinecraftBlockTypes.LightBlock3,
+  MinecraftBlockTypes.LightBlock4,
+  MinecraftBlockTypes.LightBlock5,
+  MinecraftBlockTypes.LightBlock6,
+  MinecraftBlockTypes.LightBlock7,
+  MinecraftBlockTypes.LightBlock8,
+  MinecraftBlockTypes.LightBlock9,
+  MinecraftBlockTypes.LightBlock10,
+  MinecraftBlockTypes.LightBlock11,
+  MinecraftBlockTypes.LightBlock12,
+  MinecraftBlockTypes.LightBlock13,
+  MinecraftBlockTypes.LightBlock14,
+  MinecraftBlockTypes.LightBlock15,
   MinecraftBlockTypes.Bedrock,
   MinecraftBlockTypes.CommandBlock,
   MinecraftBlockTypes.EndGateway,
@@ -19,11 +38,19 @@ export const UnbreakableBlocks: MinecraftBlockTypes[] = [
   MinecraftBlockTypes.FlowingLava,
   MinecraftBlockTypes.FlowingWater,
   MinecraftBlockTypes.Air,
+  MinecraftBlockTypes.Glowingobsidian,
+  MinecraftBlockTypes.Obsidian,
+  MinecraftBlockTypes.Netherreactor,
+  MinecraftBlockTypes.Allow,
+  MinecraftBlockTypes.Deny,
+  MinecraftBlockTypes.Portal,
+  MinecraftBlockTypes.Fire,
+  MinecraftBlockTypes.SoulFire,
 ];
 
-export const ReplaceableBlocks: MinecraftBlockTypes[] = [
+export const ReplaceableBlocks: string[] = [
   MinecraftBlockTypes.Air,
-  MinecraftBlockTypes.Tallgrass,
+  MinecraftBlockTypes.TallGrass,
   MinecraftBlockTypes.Seagrass,
   MinecraftBlockTypes.Deadbush,
   MinecraftBlockTypes.Vine,

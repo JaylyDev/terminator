@@ -16,6 +16,7 @@ import {
   EntityQueryOptions,
   EntityRaycastHit,
   EntityRaycastOptions,
+  EntityVariantComponent,
   PlayAnimationOptions,
   ScoreboardIdentity,
   TeleportOptions,
@@ -25,6 +26,7 @@ import {
   world,
 } from "@minecraft/server";
 import {
+  debugEnabled,
   PlayerJumpCooldown,
   PlayerJumpImpulse,
   ReplaceableBlocks,
@@ -32,6 +34,15 @@ import {
 } from "../config";
 import { MinecraftColor } from "../minecraft-color";
 import { TaskType } from "../dummyEntity/dummyEntity";
+
+export enum TerminatorVariant {
+  SteveDefault = 0,
+  AlexDefault = 1,
+  SteveChristmas = 2,
+  AlexChristmas = 3,
+  Custom = 4,
+  CustomSlim = 5,
+}
 
 /**
  * Represents the state of a terminator entity in the world.
@@ -154,6 +165,12 @@ export class TerminatorEntity implements Entity {
   getEffects(): Effect[] {
     return this.terminator.getEffects();
   }
+  /**
+   * Returns the binding Entity class
+   */
+  getEntity(): Entity {
+    return this.terminator;
+  }
   getEntitiesFromViewDirection(
     options?: EntityRaycastOptions
   ): EntityRaycastHit[] {
@@ -180,11 +197,32 @@ export class TerminatorEntity implements Entity {
     const response = this.terminator.getViewDirection();
     return new Vector3Builder(response);
   }
+  getVariant(): TerminatorVariant {
+    const variant = this.getComponent(EntityVariantComponent.componentId) as
+      | EntityVariantComponent
+      | undefined;
+    const variantValue = variant?.value ?? 0;
+    return variantValue;
+  }
   hasComponent(componentId: string): boolean {
     return this.terminator.hasComponent(componentId);
   }
   hasTag(tag: string): boolean {
     return this.terminator.hasTag(tag);
+  }
+  isAlexVariant(): boolean {
+    const variantValue = this.getVariant();
+    return (
+      variantValue === TerminatorVariant.AlexDefault ||
+      variantValue === TerminatorVariant.AlexChristmas
+    );
+  }
+  isSteveVariant(): boolean {
+    const variantValue = this.getVariant();
+    return (
+      variantValue === TerminatorVariant.SteveDefault ||
+      variantValue === TerminatorVariant.SteveChristmas
+    );
   }
   isValid(): boolean {
     return this.terminator.isValid();
@@ -210,6 +248,9 @@ export class TerminatorEntity implements Entity {
   resetProperty(identifier: string): boolean | number | string {
     return this.terminator.resetProperty(identifier);
   }
+  /**
+   * @deprecated
+   */
   runCommand(commandString: string): CommandResult {
     return this.terminator.runCommand(commandString);
   }
@@ -261,14 +302,18 @@ export class TerminatorEntity implements Entity {
    * Location of the block to interact with.
    * @throws This function can throw errors.
    */
-  breakBlock(blockLocation: Vector3): boolean {
+  breakBlock(blockLocation: Vector3): void {
     const block = this.dimension.getBlock(blockLocation);
-    if (!block || UnbreakableBlocks.some((id) => block.permutation.matches(id)))
-      return false;
-    const result = this.dimension.runCommand(
+    if (!block || UnbreakableBlocks.includes(block.typeId)) return;
+    this.dimension.runCommandAsync(
       `setblock ${blockLocation.x} ${blockLocation.y} ${blockLocation.z} air destroy`
     );
-    return result.successCount === 1;
+    if (debugEnabled) {
+      console.log(
+        `Terminator ${this.id} TerminatorEntity.breakBlock at`,
+        new Vector3Builder(blockLocation).toString()
+      );
+    }
   }
   placeBlock(blockLocation: Vector3, permutation: BlockPermutation): boolean {
     const block = this.dimension.getBlock(blockLocation);
@@ -279,13 +324,20 @@ export class TerminatorEntity implements Entity {
       !block ||
       entities.length > 0 ||
       !(block.isAir || block.isLiquid) ||
-      !ReplaceableBlocks.some((id) => block.permutation.matches(id))
+      !ReplaceableBlocks.includes(block.typeId)
     )
       return false;
     block.setPermutation(permutation);
     world.playSound("dig.stone", block.location, {
       pitch: Math.random() * 0.2 + 0.8,
     });
+    if (debugEnabled) {
+      console.log(
+        `Terminator ${this.id} TerminatorEntity.placeBlock()`,
+        permutation.type.id,
+        new Vector3Builder(blockLocation).toString()
+      );
+    }
     return true;
   }
   /**

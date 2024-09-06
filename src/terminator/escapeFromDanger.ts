@@ -2,18 +2,16 @@ import {
   EntityHealthComponent,
   TicksPerSecond,
   system,
-  world,
 } from "@minecraft/server";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
 import { debugEnabled } from "../config";
 import { getSpreadLocation } from "../dummyEntity/spreadDummies";
 import { TerminatorEntity } from "./terminator";
-
-const overworld = world.getDimension("overworld");
+import { getAllTerminators } from "./getAll";
 
 // detect when terminator's health is below 20hp (max 60hp)
 system.runInterval(() => {
-  for (const entity of overworld.getEntities({ type: "entity:terminator" })) {
+  for (const entity of getAllTerminators()) {
     const health = entity.getComponent("health") as EntityHealthComponent;
     const dangerEscapeTriggered =
       (entity.getDynamicProperty("terminator:escape_triggered") as

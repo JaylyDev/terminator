@@ -1,62 +1,32 @@
-import {
-  EntityDamageCause,
-  EntityVariantComponent,
-  world,
-} from "@minecraft/server";
+import { EntityDamageCause, world } from "@minecraft/server";
 import { terminatorDie } from "../terminator-events/onTerminatorDie";
 import { sendDeathMessageCallback } from "./deathMessage";
 import { MinecraftColor } from "../minecraft-color";
 import { dropEntityInventory } from "./dropInventory";
-import { TaskType } from "../dummyEntity/dummyEntity";
-
-enum TerminatorVariant {
-  SteveDefault = 0,
-  AlexDefault = 1,
-  SteveChristmas = 2,
-  AlexChristmas = 3,
-  Custom = 4,
-  CustomSlim = 5,
-}
+import { TerminatorRespawnEventController } from "../dummyEntity/terminatorRespawn";
+import { TerminatorEntity, TerminatorVariant } from "../terminator/terminator";
 
 terminatorDie.subscribe((event) => {
-  const { damageSource, deadEntity } = event;
+  const { damageSource } = event;
   const { cause } = damageSource;
+  const deadEntity = new TerminatorEntity(event.deadEntity);
   const allowRespawn = !deadEntity.hasTag("terminatordeathrequest");
   const triggerRespawnEvent = !deadEntity.hasTag("disablerespawnevent");
-  const variant = deadEntity.getComponent(
-    EntityVariantComponent.componentId
-  ) as EntityVariantComponent | undefined;
-  const variantValue = variant?.value ?? 0;
-  const isSteveVariant =
-    variantValue === TerminatorVariant.SteveDefault ||
-    variantValue === TerminatorVariant.SteveChristmas;
-  const isAlexVariant =
-    variantValue === TerminatorVariant.AlexDefault ||
-    variantValue === TerminatorVariant.AlexChristmas;
-  const isCustomVariant =
-    variantValue === TerminatorVariant.Custom ||
-    variantValue === TerminatorVariant.CustomSlim;
+  const variantValue = deadEntity.getVariant();
 
   dropEntityInventory(deadEntity);
 
   // First Death
   if (allowRespawn && triggerRespawnEvent && cause !== EntityDamageCause.void) {
-    const dummyEntity = deadEntity.dimension.spawnEntity(
-      "entity:dummy",
-      deadEntity.location
+    const controller = TerminatorRespawnEventController.initialize(
+      event,
+      variantValue,
+      deadEntity.location,
+      deadEntity.dimension,
+      deadEntity.nameTag
     );
-    dummyEntity.runCommand("fog @a remove respawn_lore");
-    dummyEntity.setDynamicProperty("dummy:spawn_location", deadEntity.location);
-    dummyEntity.setDynamicProperty(
-      "dummy:spawn_dimension",
-      deadEntity.dimension.id
-    );
-    if (isSteveVariant)
-      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnSteve);
-    else if (isAlexVariant)
-      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnAlex);
-    else if (isCustomVariant)
-      dummyEntity.setProperty("dummy:task_type", TaskType.SpawnCustom);
+
+    controller.triggerEvent();
   }
   // Second Death
   else if (
@@ -73,9 +43,9 @@ terminatorDie.subscribe((event) => {
     terminator.setDynamicProperty("broadcast_join_message", false);
 
     terminator.triggerEvent("terminator:disable_respawn");
-    if (isSteveVariant)
+    if (deadEntity.isSteveVariant())
       terminator.triggerEvent("terminator:switch_skin_to_steve");
-    else if (isAlexVariant)
+    else if (deadEntity.isAlexVariant())
       terminator.triggerEvent("terminator:switch_skin_to_alex");
     else if (variantValue === TerminatorVariant.Custom)
       terminator.triggerEvent("terminator:enable_custom_skin");

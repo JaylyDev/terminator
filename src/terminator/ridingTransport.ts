@@ -1,7 +1,7 @@
 import { ItemStack, TicksPerSecond, system, world } from "@minecraft/server";
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { getAllTerminators } from "./getAll";
 
-const overworld = world.getDimension("overworld");
 const rideableTransports = [
   MinecraftEntityTypes.Minecart,
   MinecraftEntityTypes.ChestBoat,
@@ -10,8 +10,7 @@ const rideableTransports = [
 
 // Replacement of controller.animation.terminator.sitting
 system.runInterval(() => {
-  const terminators = overworld.getEntities({ type: "entity:terminator" });
-  if (terminators.length === 0) return;
+  const terminators = getAllTerminators();
 
   for (const terminator of terminators) {
     let rideableCooldown = terminator.getDynamicProperty(

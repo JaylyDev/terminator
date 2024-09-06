@@ -1,15 +1,14 @@
 import { RawText, system, world } from "@minecraft/server";
 import { terminatorSpawn } from "../terminator-events/onTerminatorSpawn";
 import { MinecraftColor } from "../minecraft-color";
+import { getAllTerminators } from "./getAll";
 
 // naming tag
 terminatorSpawn.subscribe(({ entity }) => {
   system.runTimeout(() => {
     const nameTag = entity.nameTag || "Terminator";
     entity.nameTag = nameTag;
-    const terminators = entity.dimension.getEntities({
-      type: "entity:terminator",
-    });
+    const terminators = Array.from(getAllTerminators());
     // Check if existing terminator has the same nameTag, if there one set the entity nameTag to "[name] (1)"
     // If there's more than one with the same name, increment the index
     if (terminators.some((entity) => entity.nameTag === nameTag)) {

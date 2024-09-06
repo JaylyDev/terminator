@@ -10,10 +10,12 @@ import "./terminator-death/index";
 import "./terminator/suffocation";
 import "./terminator/rangedAttack";
 import "./terminator/escapeFromDanger";
+import "./terminator/netherPortal";
 import "./commands/index";
 import "./guide/index";
 import "./dummyEntity/navigationDetect";
 import "./dummyEntity/dummyEntity";
+import "./dummyEntity/terminatorRespawn";
 
 // Debug Features
 if (debugEnabled) {

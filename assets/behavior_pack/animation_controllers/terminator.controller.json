@@ -45,9 +45,6 @@
             },
             { "default_state": "(1.0)" }
           ],
-          "on_entry": [
-            "/tellraw @a[tag=dev] {\"rawtext\":[{\"text\": \"[\"},{\"selector\": \"@s\"}, {\"text\": \"] controller.animation.terminator.shield/detect_state\"}]}"
-          ],
           "on_exit": ["v.shield_cooldown = 5; v.shield_time = q.time_stamp;"]
         },
         "running_state": {

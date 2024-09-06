@@ -7,12 +7,11 @@
   <img src="https://img.shields.io/github/commit-activity/m/jaylydev/terminator" alt="Commit Activity"/>
 </p>
 
-**Latest Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v1.4.0 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
+**Latest Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v2.1.0 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
 ## Documentations
 
-- Basic Gameplay: https://jaylydev.github.io/posts/terminator/
-- Detailed explanation: [check docs folder](https://github.com/JaylyDev/terminator/tree/main/docs/)
+https://jaylydev.github.io/posts/terminator/
 
 ## Questions, Bugs and Feedbacks
 
@@ -28,4 +27,4 @@ Licensed under the [GPL-3.0 License](https://github.com/JaylyDev/terminator/blob
 
 ## Download archives
 
-Starting from October 2021, you can download Beta 1.3.13 or above on GitHub Releases, versions below v1.3.13 can be found at [terminator archives document](https://github.com/JaylyDev/terminator/blob/main/.github/download-archives.md)
+Download all versions of Terminator Add-On at https://jaylydev.github.io/posts/terminator/downloads/

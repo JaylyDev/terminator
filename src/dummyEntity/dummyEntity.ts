@@ -1,5 +1,6 @@
 import { world, system, Vector3 } from "@minecraft/server";
 import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
+import { getAllDummyEntities } from "./getAll";
 
 export enum TaskType {
   SpawnSteve = 1,
@@ -8,10 +9,8 @@ export enum TaskType {
   SpawnCustom,
 }
 
-const overworld = world.getDimension("overworld");
-
 system.runInterval(() => {
-  for (const dummyEntity of overworld.getEntities({ type: "entity:dummy" })) {
+  for (const dummyEntity of getAllDummyEntities()) {
     const spawnLocation = dummyEntity.getDynamicProperty(
       "dummy:spawn_location"
     ) as Vector3 | undefined;
