@@ -303,6 +303,12 @@ export class TerminatorEntity implements Entity {
    * @throws This function can throw errors.
    */
   breakBlock(blockLocation: Vector3): void {
+    if (
+      this.dimension.heightRange.min > blockLocation.y ||
+      this.dimension.heightRange.max < blockLocation.y
+    ) {
+      return;
+    }
     const block = this.dimension.getBlock(blockLocation);
     if (!block || UnbreakableBlocks.includes(block.typeId)) return;
     this.dimension.runCommandAsync(
