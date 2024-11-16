@@ -43,7 +43,7 @@ export function spawnTerminator(
     user_input.nametag = user_input.nametag
       .replace(/[^a-zA-Z0-9_ ]/g, "")
       .substring(0, 15);
-    entity.nameTag = user_input.nametag;
+    entity.setDynamicProperty("terminator:name_tag", user_input.nametag);
 
     if (user_input.customskin == true) {
       entity.triggerEvent("terminator:enable_custom_skin");

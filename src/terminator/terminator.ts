@@ -34,6 +34,24 @@ import {
 } from "../config";
 import { MinecraftColor } from "../minecraft-color";
 import { TaskType } from "../dummyEntity/dummyEntity";
+import type { NumberRange } from "@minecraft/common";
+
+/**
+ * Converts the y-value of vec3 to fit within the specified height range.
+ * @param vec3 - The vector with x, y, z coordinates.
+ * @param heightRange - Object with min and max values for y range.
+ * @returns New vec3 with the y value adjusted within the range.
+ */
+export function convertYWithinRange(
+  vec3: Vector3,
+  heightRange: NumberRange
+): Vector3 {
+  const normalizedY = Math.max(
+    heightRange.min,
+    Math.min(heightRange.max, vec3.y)
+  );
+  return { ...vec3, y: normalizedY };
+}
 
 export enum TerminatorVariant {
   SteveDefault = 0,
@@ -322,6 +340,12 @@ export class TerminatorEntity implements Entity {
     }
   }
   placeBlock(blockLocation: Vector3, permutation: BlockPermutation): boolean {
+    if (
+      this.dimension.heightRange.min > blockLocation.y ||
+      this.dimension.heightRange.max < blockLocation.y
+    ) {
+      return false;
+    }
     const block = this.dimension.getBlock(blockLocation);
     const entities = this.dimension
       .getEntitiesAtBlockLocation(blockLocation)
