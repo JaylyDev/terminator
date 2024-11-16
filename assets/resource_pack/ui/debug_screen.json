@@ -17,7 +17,7 @@
 
   "jayly_watermark": {
     "type": "label",
-    "text": "Terminator §ev2.1.0§r\nMade by §b@JaylyMC",
+    "text": "Terminator §ev2.1.1§r\nMade by §b@JaylyMC",
     "color": [1.0, 1.0, 1.0],
     "shadow": true,
     "font_size": "small",

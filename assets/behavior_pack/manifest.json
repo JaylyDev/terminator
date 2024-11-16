@@ -5,7 +5,7 @@
     "name": "pack.name",
     "description": "pack.description",
     "uuid": "90e876d2-2acc-4d9a-ab3c-d086f4b1716b",
-    "version": [2, 1, 0],
+    "version": [2, 1, 1],
     "min_engine_version": [1, 21, 0]
   },
   "modules": [
@@ -13,7 +13,7 @@
       "description": "pack.description",
       "type": "data",
       "uuid": "a7fbbd76-f86f-45db-bbb8-9aa1796068a1",
-      "version": [2, 1, 0]
+      "version": [2, 1, 1]
     },
     {
       "description": "",
@@ -28,7 +28,7 @@
     {
       // Terminator resource pack
       "uuid": "ec9b10e5-4eb9-40b9-814f-58f92176d5cd",
-      "version": [2, 1, 0]
+      "version": [2, 1, 1]
     },
     {
       // Minecraft native module - needed to use the "@minecraft/server" module
