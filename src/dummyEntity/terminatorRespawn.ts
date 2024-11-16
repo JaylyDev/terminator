@@ -13,9 +13,14 @@ import {
   world,
 } from "@minecraft/server";
 import { getDeathMessage } from "../terminator-death/deathMessage";
-import { TerminatorEntity, TerminatorVariant } from "../terminator/terminator";
+import {
+  convertYWithinRange,
+  TerminatorEntity,
+  TerminatorVariant,
+} from "../terminator/terminator";
 import { UnbreakableBlocks } from "../config";
 import { getAllDummyEntities } from "./getAll";
+import { reservedNames } from "../terminator/initialization";
 
 const EventDuration = {
   SpellEffectStage: 6 * TicksPerSecond,
@@ -200,6 +205,7 @@ export class TerminatorRespawnEventController {
 
   triggerEvent() {
     this.dummyEntity.setDynamicProperty("dummy:life_time", 0);
+    reservedNames.add(this.nameTag);
   }
 
   // Tick end
@@ -216,6 +222,10 @@ export class TerminatorRespawnEventController {
     dimension: Dimension,
     nameTag: string
   ) {
+    location = convertYWithinRange(location, {
+      min: dimension.heightRange.min,
+      max: dimension.heightRange.max - 5,
+    });
     const dummyEntity = dimension.spawnEntity("entity:dummy", location);
     const controller = new this(dummyEntity);
     const deathMessage = getDeathMessage(
@@ -281,19 +291,21 @@ system.runInterval(() => {
       );
       controller.removeStructure(terminator.getEntity());
 
-      terminator.nameTag = controller.nameTag;
+      terminator.setDynamicProperty("terminator:name_tag", controller.nameTag);
       terminator.setDynamicProperty("broadcast_join_message", false);
 
-      if (terminator.isSteveVariant())
+      if (terminator.isSteveVariant()) {
         terminator.triggerEvent("terminator:disable_respawn_event_steve");
-      else if (terminator.isAlexVariant())
+      } else if (terminator.isAlexVariant()) {
         terminator.triggerEvent("terminator:disable_respawn_event_alex");
-      else if (controller.variant === TerminatorVariant.Custom)
+      } else if (controller.variant === TerminatorVariant.Custom) {
         terminator.triggerEvent("terminator:disable_respawn_event_custom");
-      else if (controller.variant === TerminatorVariant.CustomSlim)
+      } else if (controller.variant === TerminatorVariant.CustomSlim) {
         terminator.triggerEvent("terminator:disable_respawn_event_custom_slim");
+      }
 
       terminator.jump();
+      reservedNames.delete(controller.nameTag);
       system.run(() => {
         terminator.dimension.spawnEntity(
           "minecraft:wind_charge_projectile",

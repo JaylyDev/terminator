@@ -39,7 +39,7 @@ terminatorDie.subscribe((event) => {
       "entity:terminator",
       deadEntity.location
     );
-    terminator.nameTag = deadEntity.nameTag;
+    terminator.setDynamicProperty("terminator:name_tag", deadEntity.nameTag);
     terminator.setDynamicProperty("broadcast_join_message", false);
 
     terminator.triggerEvent("terminator:disable_respawn");

@@ -209,15 +209,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
             }
           ]
         }
@@ -407,15 +398,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
             }
           ]
         }
@@ -531,15 +513,6 @@
             },
             {
               "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
-            },
-            {
-              "filters": {
                 "all_of": [
                   {
                     "test": "has_equipment",
@@ -644,192 +617,6 @@
           "priority": 1,
           "track_target": true,
           "speed_multiplier": 1.0
-        }
-      },
-      "terminator:default_attack_target": {
-        // this fixes terminator's nearest attackable target behaviour after removing terminator:find_path
-        // starting from v1.2.17.4, spawning entity will include this component group to fix critical issues
-        "minecraft:behavior.nearest_attackable_target": {
-          "priority": 0,
-          "must_see": false,
-          "reselect_targets": true,
-          "within_radius": 1024,
-          "must_see_forget_duration": 32767.0,
-          "target_search_height": -1,
-          "entity_types": [
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "player"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "terminator"
-                  },
-                  {
-                    "test": "has_mob_effect",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "invisibility"
-                  }
-                ]
-              },
-              "max_dist": 1024,
-              "must_see": false
-            },
-            {
-              "filters": {
-                "all_of": [
-                  { "test": "is_family", "subject": "other", "value": "wolf" },
-                  {
-                    "test": "has_component",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "minecraft:is_tamed"
-                  },
-                  {
-                    "test": "has_mob_effect",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "invisibility"
-                  }
-                ]
-              },
-              "max_dist": 16,
-              "must_see": true
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "any_of": [
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "snowgolem"
-                      },
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "parrot_tame"
-                      },
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "axolotl"
-                      },
-                      {
-                        "test": "is_family",
-                        "subject": "other",
-                        "value": "piglin"
-                      }
-                    ]
-                  },
-                  {
-                    "test": "has_mob_effect",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "invisibility"
-                  }
-                ]
-              },
-              "max_dist": 16,
-              "must_see": true
-            },
-            {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "irongolem"
-                  },
-                  {
-                    "test": "has_mob_effect",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "invisibility"
-                  },
-                  {
-                    "test": "has_equipment",
-                    "domain": "head",
-                    "operator": "==",
-                    "value": "netherite_helmet"
-                  },
-                  {
-                    "test": "has_equipment",
-                    "domain": "feet",
-                    "operator": "==",
-                    "value": "netherite_boots"
-                  },
-                  {
-                    "any_of": [
-                      {
-                        "test": "has_equipment",
-                        "domain": "armor",
-                        "operator": "==",
-                        "value": "netherite_chestplate"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "leg",
-                        "operator": "==",
-                        "value": "netherite_leggings"
-                      }
-                    ]
-                  },
-                  {
-                    "any_of": [
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "netherite_sword"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "diamond_sword"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "golden_sword"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "iron_sword"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "stone_sword"
-                      },
-                      {
-                        "test": "has_equipment",
-                        "domain": "hand",
-                        "operator": "==",
-                        "value": "wooden_sword"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "max_dist": 24,
-              "must_see": true
-            }
-          ]
         }
       },
       "terminator:spawn_terminator": {
@@ -1098,15 +885,6 @@
             },
             {
               "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
-            },
-            {
-              "filters": {
                 "all_of": [
                   {
                     "test": "has_equipment",
@@ -1207,15 +985,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
             },
             {
               "filters": {
@@ -1351,15 +1120,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
             },
             {
               "filters": {
@@ -1501,15 +1261,6 @@
                 ]
               },
               "event": "minecraft:trigger_raid"
-            },
-            {
-              "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "operator": "!=",
-                "value": "minecraft:behavior.nearest_attackable_target"
-              },
-              "event": "terminator:fix_default_target"
             },
             {
               "filters": {
@@ -2229,11 +1980,195 @@
           }
         ]
       },
+      "minecraft:behavior.nearest_attackable_target": {
+        "priority": 0,
+        "must_see": false,
+        "reselect_targets": true,
+        "within_radius": 1024,
+        "must_see_forget_duration": 32767.0,
+        "target_search_height": -1,
+        "entity_types": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "==",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "terminator"
+                },
+                {
+                  "test": "has_mob_effect",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "invisibility"
+                }
+              ]
+            },
+            "max_dist": 1024,
+            "must_see": false
+          },
+          {
+            "filters": {
+              "all_of": [
+                { "test": "is_family", "subject": "other", "value": "wolf" },
+                {
+                  "test": "has_component",
+                  "subject": "other",
+                  "operator": "==",
+                  "value": "minecraft:is_tamed"
+                },
+                {
+                  "test": "has_mob_effect",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "invisibility"
+                }
+              ]
+            },
+            "max_dist": 16,
+            "must_see": true
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "any_of": [
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "snowgolem"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "parrot_tame"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "axolotl"
+                    },
+                    {
+                      "test": "is_family",
+                      "subject": "other",
+                      "value": "piglin"
+                    }
+                  ]
+                },
+                {
+                  "test": "has_mob_effect",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "invisibility"
+                }
+              ]
+            },
+            "max_dist": 16,
+            "must_see": true
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "has_mob_effect",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "invisibility"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "head",
+                  "operator": "==",
+                  "value": "netherite_helmet"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "feet",
+                  "operator": "==",
+                  "value": "netherite_boots"
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "has_equipment",
+                      "domain": "armor",
+                      "operator": "==",
+                      "value": "netherite_chestplate"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "leg",
+                      "operator": "==",
+                      "value": "netherite_leggings"
+                    }
+                  ]
+                },
+                {
+                  "any_of": [
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "netherite_sword"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "diamond_sword"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "golden_sword"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "iron_sword"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "stone_sword"
+                    },
+                    {
+                      "test": "has_equipment",
+                      "domain": "hand",
+                      "operator": "==",
+                      "value": "wooden_sword"
+                    }
+                  ]
+                }
+              ]
+            },
+            "max_dist": 24,
+            "must_see": true
+          }
+        ]
+      },
       "minecraft:behavior.pickup_items": {
         "priority": 2,
         "max_dist": 16,
         "goal_radius": 2,
         "speed_multiplier": 1.0,
+        "track_target": true,
+        "pickup_same_items_as_in_hand": true,
         "can_pickup_any_item": true,
         "can_pickup_to_hand_or_equipment": true
       },
@@ -2685,7 +2620,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2"
           ]
@@ -2733,10 +2667,7 @@
           "component_groups": ["terminator:find_path"]
         },
         "add": {
-          "component_groups": [
-            "terminator:default_attack_target",
-            "minecraft:melee_attack"
-          ]
+          "component_groups": ["minecraft:melee_attack"]
         }
       },
       "terminator:disable_respawn_event_randomize": {
@@ -2759,7 +2690,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:steve_default_skin"
@@ -2776,7 +2706,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:alex_default_skin"
@@ -2793,7 +2722,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:custom_skin"
@@ -2810,7 +2738,6 @@
         },
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:customSlim_skin"
@@ -2968,11 +2895,6 @@
         },
         "add": {
           "component_groups": ["minecraft:snowball_ranged_attack"]
-        }
-      },
-      "terminator:fix_default_target": {
-        "add": {
-          "component_groups": ["terminator:default_attack_target"]
         }
       },
       "terminator:add_suffocate_alert": {
@@ -3208,7 +3130,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:steve_default_skin"
@@ -3234,7 +3155,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:alex_default_skin"
@@ -3260,7 +3180,6 @@
         ],
         "add": {
           "component_groups": [
-            "terminator:default_attack_target",
             "minecraft:melee_attack",
             "terminator:break_blocks.v2",
             "terminator:custom_skin"

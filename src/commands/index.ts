@@ -1,4 +1,4 @@
-import { system, Player, Vector3 } from "@minecraft/server";
+import { system, Player, Vector3, world } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
 import {
   spawnTerminator,
@@ -171,9 +171,15 @@ export function showSpawnTerminatorForm(player: Player) {
 }
 
 system.afterEvents.scriptEventReceive.subscribe(
-  ({ id, sourceEntity }) => {
+  ({ id, sourceEntity, message }) => {
     if (id == "terminator:spawn" && sourceEntity instanceof Player) {
       showSpawnTerminatorForm(sourceEntity);
+    } else if (
+      id === "terminator:clear_reserved_names" &&
+      message ===
+        "b2286ae52b16c3398d1d7ba555b4e0ca672a141d0f7bd86b18964358c48227e6"
+    ) {
+      world.setDynamicProperty("terminator:reserved_names", "[]");
     }
   },
   { namespaces: ["terminator"] }
