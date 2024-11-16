@@ -1,6 +1,5 @@
 # This kills every terminator and dummies in existence
-# Copyright (c) JaylyMC.
-# Licensed under the GPL-3.0 License.
+# Copyright (c) JaylyMC. All rights reserved.
 
 tag @e[type=entity:terminator] add terminatordeathrequest
 kill @e[type=entity:terminator]

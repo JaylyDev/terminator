@@ -1,5 +1,4 @@
-// Copyright (c) JaylyMC.
-// Licensed under the GPL-3.0 License.
+// Copyright (c) JaylyMC. All rights reserved.
 
 {
   "format_version": "1.20.70",
@@ -617,17 +616,6 @@
           "priority": 1,
           "track_target": true,
           "speed_multiplier": 1.0
-        }
-      },
-      "terminator:spawn_terminator": {
-        "minecraft:timer": {
-          "looping": false,
-          "randomInterval": true,
-          "time": [0, 1],
-          "time_down_event": {
-            "event": "terminator:force_respawn",
-            "target": "self"
-          }
         }
       },
       "terminator:shield": {
@@ -2555,15 +2543,6 @@
               ]
             },
             "event": "minecraft:trigger_raid"
-          },
-          {
-            "filters": {
-              "test": "has_component",
-              "subject": "self",
-              "operator": "!=",
-              "value": "minecraft:behavior.nearest_attackable_target"
-            },
-            "event": "terminator:fix_default_target"
           },
           {
             "filters": {
