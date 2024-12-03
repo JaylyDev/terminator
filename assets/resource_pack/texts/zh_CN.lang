@@ -1,8 +1,36 @@
-item.spawn_egg.entity.entity:terminator.name=终结者生成蛋
-entity.player.name=玩家
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
 message.entity.respawn.generic=，但他们重生了！
-entity.entity:terminator.name=终结者
+item.spawn_egg.entity.entity:terminator.name=生成终结者
 entity.entity:terminator<>.name=终结者
-entity.entity:dummy.name=假
+entity.player.name=玩家
+entity.entity:terminator.name=终结者
+entity.entity:dummy.name=假的
 pack.name=终结者[资源包]
-pack.description=一个阻止你完成游戏的机器人。 由 Jayly 制作 - https://jaylydev.github.io/posts/terminator/
+pack.description=一个阻止你通关游戏的机器人。由 Jayly 制作 - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15周年纪念日
+persona.cherry_cape.title=樱花
+persona.founder_cape.title=创始人
+persona.migrator_cape.title=迁移者
+persona.mojang_new_cape.title=Mojang 新
+persona.pancape.title=薄煎饼
+persona.pride_cape.title=进步的骄傲
+persona.follower_cape.title=关注者 (TikTok)
+persona.purple_heart_cape.title=紫心勋章（Twitch）
+persona.one_vanilla_cape.title=原版
+persona.mcc_cape.title=MCC 15週年
+persona.mc_experience_cape.title=我的世界体验
+terminator.spawn.title=生成终结者
+options.terminator.spawn.nametag=姓名牌
+options.terminator.spawn.coordinates=生成坐标
+options.terminator.spawn.skinModel=皮肤模型
+options.terminator.spawn.customskin=启用自定义皮肤
+options.terminator.spawn.bossbar=启用老板栏
+options.terminator.spawn.invulnerable=启用免疫功能
+options.terminator.spawn.deathevent=启用死亡事件
+options.terminator.spawn.physics=启用物理
+options.terminator.spawn.regeneration=启用再生
+options.terminator.spawn.respawn=启用重生
+options.terminator.spawn.breedable=实现可繁殖性

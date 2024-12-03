@@ -1,6 +1,36 @@
-entity.entity:terminator.name=Terminatör
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-entity.entity:dummy.name=Kukla
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, ama yeniden doğdular!
+item.spawn_egg.entity.entity:terminator.name=Doğuş Terminatörü
 entity.entity:terminator<>.name=Terminatör
-entity.player.name=oyuncu
-message.entity.respawn.generic=, ama önemsediler!
+entity.player.name=Oyuncu
+entity.entity:terminator.name=Terminatör
+entity.entity:dummy.name=kukla
+pack.name=Terminatör [Kaynak Paketi]
+pack.description=Oyunu kazanmanızı engelleyen bir robot. Jayly tarafından yapılmıştır - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15. Yıldönümü
+persona.cherry_cape.title=Kiraz Çiçeği
+persona.founder_cape.title=Kurucu
+persona.migrator_cape.title=Göçmen
+persona.mojang_new_cape.title=Mojang Yeni
+persona.pancape.title=Tava
+persona.pride_cape.title=İlerleme Gururu
+persona.follower_cape.title=Takipçi (TikTok)
+persona.purple_heart_cape.title=Mor Kalp (Twitch)
+persona.one_vanilla_cape.title=Bir Vanilya
+persona.mcc_cape.title=MM 15. Yıl
+persona.mc_experience_cape.title=Minecraft Deneyimi
+terminator.spawn.title=Doğuş Terminatörü
+options.terminator.spawn.nametag=İsim Etiketi
+options.terminator.spawn.coordinates=Doğma Koordinatları
+options.terminator.spawn.skinModel=Cilt Modeli
+options.terminator.spawn.customskin=Özel Kaplamayı Etkinleştir
+options.terminator.spawn.bossbar=Bossbar'ı etkinleştir
+options.terminator.spawn.invulnerable=Bağışıklığı Etkinleştir
+options.terminator.spawn.deathevent=Ölüm Olayını Etkinleştir
+options.terminator.spawn.physics=Fiziği Etkinleştir
+options.terminator.spawn.regeneration=Yenilemeyi Etkinleştir
+options.terminator.spawn.respawn=Yeniden Doğmayı Etkinleştir
+options.terminator.spawn.breedable=Yetiştirilebilirliği Etkinleştir

@@ -26,23 +26,69 @@ function generateModalForm(settings: TerminatorInputParam) {
   }
 
   return new ModalFormData()
-    .title("Spawn Terminator")
-    .textField("Name Tag", settings.nametag, settings.nametag)
-    .textField("Spawn Coordinates", "x y z", "~ ~ ~")
+    .title({ translate: "terminator.spawn.title" })
+    .textField(
+      { translate: "options.terminator.spawn.nametag" },
+      settings.nametag,
+      settings.nametag
+    )
+    .textField(
+      { translate: "options.terminator.spawn.coordinates" },
+      "x y z",
+      "~ ~ ~"
+    )
     .dropdown(
-      "Skin Model",
-      ["Steve", "Alex", "Custom (Steve Model)", "Custom (Alex Model)"],
+      { translate: "options.terminator.spawn.skinModel" },
+      [
+        { translate: "dr.default.steve.skin" },
+        { translate: "dr.default.alex.skin" },
+        {
+          rawtext: [
+            { translate: "skin.Standard.Custom" },
+            { text: "(" },
+            { translate: "dr.default.steve.skin" },
+            { text: ")" },
+          ],
+        },
+        {
+          rawtext: [
+            { translate: "skin.Standard.Custom" },
+            { text: "(" },
+            { translate: "dr.default.alex.skin" },
+            { text: ")" },
+          ],
+        },
+      ],
       skinModelIndex
     )
-    .toggle("Enable Custom Skin", settings.customskin)
-    .toggle("Enable Bossbar", settings.bossbar)
-    .toggle("Enable Immunity", settings.invulnerable)
-    .toggle("Enable Death Event", settings.deathevent)
-    .toggle("Enable Physics", settings.physics)
-    .toggle("Enable Regeneration", settings.regeneration)
-    .toggle("Enable Respawn", settings.respawn)
-    .toggle("Enable Breedability", settings.breedable)
-    .dropdown("Cape", CapeVariants, settings.cape);
+    .toggle(
+      { translate: "options.terminator.spawn.customskin" },
+      settings.customskin
+    )
+    .toggle({ translate: "options.terminator.spawn.bossbar" }, settings.bossbar)
+    .toggle(
+      { translate: "options.terminator.spawn.invulnerable" },
+      settings.invulnerable
+    )
+    .toggle(
+      { translate: "options.terminator.spawn.deathevent" },
+      settings.deathevent
+    )
+    .toggle({ translate: "options.terminator.spawn.physics" }, settings.physics)
+    .toggle(
+      { translate: "options.terminator.spawn.regeneration" },
+      settings.regeneration
+    )
+    .toggle({ translate: "options.terminator.spawn.respawn" }, settings.respawn)
+    .toggle(
+      { translate: "options.terminator.spawn.breedable" },
+      settings.breedable
+    )
+    .dropdown(
+      { translate: "options.modelPart.cape" },
+      CapeVariants,
+      settings.cape
+    );
 }
 
 /**

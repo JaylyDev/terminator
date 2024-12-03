@@ -1,6 +1,36 @@
-entity.entity:terminator.name=o Exterminador do Futuro
-entity.entity:terminator<>.name=o Exterminador do Futuro
-item.spawn_egg.entity.entity:terminator.name=Terminador de Spawn.
-message.entity.respawn.generic=, mas eles respostas!
-entity.entity:dummy.name=Fictício
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, mas eles reapareceram!
+item.spawn_egg.entity.entity:terminator.name=Gerar Exterminador do Futuro
+entity.entity:terminator<>.name=Exterminador do Futuro
 entity.player.name=Jogador
+entity.entity:terminator.name=Exterminador do Futuro
+entity.entity:dummy.name=Fictício
+pack.name=Terminator [Pacote de Recursos]
+pack.description=Um robô que impede você de vencer o jogo. Feito por Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15º aniversário
+persona.cherry_cape.title=Flor de cerejeira
+persona.founder_cape.title=Fundador
+persona.migrator_cape.title=Migrador
+persona.mojang_new_cape.title=Mojang Novo
+persona.pancape.title=Frigideira
+persona.pride_cape.title=Orgulho do Progresso
+persona.follower_cape.title=Seguidor (TikTok)
+persona.purple_heart_cape.title=Coração Púrpura (Twitch)
+persona.one_vanilla_cape.title=Uma baunilha
+persona.mcc_cape.title=15º ano do MCC
+persona.mc_experience_cape.title=Experiência Minecraft
+terminator.spawn.title=Gerar Exterminador do Futuro
+options.terminator.spawn.nametag=Etiqueta de nome
+options.terminator.spawn.coordinates=Coordenadas de surgimento
+options.terminator.spawn.skinModel=Modelo de pele
+options.terminator.spawn.customskin=Ativar tema personalizado
+options.terminator.spawn.bossbar=Habilitar Bossbar
+options.terminator.spawn.invulnerable=Ativar imunidade
+options.terminator.spawn.deathevent=Habilitar Evento de Morte
+options.terminator.spawn.physics=Habilitar Física
+options.terminator.spawn.regeneration=Habilitar regeneração
+options.terminator.spawn.respawn=Habilitar reaparecimento
+options.terminator.spawn.breedable=Habilitar capacidade de reprodução

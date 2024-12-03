@@ -1,0 +1,33 @@
+{
+  "languages": [
+    { "mojang": "en_US", "google": "en-US" },
+    { "mojang": "en_GB", "google": "en" },
+    { "mojang": "de_DE", "google": "de" },
+    { "mojang": "es_ES", "google": "es" },
+    { "mojang": "es_MX", "google": "es" },
+    { "mojang": "fr_FR", "google": "fr" },
+    { "mojang": "fr_CA", "google": "fr" },
+    { "mojang": "it_IT", "google": "it" },
+    { "mojang": "ja_JP", "google": "ja" },
+    { "mojang": "ko_KR", "google": "ko" },
+    { "mojang": "pt_BR", "google": "pt" },
+    { "mojang": "pt_PT", "google": "pt" },
+    { "mojang": "ru_RU", "google": "ru" },
+    { "mojang": "zh_CN", "google": "zh-cn" },
+    { "mojang": "zh_TW", "google": "zh-tw" },
+    { "mojang": "nl_NL", "google": "nl" },
+    { "mojang": "bg_BG", "google": "bg" },
+    { "mojang": "cs_CZ", "google": "cs" },
+    { "mojang": "da_DK", "google": "da" },
+    { "mojang": "el_GR", "google": "el" },
+    { "mojang": "fi_FI", "google": "fi" },
+    { "mojang": "hu_HU", "google": "hu" },
+    { "mojang": "id_ID", "google": "id" },
+    { "mojang": "nb_NO", "google": "no" },
+    { "mojang": "pl_PL", "google": "pl" },
+    { "mojang": "sk_SK", "google": "sk" },
+    { "mojang": "sv_SE", "google": "sv" },
+    { "mojang": "tr_TR", "google": "tr" },
+    { "mojang": "uk_UA", "google": "uk" }
+  ]
+}

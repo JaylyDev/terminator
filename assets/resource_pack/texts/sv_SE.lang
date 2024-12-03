@@ -1,6 +1,36 @@
-item.spawn_egg.entity.entity:terminator.name=Gissande terminator
-entity.entity:terminator.name=Terminator
-entity.player.name=Spelare
-message.entity.respawn.generic=, men de respuderade!
-entity.entity:dummy.name=Dummy
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, men de återuppstod!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Terminator
+entity.player.name=Spelare
+entity.entity:terminator.name=Terminator
+entity.entity:dummy.name=Dummy
+pack.name=Terminator [Resurspaket]
+pack.description=En robot som hindrar dig från att slå spelet. Tillverkad av Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15-årsjubileum
+persona.cherry_cape.title=Cherry Blossom
+persona.founder_cape.title=Grundare
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang Nytt
+persona.pancape.title=Panorera
+persona.pride_cape.title=Progress Pride
+persona.follower_cape.title=Följare (TikTok)
+persona.purple_heart_cape.title=Lila hjärta (Twitch)
+persona.one_vanilla_cape.title=En vanilj
+persona.mcc_cape.title=MCC 15:e år
+persona.mc_experience_cape.title=Minecraft-upplevelse
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Namntagg
+options.terminator.spawn.coordinates=Spawn-koordinater
+options.terminator.spawn.skinModel=Hudmodell
+options.terminator.spawn.customskin=Aktivera anpassat skal
+options.terminator.spawn.bossbar=Aktivera Bossbar
+options.terminator.spawn.invulnerable=Aktivera immunitet
+options.terminator.spawn.deathevent=Aktivera Death Event
+options.terminator.spawn.physics=Aktivera fysik
+options.terminator.spawn.regeneration=Aktivera regenerering
+options.terminator.spawn.respawn=Aktivera Respawn
+options.terminator.spawn.breedable=Aktivera uppfödning

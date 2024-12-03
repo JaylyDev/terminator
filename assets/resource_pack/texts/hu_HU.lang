@@ -1,6 +1,36 @@
-entity.entity:terminator<>.name=Végrehajtó
-item.spawn_egg.entity.entity:terminator.name=Spawn terminátor
-entity.entity:terminator.name=Végrehajtó
-message.entity.respawn.generic=, de megfelelnek!
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, de újraszülettek!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
+entity.entity:terminator<>.name=Terminátor
 entity.player.name=Játékos
+entity.entity:terminator.name=Terminátor
 entity.entity:dummy.name=Színlelt
+pack.name=Terminator [Resource Pack]
+pack.description=Egy robot, amely megakadályozza, hogy legyőzze a játékot. Készítette: Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15. évforduló
+persona.cherry_cape.title=Cseresznyevirág
+persona.founder_cape.title=Alapító
+persona.migrator_cape.title=Migrátor
+persona.mojang_new_cape.title=Mojang Új
+persona.pancape.title=Pán
+persona.pride_cape.title=Haladás Pride
+persona.follower_cape.title=Követő (TikTok)
+persona.purple_heart_cape.title=Lila szív (Twitch)
+persona.one_vanilla_cape.title=Egy vanília
+persona.mcc_cape.title=MCC 15. évf
+persona.mc_experience_cape.title=Minecraft élmény
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Névcímke
+options.terminator.spawn.coordinates=Spawn koordináták
+options.terminator.spawn.skinModel=Bőrmodell
+options.terminator.spawn.customskin=Egyéni felület engedélyezése
+options.terminator.spawn.bossbar=Bossbar engedélyezése
+options.terminator.spawn.invulnerable=Engedélyezze az immunitást
+options.terminator.spawn.deathevent=Engedélyezze a Halál eseményt
+options.terminator.spawn.physics=Fizika engedélyezése
+options.terminator.spawn.regeneration=Regenerálás engedélyezése
+options.terminator.spawn.respawn=Respawn engedélyezése
+options.terminator.spawn.breedable=Tenyészthetőség engedélyezése

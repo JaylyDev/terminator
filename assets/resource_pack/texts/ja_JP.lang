@@ -1,8 +1,36 @@
-message.entity.respawn.generic=しかし、彼らは再現しました！
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=、しかし復活しました！
 item.spawn_egg.entity.entity:terminator.name=スポーンターミネーター
-entity.player.name=プレーヤー
 entity.entity:terminator<>.name=ターミネーター
-entity.entity:dummy.name=ダミー
+entity.player.name=プレーヤー
 entity.entity:terminator.name=ターミネーター
+entity.entity:dummy.name=ダミー
 pack.name=ターミネーター [リソースパック]
 pack.description=ゲームに勝つのを妨げるロボット。 Jayly によって作成されました - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15周年
+persona.cherry_cape.title=桜
+persona.founder_cape.title=創設者
+persona.migrator_cape.title=移行者
+persona.mojang_new_cape.title=モジャン新
+persona.pancape.title=パン
+persona.pride_cape.title=プログレスプライド
+persona.follower_cape.title=フォロワー（TikTok）
+persona.purple_heart_cape.title=パープルハート (Twitch)
+persona.one_vanilla_cape.title=バニラ 1 個
+persona.mcc_cape.title=MCC15年目
+persona.mc_experience_cape.title=マインクラフト体験
+terminator.spawn.title=スポーンターミネーター
+options.terminator.spawn.nametag=ネームタグ
+options.terminator.spawn.coordinates=スポーン座標
+options.terminator.spawn.skinModel=皮膚モデル
+options.terminator.spawn.customskin=カスタムスキンを有効にする
+options.terminator.spawn.bossbar=ボスバーを有効にする
+options.terminator.spawn.invulnerable=免疫を有効にする
+options.terminator.spawn.deathevent=死亡イベントを有効にする
+options.terminator.spawn.physics=物理を有効にする
+options.terminator.spawn.regeneration=再生を有効にする
+options.terminator.spawn.respawn=リスポーンを有効にする
+options.terminator.spawn.breedable=繁殖性を有効にする

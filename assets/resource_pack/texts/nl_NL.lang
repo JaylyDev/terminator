@@ -1,6 +1,36 @@
-message.entity.respawn.generic=, maar ze zien!
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, maar ze kwamen weer tot leven!
+item.spawn_egg.entity.entity:terminator.name=Spawn-terminator
+entity.entity:terminator<>.name=Terminator
 entity.player.name=Speler
 entity.entity:terminator.name=Terminator
-entity.entity:dummy.name=Dummy
-entity.entity:terminator<>.name=Terminator
-item.spawn_egg.entity.entity:terminator.name=Spawn-terminator
+entity.entity:dummy.name=Dummie
+pack.name=Terminator [bronpakket]
+pack.description=Een robot die voorkomt dat je het spel verslaat. Gemaakt door Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15e verjaardag
+persona.cherry_cape.title=Kersenbloesem
+persona.founder_cape.title=Oprichter
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang Nieuw
+persona.pancape.title=Pan
+persona.pride_cape.title=Vooruitgang trots
+persona.follower_cape.title=Volger (TikTok)
+persona.purple_heart_cape.title=Paars Hart (Twitch)
+persona.one_vanilla_cape.title=Eén vanille
+persona.mcc_cape.title=MCC 15e jaar
+persona.mc_experience_cape.title=Minecraft-ervaring
+terminator.spawn.title=Spawn-terminator
+options.terminator.spawn.nametag=Naamplaatje
+options.terminator.spawn.coordinates=Spawn-coördinaten
+options.terminator.spawn.skinModel=Huidmodel
+options.terminator.spawn.customskin=Aangepaste skin inschakelen
+options.terminator.spawn.bossbar=Schakel Bossbar in
+options.terminator.spawn.invulnerable=Schakel immuniteit in
+options.terminator.spawn.deathevent=Schakel Doodsgebeurtenis in
+options.terminator.spawn.physics=Schakel natuurkunde in
+options.terminator.spawn.regeneration=Regeneratie inschakelen
+options.terminator.spawn.respawn=Schakel opnieuw spawnen in
+options.terminator.spawn.breedable=Schakel veredelbaarheid in
