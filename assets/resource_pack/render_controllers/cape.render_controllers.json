@@ -15,7 +15,9 @@
             "Texture.cape_pride",
             "Texture.cape_tiktok",
             "Texture.cape_twitch",
-            "Texture.cape_vanilla"
+            "Texture.cape_vanilla",
+            "Texture.cape_mcc",
+            "Texture.cape_mcexperience"
           ]
         }
       },

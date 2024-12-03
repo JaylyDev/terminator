@@ -1,3 +1,6 @@
+import { RawMessage } from "@minecraft/server";
+
+// Cape variant values
 export enum CapeVariant {
   None,
   Fifteenth_anniv,
@@ -10,9 +13,12 @@ export enum CapeVariant {
   Tiktok,
   Twitch,
   Vanilla,
+  MCC,
+  MC_experience,
 }
 
-export const CapeVariants = [
+// Cape variant display names
+export const CapeVariants: (RawMessage | string)[] = [
   "None",
   "15th Anniversary",
   "Cherry Blossom",
@@ -24,4 +30,6 @@ export const CapeVariants = [
   "Follower (TikTok)",
   "Purple Heart (Twitch)",
   "One Vanilla",
+  "MCC 15th Year",
+  "Minecraft Experience",
 ];

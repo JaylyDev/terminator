@@ -31,7 +31,9 @@
         "cape_pride": "textures/entity/cape_pride",
         "cape_tiktok": "textures/entity/cape_tiktok",
         "cape_twitch": "textures/entity/cape_twitch",
-        "cape_vanilla": "textures/entity/cape_vanilla"
+        "cape_vanilla": "textures/entity/cape_vanilla",
+        "cape_mcc": "textures/entity/cape_mcc",
+        "cape_mcexperience": "textures/entity/cape_mcexperience"
       },
       "geometry": {
         "default": "geometry.terminator",
