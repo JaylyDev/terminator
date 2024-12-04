@@ -8,6 +8,11 @@ export const UnbreakableBlocks: string[] = [
   // 1.21.0
   "minecraft:light_block",
 
+  // 1.21.40
+  "minecraft:end_gateway",
+  "minecraft:netherreactor",
+  "minecraft:glowingobsidian",
+
   // 1.21.20
   MinecraftBlockTypes.Barrier,
   MinecraftBlockTypes.LightBlock0,
@@ -28,7 +33,6 @@ export const UnbreakableBlocks: string[] = [
   MinecraftBlockTypes.LightBlock15,
   MinecraftBlockTypes.Bedrock,
   MinecraftBlockTypes.CommandBlock,
-  MinecraftBlockTypes.EndGateway,
   MinecraftBlockTypes.EndPortal,
   MinecraftBlockTypes.EndPortalFrame,
   MinecraftBlockTypes.Jigsaw,
@@ -38,9 +42,7 @@ export const UnbreakableBlocks: string[] = [
   MinecraftBlockTypes.FlowingLava,
   MinecraftBlockTypes.FlowingWater,
   MinecraftBlockTypes.Air,
-  MinecraftBlockTypes.Glowingobsidian,
   MinecraftBlockTypes.Obsidian,
-  MinecraftBlockTypes.Netherreactor,
   MinecraftBlockTypes.Allow,
   MinecraftBlockTypes.Deny,
   MinecraftBlockTypes.Portal,

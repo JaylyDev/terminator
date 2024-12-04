@@ -2156,7 +2156,6 @@
         "goal_radius": 2,
         "speed_multiplier": 1.0,
         "track_target": true,
-        "pickup_same_items_as_in_hand": true,
         "can_pickup_any_item": true,
         "can_pickup_to_hand_or_equipment": true
       },
