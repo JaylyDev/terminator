@@ -142,6 +142,8 @@ export class TerminatorRespawnEventController {
   }
 
   triggerDramaticEffect() {
+    // Lightning bolt cannot be spawned with dimension.spawnEntity API
+    // eslint-disable-next-line minecraft-linting/avoid-unnecessary-command
     this.dummyEntity.runCommandAsync("/summon minecraft:lightning_bolt");
     this.dummyEntity.triggerEvent("dummy:force_roar");
   }

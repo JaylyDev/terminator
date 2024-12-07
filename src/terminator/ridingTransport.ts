@@ -1,4 +1,4 @@
-import { ItemStack, TicksPerSecond, system, world } from "@minecraft/server";
+import { ItemStack, TicksPerSecond, system } from "@minecraft/server";
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { getAllTerminators } from "./getAll";
 
