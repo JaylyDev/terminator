@@ -9,9 +9,14 @@ export const UnbreakableBlocks: string[] = [
   "minecraft:light_block",
 
   // 1.21.40
-  "minecraft:end_gateway",
-  "minecraft:netherreactor",
   "minecraft:glowingobsidian",
+  "minecraft:info_update",
+  "minecraft:info_update2",
+  "minecraft:invisible_bedrock",
+  "minecraft:reserved6",
+  "minecraft:stonecutter",
+  "minecraft:netherreactor",
+  "minecraft:end_gateway",
 
   // 1.21.20
   MinecraftBlockTypes.Barrier,
