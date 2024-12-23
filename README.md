@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/github/commit-activity/m/jaylydev/terminator" alt="Commit Activity"/>
 </p>
 
-**Latest Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v2.1.2 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
+**Latest Release**: <a href="https://github.com/JaylyDev/terminator/releases/latest"/>v2.2.0 <img src="https://img.shields.io/github/release-date/jaylydev/terminator" alt="Release date"/></a>
 
 ## Documentations
 
