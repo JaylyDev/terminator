@@ -2,7 +2,7 @@
 ##
 ## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
 ## comment on the same line, use TABs.
-message.entity.respawn.generic=, ale odrodzili się!
+message.entity.respawn.generic=, ale się odrodzili!
 item.spawn_egg.entity.entity:terminator.name=Terminator spawnowania
 entity.entity:terminator<>.name=Terminatora
 entity.player.name=Odtwarzacz
@@ -22,6 +22,7 @@ persona.purple_heart_cape.title=Fioletowe Serce (Twitch)
 persona.one_vanilla_cape.title=Jedna wanilia
 persona.mcc_cape.title=15-lecie MCK
 persona.mc_experience_cape.title=Doświadczenie Minecrafta
+persona.eyeblossom_cape.title=Biuro Mojanga
 terminator.spawn.title=Terminator spawnowania
 options.terminator.spawn.nametag=Etykieta z nazwą
 options.terminator.spawn.coordinates=Współrzędne spawnowania

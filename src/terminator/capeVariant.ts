@@ -15,6 +15,7 @@ export enum CapeVariant {
   Vanilla,
   MCC,
   MC_experience,
+  Eyeblossom,
 }
 
 // Cape variant display names
@@ -31,5 +32,6 @@ export const CapeVariants: (RawMessage | string)[] = [
   { translate: "persona.purple_heart_cape.title" }, // Purple Heart (Twitch)
   { translate: "persona.one_vanilla_cape.title" }, // One Vanilla
   { translate: "persona.mcc_cape.title" }, // MCC 15th Year
-  { translate: "persona.mc_experience_cape.title" }, // Minecraft Experience
+  { translate: "persona.mc_experience_cape.title" }, // Minecraft Experience,
+  { translate: "persona.eyeblossom_cape.title" }, // Eyeblossom
 ];

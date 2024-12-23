@@ -33,7 +33,8 @@
         "cape_twitch": "textures/entity/cape_twitch",
         "cape_vanilla": "textures/entity/cape_vanilla",
         "cape_mcc": "textures/entity/cape_mcc",
-        "cape_mcexperience": "textures/entity/cape_mcexperience"
+        "cape_mcexperience": "textures/entity/cape_mcexperience",
+        "cape_eyeblossom": "textures/entity/cape_eyeblossom"
       },
       "geometry": {
         "default": "geometry.terminator",
