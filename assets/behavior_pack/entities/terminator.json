@@ -234,6 +234,7 @@
             "bed",
             "beetroot",
             "big_dripleaf",
+            "small_dripleaf_block",
             "birch_button",
             "birch_standing_sign",
             "birch_wall_sign",
@@ -368,7 +369,19 @@
             "honey_block",
             "candle",
             // 1.18 blocks
-            "deepslate"
+            "deepslate",
+            "acacia_hanging_sign",
+            "bamboo_hanging_sign",
+            "birch_hanging_sign",
+            "cherry_hanging_sign",
+            "crimson_hanging_sign",
+            "dark_oak_hanging_sign",
+            "jungle_hanging_sign",
+            "mangrove_hanging_sign",
+            "oak_hanging_sign",
+            "pale_oak_hanging_sign",
+            "spruce_hanging_sign",
+            "warped_hanging_sign"
           ]
         }
       },
@@ -1371,10 +1384,14 @@
           "minecraft:waxed_weathered_copper_trapdoor",
           "minecraft:weathered_copper_trapdoor",
           "minecraft:tnt",
+          "minecraft:underwater_tnt",
           "minecraft:wither_rose",
           "minecraft:big_dripleaf",
+          "minecraft:small_dripleaf_block",
           "minecraft:pointed_dripstone",
-          "minecraft:soul_fire"
+          "minecraft:soul_fire",
+          "minecraft:soul_campfire",
+          "minecraft:sculk_shrieker"
         ]
       },
       "minecraft:follow_range": {
@@ -2367,8 +2384,10 @@
           "minecraft:waxed_weathered_copper_trapdoor",
           "minecraft:weathered_copper_trapdoor",
           "minecraft:tnt",
+          "minecraft:underwater_tnt",
           "minecraft:wither_rose",
           "minecraft:big_dripleaf",
+          "minecraft:small_dripleaf_block",
           "minecraft:pointed_dripstone",
           "minecraft:soul_fire",
           "minecraft:soul_campfire",
