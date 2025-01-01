@@ -1,6 +1,37 @@
-entity.player.name=Играч
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, но те се възродиха!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Терминатор
+entity.player.name=Играч
 entity.entity:terminator.name=Терминатор
-entity.entity:dummy.name=Манекен
-message.entity.respawn.generic=, но те решават!
-item.spawn_egg.entity.entity:terminator.name=Терминатор на хайвера
+entity.entity:dummy.name=манекен
+pack.name=Терминатор [Пакет с ресурси]
+pack.description=Робот, който ви пречи да победите играта. Направено от Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15-та годишнина
+persona.cherry_cape.title=Cherry Blossom
+persona.founder_cape.title=Основател
+persona.migrator_cape.title=Мигратор
+persona.mojang_new_cape.title=Mojang Ново
+persona.pancape.title=Пан
+persona.pride_cape.title=Прогрес Прайд
+persona.follower_cape.title=Последовател (TikTok)
+persona.purple_heart_cape.title=Пурпурно сърце (Twitch)
+persona.one_vanilla_cape.title=Една ванилия
+persona.mcc_cape.title=MCC 15-та година
+persona.mc_experience_cape.title=Minecraft изживяване
+persona.eyeblossom_cape.title=Офис Mojang
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Етикет с име
+options.terminator.spawn.coordinates=Спаун координати
+options.terminator.spawn.skinModel=Модел на кожата
+options.terminator.spawn.customskin=Активиране на персонализирана кожа
+options.terminator.spawn.bossbar=Активирайте Bossbar
+options.terminator.spawn.invulnerable=Активирайте имунитета
+options.terminator.spawn.deathevent=Активиране на смъртно събитие
+options.terminator.spawn.physics=Активиране на физиката
+options.terminator.spawn.regeneration=Активирайте регенерирането
+options.terminator.spawn.respawn=Активиране на Respawn
+options.terminator.spawn.breedable=Активиране на способността за размножаване

@@ -1,6 +1,37 @@
-entity.entity:dummy.name=Dummy.
-entity.player.name=Spiller
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, men de gjenoppsto!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Terminator
+entity.player.name=Spiller
 entity.entity:terminator.name=Terminator
-message.entity.respawn.generic=, men de respawned!
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator.
+entity.entity:dummy.name=Dummy
+pack.name=Terminator [Ressurspakke]
+pack.description=En robot som hindrer deg i å slå spillet. Laget av Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15 års jubileum
+persona.cherry_cape.title=Kirsebærblomst
+persona.founder_cape.title=Grunnlegger
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang Ny
+persona.pancape.title=Panne
+persona.pride_cape.title=Progress Pride
+persona.follower_cape.title=Følger (TikTok)
+persona.purple_heart_cape.title=Lilla hjerte (Twitch)
+persona.one_vanilla_cape.title=En vanilje
+persona.mcc_cape.title=MCC 15. år
+persona.mc_experience_cape.title=Minecraft-opplevelse
+persona.eyeblossom_cape.title=Mojang kontor
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Navneskilt
+options.terminator.spawn.coordinates=Spawn-koordinater
+options.terminator.spawn.skinModel=Hudmodell
+options.terminator.spawn.customskin=Aktiver tilpasset hud
+options.terminator.spawn.bossbar=Aktiver Bossbar
+options.terminator.spawn.invulnerable=Aktiver immunitet
+options.terminator.spawn.deathevent=Aktiver Death Event
+options.terminator.spawn.physics=Aktiver fysikk
+options.terminator.spawn.regeneration=Aktiver regenerering
+options.terminator.spawn.respawn=Aktiver Respawn
+options.terminator.spawn.breedable=Aktiver avlsevne

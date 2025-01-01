@@ -1,6 +1,37 @@
-entity.entity:dummy.name=Манекен
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
 message.entity.respawn.generic=, але вони відродилися!
-item.spawn_egg.entity.entity:terminator.name=Термінатор Spawn
-entity.player.name=Гравець
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Термінатор
+entity.player.name=гравець
 entity.entity:terminator.name=Термінатор
+entity.entity:dummy.name=манекен
+pack.name=Термінатор [пакет ресурсів]
+pack.description=Робот, який заважає вам пройти гру. Створено Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15-річчя
+persona.cherry_cape.title=Вишневий цвіт
+persona.founder_cape.title=Засновник
+persona.migrator_cape.title=Переселенець
+persona.mojang_new_cape.title=Новий Mojang
+persona.pancape.title=Пан
+persona.pride_cape.title=Прогрес Прайд
+persona.follower_cape.title=Підписник (TikTok)
+persona.purple_heart_cape.title=Пурпурне серце (Twitch)
+persona.one_vanilla_cape.title=Одна ваніль
+persona.mcc_cape.title=МКЦ 15-й рік
+persona.mc_experience_cape.title=Майнкрафт досвід
+persona.eyeblossom_cape.title=Офіс Mojang
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Ім'я Тег
+options.terminator.spawn.coordinates=Координати спауна
+options.terminator.spawn.skinModel=Модель шкіри
+options.terminator.spawn.customskin=Увімкнути спеціальну оболонку
+options.terminator.spawn.bossbar=Увімкнути Bossbar
+options.terminator.spawn.invulnerable=Увімкнути імунітет
+options.terminator.spawn.deathevent=Увімкнути подію смерті
+options.terminator.spawn.physics=Увімкнути фізику
+options.terminator.spawn.regeneration=Увімкнути регенерацію
+options.terminator.spawn.respawn=Увімкнути Respawn
+options.terminator.spawn.breedable=Увімкнути можливість розведення

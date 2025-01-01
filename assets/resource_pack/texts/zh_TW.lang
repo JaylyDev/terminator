@@ -1,8 +1,37 @@
-entity.entity:terminator.name=終結者
-item.spawn_egg.entity.entity:terminator.name=終結者生成蛋
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
 message.entity.respawn.generic=，但他們重生了！
-entity.player.name=玩家
-entity.entity:dummy.name=假
+item.spawn_egg.entity.entity:terminator.name=生成終結者
 entity.entity:terminator<>.name=終結者
+entity.player.name=玩家
+entity.entity:terminator.name=終結者
+entity.entity:dummy.name=假的
 pack.name=終結者[資源包]
-pack.description=一個阻止你完成遊戲的機器人。 由 Jayly 製作 - https://jaylydev.github.io/posts/terminator/
+pack.description=一個阻止你通關遊戲的機器人。由 Jayly 製作 - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15週年紀念日
+persona.cherry_cape.title=櫻花
+persona.founder_cape.title=創辦人
+persona.migrator_cape.title=遷移者
+persona.mojang_new_cape.title=Mojang 新
+persona.pancape.title=薄煎餅
+persona.pride_cape.title=進步的驕傲
+persona.follower_cape.title=追蹤者 (TikTok)
+persona.purple_heart_cape.title=紫心勳章（Twitch）
+persona.one_vanilla_cape.title=原版
+persona.mcc_cape.title=MCC 15週年
+persona.mc_experience_cape.title=我的世界體驗
+persona.eyeblossom_cape.title=Mojang辦公室
+terminator.spawn.title=生成終結者
+options.terminator.spawn.nametag=姓名牌
+options.terminator.spawn.coordinates=產生座標
+options.terminator.spawn.skinModel=皮膚模型
+options.terminator.spawn.customskin=啟用自訂皮膚
+options.terminator.spawn.bossbar=啟用老闆欄
+options.terminator.spawn.invulnerable=啟用免疫功能
+options.terminator.spawn.deathevent=啟用死亡事件
+options.terminator.spawn.physics=啟用物理
+options.terminator.spawn.regeneration=啟用再生
+options.terminator.spawn.respawn=啟用重生
+options.terminator.spawn.breedable=實現可繁殖性

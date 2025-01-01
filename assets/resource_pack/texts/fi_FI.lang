@@ -1,6 +1,37 @@
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, mutta ne syntyivät uudelleen!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Terminaattori
 entity.player.name=Pelaaja
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-entity.entity:dummy.name=Nukke
 entity.entity:terminator.name=Terminaattori
-message.entity.respawn.generic=Mutta he restawned!
+entity.entity:dummy.name=Nukke
+pack.name=Terminator [resurssipaketti]
+pack.description=Robotti, joka estää sinua voittamaan peliä. Tekijä: Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15-vuotispäivä
+persona.cherry_cape.title=Kirsikankukka
+persona.founder_cape.title=Perustaja
+persona.migrator_cape.title=Maahanmuuttaja
+persona.mojang_new_cape.title=Mojang Uusi
+persona.pancape.title=Panoroida
+persona.pride_cape.title=Progress Pride
+persona.follower_cape.title=Seuraaja (TikTok)
+persona.purple_heart_cape.title=Violetti sydän (Twitch)
+persona.one_vanilla_cape.title=Yksi vanilja
+persona.mcc_cape.title=Oma asiakaskeskus 15. vuosi
+persona.mc_experience_cape.title=Minecraft-kokemus
+persona.eyeblossom_cape.title=Mojangin toimisto
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Nimilappu
+options.terminator.spawn.coordinates=Spawn-koordinaatit
+options.terminator.spawn.skinModel=Ihon malli
+options.terminator.spawn.customskin=Ota mukautettu ulkoasu käyttöön
+options.terminator.spawn.bossbar=Ota Bossbar käyttöön
+options.terminator.spawn.invulnerable=Ota immuniteetti käyttöön
+options.terminator.spawn.deathevent=Ota Kuolematapahtuma käyttöön
+options.terminator.spawn.physics=Ota fysiikka käyttöön
+options.terminator.spawn.regeneration=Ota Regenerointi käyttöön
+options.terminator.spawn.respawn=Ota Respawn käyttöön
+options.terminator.spawn.breedable=Ota kasvatettavuus käyttöön

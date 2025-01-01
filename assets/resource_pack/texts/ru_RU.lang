@@ -1,6 +1,37 @@
-entity.entity:terminator.name=Терминатор
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, но они возродились!
+item.spawn_egg.entity.entity:terminator.name=Появление Терминатора
 entity.entity:terminator<>.name=Терминатор
-message.entity.respawn.generic=, но они заразились!
 entity.player.name=Игрок
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
+entity.entity:terminator.name=Терминатор
 entity.entity:dummy.name=Дурачок
+pack.name=Терминатор [Пакет ресурсов]
+pack.description=Робот, который мешает вам пройти игру. Сделано Джейли - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15 лет
+persona.cherry_cape.title=Вишневый цвет
+persona.founder_cape.title=Основатель
+persona.migrator_cape.title=Мигратор
+persona.mojang_new_cape.title=Моджанг Новый
+persona.pancape.title=Кастрюля
+persona.pride_cape.title=Прогресс Гордость
+persona.follower_cape.title=Подписчик (Тик Ток)
+persona.purple_heart_cape.title=Пурпурное сердце (Twitch)
+persona.one_vanilla_cape.title=Одна ваниль
+persona.mcc_cape.title=МСС 15-й год
+persona.mc_experience_cape.title=Опыт Майнкрафта
+persona.eyeblossom_cape.title=Офис Моджанг
+terminator.spawn.title=Появление Терминатора
+options.terminator.spawn.nametag=Имя тега
+options.terminator.spawn.coordinates=Координаты появления
+options.terminator.spawn.skinModel=Модель кожи
+options.terminator.spawn.customskin=Включить пользовательский скин
+options.terminator.spawn.bossbar=Включить Боссбар
+options.terminator.spawn.invulnerable=Включить иммунитет
+options.terminator.spawn.deathevent=Включить событие смерти
+options.terminator.spawn.physics=Включить физику
+options.terminator.spawn.regeneration=Включить регенерацию
+options.terminator.spawn.respawn=Включить возрождение
+options.terminator.spawn.breedable=Включить возможность размножения

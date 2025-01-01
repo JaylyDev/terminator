@@ -1,0 +1,6 @@
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+pack.name=Terminator [Πακέτο Συμπεριφοράς]
+pack.description=Ένα ρομπότ που σας εμποδίζει να κερδίσετε το παιχνίδι. Δημιουργήθηκε από τον Jayly - https://jaylydev.github.io/posts/terminator/

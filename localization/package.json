@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "localization",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@iamtraction/google-translate": "^2.0.1",
+    "properties-reader": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/properties-reader": "^2.1.3"
+  }
+}

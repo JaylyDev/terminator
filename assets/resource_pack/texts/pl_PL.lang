@@ -1,6 +1,37 @@
-item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.
-entity.player.name=Gracz
-message.entity.respawn.generic=, ale odprowadzali!
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, ale się odrodzili!
+item.spawn_egg.entity.entity:terminator.name=Terminator spawnowania
+entity.entity:terminator<>.name=Terminatora
+entity.player.name=Odtwarzacz
+entity.entity:terminator.name=Terminatora
 entity.entity:dummy.name=Atrapa
-entity.entity:terminator.name=Terminator.
-entity.entity:terminator<>.name=Terminator.
+pack.name=Terminator [pakiet zasobów]
+pack.description=Robot, który uniemożliwia przejście gry. Wykonane przez Jayly'ego - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15. rocznica
+persona.cherry_cape.title=Kwiat Wiśni
+persona.founder_cape.title=Założyciel
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang Nowy
+persona.pancape.title=Patelnia
+persona.pride_cape.title=Duma postępu
+persona.follower_cape.title=Obserwujący (TikTok)
+persona.purple_heart_cape.title=Fioletowe Serce (Twitch)
+persona.one_vanilla_cape.title=Jedna wanilia
+persona.mcc_cape.title=15-lecie MCK
+persona.mc_experience_cape.title=Doświadczenie Minecrafta
+persona.eyeblossom_cape.title=Biuro Mojanga
+terminator.spawn.title=Terminator spawnowania
+options.terminator.spawn.nametag=Etykieta z nazwą
+options.terminator.spawn.coordinates=Współrzędne spawnowania
+options.terminator.spawn.skinModel=Model skóry
+options.terminator.spawn.customskin=Włącz niestandardową skórkę
+options.terminator.spawn.bossbar=Włącz pasek Bossbar
+options.terminator.spawn.invulnerable=Włącz odporność
+options.terminator.spawn.deathevent=Włącz zdarzenie śmierci
+options.terminator.spawn.physics=Włącz fizykę
+options.terminator.spawn.regeneration=Włącz regenerację
+options.terminator.spawn.respawn=Włącz odrodzenie
+options.terminator.spawn.breedable=Włącz możliwość rozmnażania

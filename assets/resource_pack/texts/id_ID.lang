@@ -1,8 +1,37 @@
-message.entity.respawn.generic=, Tapi mereka respawned!
-entity.entity:terminator<>.name=Terminator.
-entity.entity:terminator.name=Terminator.
-entity.entity:dummy.name=Contoh
-item.spawn_egg.entity.entity:terminator.name=Terminator Spawn.
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, tapi mereka respawn!
+item.spawn_egg.entity.entity:terminator.name=Terminator Pemijahan
+entity.entity:terminator<>.name=Terminator
 entity.player.name=Pemain
+entity.entity:terminator.name=Terminator
+entity.entity:dummy.name=Contoh
 pack.name=Terminator [Paket Sumber Daya]
 pack.description=Robot yang mencegah Anda menyelesaikan permainan. Dibuat oleh Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=Hari Jadi ke-15
+persona.cherry_cape.title=Bunga Sakura
+persona.founder_cape.title=Pendiri
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang Baru
+persona.pancape.title=Panci
+persona.pride_cape.title=Kemajuan Kebanggaan
+persona.follower_cape.title=Pengikut (TikTok)
+persona.purple_heart_cape.title=Hati Ungu (Twitch)
+persona.one_vanilla_cape.title=Satu vanila
+persona.mcc_cape.title=PKS Tahun ke-15
+persona.mc_experience_cape.title=Pengalaman Minecraft
+persona.eyeblossom_cape.title=Kantor Mojang
+terminator.spawn.title=Terminator Pemijahan
+options.terminator.spawn.nametag=Label Nama
+options.terminator.spawn.coordinates=Koordinat Pemijahan
+options.terminator.spawn.skinModel=Model Kulit
+options.terminator.spawn.customskin=Aktifkan Kulit Kustom
+options.terminator.spawn.bossbar=Aktifkan Bossbar
+options.terminator.spawn.invulnerable=Aktifkan Imunitas
+options.terminator.spawn.deathevent=Aktifkan Acara Kematian
+options.terminator.spawn.physics=Aktifkan Fisika
+options.terminator.spawn.regeneration=Aktifkan Regenerasi
+options.terminator.spawn.respawn=Aktifkan Kebangkitan
+options.terminator.spawn.breedable=Aktifkan Breedability

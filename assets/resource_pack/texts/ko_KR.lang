@@ -1,8 +1,37 @@
-entity.entity:dummy.name=가짜의
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, 그러나 그들은 다시 생성되었습니다!
 item.spawn_egg.entity.entity:terminator.name=스폰 터미네이터
 entity.entity:terminator<>.name=터미네이터
 entity.player.name=플레이어
 entity.entity:terminator.name=터미네이터
-message.entity.respawn.generic=하지만 그들은 삭제되었습니다!
-pack.name=터미네이터 [리소스 팩]
-pack.description=게임에서 승리하는 것을 방해하는 로봇입니다. Jayly 제작 - https://jaylydev.github.io/posts/terminator/
+entity.entity:dummy.name=더미
+pack.name=터미네이터 [리소스팩]
+pack.description=게임에서 이기는 것을 방해하는 로봇입니다. Jayly 제작 - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15주년
+persona.cherry_cape.title=벚꽃
+persona.founder_cape.title=설립자
+persona.migrator_cape.title=이주자
+persona.mojang_new_cape.title=모장 뉴
+persona.pancape.title=팬
+persona.pride_cape.title=진보의 자부심
+persona.follower_cape.title=팔로어 (TikTok)
+persona.purple_heart_cape.title=퍼플 하트(Twitch)
+persona.one_vanilla_cape.title=바닐라 원
+persona.mcc_cape.title=MCC 15년차
+persona.mc_experience_cape.title=마인크래프트 체험
+persona.eyeblossom_cape.title=모장사무소
+terminator.spawn.title=스폰 터미네이터
+options.terminator.spawn.nametag=이름표
+options.terminator.spawn.coordinates=스폰 좌표
+options.terminator.spawn.skinModel=스킨 모델
+options.terminator.spawn.customskin=사용자 정의 스킨 활성화
+options.terminator.spawn.bossbar=보스바 활성화
+options.terminator.spawn.invulnerable=면역 활성화
+options.terminator.spawn.deathevent=사망 이벤트 활성화
+options.terminator.spawn.physics=물리학 활성화
+options.terminator.spawn.regeneration=재생 활성화
+options.terminator.spawn.respawn=부활 활성화
+options.terminator.spawn.breedable=번식 가능성 활성화

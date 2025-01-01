@@ -1,8 +1,41 @@
-entity.entity:terminator<>.name=Terminator
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
 message.entity.respawn.generic=, but they respawned!
 item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
+
+entity.entity:terminator<>.name=Terminator
 entity.player.name=Player
 entity.entity:terminator.name=Terminator
 entity.entity:dummy.name=Dummy
+
 pack.name=Terminator [Resource Pack]
 pack.description=A robot that prevents you from beating the game. Made by Jayly - https://jaylydev.github.io/posts/terminator/
+
+persona.15th_anniv_cape.title=15th Anniversary
+persona.cherry_cape.title=Cherry Blossom
+persona.founder_cape.title=Founder
+persona.migrator_cape.title=Migrator
+persona.mojang_new_cape.title=Mojang New
+persona.pancape.title=Pan
+persona.pride_cape.title=Progress Pride
+persona.follower_cape.title=Follower (TikTok)
+persona.purple_heart_cape.title=Purple Heart (Twitch)
+persona.one_vanilla_cape.title=One Vanilla
+persona.mcc_cape.title=MCC 15th Year
+persona.mc_experience_cape.title=Minecraft Experience
+persona.eyeblossom_cape.title=Mojang Office
+
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Name Tag
+options.terminator.spawn.coordinates=Spawn Coordinates
+options.terminator.spawn.skinModel=Skin Model
+options.terminator.spawn.customskin=Enable Custom Skin
+options.terminator.spawn.bossbar=Enable Bossbar
+options.terminator.spawn.invulnerable=Enable Immunity
+options.terminator.spawn.deathevent=Enable Death Event
+options.terminator.spawn.physics=Enable Physics
+options.terminator.spawn.regeneration=Enable Regeneration
+options.terminator.spawn.respawn=Enable Respawn
+options.terminator.spawn.breedable=Enable Breedability

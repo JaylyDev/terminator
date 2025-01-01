@@ -1,6 +1,37 @@
-message.entity.respawn.generic=, αλλά αναπνέω!
-entity.entity:terminator.name=Τελειωτής
-entity.player.name=Παίχτης
-entity.entity:dummy.name=Ανδρείκελο
-item.spawn_egg.entity.entity:terminator.name=Τερματιστής
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, αλλά αναγεννήθηκαν!
+item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
 entity.entity:terminator<>.name=Τελειωτής
+entity.player.name=Παίχτης
+entity.entity:terminator.name=Τελειωτής
+entity.entity:dummy.name=Ανδρείκελο
+pack.name=Terminator [Πακέτο πόρων]
+pack.description=Ένα ρομπότ που σας εμποδίζει να κερδίσετε το παιχνίδι. Δημιουργήθηκε από τον Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15η επέτειος
+persona.cherry_cape.title=Cherry Blossom
+persona.founder_cape.title=Ιδρυτής
+persona.migrator_cape.title=Μετανάστης
+persona.mojang_new_cape.title=Mojang New
+persona.pancape.title=Τηγάνι
+persona.pride_cape.title=Progress Pride
+persona.follower_cape.title=Ακόλουθος (TikTok)
+persona.purple_heart_cape.title=Purple Heart (Twitch)
+persona.one_vanilla_cape.title=Μία βανίλια
+persona.mcc_cape.title=MCC 15ο έτος
+persona.mc_experience_cape.title=Minecraft Experience
+persona.eyeblossom_cape.title=Γραφείο Mojang
+terminator.spawn.title=Spawn Terminator
+options.terminator.spawn.nametag=Ετικέτα ονόματος
+options.terminator.spawn.coordinates=Συντεταγμένες ωοτοκίας
+options.terminator.spawn.skinModel=Μοντέλο δέρματος
+options.terminator.spawn.customskin=Ενεργοποίηση προσαρμοσμένου δέρματος
+options.terminator.spawn.bossbar=Ενεργοποίηση Bossbar
+options.terminator.spawn.invulnerable=Ενεργοποιήστε το Immunity
+options.terminator.spawn.deathevent=Ενεργοποίηση συμβάντος θανάτου
+options.terminator.spawn.physics=Ενεργοποίηση Φυσικής
+options.terminator.spawn.regeneration=Ενεργοποίηση Αναγέννησης
+options.terminator.spawn.respawn=Ενεργοποίηση Respawn
+options.terminator.spawn.breedable=Ενεργοποιήστε τη δυνατότητα αναπαραγωγής

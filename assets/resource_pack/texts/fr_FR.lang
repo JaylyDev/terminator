@@ -1,6 +1,37 @@
-entity.entity:dummy.name=Factice
+## Comments can be added anywhere on a valid line by starting with '##'
+##
+## Note, trailing spaces will NOT be trimmed. If you want room between the end of the string and the start of a
+## comment on the same line, use TABs.
+message.entity.respawn.generic=, mais ils ont réapparu !
+item.spawn_egg.entity.entity:terminator.name=Terminateur d'apparition
+entity.entity:terminator<>.name=Terminateur
 entity.player.name=Joueur
 entity.entity:terminator.name=Terminateur
-message.entity.respawn.generic=, mais ils ont respecté!
-item.spawn_egg.entity.entity:terminator.name=Spawn Terminator
-entity.entity:terminator<>.name=Terminateur
+entity.entity:dummy.name=Factice
+pack.name=Terminator [Pack de ressources]
+pack.description=Un robot qui vous empêche de terminer le jeu. Réalisé par Jayly - https://jaylydev.github.io/posts/terminator/
+persona.15th_anniv_cape.title=15e anniversaire
+persona.cherry_cape.title=Fleur de cerisier
+persona.founder_cape.title=Fondateur
+persona.migrator_cape.title=Migrateur
+persona.mojang_new_cape.title=Mojang Nouveau
+persona.pancape.title=Poêle
+persona.pride_cape.title=Fierté du progrès
+persona.follower_cape.title=Abonné (TikTok)
+persona.purple_heart_cape.title=Coeur violet (Twitch)
+persona.one_vanilla_cape.title=Une vanille
+persona.mcc_cape.title=15e année du CMC
+persona.mc_experience_cape.title=Expérience Minecraft
+persona.eyeblossom_cape.title=Bureau de Mojang
+terminator.spawn.title=Terminateur d'apparition
+options.terminator.spawn.nametag=Étiquette de nom
+options.terminator.spawn.coordinates=Coordonnées d'apparition
+options.terminator.spawn.skinModel=Modèle de peau
+options.terminator.spawn.customskin=Activer l'habillage personnalisé
+options.terminator.spawn.bossbar=Activer la barre de boss
+options.terminator.spawn.invulnerable=Activer l'immunité
+options.terminator.spawn.deathevent=Activer l'événement de décès
+options.terminator.spawn.physics=Activer la physique
+options.terminator.spawn.regeneration=Activer la régénération
+options.terminator.spawn.respawn=Activer la réapparition
+options.terminator.spawn.breedable=Activer la reproductibilité
